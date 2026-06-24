@@ -34,8 +34,8 @@ _spec.loader.exec_module(us_analysis_module)
 analyze_us_stock = us_analysis_module.analyze_us_stock
 
 
-def check_perplexity_configured() -> bool:
-    """Check if Perplexity API key is configured."""
+def check_vane_configured() -> bool:
+    """Check if Vane MCP server is configured (self-hosted, no API key needed)."""
     import yaml
     config_path = project_root / "mcp_agent.config.yaml"
     if not config_path.exists():
@@ -43,9 +43,8 @@ def check_perplexity_configured() -> bool:
     try:
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
-        perplexity_key = config.get("mcp", {}).get("servers", {}).get("perplexity", {}).get("env", {}).get("PERPLEXITY_API_KEY", "")
-        # Check if it's a real key (not placeholder)
-        return perplexity_key and perplexity_key not in ["example key", "", "your-api-key", "YOUR_API_KEY"]
+        vane_config = config.get("mcp", {}).get("servers", {}).get("vane", {})
+        return bool(vane_config and vane_config.get("command"))
     except Exception:
         return False
 
@@ -75,8 +74,8 @@ async def generate_report(ticker: str, company_name: str, language: str = "ko") 
     """
     from report_generator import save_us_report, save_us_pdf_report
 
-    # Check if Perplexity is configured for news analysis
-    include_news = check_perplexity_configured()
+    # Check if Vane is configured for news analysis (self-hosted)
+    include_news = check_vane_configured()
 
     print(f"\n{'='*60}")
     print(f"  PRISM-INSIGHT AI Stock Analysis")
@@ -84,7 +83,7 @@ async def generate_report(ticker: str, company_name: str, language: str = "ko") 
     print(f"  Company: {company_name}")
     print(f"  Language: {'English' if language == 'en' else 'Korean'}")
     if not include_news:
-        print(f"  Note: News analysis skipped (Perplexity API not configured)")
+        print(f"  Note: News analysis skipped (Vane MCP server not configured)")
     print(f"{'='*60}\n")
 
     print("[1/3] Generating AI analysis report...")

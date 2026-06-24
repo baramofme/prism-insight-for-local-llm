@@ -23,6 +23,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 # Third-party imports
 import feedparser
 import yt_dlp
@@ -235,7 +237,7 @@ Output only one of: "Own Opinion" or "Interview"
                     result = await llm.generate_str(
                         message="Analyze the above title and output only 'Own Opinion' or 'Interview'.",
                         request_params=RequestParams(
-                            model="gpt-4.1-mini",  # Better instruction following than nano ($0.40/1M in, $1.60/1M out)
+                            model=resolve_agent_model("jeoningu_sell"),
                             maxTokens=10,
                             max_iterations=1,
                             parallel_tool_calls=False,
@@ -524,7 +526,7 @@ Output must follow the JSON schema below (pure JSON only, no markdown code block
                 result = await llm.generate_str(
                     message="Analyze the video according to the instructions above and output the contrarian investment strategy in JSON format.",
                     request_params=RequestParams(
-                        model="gpt-4.1",
+                        model=resolve_agent_model("jeoningu_analysis"),
                         maxTokens=8000,
                         max_iterations=3,
                         parallel_tool_calls=False,

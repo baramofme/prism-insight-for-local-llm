@@ -28,12 +28,13 @@ import aiosqlite
 
 from .archive_db import ARCHIVE_DB_PATH, init_db  # type: ignore[import]
 from .query_engine import QueryEngine, load_api_key, synthesize  # type: ignore[import]
+from cores.llm.agent_model_map import resolve_agent_model
 
 logger = logging.getLogger(__name__)
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
-_DEFAULT_MODEL = "gpt-5.4-mini"
+_DEFAULT_MODEL = resolve_agent_model("archive_query")
 
 
 def _sanitize_for_llm(text: str, max_len: int = 3000) -> str:

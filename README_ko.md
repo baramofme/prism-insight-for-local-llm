@@ -131,7 +131,7 @@ python3 demo.py TSLA --language ko  # Tesla (한국어 리포트)
 
 > **OpenAI API 키 발급**: [OpenAI Platform](https://platform.openai.com/api-keys)
 >
-> **선택사항**: 뉴스 분석을 위해 [Perplexity API 키](https://www.perplexity.ai/)를 `mcp_agent.config.yaml`에 추가하세요
+> **선택사항**: 자체 호스팅 [Vane](https://github.com/ItzCrazyKns/Vane) 엔진이 AI 뉴스 분석을 제공합니다 (별도 API 키 불필요)
 
 AI가 생성한 PDF 리포트는 `prism-us/pdf_reports/`에 저장됩니다.
 
@@ -174,10 +174,7 @@ pip install -r requirements.txt
 # 2. Playwright 설치 (PDF 생성용)
 python3 -m playwright install chromium
 
-# 3. perplexity-ask MCP 서버 설치
-cd perplexity-ask && npm install && npm run build && cd ..
-
-# 4. 설정
+# 3. 설정
 cp mcp_agent.config.yaml.example mcp_agent.config.yaml
 cp mcp_agent.secrets.yaml.example mcp_agent.secrets.yaml
 # mcp_agent.secrets.yaml에 OpenAI API 키 입력
@@ -354,7 +351,7 @@ npm run dev
 ### 한국 시장
 - **[kospi_kosdaq](https://github.com/dragon1086/kospi-kosdaq-stock-server)** — KRX 주식 데이터
 - **[firecrawl](https://github.com/mendableai/firecrawl-mcp-server)** — 웹 크롤링
-- **[perplexity](https://github.com/perplexityai/modelcontextprotocol)** — 웹 검색
+- **[vane](https://github.com/ItzCrazyKns/Vane)** — AI 웹 검색 (자체 호스팅)
 - **[sqlite](https://github.com/modelcontextprotocol/servers-archived)** — 매매 시뮬레이션 DB
 
 ### 미국 시장

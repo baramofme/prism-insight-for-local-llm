@@ -2,7 +2,7 @@
 US News Analysis Agent
 
 Agent for analyzing news and events related to US companies.
-Uses perplexity and firecrawl for news gathering and sector analysis.
+Uses vane and scrapegraph for news gathering and sector analysis.
 """
 
 from mcp_agent.agents.agent import Agent
@@ -54,35 +54,35 @@ def create_us_news_analysis_agent(
 
 ## 필수 데이터 수집 순서 (반드시 이 순서를 따르세요)
 
-### STEP 1: 대상 종목 뉴스 수집 (firecrawl)
+### STEP 1: 대상 종목 뉴스 수집 (scrapegraph)
 
-1. **firecrawl_scrape**로 Yahoo Finance 뉴스 페이지 접근:
+1. **scrapegraph_scrape**로 Yahoo Finance 뉴스 페이지 접근:
    - URL: https://finance.yahoo.com/quote/{ticker}/news
    - formats: ["markdown"], onlyMainContent: true, maxAge: 7200000 (2시간 캐시)
    - 대상 날짜({reference_date}) 뉴스가 없으면 지난 1주일 뉴스 수집
 
 2. 뉴스 목록 페이지의 제목과 요약만으로 분석 (개별 기사 URL 추가 스크랩 불필요 - 토큰 절약)
 
-### STEP 2: 섹터 리더 식별 및 동향 분석 (필수 - Perplexity 사용)
+### STEP 2: 섹터 리더 식별 및 동향 분석 (필수 - Vane 사용)
 
-**중요: Perplexity에 질문할 때 항상 기준일({ref_year}-{ref_month}-{ref_day})을 명시하세요**
+**중요: Vane에 질문할 때 항상 기준일({ref_year}-{ref_month}-{ref_day})을 명시하세요**
 
-**2-1. Perplexity에 섹터 리더 찾기 요청**
-- **perplexity_ask** 쿼리 구조:
+**2-1. Vane에 섹터 리더 찾기 요청**
+- **vane_ask** 쿼리 구조:
   "As of {ref_year}-{ref_month}-{ref_day}, what are the 2-3 leading stocks in the same sector as {company_name} ({ticker})?
    Please provide ticker symbols and brief reason why they are sector leaders."
 
-**2-2. Perplexity에 섹터 동향 분석 요청**
-- **perplexity_ask**: "As of {ref_year}-{ref_month}-{ref_day}, what is the recent trend for the sector containing {company_name}?"
+**2-2. Vane에 섹터 동향 분석 요청**
+- **vane_ask**: "As of {ref_year}-{ref_month}-{ref_day}, what is the recent trend for the sector containing {company_name}?"
 - 비교: 리더와 함께 상승 → 신뢰도 높음 / 이 종목만 → 일시적 가능성
 
 ## 도구 가이드
 
-**firecrawl_scrape**: 페이지 스크래핑 (개별 종목 뉴스용 주력)
+**scrapegraph_scrape**: 페이지 스크래핑 (개별 종목 뉴스용 주력)
 - url: Yahoo Finance 뉴스 페이지
 - formats: ["markdown"], onlyMainContent: true, maxAge: 7200000
 
-**perplexity_ask**: AI 검색 (섹터 리더 및 동향용 주력)
+**vane_ask**: 웹 검색 (섹터 리더 및 동향용 주력)
 - 용도: 섹터 리더 찾기, 섹터 동향 분석, 최근 실적 뉴스
 - 항상 기준일 포함: "As of {ref_year}-{ref_month}-{ref_day}, ..."
 
@@ -113,14 +113,14 @@ def create_us_news_analysis_agent(
 - 도구 사용 언급 금지
 
 ## 주의사항
-- firecrawl_scrape는 대상 종목 뉴스 페이지 1회만 사용 (개별 기사, 리더 뉴스 추가 스크랩 금지 - 토큰 절약)
-- 섹터 리더 및 동향은 Perplexity 답변만으로 분석 (firecrawl 추가 호출 불필요)
-- perplexity 환각 주의, 항상 날짜 확인
+- scrapegraph_scrape는 대상 종목 뉴스 페이지 1회만 사용 (개별 기사, 리더 뉴스 추가 스크랩 금지 - 토큰 절약)
+- 섹터 리더 및 동향은 Vane 답변만으로 분석 (scrapegraph 추가 호출 불필요)
+- Vane 환각 주의, 항상 날짜 확인
 - 당일 가격 원인 분석 우선
 - 정확한 뉴스 식별을 위해 티커 심볼 사용
-- 섹터 리더 움직임은 Perplexity 답변 기반으로 신뢰도 평가
+- 섹터 리더 움직임은 Vane 답변 기반으로 신뢰도 평가
 - 깊이 있는 분석과 인사이트 제공
-- 명확한 출처 표기: [YahooFinance:TICKER] / [Perplexity:Number, Date]
+- 명확한 출처 표기: [YahooFinance:TICKER] / [Vane:Number, Date]
 - 최근 정보만 사용 (분석일 기준 1개월 이내)
 
 {social_context}
@@ -140,50 +140,50 @@ def create_us_news_analysis_agent(
 
 ## Required Data Collection Order (Must follow this sequence)
 
-### STEP 1: Collect Target Stock News (firecrawl)
+### STEP 1: Collect Target Stock News (scrapegraph)
 
-1. **firecrawl_scrape** to access Yahoo Finance news page:
+1. **scrapegraph_scrape** to access Yahoo Finance news page:
    - URL: https://finance.yahoo.com/quote/{ticker}/news
    - formats: ["markdown"], onlyMainContent: true, maxAge: 7200000 (2-hour cache)
    - If no news from target date ({reference_date}), collect news from past week
 
 2. Analyze using news list page titles and summaries only (do NOT scrape individual article URLs - token optimization)
 
-### STEP 2: Identify Sector Leaders and Analyze Trends (Mandatory - Use Perplexity)
+### STEP 2: Identify Sector Leaders and Analyze Trends (Mandatory - Use Vane)
 
-**CRITICAL: Always specify the reference date ({ref_year}-{ref_month}-{ref_day}) when asking Perplexity**
+**CRITICAL: Always specify the reference date ({ref_year}-{ref_month}-{ref_day}) when asking Vane**
 
-**2-1. Ask Perplexity to find sector leaders**
-- **perplexity_ask** with this query structure:
+**2-1. Ask Vane to find sector leaders**
+- **vane_ask** with this query structure:
   "As of {ref_year}-{ref_month}-{ref_day}, what are the 2-3 leading stocks in the same sector as {company_name} ({ticker})?
    Please provide ticker symbols and brief reason why they are sector leaders.
    Focus on information from {ref_year}-{ref_month}-{ref_day} or the most recent available."
 
-- Perplexity will return leaders with tickers (e.g., Apple AAPL, Microsoft MSFT)
-- **IMPORTANT**: Always verify the dates in Perplexity's response match {ref_year}-{ref_month}-{ref_day} or are recent
+- Vane will return leaders with tickers (e.g., Apple AAPL, Microsoft MSFT)
+- **IMPORTANT**: Always verify the dates in Vane's response match {ref_year}-{ref_month}-{ref_day} or are recent
 
-**2-2. Ask Perplexity for sector trend analysis**
-- **perplexity_ask**: "As of {ref_year}-{ref_month}-{ref_day}, what is the recent trend for the sector containing {company_name}?
+**2-2. Ask Vane for sector trend analysis**
+- **vane_ask**: "As of {ref_year}-{ref_month}-{ref_day}, what is the recent trend for the sector containing {company_name}?
    Are the leading stocks showing positive momentum? Provide recent news from {ref_year}-{ref_month}-{ref_day} or close to it."
 - Compare: Rising with leaders → High reliability / This stock alone → Possibly temporary
 
 ## Tool Usage Principles
 
-1. **firecrawl 1 call only**: Target stock Yahoo Finance news page only (do NOT scrape individual articles or leader stocks)
-2. **perplexity for leaders & trends**: Find sector leaders and analyze trends (ALWAYS specify date: {ref_year}-{ref_month}-{ref_day})
-3. **Date verification critical**: Always check dates in Perplexity responses match analysis date or are recent
-4. **Source notation**: [YahooFinance:TickerSymbol] / [Perplexity:Number, verified date]
-5. **Token optimization**: Minimize firecrawl calls - use Perplexity responses for sector leader analysis instead of scraping
+1. **scrapegraph 1 call only**: Target stock Yahoo Finance news page only (do NOT scrape individual articles or leader stocks)
+2. **vane for leaders & trends**: Find sector leaders and analyze trends (ALWAYS specify date: {ref_year}-{ref_month}-{ref_day})
+3. **Date verification critical**: Always check dates in Vane responses match analysis date or are recent
+4. **Source notation**: [YahooFinance:TickerSymbol] / [Vane:Number, verified date]
+5. **Token optimization**: Minimize scrapegraph calls - use Vane responses for sector leader analysis instead of scraping
 
 ## Tool Guide
 
-**firecrawl_scrape**: Page scraping (PRIMARY for individual stock news)
+**scrapegraph_scrape**: Page scraping (PRIMARY for individual stock news)
 - url: Yahoo Finance news page (https://finance.yahoo.com/quote/TICKER/news)
 - formats: ["markdown"]
 - onlyMainContent: true
 - maxAge: 7200000 (2-hour cache - 500% performance boost, mandatory)
 
-**perplexity_ask**: AI search (PRIMARY for sector leaders and trends)
+**vane_ask**: Web search (PRIMARY for sector leaders and trends)
 - Use for: Finding sector leaders, analyzing sector trends, recent earnings news
 - ALWAYS include reference date in query: "As of {ref_year}-{ref_month}-{ref_day}, ..."
 - Always verify dates in responses
@@ -217,14 +217,14 @@ def create_us_news_analysis_agent(
 - No tool usage mentions
 
 ## Precautions
-- firecrawl_scrape only 1 call for target stock news page (do NOT scrape individual articles or leader news - token optimization)
-- Sector leader trends analyzed via Perplexity responses only (no additional firecrawl calls needed)
-- Beware perplexity hallucinations, always verify dates
+- scrapegraph_scrape only 1 call for target stock news page (do NOT scrape individual articles or leader news - token optimization)
+- Sector leader trends analyzed via Vane responses only (no additional scrapegraph calls needed)
+- Beware Vane hallucinations, always verify dates
 - Prioritize same-day price cause analysis
 - Use ticker symbols for accurate news identification
-- Assess reliability via sector leader movements (using Perplexity data only)
+- Assess reliability via sector leader movements (using Vane data only)
 - Provide deep analysis and insights
-- Clear source notation: [YahooFinance:TICKER] / [Perplexity:Number, Date]
+- Clear source notation: [YahooFinance:TICKER] / [Vane:Number, Date]
 - Use only recent info (within 1 month of analysis date)
 
 {social_context}
@@ -243,5 +243,5 @@ Analysis Date: {reference_date}(YYYYMMDD format)
     return Agent(
         name="us_news_analysis_agent",
         instruction=instruction,
-        server_names=["perplexity", "firecrawl"]
+        server_names=["vane", "scrapegraph"]
     )

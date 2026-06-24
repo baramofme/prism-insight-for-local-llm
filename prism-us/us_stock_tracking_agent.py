@@ -50,6 +50,7 @@ if _error_spec and _error_spec.loader:
     log_openai_error = _error_mod.log_openai_error
 
 from telegram import Bot
+from cores.llm.agent_model_map import resolve_agent_model
 from telegram.error import TelegramError
 
 # O'Neil 룰베이스 매도 fallback (2026-06-04 quota 사고 대응).
@@ -801,7 +802,7 @@ class USStockTrackingAgent:
             response = await llm.generate_str(
                 message=prompt_message,
                 request_params=RequestParams(
-                    model="gpt-5.5",
+                    model=resolve_agent_model("sell_decision"),
                     maxTokens=30000
                 )
             )
@@ -1502,7 +1503,7 @@ Use yahoo_finance and sqlite tools to check latest data, then decide whether to 
 
             response = await llm.generate_str(
                 message=prompt_message,
-                request_params=RequestParams(model="gpt-5.5", maxTokens=30000)
+                request_params=RequestParams(model=resolve_agent_model("sell_decision"), maxTokens=30000)
             )
 
             if not response or not response.strip():
@@ -2799,7 +2800,7 @@ Use yahoo_finance and sqlite tools to check latest data, then decide whether to 
                     translated_queue = []
                     for idx, message in enumerate(self.message_queue, 1):
                         logger.info(f"Translating US message {idx}/{len(self.message_queue)}")
-                        translated = await translate_telegram_message(message, model="gpt-5-nano")
+                        translated = await translate_telegram_message(message, model=resolve_agent_model("translation"))
                         translated_queue.append(translated)
                     self.message_queue = translated_queue
                     logger.info("All US messages translated successfully")
@@ -2912,7 +2913,7 @@ Use yahoo_finance and sqlite tools to check latest data, then decide whether to 
                             logger.info(f"Translating US tracking message to {lang}")
                             translated_message = await translate_telegram_message(
                                 message,
-                                model="gpt-5-nano",
+                                model=resolve_agent_model("translation"),
                                 from_lang="ko",
                                 to_lang=lang
                             )

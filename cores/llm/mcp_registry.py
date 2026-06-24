@@ -15,10 +15,9 @@ class McpServerSpec:
 
     Mirrors the mcp_agent.config.yaml ``mcp.servers.<name>`` shape::
 
-        perplexity:
-          command: uvx
-          args: [mcp-server-perplexity-ask]
-          env: {PERPLEXITY_API_KEY: "..."}
+        vane:
+          command: python3
+          args: [vane_mcp_server.py]
           read_timeout_seconds: 120
     """
 
@@ -38,7 +37,7 @@ class McpServerRegistry:
         with open("mcp_agent.config.yaml") as f:
             cfg = yaml.safe_load(f)
         registry = McpServerRegistry.from_yaml_dict(cfg)
-        spec = registry.get("perplexity")
+        spec = registry.get("vane")
     """
 
     def __init__(self, specs: dict[str, McpServerSpec]) -> None:

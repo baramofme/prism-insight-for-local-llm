@@ -1,6 +1,6 @@
 from mcp_agent.agents.agent import Agent
 
-def create_price_volume_analysis_agent(company_name, company_code, reference_date, max_years_ago, max_years, language: str = "ko", prefetched_data: str = None):
+def create_price_volume_analysis_agent(company_name, company_code, reference_date, max_years_ago, max_years, language: str = "ko", prefetched_data: str = None, use_cache_stable: bool = False):
     """Create stock price and trading volume analysis agent
 
     Args:
@@ -11,10 +11,22 @@ def create_price_volume_analysis_agent(company_name, company_code, reference_dat
         max_years: Analysis period (years)
         language: Language code ("ko" or "en")
         prefetched_data: Pre-collected OHLCV data (optional)
+        use_cache_stable: Use cache-stable instruction template (default: False)
 
     Returns:
         Agent: Stock price and trading volume analysis agent
     """
+
+    # Cache-stable path: template from constraints + prefetched data appended at end
+    if use_cache_stable:
+        from cores.constraints import PRICE_VOLUME_ANALYSIS_PREFETCHED_KO, PRICE_VOLUME_ANALYSIS_PREFETCHED_EN
+        template = PRICE_VOLUME_ANALYSIS_PREFETCHED_KO if language == "ko" else PRICE_VOLUME_ANALYSIS_PREFETCHED_EN
+        instruction = template + ("\n\n" + prefetched_data if prefetched_data else "")
+        return Agent(
+            name="price_volume_analysis_agent",
+            instruction=instruction,
+            server_names=[] if prefetched_data else ["kospi_kosdaq"]
+        )
 
     if language == "en":
         instruction = f"""You are a stock technical analysis expert. You need to analyze the stock price and trading volume data of the given stock and write a technical analysis report.
@@ -163,7 +175,7 @@ def create_price_volume_analysis_agent(company_name, company_code, reference_dat
     )
 
 
-def create_investor_trading_analysis_agent(company_name, company_code, reference_date, max_years_ago, max_years, language: str = "ko", prefetched_data: str = None):
+def create_investor_trading_analysis_agent(company_name, company_code, reference_date, max_years_ago, max_years, language: str = "ko", prefetched_data: str = None, use_cache_stable: bool = False):
     """Create investor trading trend analysis agent
 
     Args:
@@ -174,10 +186,22 @@ def create_investor_trading_analysis_agent(company_name, company_code, reference
         max_years: Analysis period (years)
         language: Language code ("ko" or "en")
         prefetched_data: Pre-collected investor trading volume data (optional)
+        use_cache_stable: Use cache-stable instruction template (default: False)
 
     Returns:
         Agent: Investor trading trend analysis agent
     """
+
+    # Cache-stable path: template from constraints + prefetched data appended at end
+    if use_cache_stable:
+        from cores.constraints import INVESTOR_TRADING_ANALYSIS_PREFETCHED_KO, INVESTOR_TRADING_ANALYSIS_PREFETCHED_EN
+        template = INVESTOR_TRADING_ANALYSIS_PREFETCHED_KO if language == "ko" else INVESTOR_TRADING_ANALYSIS_PREFETCHED_EN
+        instruction = template + ("\n\n" + prefetched_data if prefetched_data else "")
+        return Agent(
+            name="investor_trading_analysis_agent",
+            instruction=instruction,
+            server_names=[] if prefetched_data else ["kospi_kosdaq"]
+        )
 
     if language == "en":
         instruction = f"""You are an expert in analyzing investor-specific trading data in the stock market. You need to analyze the trading data by investor type (institutional/foreign/individual) of the given stock and write an investor trend report.

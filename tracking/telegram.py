@@ -9,6 +9,7 @@ import asyncio
 import logging
 from typing import List, Optional
 
+from cores.llm.agent_model_map import resolve_agent_model
 from telegram import Bot
 from telegram.error import TelegramError
 
@@ -112,7 +113,7 @@ class TelegramSender:
             translated = []
             for idx, message in enumerate(messages, 1):
                 logger.info(f"Translating message {idx}/{len(messages)}")
-                result = await translate_telegram_message(message, model="gpt-5-nano")
+                result = await translate_telegram_message(message, model=resolve_agent_model("translation"))
                 translated.append(result)
             logger.info("All messages translated successfully")
             return translated
@@ -143,7 +144,7 @@ class TelegramSender:
                     for message in messages:
                         try:
                             translated = await translate_telegram_message(
-                                message, model="gpt-5-nano",
+                                message, model=resolve_agent_model("translation"),
                                 from_lang="ko", to_lang=lang
                             )
                             await self._send_single_message(channel_id, translated)

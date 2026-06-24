@@ -1,7 +1,7 @@
 from mcp_agent.agents.agent import Agent
 
 
-def create_market_index_analysis_agent(reference_date, max_years_ago, max_years, language: str = "ko", prefetched_kospi: str = None, prefetched_kosdaq: str = None):
+def create_market_index_analysis_agent(reference_date, max_years_ago, max_years, language: str = "ko", prefetched_kospi: str = None, prefetched_kosdaq: str = None, use_cache_stable: bool = False):
     """Create market index analysis agent
 
     Args:
@@ -11,10 +11,26 @@ def create_market_index_analysis_agent(reference_date, max_years_ago, max_years,
         language: Language code ("ko" or "en")
         prefetched_kospi: Pre-collected KOSPI index data (optional)
         prefetched_kosdaq: Pre-collected KOSDAQ index data (optional)
+        use_cache_stable: Use cache-stable instruction template (default: False)
 
     Returns:
         Agent: Market index analysis agent
     """
+
+    # Cache-stable path: template + prefetched data appended at end
+    if use_cache_stable:
+        from cores.constraints import MARKET_INDEX_ANALYSIS_PREFETCHED_KO, MARKET_INDEX_ANALYSIS_PREFETCHED_EN
+        template = MARKET_INDEX_ANALYSIS_PREFETCHED_KO if language == "ko" else MARKET_INDEX_ANALYSIS_PREFETCHED_EN
+        prefetched_block = ""
+        if prefetched_kospi and prefetched_kosdaq:
+            prefetched_block = f"{prefetched_kospi}\n\n{prefetched_kosdaq}"
+        instruction = template + ("\n\n" + prefetched_block if prefetched_block else "")
+        server_list = ["vane"] if (prefetched_kospi and prefetched_kosdaq) else ["kospi_kosdaq", "vane"]
+        return Agent(
+            name="market_index_analysis_agent",
+            instruction=instruction,
+            server_names=server_list
+        )
 
     if language == "en":
         instruction = f"""You are a Korean stock market professional analyst. You need to analyze KOSPI and KOSDAQ index data and write a comprehensive report on overall market trends and investment strategies.
@@ -22,12 +38,12 @@ def create_market_index_analysis_agent(reference_date, max_years_ago, max_years,
                         ## Data to Collect
                         1. KOSPI Index Data: Use tool call(kospi_kosdaq-get_index_ohlcv tool) to collect data from {max_years_ago} to {reference_date} (ticker: "1001", collection period (years): {max_years}, daily basis)
                         2. KOSDAQ Index Data: Use tool call(kospi_kosdaq-get_index_ohlcv tool) to collect data from {max_years_ago} to {reference_date} (ticker: "2001", collection period (years): {max_years}, daily basis)
-                        3. Comprehensive Market Analysis: Use the perplexity_ask tool to search once for "KOSPI KOSDAQ {reference_date[:4]} year {reference_date[4:6]} month {reference_date[6:]} day market fluctuation factors, Korean macroeconomic trends, impact of major countries' economic indicators including USA, China, and Japan comprehensive analysis"
+                        3. Comprehensive Market Analysis: Use the vane_ask tool to search once for "KOSPI KOSDAQ {reference_date[:4]} year {reference_date[4:6]} month {reference_date[6:]} day market fluctuation factors, Korean macroeconomic trends, impact of major countries' economic indicators including USA, China, and Japan comprehensive analysis"
 
                         ## Tool Call Precautions
                         1. When using the kospi_kosdaq tool, call only the get_index_ohlcv tool. Especially, never use the load_all_tickers tool!!
                         2. Do not look for individual stock information; find only information about KOSPI and KOSDAQ indices
-                        3. Use the perplexity_ask tool once to comprehensively collect same-day fluctuation factors, macroeconomics, and global impacts
+                        3. Use the vane_ask tool once to comprehensively collect same-day fluctuation factors, macroeconomics, and global impacts
 
                         ## Analysis Elements
                         1. **Same-day Market Fluctuation Factor Analysis (Top Priority)**
@@ -159,12 +175,12 @@ def create_market_index_analysis_agent(reference_date, max_years_ago, max_years,
                         ## 수집해야 할 데이터
                         1. KOSPI 지수 데이터: tool call(kospi_kosdaq-get_index_ohlcv tool)을 사용하여 {max_years_ago}~{reference_date} 기간의 데이터 수집 (ticker: "1001", 수집 기간(년) : {max_years}, 일봉 기준)
                         2. KOSDAQ 지수 데이터: tool call(kospi_kosdaq-get_index_ohlcv tool)을 사용하여 {max_years_ago}~{reference_date} 기간의 데이터 수집 (ticker: "2001", 수집 기간(년) : {max_years}, 일봉 기준)
-                        3. 종합 시장 분석: perplexity_ask 도구를 사용하여 "KOSPI KOSDAQ {reference_date[:4]}년 {reference_date[4:6]}월 {reference_date[6:]}일 시장 변동 요인, 한국 거시경제 동향, 미국 중국 일본 주요국 경제지표 영향 종합분석"을 1회 검색
+                        3. 종합 시장 분석: vane_ask 도구를 사용하여 "KOSPI KOSDAQ {reference_date[:4]}년 {reference_date[4:6]}월 {reference_date[6:]}일 시장 변동 요인, 한국 거시경제 동향, 미국 중국 일본 주요국 경제지표 영향 종합분석"을 1회 검색
 
                         ## tool call 주의사항
                         1. 반드시 kospi_kosdaq 도구 사용 시 get_index_ohlcv tool만 호출하세요. 특히 load_all_tickers tool은 절대 사용 금지!!
                         2. 개별 종목에 대한 정보를 찾지 말고 반드시 KOSPI, KOSDAQ 지수에 대한 정보만 찾으세요
-                        2. perplexity_ask 도구를 1회 사용하여 당일 변동요인, 거시경제, 글로벌 영향을 종합적으로 수집
+                        2. vane_ask 도구를 1회 사용하여 당일 변동요인, 거시경제, 글로벌 영향을 종합적으로 수집
 
                         ## 분석 요소
                         1. **당일 시장 변동 요인 분석 (최우선)**
@@ -305,14 +321,14 @@ def create_market_index_analysis_agent(reference_date, max_years_ago, max_years,
                 f"## 사전 수집된 데이터 (시장 지수)\n다음 KOSPI, KOSDAQ 데이터가 사전 수집되었습니다. 이 데이터를 분석에 직접 사용하세요 - 지수 데이터를 위한 도구 호출을 하지 마세요.\n\n{prefetched_index_block}"
             )
         # Update precautions
-        instruction = instruction.replace("- 반드시 tool call을 통해 실제 데이터를 수집해야 합니다", "- 사전 수집된 데이터와 perplexity 검색 결과를 기반으로 분석합니다")
-        instruction = instruction.replace("- You must make a tool call to collect actual data", "- Analyze based on the pre-collected data and perplexity search results")
+        instruction = instruction.replace("- 반드시 tool call을 통해 실제 데이터를 수집해야 합니다", "- 사전 수집된 데이터와 vane 검색 결과를 기반으로 분석합니다")
+        instruction = instruction.replace("- You must make a tool call to collect actual data", "- Analyze based on the pre-collected data and vane search results")
 
-    # When index data is prefetched, only need perplexity for market news
+    # When index data is prefetched, only need vane for market news
     if prefetched_kospi and prefetched_kosdaq:
-        server_list = ["perplexity"]
+        server_list = ["vane"]
     else:
-        server_list = ["kospi_kosdaq", "perplexity"]
+        server_list = ["kospi_kosdaq", "vane"]
 
     return Agent(
         name="market_index_analysis_agent",

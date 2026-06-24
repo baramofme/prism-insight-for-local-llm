@@ -17,6 +17,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
+from cores.llm.agent_model_map import resolve_agent_model
 from trading import kis_auth as ka
 
 load_dotenv()
@@ -533,7 +534,7 @@ async def _send_broadcast(message: str, broadcast_languages: list):
 
                 logger.info(f"Translating weekly report to {lang}")
                 translated = await translate_telegram_message(
-                    message, model="gpt-5-nano", from_lang="ko", to_lang=lang
+                    message, model=resolve_agent_model("translation"), from_lang="ko", to_lang=lang
                 )
                 await bot.send_message(chat_id=channel_id, text=translated, parse_mode="HTML")
                 logger.info(f"Weekly report sent to {lang} channel")

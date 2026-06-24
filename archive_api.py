@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import Optional
 
 from dotenv import load_dotenv
+from cores.llm.agent_model_map import resolve_agent_model
 
 load_dotenv()
 
@@ -88,7 +89,7 @@ class QueryRequest(BaseModel):
     date_from: Optional[str] = None    # YYYY-MM-DD
     date_to: Optional[str] = None      # YYYY-MM-DD
     skip_cache: bool = False
-    model: str = "gpt-5.4-mini"
+    model: str = resolve_agent_model("archive_query")
 
 
 class QueryResponse(BaseModel):

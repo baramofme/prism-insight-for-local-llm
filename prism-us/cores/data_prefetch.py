@@ -169,7 +169,7 @@ def prefetch_stock_info(ticker: str) -> str:
     """Prefetch company info and key statistics via yfinance.
 
     Replaces yahoo_finance MCP get_stock_info call and
-    firecrawl key-statistics/financials page scrapes.
+    scrapegraph key-statistics/financials page scrapes.
 
     Args:
         ticker: Stock ticker symbol
@@ -299,7 +299,7 @@ def prefetch_recommendations(ticker: str) -> str:
 def prefetch_analysis_estimates(ticker: str) -> str:
     """Prefetch earnings/revenue estimates and analyst data via yfinance.
 
-    Replaces firecrawl scrape of Yahoo Finance Analysis page for company_status agent.
+    Replaces scrapegraph scrape of Yahoo Finance Analysis page for company_status agent.
 
     Args:
         ticker: Stock ticker symbol
@@ -395,7 +395,7 @@ def prefetch_analysis_estimates(ticker: str) -> str:
 def prefetch_company_profile(ticker: str) -> str:
     """Prefetch company profile data via yfinance.
 
-    Replaces firecrawl profile page scrape for company_overview agent.
+    Replaces scrapegraph profile page scrape for company_overview agent.
 
     Args:
         ticker: Stock ticker symbol
@@ -840,7 +840,7 @@ def prefetch_us_analysis_data(ticker: str) -> dict:
     if market_indices:
         result["market_indices"] = market_indices
 
-    # 4. Stock info (for company_status - replaces key-statistics/financials firecrawl + yahoo_finance MCP)
+    # 4. Stock info (for company_status - replaces key-statistics/financials scrapegraph + yahoo_finance MCP)
     stock_info = prefetch_stock_info(ticker)
     if stock_info:
         result["stock_info"] = stock_info
@@ -850,12 +850,12 @@ def prefetch_us_analysis_data(ticker: str) -> dict:
     if recommendations:
         result["recommendations"] = recommendations
 
-    # 6. Company profile (for company_overview - replaces firecrawl profile page)
+    # 6. Company profile (for company_overview - replaces scrapegraph profile page)
     company_profile = prefetch_company_profile(ticker)
     if company_profile:
         result["company_profile"] = company_profile
 
-    # 7. Analysis estimates (for company_status - replaces firecrawl Analysis page)
+    # 7. Analysis estimates (for company_status - replaces scrapegraph Analysis page)
     analysis_estimates = prefetch_analysis_estimates(ticker)
     if analysis_estimates:
         result["analysis_estimates"] = analysis_estimates

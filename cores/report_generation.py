@@ -1,21 +1,16 @@
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from mcp_agent.agents.agent import Agent
-from mcp_agent.workflows.llm.augmented_llm import RequestParams
 from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
 
+from cores.llm.agent_model_map import resolve_request_params
 from cores.openai_error_logging import log_openai_error
-
-
-# Language name mapping for report generation
-LANGUAGE_NAMES = {
-    "ko": "Korean",
-    "en": "English",
-    "ja": "Japanese",
-    "zh": "Chinese",
-    "es": "Spanish",
-    "fr": "French",
-    "de": "German"
-}
+from cores.constraints import (
+    LANGUAGE_NAMES,
+    SUMMARY_INSTRUCTION_KO,
+    SUMMARY_INSTRUCTION_EN,
+    INVESTMENT_STRATEGY_INSTRUCTION_KO,
+    INVESTMENT_STRATEGY_INSTRUCTION_EN,
+)
 
 
 @retry(
@@ -105,12 +100,12 @@ async def generate_report(agent, section, company_name, company_code, reference_
     try:
         report = await llm.generate_str(
             message=message,
-            request_params=RequestParams(
-                model="gpt-5.4-mini",
-                reasoning_effort="none",
-                maxTokens=32000,
+            request_params=resolve_request_params(
+                section,
+                max_tokens=32000,
+                temperature=0.0,
+                use_history=False,
                 parallel_tool_calls=True,
-                use_history=True
             )
         )
     except Exception as e:
@@ -199,13 +194,12 @@ async def generate_market_report(agent, section, reference_date, logger, languag
     try:
         report = await llm.generate_str(
             message=message,
-            request_params=RequestParams(
-                model="gpt-5.4-mini",
-                reasoning_effort="none",
-                maxTokens=32000,
-                max_iterations=3,
+            request_params=resolve_request_params(
+                section,
+                max_tokens=32000,
+                temperature=0.0,
+                use_history=False,
                 parallel_tool_calls=True,
-                use_history=True
             )
         )
     except Exception as e:
@@ -228,10 +222,6 @@ async def generate_summary(section_reports, company_name, company_code, referenc
         language: Report language code (default: "ko")
     """
     try:
-        from mcp_agent.agents.agent import Agent
-        from mcp_agent.workflows.llm.augmented_llm import RequestParams
-        from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
-
         language_name = LANGUAGE_NAMES.get(language, language.upper())
 
         # Generate comprehensive report including all sections
@@ -242,15 +232,10 @@ async def generate_summary(section_reports, company_name, company_code, referenc
 
         logger.info(f"Generating executive summary for {company_name}...")
 
-        # Create language-specific instruction and message
-        if language == "ko":
-            instruction = f"""
-당신은 {company_name} ({company_code}) 기업분석 보고서의 핵심 요약을 작성하는 투자 전문가입니다.
-전체 보고서의 각 섹션에서 가장 중요한 3-5개의 핵심 포인트를 추출하여 간결하게 요약해야 합니다.
-투자자가 빠르게 읽고 핵심을 파악할 수 있는 요약을 제공하세요.
+        # Use cache-stable instruction (no variable data)
+        instruction = SUMMARY_INSTRUCTION_KO if language == "ko" else SUMMARY_INSTRUCTION_EN
 
-##분석일 : {reference_date}(YYYYMMDD 형식)
-"""
+        if language == "ko":
             message = f"""아래 {company_name}({company_code})의 종합 분석 보고서를 바탕으로 핵심 투자 포인트 요약을 작성해주세요.
 
 요약에는 기업의 현재 상황, 투자 매력 포인트, 주요 리스크 요소, 적합한 투자자 유형 등이 포함되어야 합니다.
@@ -273,15 +258,6 @@ async def generate_summary(section_reports, company_name, company_code, referenc
 {all_reports}
 """
         else:  # English or other languages
-            instruction = f"""
-You are an investment expert who writes executive summaries of the {company_name} ({company_code}) company analysis report.
-Extract and concisely summarize the 3-5 most important key points from each section of the entire report.
-Provide a summary that investors can quickly read and understand the key points.
-
-**Always translate company names to {language_name}.** (e.g., "삼성전자" → "Samsung Electronics")
-
-##Analysis Date: {reference_date} (YYYYMMDD format)
-"""
             message = f"""Based on the comprehensive analysis report of {company_name}({company_code}) below, please write a summary of key investment points.
 (Report language: {language_name})
 
@@ -313,13 +289,12 @@ Comprehensive Analysis Report:
         llm = await summary_agent.attach_llm(OpenAIAugmentedLLM)
         executive_summary = await llm.generate_str(
             message=message,
-            request_params=RequestParams(
-                model="gpt-5.4-mini",
-                reasoning_effort="none",
-                maxTokens=16000,
-                max_iterations=2,
+            request_params=resolve_request_params(
+                "summary",
+                max_tokens=16000,
+                temperature=0.0,
+                use_history=False,
                 parallel_tool_calls=True,
-                use_history=True
             )
         )
         return executive_summary
@@ -345,86 +320,14 @@ async def generate_investment_strategy(section_reports, combined_reports, compan
         logger: Logger
         language: Report language code (default: "ko")
     """
-    from mcp_agent.agents.agent import Agent
-    from mcp_agent.workflows.llm.augmented_llm import RequestParams
-    from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
-
     language_name = LANGUAGE_NAMES.get(language, language.upper())
 
     try:
         logger.info(f"Processing investment_strategy for {company_name}...")
 
-        # Create language-specific instruction and message
+        # Use cache-stable instruction (no variable data)
+        instruction = INVESTMENT_STRATEGY_INSTRUCTION_KO if language == "ko" else INVESTMENT_STRATEGY_INSTRUCTION_EN
         if language == "ko":
-            instruction = f"""당신은 투자 전략 전문가입니다. 앞서 분석된 기술적 분석, 기업 정보, 재무 분석, 뉴스 트렌드, 시장분석을 종합하여 투자 전략 및 의견을 제시해야 합니다.
-
-## 분석 통합 요소
-1. 주가/거래량 분석 요약 - 주가 추세, 주요 지지/저항선, 거래량 패턴
-2. 투자자 거래 동향 분석 요약 - 기관/외국인/개인 매매 패턴
-3. 기업 기본 정보 요약 - 핵심 사업 모델, 경쟁력, 성장 동력
-4. 뉴스 분석 요약 - 주요 이슈, 시장 반응, 향후 이벤트
-5. 시장 분석 요약 - 시장 변동 요인, 현황, 추세, 거시환경, 기술적 분석, 시장 투자 전략
-
-## 투자 전략 구성 요소
-1. 종합 투자 관점 - 기술적/기본적 분석을 종합한 투자 전망
-2. 투자자 유형별 전략
-   - 단기 트레이더 관점 (1개월 이내)
-   - 스윙 트레이더 관점 (1-3개월)
-   - 중기 투자자 관점 (3-12개월)
-   - 장기 투자자 관점 (1년 이상)
-   - 신규 진입자, 기존 보유자 각각의 관점 (비중 활용한 설명)
-3. 주요 매매 포인트
-   - 매수 고려 가격대 및 조건
-   - 매도/손절 가격대 및 조건
-   - 수익 실현 전략
-4. 핵심 모니터링 요소
-   - 주시해야 할 기술적 신호
-   - 주목해야 할 실적 지표
-   - 체크해야 할 뉴스 및 이벤트
-   - 체크해야 할 시장 환경
-5. 리스크 요소
-   - 잠재적 하방 리스크
-   - 상방 기회 요소
-   - 리스크 관리 방안
-
-## 작성 스타일
-- 객관적인 데이터에 기반한 투자 견해 제시
-- 확정적 예측보다는 조건부 시나리오 제시
-- 다양한 투자 성향과 기간을 고려한 차별화된 전략 제공
-- 구체적인 가격대와 실행 가능한 전략 제시
-- 균형 잡힌 리스크-리워드 분석
-- 보고서 본문은 반드시 높임말(합쇼체)로 작성 ('~입니다', '~합니다' 등). 반말('~한다', '~된다') 사용 금지.
-
-## 출력 형식 규칙
-- 문장은 자연스러운 산문체로 작성하세요. 문장 중간에 개행하지 마세요.
-- 불필요한 bullet point 사용을 금지합니다. 나열이 꼭 필요한 경우에만 사용하세요.
-- 하나의 문단은 완결된 문장들로 구성하세요.
-- 표 데이터가 아닌 일반 설명은 반드시 문장 형태로 작성하세요.
-- ⚠️ 본문 중간에 ##(h2 헤더)를 임의로 추가하지 마세요. 정해진 섹션 구조만 사용하세요.
-
-## 보고서 형식
-- 보고서 시작 시 개행문자 2번 삽입(\\n\\n)
-- 제목: "### 5-1. 투자 전략 및 의견" (마크다운 ### 필수 - 메인 섹션 제목은 별도 추가됨)
-- 소제목은 반드시 "#### 소제목명" 형식 사용 (마크다운 #### 필수)
-- 투자자 유형별 전략은 명확히 구분하여 제시
-- 주요 매매 포인트는 구체적인 가격대와 조건으로 표현
-- 리스크 요소는 중요도에 따라 구분하여 설명
-
-## 주의사항
-- "투자 권유"가 아닌 "투자 참고 정보" 형태로 제공
-- 일방적인 매수/매도 권유는 피하고, 조건부 접근법 제시
-- 과도한 낙관론이나 비관론은 지양
-- 모든 투자 전략은 기술적/기본적 분석의 실제 데이터에 근거
-- "반드시", "확실히" 등의 단정적 표현보다 "~할 가능성", "~로 예상" 등 사용
-- 모든 투자에는 리스크가 있음을 명시
-
-## 결론 부분
-- 마지막에 간략한 요약과 핵심 투자 포인트 3-5개 제시
-- "본 보고서는 투자 참고용이며, 투자 책임은 투자자 본인에게 있습니다." 문구 포함
-
-기업: {company_name} ({company_code})
-##분석일: {reference_date}(YYYYMMDD 형식)
-"""
             message = f"""{company_name}({company_code})의 투자 전략 분석 보고서를 작성해주세요.
 
 ## 앞서 분석된 다른 섹션의 내용:
@@ -448,76 +351,6 @@ async def generate_investment_strategy(section_reports, combined_reports, compan
 ## ⚠️ 글자수 제한: 반드시 3000자 이내로 작성하세요. 핵심만 간결하게!
 """
         else:  # English or other languages
-            instruction = f"""You are an investment strategy expert. Synthesize the previously analyzed technical analysis, company information, financial analysis, news trends, and market analysis to present investment strategies and opinions.
-
-**Always translate company names to {language_name}.** (e.g., "삼성전자" → "Samsung Electronics")
-
-## Analysis Integration Elements
-1. Stock Price/Volume Analysis Summary - Price trends, major support/resistance levels, volume patterns
-2. Investor Trading Trends Analysis Summary - Institutional/foreign/retail trading patterns
-3. Company Basic Information Summary - Core business model, competitiveness, growth drivers
-4. News Analysis Summary - Major issues, market reactions, upcoming events
-5. Market Analysis Summary - Market volatility factors, current status, trends, macroeconomic environment, technical analysis, market investment strategy
-
-## Investment Strategy Components
-1. Comprehensive Investment Perspective - Investment outlook combining technical/fundamental analysis
-2. Strategies by Investor Type
-   - Short-term trader perspective (within 1 month)
-   - Swing trader perspective (1-3 months)
-   - Mid-term investor perspective (3-12 months)
-   - Long-term investor perspective (over 1 year)
-   - Perspectives for new entrants and existing holders (explained using position sizing)
-3. Key Trading Points
-   - Buy consideration price range and conditions
-   - Sell/stop-loss price range and conditions
-   - Profit-taking strategy
-4. Core Monitoring Elements
-   - Technical signals to watch
-   - Performance indicators to pay attention to
-   - News and events to check
-   - Market conditions to check
-5. Risk Factors
-   - Potential downside risks
-   - Upside opportunity factors
-   - Risk management measures
-
-## Writing Style
-- Present investment views based on objective data
-- Present conditional scenarios rather than definitive predictions
-- Provide differentiated strategies considering various investment preferences and timeframes
-- Present specific price ranges and executable strategies
-- Balanced risk-reward analysis
-
-## Output Format Rules
-- Write sentences in natural prose style. Do not break lines in the middle of sentences.
-- Do not use unnecessary bullet points. Use them only when listing is absolutely necessary.
-- Each paragraph should consist of complete sentences.
-- General explanations (not table data) must be written in sentence form.
-- ⚠️ Do NOT add arbitrary ## (h2 headers) in the middle of content. Use only the defined section structure.
-
-## Report Format
-- Insert 2 newline characters at the start of the report (\\n\\n)
-- Title: "### 5-1. Investment Strategy and Opinion" (markdown ### required - main section header is added separately)
-- Sub-sections MUST use "#### Sub-section Title" format (markdown #### required)
-- Clearly distinguish strategies by investor type
-- Express key trading points with specific price ranges and conditions
-- Explain risk factors according to importance
-
-## Cautions
-- Provide as "investment reference information" not "investment solicitation"
-- Avoid unilateral buy/sell solicitation, present conditional approaches
-- Avoid excessive optimism or pessimism
-- All investment strategies are based on actual data from technical/fundamental analysis
-- Use expressions like "~possibility", "~expected" rather than definitive expressions like "certainly", "definitely"
-- Clearly state that all investments involve risks
-
-## Conclusion
-- Provide a brief summary and 3-5 key investment points at the end
-- Include the statement "This report is for investment reference only, and investment decisions and responsibilities lie with the investor."
-
-Company: {company_name} ({company_code})
-##Analysis Date: {reference_date} (YYYYMMDD format)
-"""
             message = f"""Please write an investment strategy analysis report for {company_name}({company_code}).
 (Report language: {language_name})
 
@@ -551,13 +384,12 @@ Please present a consistent and executable investment strategy that investors ca
         llm = await investment_strategy_agent.attach_llm(OpenAIAugmentedLLM)
         investment_strategy = await llm.generate_str(
             message=message,
-            request_params=RequestParams(
-                model="gpt-5.4-mini",
-                reasoning_effort="none",
-                maxTokens=32000,
-                max_iterations=3,
+            request_params=resolve_request_params(
+                "investment_strategy",
+                max_tokens=32000,
+                temperature=0.0,
+                use_history=False,
                 parallel_tool_calls=True,
-                use_history=True
             )
         )
         logger.info(f"Completed investment_strategy - {len(investment_strategy)} characters")

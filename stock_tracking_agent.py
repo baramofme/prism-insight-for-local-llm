@@ -27,6 +27,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Tuple, Optional
 
 import cores.openai_debug  # noqa: F401 — OpenAI 400/429 request metadata logging
+from cores.llm.agent_model_map import resolve_agent_model
 from telegram import Bot
 from telegram.error import TelegramError, TimedOut, RetryAfter
 
@@ -420,7 +421,7 @@ class StockTrackingAgent:
             response = await llm.generate_str(
                 message=prompt_message,
                 request_params=RequestParams(
-                    model="gpt-5.5",
+                    model=resolve_agent_model("sell_decision"),
                     maxTokens=30000
                 )
             )
@@ -961,7 +962,7 @@ class StockTrackingAgent:
         """
         # ── TIER0: 법인 이벤트 강제청산 (가격/레짐 무관, 최우선) ──────
         # KIS 종목상태코드(관리종목 51) 결정론 자동탐지. 상폐/공개매수 등 뉴스성
-        # 이벤트는 매도 AI 프롬프트(핵심-0)의 perplexity 뉴스 점검이 자율 처리.
+        # 이벤트는 매도 AI 프롬프트(핵심-0)의 vane 뉴스 점검이 자율 처리.
         # 여기서 True면 시뮬+KIS 양쪽이 다음 사이클에 시장가 자동 청산(정규장 기준).
         try:
             from cores.corporate_status import check_event_exit
@@ -1899,7 +1900,7 @@ class StockTrackingAgent:
                     translated_queue = []
                     for idx, message in enumerate(self.message_queue, 1):
                         logger.info(f"Translating message {idx}/{len(self.message_queue)}")
-                        translated = await translate_telegram_message(message, model="gpt-5-nano")
+                        translated = await translate_telegram_message(message, model=resolve_agent_model("translation"))
                         translated_queue.append(translated)
                     self.message_queue = translated_queue
                     logger.info("All messages translated successfully")
@@ -2005,7 +2006,7 @@ class StockTrackingAgent:
                             logger.info(f"Translating tracking message to {lang}")
                             translated_message = await translate_telegram_message(
                                 message,
-                                model="gpt-5-nano",
+                                model=resolve_agent_model("translation"),
                                 from_lang="ko",
                                 to_lang=lang
                             )

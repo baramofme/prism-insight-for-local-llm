@@ -8,6 +8,8 @@ import json
 import logging
 from typing import Dict, Any, List
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 from mcp_agent.agents.agent import Agent
 from mcp_agent.workflows.llm.augmented_llm import RequestParams
 from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
@@ -18,7 +20,7 @@ logger = logging.getLogger(__name__)
 class DashboardTranslator:
     """Dashboard data translation class"""
     
-    def __init__(self, model: str = "gpt-5-nano"):
+    def __init__(self, model: str = resolve_agent_model("translation")):
         """
         Initialize translator
 
@@ -444,7 +446,7 @@ if __name__ == "__main__":
     import os
 
     async def test():
-        translator = DashboardTranslator(model="gpt-5-nano")
+        translator = DashboardTranslator(model=resolve_agent_model("translation"))
 
         # Single translation test
         result = await translator.translate_text("The automotive industry outlook is bright.")

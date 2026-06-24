@@ -48,6 +48,8 @@ if _error_spec and _error_spec.loader:
     _error_spec.loader.exec_module(_error_mod)
     log_openai_error = _error_mod.log_openai_error
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 # Logger configuration
 logging.basicConfig(
     level=logging.INFO,
@@ -262,7 +264,7 @@ class USStockAnalysisOrchestrator:
 
         Step 1: Prefetch index data (S&P 500/NASDAQ/VIX) programmatically
         Step 2: Compute market regime from actual price data (not LLM)
-        Step 3: Run LLM agent with perplexity only for qualitative analysis
+        Step 3: Run LLM agent with vane only for qualitative analysis
 
         Args:
             reference_date: Analysis date (YYYYMMDD). Defaults to today.
@@ -288,7 +290,7 @@ class USStockAnalysisOrchestrator:
                 logger.info(f"Pre-computed US regime: {computed.get('market_regime')} "
                            f"(confidence: {computed.get('regime_confidence')})")
 
-            # Step 2: Run LLM agent with perplexity for qualitative analysis
+            # Step 2: Run LLM agent with vane for qualitative analysis
             from mcp_agent.app import MCPApp
             from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
             from cores.agents.macro_intelligence_agent import create_us_macro_intelligence_agent
@@ -297,7 +299,7 @@ class USStockAnalysisOrchestrator:
 
             async with macro_app.run() as macro_run_context:
                 macro_logger = macro_run_context.logger
-                macro_logger.info("US macro intelligence agent starting (perplexity-only mode)...")
+                macro_logger.info("US macro intelligence agent starting (vane-only mode)...")
 
                 agent = create_us_macro_intelligence_agent(reference_date, language, prefetched_data=prefetched)
 
@@ -306,7 +308,7 @@ class USStockAnalysisOrchestrator:
                 result = await llm.generate_str(
                     message=f"Execute US stock market macro analysis for {reference_date} and output JSON.",
                     request_params=RequestParams(
-                        model="gpt-5.4-mini",
+                        model=resolve_agent_model("market_regime"),
                         reasoning_effort="none",
                         maxTokens=16000,
                         parallel_tool_calls=True,
@@ -661,7 +663,7 @@ class USStockAnalysisOrchestrator:
                         logger.info(f"Translating US telegram message to {lang}")
                         translated_message = await translate_telegram_message(
                             original_message,
-                            model="gpt-5-nano",
+                            model=resolve_agent_model("translation"),
                             from_lang="ko",
                             to_lang=lang
                         )
@@ -716,7 +718,7 @@ class USStockAnalysisOrchestrator:
 
                         translated_report = await translate_telegram_message(
                             text_for_translation,
-                            model="gpt-5-nano",
+                            model=resolve_agent_model("translation"),
                             from_lang="ko",
                             to_lang=lang
                         )
@@ -857,7 +859,7 @@ class USStockAnalysisOrchestrator:
                     logger.info(f"Translating US trigger alert to {lang}")
                     translated_message = await translate_telegram_message(
                         original_message,
-                        model="gpt-5-nano",
+                        model=resolve_agent_model("translation"),
                         from_lang="ko",
                         to_lang=lang
                     )

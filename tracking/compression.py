@@ -12,6 +12,7 @@ import traceback
 from datetime import datetime, timedelta
 from typing import Any, Dict, List
 
+from cores.llm.agent_model_map import resolve_agent_model
 from cores.openai_error_logging import log_openai_error
 from cores.utils import parse_llm_json
 
@@ -139,7 +140,7 @@ class CompressionManager:
 
                 response = await llm.generate_str(
                     message=prompt,
-                    request_params=RequestParams(model="gpt-5.4", reasoning_effort="none", maxTokens=8000)
+                    request_params=RequestParams(model=resolve_agent_model("compression"), reasoning_effort="none", maxTokens=8000)
                 )
 
             compression_data = self._parse_response(response)
@@ -198,7 +199,7 @@ class CompressionManager:
 
                 response = await llm.generate_str(
                     message=prompt,
-                    request_params=RequestParams(model="gpt-5.4", reasoning_effort="none", maxTokens=8000)
+                    request_params=RequestParams(model=resolve_agent_model("compression"), reasoning_effort="none", maxTokens=8000)
                 )
 
             compression_data = self._parse_response(response)
@@ -268,7 +269,7 @@ class CompressionManager:
                 prompt = self._build_layer3_prompt(entries_text, len(entries))
                 response = await llm.generate_str(
                     message=prompt,
-                    request_params=RequestParams(model="gpt-5.4", reasoning_effort="none", maxTokens=8000)
+                    request_params=RequestParams(model=resolve_agent_model("compression"), reasoning_effort="none", maxTokens=8000)
                 )
             data = self._parse_response(response)
             new_intuitions = data.get('new_intuitions', [])

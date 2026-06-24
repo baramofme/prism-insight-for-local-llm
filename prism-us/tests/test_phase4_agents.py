@@ -276,7 +276,7 @@ class TestAgentCreation:
         )
 
         assert agent is not None
-        assert 'firecrawl' in agent.server_names
+        assert 'scrapegraph' in agent.server_names
 
     def test_company_overview_agent_creation(self, sample_ticker, sample_reference_date):
         """Test company overview agent creation."""
@@ -292,7 +292,7 @@ class TestAgentCreation:
         )
 
         assert agent is not None
-        assert 'firecrawl' in agent.server_names
+        assert 'scrapegraph' in agent.server_names
 
     def test_news_agent_creation(self, sample_ticker, sample_reference_date):
         """Test news analysis agent creation."""
@@ -306,7 +306,7 @@ class TestAgentCreation:
         )
 
         assert agent is not None
-        assert 'perplexity' in agent.server_names
+        assert 'vane' in agent.server_names
 
     def test_market_index_agent_creation(self, sample_reference_date):
         """Test market index analysis agent creation."""
@@ -365,20 +365,20 @@ class TestAgentServerAssignments:
         agent = agents['institutional_holdings_analysis']
         assert 'yfinance_us' in agent.server_names
 
-    def test_company_status_uses_firecrawl(self, sample_ticker, sample_reference_date):
-        """Test company status agent uses firecrawl server."""
+    def test_company_status_uses_scrapegraph(self, sample_ticker, sample_reference_date):
+        """Test company status agent uses scrapegraph server."""
         agents = get_us_agent_directory(
             "Apple Inc.", sample_ticker, sample_reference_date,
             ['company_status'], "en"
         )
         agent = agents['company_status']
-        assert 'firecrawl' in agent.server_names
+        assert 'scrapegraph' in agent.server_names
 
-    def test_news_uses_perplexity(self, sample_ticker, sample_reference_date):
-        """Test news agent uses perplexity server."""
+    def test_news_uses_vane(self, sample_ticker, sample_reference_date):
+        """Test news agent uses vane server."""
         agents = get_us_agent_directory(
             "Apple Inc.", sample_ticker, sample_reference_date,
             ['news_analysis'], "en"
         )
         agent = agents['news_analysis']
-        assert 'perplexity' in agent.server_names
+        assert 'vane' in agent.server_names

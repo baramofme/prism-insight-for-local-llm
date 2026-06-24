@@ -1,31 +1,22 @@
 """
 Model registry: maps logical role names to (model_id, LLMParams).
 
-Keeps model selection out of domain code so swapping models is config-only.
-Default roles reflect real production usage (KR side).
+The primary source of truth is now ``cores/llm/agent_model_map.py``.
+This module re-exports its entries so existing callers (``tracking/journal.py``,
+``tracking/compression.py``) continue to work unchanged.
+
+Swapping models is a one-line config change in ``agent_model_map.py``.
 """
 
 from typing import Optional
+from cores.llm.agent_model_map import get_agent_entry
 from cores.llm.ports import LLMParams
 
-# Production-derived defaults.  model_id strings are plain — no SDK coupling.
+# Re-export from the canonical mapping so existing ModelRegistry users
+# see the same role names (sell_decision, trading, journal, summary).
 _DEFAULT_MAPPING: dict[str, tuple[str, LLMParams]] = {
-    "sell_decision": (
-        "gpt-5.5",
-        LLMParams(max_tokens=30000),
-    ),
-    "trading": (
-        "gpt-5.5",
-        LLMParams(max_tokens=30000),
-    ),
-    "journal": (
-        "gpt-5.4-mini",
-        LLMParams(reasoning_effort="none", max_tokens=16000),
-    ),
-    "summary": (
-        "gpt-5.4-mini",
-        LLMParams(reasoning_effort="none", max_tokens=16000),
-    ),
+    role: (get_agent_entry(role)[1], get_agent_entry(role)[2])
+    for role in ("sell_decision", "trading", "journal", "summary")
 }
 
 
@@ -33,7 +24,7 @@ class ModelRegistry:
     """Maps logical role strings to ``(model_id, LLMParams)`` pairs.
 
     Construct via ``from_mapping()`` with a plain dict, or use the
-    class-level defaults that mirror real production usage.
+    class-level defaults sourced from ``agent_model_map.py``.
 
     Example::
 
@@ -55,7 +46,7 @@ class ModelRegistry:
 
     @classmethod
     def defaults(cls) -> "ModelRegistry":
-        """Return a registry pre-loaded with the production defaults."""
+        """Return a registry pre-loaded with the canonical defaults."""
         return cls(dict(_DEFAULT_MAPPING))
 
     def resolve(self, role: str) -> tuple[str, LLMParams]:

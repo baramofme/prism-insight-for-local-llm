@@ -37,7 +37,7 @@ def create_us_company_status_agent(
 
     if language == "ko":
         instruction = f"""당신은 기업 현황 분석 전문가입니다. Yahoo Finance 데이터를 수집 및 분석하여 투자자가 쉽게 이해할 수 있는 종합 보고서를 작성해야 합니다.
-URL 접근 시 firecrawl_scrape 도구를 사용하고 formats 파라미터를 ["markdown"]으로, onlyMainContent 파라미터를 true로 설정하세요.
+URL 접근 시 scrapegraph_scrape 도구를 사용하고 formats 파라미터를 ["markdown"]으로, onlyMainContent 파라미터를 true로 설정하세요.
 데이터 수집 시 차트보다 표에 집중하세요.
 가능한 상세하고 정확하며 풍부하게 작성해 주세요.
 
@@ -126,7 +126,7 @@ URL 접근 시 firecrawl_scrape 도구를 사용하고 formats 파라미터를 [
 """
     else:
         instruction = f"""You are a company status analysis expert. You need to collect and analyze data from Yahoo Finance and write a comprehensive report that investors can easily understand.
-When accessing URLs, use the firecrawl_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
+When accessing URLs, use the scrapegraph_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
 When collecting data, focus on tables rather than charts.
 Please write as detailed, accurate, and rich as possible.
 
@@ -203,7 +203,7 @@ Please write as detailed, accurate, and rich as possible.
 - To avoid overlap with the 'company overview' agent, provide only key summaries of business overview
 
 ## Output Format Precautions
-- Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use firecrawl_scrape..." etc.)
+- Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use scrapegraph_scrape..." etc.)
 - Exclude explanations of tool calling processes or methods, include only collected data and analysis results
 - Start the report naturally as if all data collection has already been completed
 - Start directly with the analysis content without intent expressions like "I'll create...", "I'll analyze...", "Let me search..."
@@ -213,13 +213,13 @@ Company: {company_name} ({ticker})
 ##Analysis Date: {reference_date}(YYYYMMDD format)
 """
 
-    # Inject prefetched data: replace firecrawl key-statistics/financials + yahoo_finance MCP with pre-collected data
+    # Inject prefetched data: replace scrapegraph key-statistics/financials + yahoo_finance MCP with pre-collected data
     pf = prefetched_data or {}
     has_prefetch = bool(pf.get("stock_info"))
     has_analysis = bool(pf.get("analysis_estimates"))
 
     if has_prefetch and has_analysis:
-        # Full prefetch - no firecrawl needed
+        # Full prefetch - no scrapegraph needed
         prefetch_block = f"""## Pre-collected Data (Company Status)
 The following data has been pre-collected via yfinance. Use this data directly for analysis.
 DO NOT scrape any Yahoo Finance pages. DO NOT call any MCP tools.
@@ -266,7 +266,7 @@ Yahoo Finance 페이지 스크랩 금지. MCP 도구 호출 금지.
             if start_idx != -1 and end_idx != -1:
                 instruction = instruction[:start_idx] + prefetch_block + "\n" + instruction[end_idx:]
     elif has_prefetch:
-        # Partial prefetch - still need Analysis page firecrawl
+        # Partial prefetch - still need Analysis page scrapegraph
         prefetch_block = f"""## Pre-collected Data (Company Status)
 The following data has been pre-collected via yfinance. Use this data directly for analysis.
 DO NOT scrape Key Statistics or Financials pages. DO NOT call yahoo_finance MCP tools.
@@ -319,11 +319,11 @@ Key Statistics, Financials 페이지 스크랩 금지. yahoo_finance MCP 도구 
         # Full prefetch - no MCP servers needed
         servers = []
     elif has_prefetch:
-        # Partial prefetch - still need firecrawl for Analysis page
-        servers = ["firecrawl"]
+        # Partial prefetch - still need scrapegraph for Analysis page
+        servers = ["scrapegraph"]
     else:
-        # No prefetch - need firecrawl and yahoo_finance
-        servers = ["firecrawl", "yahoo_finance"]
+        # No prefetch - need scrapegraph and yahoo_finance
+        servers = ["scrapegraph", "yahoo_finance"]
 
     return Agent(
         name="us_company_status_agent",
@@ -355,7 +355,7 @@ def create_us_company_overview_agent(
 
     if language == "ko":
         instruction = f"""당신은 기업 개요 분석 전문가입니다. Yahoo Finance 데이터를 수집 및 분석하여 투자자가 쉽게 이해할 수 있는 종합 보고서를 작성해야 합니다.
-URL 접근 시 firecrawl_scrape 도구를 사용하고 formats 파라미터를 ["markdown"]으로, onlyMainContent 파라미터를 true로 설정하세요.
+URL 접근 시 scrapegraph_scrape 도구를 사용하고 formats 파라미터를 ["markdown"]으로, onlyMainContent 파라미터를 true로 설정하세요.
 데이터 수집 시 차트보다 표에 집중하세요.
 
 ## 수집할 데이터
@@ -429,7 +429,7 @@ URL 접근 시 firecrawl_scrape 도구를 사용하고 formats 파라미터를 [
 """
     else:
         instruction = f"""You are a company overview analysis expert. You need to collect and analyze data from Yahoo Finance and write a comprehensive report that investors can easily understand.
-When accessing URLs, use the firecrawl_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
+When accessing URLs, use the scrapegraph_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
 When collecting data, focus on tables rather than charts.
 
 ## Data to Collect
@@ -491,7 +491,7 @@ When collecting data, focus on tables rather than charts.
 - To avoid overlap with other agents, focus data on business structure and overview
 
 ## Output Format Precautions
-- Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use firecrawl_scrape..." etc.)
+- Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use scrapegraph_scrape..." etc.)
 - Exclude explanations of tool calling processes or methods, include only collected data and analysis results
 - Start the report naturally as if all data collection has already been completed
 - Start directly with the analysis content without intent expressions like "I'll create...", "I'll analyze...", "Let me search..."
@@ -501,7 +501,7 @@ Company: {company_name} ({ticker})
 ##Analysis Date: {reference_date}(YYYYMMDD format)
 """
 
-    # Inject prefetched data: replace firecrawl profile/holders pages with pre-collected data
+    # Inject prefetched data: replace scrapegraph profile/holders pages with pre-collected data
     pf = prefetched_data or {}
     has_prefetch = bool(pf.get("company_profile"))
 
@@ -510,7 +510,7 @@ Company: {company_name} ({ticker})
         segment_data = pf.get('segment_revenue', '')
         prefetch_block = f"""## Pre-collected Data (Company Overview)
 The following data has been pre-collected via yfinance. Use this data directly for analysis.
-DO NOT scrape Profile, Holders pages via firecrawl. DO NOT call any MCP tools.
+DO NOT scrape Profile, Holders pages via scrapegraph. DO NOT call any MCP tools.
 
 {pf['company_profile']}
 {f"### Institutional Holdings Data{chr(10)}{chr(10)}{holder_data}" if holder_data else ""}
@@ -518,7 +518,7 @@ DO NOT scrape Profile, Holders pages via firecrawl. DO NOT call any MCP tools.
 """
         prefetch_block_ko = f"""## 사전 수집된 데이터 (기업 개요)
 다음 데이터가 yfinance를 통해 사전 수집되었습니다. 이 데이터를 분석에 직접 사용하세요.
-Profile, Holders 페이지 firecrawl 스크랩 금지. MCP 도구 호출 금지.
+Profile, Holders 페이지 scrapegraph 스크랩 금지. MCP 도구 호출 금지.
 
 {pf['company_profile']}
 {f"### 기관 투자자 보유 데이터{chr(10)}{chr(10)}{holder_data}" if holder_data else ""}
@@ -543,7 +543,7 @@ Profile, Holders 페이지 firecrawl 스크랩 금지. MCP 도구 호출 금지.
     if has_prefetch:
         servers = []
     else:
-        servers = ["firecrawl", "yahoo_finance"]
+        servers = ["scrapegraph", "yahoo_finance"]
 
     return Agent(
         name="us_company_overview_agent",

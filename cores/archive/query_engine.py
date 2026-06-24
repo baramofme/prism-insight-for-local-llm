@@ -34,6 +34,7 @@ from .archive_db import (  # type: ignore[import]
     init_db,
     search_fts,
 )
+from cores.llm.agent_model_map import resolve_agent_model
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +45,7 @@ _SECRETS_PATH = PROJECT_ROOT / "mcp_agent.secrets.yaml"
 # Constants
 # ---------------------------------------------------------------------------
 
-_DEFAULT_MODEL = "gpt-5.4-mini"
+_DEFAULT_MODEL = resolve_agent_model("archive_query")
 _MAX_CONTEXT_CHARS = 8_000   # approximate token budget for retrieved context
 _MAX_REPORTS_IN_CONTEXT = 6
 _CACHE_TTL_HOURS = 24

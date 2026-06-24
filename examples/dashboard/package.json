@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev -p 3030",
     "lint": "eslint .",
-    "start": "next start",
+    "start": "next start -p 3030",
     "clean": "rm -rf build dist node_modules",
     "clean:build": "rm -rf build dist"
   },

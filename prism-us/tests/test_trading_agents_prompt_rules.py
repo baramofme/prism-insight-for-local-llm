@@ -206,7 +206,7 @@ def test_us_sector_constraint_applied_en():
     assert "{sector_constraint}" not in agent.instruction
 
 
-# --- Restored content: trigger detail / portfolio guide / perplexity / R/R / checklist ---
+# --- Restored content: trigger detail / portfolio guide / vane / R/R / checklist ---
 
 def test_us_macro_sector_leader_detail_present_ko():
     agent = create_us_trading_scenario_agent(language="ko")
@@ -249,14 +249,14 @@ def test_us_portfolio_analysis_guide_present_en():
         assert item in agent.instruction
 
 
-def test_us_perplexity_detail_present_ko():
+def test_us_vane_detail_present_ko():
     agent = create_us_trading_scenario_agent(language="ko")
-    # US prompt embeds English perplexity queries (sent to global service)
+    # US prompt embeds English vane queries (sent to global service)
     assert "major peer competitors valuation comparison" in agent.instruction
     assert "현재 날짜를 포함" in agent.instruction
 
 
-def test_us_perplexity_detail_present_en():
+def test_us_vane_detail_present_en():
     agent = create_us_trading_scenario_agent(language="en")
     assert "major peer competitors valuation comparison" in agent.instruction
     assert "Include the current date" in agent.instruction

@@ -5,7 +5,7 @@ def create_us_macro_intelligence_agent(reference_date, language="ko", prefetched
     """Create macro intelligence agent for US market
 
     The agent receives pre-computed regime and index data from programmatic prefetch,
-    and only calls perplexity for qualitative analysis (sector trends, risk events).
+    and only calls vane for qualitative analysis (sector trends, risk events).
 
     Args:
         reference_date: Analysis reference date (YYYYMMDD)
@@ -52,8 +52,8 @@ The following regime was computed programmatically from S&P 500 / VIX price data
 You MUST use these pre-computed values for market_regime, regime_confidence, simple_ma_regime, and index_summary.
 Treat the S&P 500 50/200 MA cross (golden/dead) together with the index position vs its 50-day and 200-day MAs
 as the PRIMARY bull/bear trend signal, and report it explicitly in your analysis.
-You may adjust regime_confidence (±0.1) based on perplexity analysis, but DO NOT change market_regime unless
-perplexity data provides overwhelming contradictory evidence.
+You may adjust regime_confidence (±0.1) based on vane analysis, but DO NOT change market_regime unless
+vane data provides overwhelming contradictory evidence.
 """
 
         sp500_md = prefetched_data.get("sp500_ohlcv_md", "")
@@ -83,17 +83,17 @@ Analysis date: {reference_date} (YYYYMMDD format)
 {index_data_context}
 ## Tool Call to Execute
 
-### Perplexity macro search (1 call only)
-Use the perplexity_ask tool with the following query:
+### Vane macro search (1 call only)
+Use the vane_ask tool with the following query:
 "{reference_date} US stock market macro trends, sector rotation, leading lagging sectors, risk events, geopolitical risks comprehensive analysis"
 
 ---
 
 ## Your Task
 
-Based on the perplexity search results AND the pre-computed index data above:
+Based on the vane search results AND the pre-computed index data above:
 1. Use the pre-computed market_regime and index_summary values as-is
-2. Identify leading and lagging sectors from perplexity analysis
+2. Identify leading and lagging sectors from vane analysis
 3. Identify risk events and beneficiary themes
 4. Write a `regime_rationale` explaining the regime judgment
 5. Write a `report_prose` section — a well-written 3-5 paragraph narrative summary for inclusion in stock analysis reports
@@ -148,7 +148,7 @@ Use formal professional English throughout.
 
 ## Important Notes
 
-- Execute perplexity tool call before generating JSON
+- Execute vane tool call before generating JSON
 - Output MUST be pure JSON only. No markdown code fences, no explanatory text
 - leading_sectors: max 5, descending confidence
 - lagging_sectors: max 5
@@ -163,17 +163,17 @@ Use formal professional English throughout.
 {index_data_context}
 ## 실행할 도구 호출
 
-### Perplexity 거시경제 검색 (1회만)
-perplexity_ask 도구를 사용하여 다음 쿼리를 실행하십시오:
+### Vane 거시경제 검색 (1회만)
+vane_ask 도구를 사용하여 다음 쿼리를 실행하십시오:
 "{reference_date} 미국 주식시장 거시경제 트렌드, 섹터 로테이션, 주도/소외 섹터, 리스크 이벤트, 지정학적 리스크 종합 분석"
 
 ---
 
 ## 작업 지시
 
-Perplexity 검색 결과와 위의 사전 계산된 지수 데이터를 기반으로:
+Vane 검색 결과와 위의 사전 계산된 지수 데이터를 기반으로:
 1. 사전 계산된 market_regime 및 index_summary 값을 그대로 사용하십시오
-2. Perplexity 분석에서 주도 섹터와 소외 섹터를 파악하십시오
+2. Vane 분석에서 주도 섹터와 소외 섹터를 파악하십시오
 3. 리스크 이벤트와 수혜 테마를 식별하십시오
 4. 시장 체제 판단 근거를 설명하는 `regime_rationale`을 작성하십시오
 5. 주식 분석 보고서에 직접 삽입될 `report_prose` — 잘 작성된 3~5문단의 서술형 요약을 작성하십시오
@@ -228,7 +228,7 @@ Energy, Industrials, Basic Materials, Real Estate, Utilities, Communication Serv
 
 ## 중요 사항
 
-- JSON 생성 전에 반드시 Perplexity 도구를 호출하십시오
+- JSON 생성 전에 반드시 Vane 도구를 호출하십시오
 - 출력은 순수 JSON만 가능합니다. 마크다운 코드 펜스나 설명 텍스트를 포함하지 마십시오
 - leading_sectors: 최대 5개, 신뢰도 내림차순
 - lagging_sectors: 최대 5개
@@ -238,7 +238,7 @@ Energy, Industrials, Basic Materials, Real Estate, Utilities, Communication Serv
     return Agent(
         name="us_macro_intelligence_agent",
         instruction=instruction,
-        server_names=["perplexity"]
+        server_names=["vane"]
     )
 
 

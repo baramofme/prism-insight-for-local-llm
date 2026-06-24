@@ -29,10 +29,9 @@ from cores.llm.ports import AgentSpec, LLMParams
 SAMPLE_YAML: dict = {
     "mcp": {
         "servers": {
-            "perplexity": {
-                "command": "uvx",
-                "args": ["mcp-server-perplexity-ask"],
-                "env": {"PERPLEXITY_API_KEY": "test-key"},
+            "vane": {
+                "command": "python3",
+                "args": ["vane_mcp_server.py"],
                 "read_timeout_seconds": 120,
             },
             "sqlite": {
@@ -135,27 +134,26 @@ def test_build_model_settings_temperature_set():
 # ---------------------------------------------------------------------------
 
 
-def test_build_mcp_server_perplexity_command_and_args():
-    """build_mcp_server for 'perplexity' produces correct command/args."""
+def test_build_mcp_server_vane_command_and_args():
+    """build_mcp_server for 'vane' produces correct command/args."""
     registry = make_registry()
-    server = build_mcp_server("perplexity", registry)
-    # params is a Pydantic StdioServerParameters — use attribute access
-    assert server.params.command == "uvx"
-    assert server.params.args == ["mcp-server-perplexity-ask"]
+    server = build_mcp_server("vane", registry)
+    assert server.params.command == "python3"
+    assert server.params.args == ["vane_mcp_server.py"]
 
 
-def test_build_mcp_server_perplexity_env():
-    """build_mcp_server for 'perplexity' passes env dict."""
+def test_build_mcp_server_vane_no_env():
+    """build_mcp_server for 'vane' passes no env dict (self-hosted)."""
     registry = make_registry()
-    server = build_mcp_server("perplexity", registry)
-    assert server.params.env == {"PERPLEXITY_API_KEY": "test-key"}
+    server = build_mcp_server("vane", registry)
+    assert server.params.env is None or server.params.env == {}
 
 
-def test_build_mcp_server_perplexity_name():
+def test_build_mcp_server_vane_name():
     """build_mcp_server sets the server name correctly."""
     registry = make_registry()
-    server = build_mcp_server("perplexity", registry)
-    assert server.name == "perplexity"
+    server = build_mcp_server("vane", registry)
+    assert server.name == "vane"
 
 
 def test_build_mcp_server_sqlite_no_env():
@@ -175,7 +173,7 @@ def test_build_mcp_server_sqlite_args():
 def test_build_mcp_server_timeout_passed():
     """read_timeout_seconds is forwarded as client_session_timeout_seconds."""
     registry = make_registry()
-    server = build_mcp_server("perplexity", registry)
+    server = build_mcp_server("vane", registry)
     assert server.client_session_timeout_seconds == 120
 
 
@@ -335,7 +333,7 @@ async def test_run_output_schema_set_structured_populated(monkeypatch):
 @pytest.mark.asyncio
 async def test_run_server_connected_and_cleaned_up(monkeypatch):
     """MCP server is connected and cleaned up during a successful run."""
-    fake_server = FakeServer("perplexity")
+    fake_server = FakeServer("vane")
     fake_result = FakeRunResult(final_output="ok")
     fake_runner = FakeRunner(fake_result)
 
@@ -346,7 +344,7 @@ async def test_run_server_connected_and_cleaned_up(monkeypatch):
     registry = make_registry()
     backend = OpenAIAgentsBackend(registry, runner=fake_runner)
 
-    spec = make_spec(mcp_servers=("perplexity",))
+    spec = make_spec(mcp_servers=("vane",))
     await backend.run(spec, "input")
 
     assert fake_server.connected, "server.connect() was not called"
@@ -356,7 +354,7 @@ async def test_run_server_connected_and_cleaned_up(monkeypatch):
 @pytest.mark.asyncio
 async def test_run_cleanup_called_even_on_runner_failure(monkeypatch):
     """MCP server cleanup is guaranteed even when runner.run() raises."""
-    fake_server = FakeServer("perplexity")
+    fake_server = FakeServer("vane")
     fake_runner = FakeRunnerRaises()
 
     import cores.llm.backends.openai_agents_backend as mod
@@ -366,7 +364,7 @@ async def test_run_cleanup_called_even_on_runner_failure(monkeypatch):
     registry = make_registry()
     backend = OpenAIAgentsBackend(registry, runner=fake_runner)
 
-    spec = make_spec(mcp_servers=("perplexity",))
+    spec = make_spec(mcp_servers=("vane",))
 
     with pytest.raises(RuntimeError, match="runner exploded"):
         await backend.run(spec, "input")

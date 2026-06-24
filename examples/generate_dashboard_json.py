@@ -22,6 +22,8 @@ from typing import Dict, List, Any
 import logging
 import os
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 # Logging setup (configure before other imports)
 logging.basicConfig(
     level=logging.INFO,
@@ -96,7 +98,7 @@ class DashboardDataGenerator:
         # Initialize translator
         if self.enable_translation:
             try:
-                self.translator = DashboardTranslator(model="gpt-5-nano")
+                self.translator = DashboardTranslator(model=resolve_agent_model("translation"))
                 logger.info("Translation enabled.")
             except Exception as e:
                 self.enable_translation = False

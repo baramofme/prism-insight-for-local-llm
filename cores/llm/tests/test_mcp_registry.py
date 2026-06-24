@@ -4,14 +4,13 @@ import pytest
 from cores.llm.mcp_registry import McpServerRegistry, McpServerSpec
 
 # Sample dict mirroring the real mcp_agent.config.yaml mcp.servers shape,
-# with representative servers from the production YAML (perplexity, sqlite, time).
+# with representative servers from the production YAML (vane, sqlite, time).
 SAMPLE_YAML_DICT = {
     "mcp": {
         "servers": {
-            "perplexity": {
-                "command": "uvx",
-                "args": ["mcp-server-perplexity-ask"],
-                "env": {"PERPLEXITY_API_KEY": "pk-test"},
+            "vane": {
+                "command": "python3",
+                "args": ["vane_mcp_server.py"],
                 "read_timeout_seconds": 120,
             },
             "sqlite": {
@@ -32,22 +31,22 @@ class TestMcpServerRegistryParsing:
         self.registry = McpServerRegistry.from_yaml_dict(SAMPLE_YAML_DICT)
 
     def test_names_returns_all_servers(self):
-        assert set(self.registry.names()) == {"perplexity", "sqlite", "time"}
+        assert set(self.registry.names()) == {"vane", "sqlite", "time"}
 
-    def test_perplexity_command(self):
-        spec = self.registry.get("perplexity")
-        assert spec.command == "uvx"
+    def test_vane_command(self):
+        spec = self.registry.get("vane")
+        assert spec.command == "python3"
 
-    def test_perplexity_args(self):
-        spec = self.registry.get("perplexity")
-        assert spec.args == ("mcp-server-perplexity-ask",)
+    def test_vane_args(self):
+        spec = self.registry.get("vane")
+        assert spec.args == ("vane_mcp_server.py",)
 
-    def test_perplexity_env(self):
-        spec = self.registry.get("perplexity")
-        assert spec.env == {"PERPLEXITY_API_KEY": "pk-test"}
+    def test_vane_no_env(self):
+        spec = self.registry.get("vane")
+        assert spec.env == {}
 
-    def test_perplexity_read_timeout(self):
-        spec = self.registry.get("perplexity")
+    def test_vane_read_timeout(self):
+        spec = self.registry.get("vane")
         assert spec.read_timeout_seconds == 120
 
     def test_sqlite_args_tuple(self):
@@ -69,8 +68,8 @@ class TestMcpServerRegistryParsing:
             spec.command = "other"  # type: ignore[misc]
 
     def test_spec_name_matches_key(self):
-        spec = self.registry.get("perplexity")
-        assert spec.name == "perplexity"
+        spec = self.registry.get("vane")
+        assert spec.name == "vane"
 
 
 class TestMcpServerRegistryErrors:

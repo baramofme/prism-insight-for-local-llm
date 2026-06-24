@@ -14,6 +14,7 @@ import importlib.util as _ilu
 from datetime import datetime
 from pathlib import Path
 
+from cores.llm.agent_model_map import resolve_agent_model
 from mcp_agent.agents.agent import Agent
 from mcp_agent.app import MCPApp
 from mcp_agent.workflows.llm.augmented_llm import RequestParams
@@ -490,7 +491,7 @@ Report Content:
         response = await evaluator_optimizer.generate_str(
             message=prompt_message,
             request_params=RequestParams(
-                model="gpt-5.4-mini",
+                model=resolve_agent_model("archive_query"),
                 reasoning_effort="none",
                 maxTokens=6000,
                 max_iterations=2

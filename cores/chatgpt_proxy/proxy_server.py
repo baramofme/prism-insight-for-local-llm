@@ -11,6 +11,7 @@ import aiohttp
 from aiohttp import web
 
 from . import api_translator
+from .api_translator import _FALLBACK_MODEL
 from .constants import CHATGPT_RESPONSES_URL
 from .token_manager import TokenManager
 
@@ -153,7 +154,7 @@ async def handle_chat_completions(request: web.Request) -> web.Response:
             status=400,
         )
 
-    original_model = body.get("model", "gpt-4o")
+    original_model = body.get("model", _FALLBACK_MODEL)
 
     # Translate request
     try:

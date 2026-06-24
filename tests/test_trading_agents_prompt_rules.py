@@ -198,7 +198,7 @@ def test_sector_constraint_applied_en():
     assert "{sector_constraint}" not in agent.instruction
 
 
-# --- Restored content: trigger detail / portfolio guide / perplexity / R/R / checklist ---
+# --- Restored content: trigger detail / portfolio guide / vane / R/R / checklist ---
 
 def test_macro_sector_leader_detail_present_ko():
     agent = create_trading_scenario_agent(language="ko")
@@ -239,13 +239,13 @@ def test_portfolio_analysis_guide_present_en():
         assert item in agent.instruction
 
 
-def test_perplexity_detail_present_ko():
+def test_vane_detail_present_ko():
     agent = create_trading_scenario_agent(language="ko")
     assert "동종업계 주요 경쟁사 비교" in agent.instruction
     assert "현재 날짜를 포함" in agent.instruction
 
 
-def test_perplexity_detail_present_en():
+def test_vane_detail_present_en():
     agent = create_trading_scenario_agent(language="en")
     assert "major peer competitors valuation comparison" in agent.instruction
     assert "Include the current date" in agent.instruction

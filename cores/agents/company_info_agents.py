@@ -17,7 +17,7 @@ def create_company_status_agent(company_name, company_code, reference_date, urls
 
     if language == "en":
         instruction = f"""You are a company status analysis expert. You need to collect and analyze data provided on the company status page of the WiseReport website and write a comprehensive report that investors can easily understand.
-                        When accessing URLs, use the firecrawl_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
+                        When accessing URLs, use the scrapegraph_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
                         When collecting data, focus on tables rather than charts.
                         Please write as detailed, accurate, and rich as possible.
 
@@ -86,7 +86,7 @@ def create_company_status_agent(company_name, company_code, reference_date, urls
                         - To avoid overlap with the 'financial analysis' agent, provide only key summaries of financial data
 
                         ## Output Format Precautions
-                        - Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use firecrawl_scrape..." etc.)
+                        - Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use scrapegraph_scrape..." etc.)
                         - Exclude explanations of tool calling processes or methods, include only collected data and analysis results
                         - Start the report naturally as if all data collection has already been completed
                         - Start directly with the analysis content without intent expressions like "I'll create...", "I'll analyze...", "Let me search..."
@@ -97,7 +97,7 @@ def create_company_status_agent(company_name, company_code, reference_date, urls
                         """
     else:  # Korean (default)
         instruction = f"""당신은 기업 현황 분석 전문가입니다. WiseReport 웹사이트의 기업현황 페이지에서 제공하는 데이터를 수집하고 분석하여 투자자가 이해하기 쉬운 종합 보고서를 작성해야 합니다.
-                        URL 접속 시 firecrawl_scrape tool을 사용하고 formats 파라미터는 ["markdown"]로, onlyMainContent 파라미터는 true로 설정하세요.
+                        URL 접속 시 scrapegraph_scrape tool을 사용하고 formats 파라미터는 ["markdown"]로, onlyMainContent 파라미터는 true로 설정하세요.
                         데이터 수집 시 차트보다는 테이블 위주로 데이터를 수집하세요.
                         가능한한 자세하고 정확하고 풍부하게 작성해주세요.
 
@@ -166,7 +166,7 @@ def create_company_status_agent(company_name, company_code, reference_date, urls
                         - '재무분석' 에이전트와의 중복을 피하기 위해 재무데이터는 핵심 요약만 제공
 
                         ## 출력 형식 주의사항
-                        - 최종 보고서에는 도구 사용에 관한 언급을 포함하지 마세요 (예: "Calling tool exa-search..." 또는 "I'll use firecrawl_scrape..." 등)
+                        - 최종 보고서에는 도구 사용에 관한 언급을 포함하지 마세요 (예: "Calling tool exa-search..." 또는 "I'll use scrapegraph_scrape..." 등)
                         - 도구 호출 과정이나 방법에 대한 설명을 제외하고, 수집된 데이터와 분석 결과만 포함하세요
                         - 보고서는 마치 이미 모든 데이터 수집이 완료된 상태에서 작성하는 것처럼 자연스럽게 시작하세요
                         - "I'll create...", "I'll analyze...", "Let me search..." 등의 의도 표현 없이 바로 분석 내용으로 시작하세요
@@ -179,7 +179,7 @@ def create_company_status_agent(company_name, company_code, reference_date, urls
     return Agent(
         name="company_status_agent",
         instruction=instruction,
-        server_names=["firecrawl"]
+        server_names=["scrapegraph"]
     )
 
 
@@ -199,7 +199,7 @@ def create_company_overview_agent(company_name, company_code, reference_date, ur
 
     if language == "en":
         instruction = f"""You are a company overview analysis expert. You need to collect and analyze data provided on the company overview page of the WiseReport website and write a comprehensive report that investors can easily understand.
-                        When accessing URLs, use the firecrawl_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
+                        When accessing URLs, use the scrapegraph_scrape tool and set the formats parameter to ["markdown"] and the onlyMainContent parameter to true.
                         When collecting data, focus on tables rather than charts.
 
                         ## Data to Collect (From Company Overview Page Only)
@@ -262,7 +262,7 @@ def create_company_overview_agent(company_name, company_code, reference_date, ur
                         - To avoid overlap with other agents, focus data on business structure and overview
 
                         ## Output Format Precautions
-                        - Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use firecrawl_scrape..." etc.)
+                        - Do not include mentions of tool usage in the final report (e.g., "Calling tool exa-search..." or "I'll use scrapegraph_scrape..." etc.)
                         - Exclude explanations of tool calling processes or methods, include only collected data and analysis results
                         - Start the report naturally as if all data collection has already been completed
                         - Start directly with the analysis content without intent expressions like "I'll create...", "I'll analyze...", "Let me search..."
@@ -273,7 +273,7 @@ def create_company_overview_agent(company_name, company_code, reference_date, ur
                         """
     else:  # Korean (default)
         instruction = f"""당신은 기업 개요 분석 전문가입니다. WiseReport 웹사이트의 기업개요 페이지에서 제공하는 데이터를 수집하고 분석하여 투자자가 이해하기 쉬운 종합 보고서를 작성해야 합니다.
-                        URL 접속 시 firecrawl_scrape tool을 사용하고 formats 파라미터는 ["markdown"]로, onlyMainContent 파라미터는 true로 설정하세요.
+                        URL 접속 시 scrapegraph_scrape tool을 사용하고 formats 파라미터는 ["markdown"]로, onlyMainContent 파라미터는 true로 설정하세요.
                         데이터 수집 시 차트보다는 테이블 위주로 데이터를 수집하세요.
 
                         ## 수집해야 할 데이터 (기업개요 페이지에서만)
@@ -336,7 +336,7 @@ def create_company_overview_agent(company_name, company_code, reference_date, ur
                         - 다른 에이전트와의 중복을 피하기 위해 데이터는 사업 구조와 개요에 집중
 
                         ## 출력 형식 주의사항
-                        - 최종 보고서에는 도구 사용에 관한 언급을 포함하지 마세요 (예: "Calling tool exa-search..." 또는 "I'll use firecrawl_scrape..." 등)
+                        - 최종 보고서에는 도구 사용에 관한 언급을 포함하지 마세요 (예: "Calling tool exa-search..." 또는 "I'll use scrapegraph_scrape..." 등)
                         - 도구 호출 과정이나 방법에 대한 설명을 제외하고, 수집된 데이터와 분석 결과만 포함하세요
                         - 보고서는 마치 이미 모든 데이터 수집이 완료된 상태에서 작성하는 것처럼 자연스럽게 시작하세요
                         - "I'll create...", "I'll analyze...", "Let me search..." 등의 의도 표현 없이 바로 분석 내용으로 시작하세요
@@ -349,5 +349,5 @@ def create_company_overview_agent(company_name, company_code, reference_date, ur
     return Agent(
         name="company_overview_agent",
         instruction=instruction,
-        server_names=["firecrawl"]
+        server_names=["scrapegraph"]
     )

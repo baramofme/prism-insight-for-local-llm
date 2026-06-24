@@ -94,7 +94,7 @@ async def analyze_us_stock(
         company_name: Company name (e.g., "Apple Inc.")
         reference_date: Analysis reference date (YYYYMMDD format)
         language: Language code (default: "ko")
-        include_news: Whether to include news analysis (requires Perplexity API)
+        include_news: Whether to include news analysis (requires Vane and scrapegraph MCP)
 
     Returns:
         str: Generated final report markdown text
@@ -125,14 +125,14 @@ async def analyze_us_stock(
         # Non-yfinance sections: can run in parallel
         parallel_sections = []
         if include_news:
-            parallel_sections.append("news_analysis")  # perplexity (requires API key)
+            parallel_sections.append("news_analysis")  # vane + scrapegraph
         else:
             # Add placeholder for skipped news section
             if language == "ko":
-                section_reports["news_analysis"] = "_뉴스 분석은 Perplexity API 키가 필요합니다. 기술적/재무 분석은 정상적으로 제공됩니다._"
+                section_reports["news_analysis"] = "_뉴스 분석을 건너뛰었습니다. 기술적/재무 분석은 정상적으로 제공됩니다._"
             else:
-                section_reports["news_analysis"] = "_News analysis requires Perplexity API key. Technical and fundamental analysis are provided normally._"
-            logger.info("Skipping news_analysis (Perplexity API not configured)")
+                section_reports["news_analysis"] = "_News analysis skipped. Technical and fundamental analysis are provided normally._"
+            logger.info("Skipping news_analysis per configuration")
         # Always include news_analysis in base_sections for report structure
         base_sections = yfinance_sections + ["news_analysis"]
 
@@ -167,7 +167,7 @@ async def analyze_us_stock(
 
         # 6. Execute base analysis using HYBRID mode
         # - yfinance sections: sequential with 2 sec delay (rate limit friendly)
-        # - news_analysis: parallel with yfinance sections (uses perplexity, not yfinance)
+        # - news_analysis: parallel with yfinance sections (uses vane, not yfinance)
         logger.info(f"Running US analysis in HYBRID mode for {company_name}...")
         logger.info(f"  - yfinance sections (sequential): {yfinance_sections}")
         logger.info(f"  - parallel sections: {parallel_sections}")

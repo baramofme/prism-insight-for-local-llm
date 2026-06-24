@@ -2,7 +2,7 @@
 US Market Index Analysis Agent
 
 Agent for analyzing US market indices and macroeconomic conditions.
-Uses yahoo_finance MCP server and perplexity for comprehensive market analysis.
+Uses yahoo_finance MCP server and vane for comprehensive market analysis.
 """
 
 from mcp_agent.agents.agent import Agent
@@ -43,7 +43,7 @@ def create_us_market_index_analysis_agent(
 3. 다우존스 산업평균: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^DJI", period="1y", interval="1d"
 4. 러셀 2000 데이터: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^RUT", period="1y", interval="1d"
 5. VIX 변동성 지수: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^VIX", period="3mo", interval="1d"
-6. 종합 시장 분석: perplexity_ask 도구로 "US stock market S&P 500 NASDAQ {ref_year} {ref_month}/{ref_day} market movement factors, Fed policy, inflation data, employment data, economic indicators comprehensive analysis" 검색
+6. 종합 시장 분석: vane_ask 도구로 "US stock market S&P 500 NASDAQ {ref_year} {ref_month}/{ref_day} market movement factors, Fed policy, inflation data, employment data, economic indicators comprehensive analysis" 검색
 
 ## 분석 항목
 1. **당일 시장 움직임 요인 분석 (최우선)**
@@ -148,12 +148,12 @@ def create_us_market_index_analysis_agent(
 3. Dow Jones Industrial Average: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^DJI", period="1y", interval="1d"
 4. Russell 2000 Data: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^RUT", period="1y", interval="1d"
 5. VIX Volatility Index: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^VIX", period="3mo", interval="1d"
-6. Comprehensive Market Analysis: Use the perplexity_ask tool to search once for "US stock market S&P 500 NASDAQ {ref_year} {ref_month}/{ref_day} market movement factors, Fed policy, inflation data, employment data, economic indicators comprehensive analysis"
+6. Comprehensive Market Analysis: Use the vane_ask tool to search once for "US stock market S&P 500 NASDAQ {ref_year} {ref_month}/{ref_day} market movement factors, Fed policy, inflation data, employment data, economic indicators comprehensive analysis"
 
 ## Tool Call Precautions
 1. When using the yahoo_finance tool, call get_historical_stock_prices for index data with appropriate ticker symbols
 2. Do not look for individual stock information; find only information about market indices
-3. Use the perplexity_ask tool once to comprehensively collect same-day movement factors, macroeconomics, and global impacts
+3. Use the vane_ask tool once to comprehensively collect same-day movement factors, macroeconomics, and global impacts
 
 ## Analysis Elements
 1. **Same-day Market Movement Factor Analysis (Top Priority)**
@@ -297,21 +297,21 @@ def create_us_market_index_analysis_agent(
     # Inject prefetched index data if available
     if prefetched_indices:
         if language == "ko":
-            # Replace items 1-5 (index data collection) but keep item 6 (perplexity search)
+            # Replace items 1-5 (index data collection) but keep item 6 (vane search)
             old_data_section = f"""## 수집할 데이터
 1. S&P 500 지수 데이터: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^GSPC", period="1y", interval="1d"
 2. NASDAQ 종합 데이터: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^IXIC", period="1y", interval="1d"
 3. 다우존스 산업평균: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^DJI", period="1y", interval="1d"
 4. 러셀 2000 데이터: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^RUT", period="1y", interval="1d"
 5. VIX 변동성 지수: 도구 호출(yahoo_finance-get_historical_stock_prices), ticker="^VIX", period="3mo", interval="1d"
-6. 종합 시장 분석: perplexity_ask 도구로"""
+6. 종합 시장 분석: vane_ask 도구로"""
             new_data_section = f"""## 사전 수집된 데이터 (시장 지수)
 다음 데이터가 사전 수집되었습니다. 이 데이터를 분석에 직접 사용하세요 - 지수 데이터를 위한 도구 호출을 하지 마세요.
 
 {prefetched_indices}
 
 ## 추가 수집할 데이터
-1. 종합 시장 분석: perplexity_ask 도구로"""
+1. 종합 시장 분석: vane_ask 도구로"""
             instruction = instruction.replace(old_data_section, new_data_section)
         else:
             old_data_section = f"""## Data to Collect
@@ -320,25 +320,25 @@ def create_us_market_index_analysis_agent(
 3. Dow Jones Industrial Average: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^DJI", period="1y", interval="1d"
 4. Russell 2000 Data: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^RUT", period="1y", interval="1d"
 5. VIX Volatility Index: Use tool call(yahoo_finance-get_historical_stock_prices) with ticker="^VIX", period="3mo", interval="1d"
-6. Comprehensive Market Analysis: Use the perplexity_ask tool"""
+6. Comprehensive Market Analysis: Use the vane_ask tool"""
             new_data_section = f"""## Pre-collected Data (Market Indices)
 The following data has been pre-collected. Use this data directly for your analysis - DO NOT make tool calls for index data.
 
 {prefetched_indices}
 
 ## Additional Data to Collect
-1. Comprehensive Market Analysis: Use the perplexity_ask tool"""
+1. Comprehensive Market Analysis: Use the vane_ask tool"""
             instruction = instruction.replace(old_data_section, new_data_section)
 
         # Update precautions
-        instruction = instruction.replace("- 실제 데이터 수집을 위해 반드시 도구 호출 수행", "- 사전 수집된 데이터와 perplexity 검색 결과를 기반으로 분석합니다")
-        instruction = instruction.replace("- You must make a tool call to collect actual data", "- Analyze based on the pre-collected data and perplexity search results")
+        instruction = instruction.replace("- 실제 데이터 수집을 위해 반드시 도구 호출 수행", "- 사전 수집된 데이터와 vane 검색 결과를 기반으로 분석합니다")
+        instruction = instruction.replace("- You must make a tool call to collect actual data", "- Analyze based on the pre-collected data and vane search results")
 
-    # When index data is prefetched, only need perplexity for market news
+    # When index data is prefetched, only need vane for market news
     if prefetched_indices:
-        server_list = ["perplexity"]
+        server_list = ["vane"]
     else:
-        server_list = ["yahoo_finance", "perplexity"]
+        server_list = ["yahoo_finance", "vane"]
 
     return Agent(
         name="us_market_index_analysis_agent",

@@ -146,8 +146,8 @@ class TestTriggerToAgentsFlow:
         # Price/volume should use yfinance
         assert 'yfinance_us' in agents['price_volume_analysis'].server_names
 
-        # News should use perplexity
-        assert 'perplexity' in agents['news_analysis'].server_names
+        # News should use vane
+        assert 'vane' in agents['news_analysis'].server_names
 
 
 # =============================================================================

@@ -1,0 +1,93 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]:
+    - img [ref=e30]
+  - alert [ref=e33]
+  - generic [ref=e34]:
+    - complementary [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - img [ref=e39]
+            - generic [ref=e42]: PRISM
+          - button [ref=e43]:
+            - img
+        - navigation [ref=e44]:
+          - link "대시보드" [ref=e45] [cursor=pointer]:
+            - /url: /dashboard
+            - img [ref=e46]
+            - text: 대시보드
+          - link "종목 검색" [ref=e51] [cursor=pointer]:
+            - /url: /dashboard/stocks
+            - img [ref=e52]
+            - text: 종목 검색
+          - link "포트폴리오" [ref=e55] [cursor=pointer]:
+            - /url: /dashboard/portfolio
+            - img [ref=e56]
+            - text: 포트폴리오
+          - link "설정" [ref=e59] [cursor=pointer]:
+            - /url: /dashboard/settings
+            - img [ref=e60]
+            - text: 설정
+        - generic [ref=e64]:
+          - generic [ref=e65]: U
+          - generic [ref=e66]:
+            - generic [ref=e67]: 사용자
+            - generic [ref=e68]: Free Plan
+    - main [ref=e69]:
+      - generic [ref=e70]:
+        - button [ref=e71]:
+          - img
+        - generic [ref=e72]:
+          - img [ref=e73]
+          - generic [ref=e76]: PRISM
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - heading "대시보드" [level=1] [ref=e80]
+          - paragraph [ref=e81]: AI 기반 주식 분석 플랫폼
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - generic [ref=e85]: 분석한 종목
+              - img [ref=e86]
+            - generic [ref=e89]:
+              - generic [ref=e90]: "0"
+              - paragraph [ref=e91]: 오늘
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - generic [ref=e94]: 포트폴리오 수익률
+              - img [ref=e95]
+            - generic [ref=e98]:
+              - generic [ref=e99]: +0.0%
+              - paragraph [ref=e100]: 전체
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]: 활성 알림
+              - img [ref=e104]
+            - generic [ref=e106]:
+              - generic [ref=e107]: "0"
+              - paragraph [ref=e108]: 설정 필요
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: 매매 횟수
+              - img [ref=e112]
+            - generic [ref=e114]:
+              - generic [ref=e115]: "0"
+              - paragraph [ref=e116]: 시뮬레이션
+        - generic [ref=e117]:
+          - generic [ref=e119]: 빠른 시작
+          - generic [ref=e120]:
+            - button "종목 분석" [ref=e121]:
+              - img
+              - generic [ref=e122]: 종목 분석
+            - button "데일리 리포트" [ref=e123]:
+              - img
+              - generic [ref=e124]: 데일리 리포트
+            - button "포트폴리오" [ref=e125]:
+              - img
+              - generic [ref=e126]: 포트폴리오
+        - generic [ref=e127]:
+          - generic [ref=e129]: 최근 분석
+          - generic [ref=e131]:
+            - img [ref=e132]
+            - paragraph [ref=e135]: 아직 분석한 종목이 없습니다
+            - paragraph [ref=e136]: 종목을 검색하고 AI 분석을 시작하세요

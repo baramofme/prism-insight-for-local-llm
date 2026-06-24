@@ -21,6 +21,8 @@ import json
 import sys
 from pathlib import Path
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 # Allow running from project root without installing the package
 PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -41,12 +43,17 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--ticker", help="종목 코드 (예: 005930, AAPL)")
     p.add_argument("--date-from", dest="date_from", metavar="YYYY-MM-DD", help="시작일")
     p.add_argument("--date-to", dest="date_to", metavar="YYYY-MM-DD", help="종료일")
-    _ALLOWED_MODELS = ["gpt-5.4-mini", "gpt-4.1-mini", "gpt-4.1", "gpt-4.1-nano"]
+    _ALLOWED_MODELS = [
+        resolve_agent_model("archive_query"),
+        resolve_agent_model("jeoningu_sell"),
+        resolve_agent_model("jeoningu_analysis"),
+        "gpt-4.1-nano",
+    ]
     p.add_argument(
         "--model",
-        default="gpt-5.4-mini",
+        default=resolve_agent_model("archive_query"),
         choices=_ALLOWED_MODELS,
-        help="LLM 모델 (기본값: gpt-5.4-mini)",
+        help=f"LLM 모델 (기본값: {resolve_agent_model('archive_query')})",
     )
     p.add_argument(
         "--skip-cache",
@@ -182,7 +189,7 @@ async def _render_insight_stats(as_json: bool) -> None:
     for c in costs:
         print(
             f"    {c['date']}  in={c['input_tokens']:>6}  out={c['output_tokens']:>6}  "
-            f"emb={c['embedding_tokens']:>6}  perp={c['perplexity_calls']:>3}  "
+            f"emb={c['embedding_tokens']:>6}  vane={c['perplexity_calls']:>3}  "
             f"fc={c['firecrawl_calls']:>3}"
         )
     print()

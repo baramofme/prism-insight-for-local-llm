@@ -263,7 +263,7 @@ def create_trading_scenario_agent(language: str = "ko", sector_names: list = Non
         - `time-get_current_time`: call FIRST. Use the returned date as the end date for ALL kospi_kosdaq queries.
         - `kospi_kosdaq-get_stock_ohlcv` / `get_stock_trading_volume` / `get_index_ohlcv`: market and stock data.
         - DO NOT call `kospi_kosdaq-load_all_tickers`.
-        - `perplexity-ask`: only when sector PER/PBR comparison is missing from the report. When called:
+        - `vane-ask`: only when sector PER/PBR comparison is missing from the report. When called:
           * "[Stock name] PER PBR vs [Sector] industry average comparison"
           * "[Stock name] vs major peer competitors valuation comparison"
           * Include the current date in the query and verify the date returned in the response
@@ -559,7 +559,7 @@ def create_trading_scenario_agent(language: str = "ko", sector_names: list = Non
         - `time-get_current_time`: 가장 먼저 호출하십시오. 반환된 날짜를 모든 kospi_kosdaq 조회의 종료일로 사용합니다.
         - `kospi_kosdaq-get_stock_ohlcv` / `get_stock_trading_volume` / `get_index_ohlcv`: 시장/종목 데이터.
         - `kospi_kosdaq-load_all_tickers` 호출 금지.
-        - `perplexity-ask`: 보고서에 동종업계 PER/PBR 비교가 없을 때만 호출하십시오. 호출 시:
+        - `vane_ask`: 보고서에 동종업계 PER/PBR 비교가 없을 때만 호출하십시오. 호출 시:
           * "[종목명] PER PBR vs [업종명] 업계 평균 비교"
           * "[종목명] vs 동종업계 주요 경쟁사 비교"
           * 질문에 현재 날짜를 포함하고, 답변의 날짜를 항상 검증하십시오
@@ -647,7 +647,7 @@ def create_trading_scenario_agent(language: str = "ko", sector_names: list = Non
     return Agent(
         name="trading_scenario_agent",
         instruction=instruction,
-        server_names=["kospi_kosdaq", "sqlite", "perplexity", "time"]
+        server_names=["kospi_kosdaq", "sqlite", "vane", "time"]
     )
 
 
@@ -695,7 +695,7 @@ def create_sell_decision_agent(language: str = "ko"):
         ### Priority 0: Core Principles for Sell Judgement (MUST follow)
 
         **Core-0) Corporate-Event Check First (news-driven forced exit):**
-        - On EVERY decision, FIRST use the perplexity tool with **specific keyword queries**:
+        - On EVERY decision, FIRST use the vane tool with **specific keyword queries**:
           `"<company> tender offer"`, `"<company> delisting OR voluntary delisting"`,
           `"<company> liquidation trading OR trading halt"` (company + ticker + 2026). Run 2+ queries for recall.
         - **If ANY of these is officially confirmed = SELL trigger (even if the final delisting DATE is not set):**
@@ -909,7 +909,7 @@ def create_sell_decision_agent(language: str = "ko"):
         ### 0순위: 매도 판단의 핵심 원칙 (반드시 준수)
 
         **핵심-0) 법인 이벤트 최우선 점검 (뉴스 기반 강제청산):**
-        - 매 판단 시 **반드시 먼저** perplexity 도구로 다음과 같이 **구체적 키워드**로 검색하십시오:
+        - 매 판단 시 **반드시 먼저** vane 도구로 다음과 같이 **구체적 키워드**로 검색하십시오:
           `"<회사명> 공개매수"`, `"<회사명> 자진상장폐지 OR 상장폐지"`, `"<회사명> 정리매매 OR 거래정지"`
           (회사명 + 종목코드 + 2026). 최소 2개 쿼리 이상 시도해 recall을 확보할 것.
         - **다음 중 하나라도 공식 확인되면 = 매도 트리거(최종 상폐일이 미정이어도 매도):**
@@ -1102,6 +1102,6 @@ def create_sell_decision_agent(language: str = "ko"):
     return Agent(
         name="sell_decision_agent",
         instruction=instruction,
-        # perplexity: 핵심-0 법인 이벤트(상폐/공개매수 등) 뉴스 자율 점검에 필요
-        server_names=["kospi_kosdaq", "sqlite", "time", "perplexity"]
+        # vane: 핵심-0 법인 이벤트(상폐/공개매수 등) 뉴스 자율 점검에 필요
+        server_names=["kospi_kosdaq", "sqlite", "time", "vane"]
     )

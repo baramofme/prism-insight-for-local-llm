@@ -131,7 +131,7 @@ python3 demo.py TSLA --language ko  # Tesla (Korean report)
 
 > **Get your OpenAI API key** from [OpenAI Platform](https://platform.openai.com/api-keys)
 >
-> **Optional**: Add a [Perplexity API key](https://www.perplexity.ai/) to `mcp_agent.config.yaml` for news analysis
+> **Optional**: The self-hosted [Vane](https://github.com/ItzCrazyKns/Vane) engine provides AI news analysis (included, no API key needed)
 >
 > **Optional**: Add `ADANOS_API_KEY` to enrich US stock news analysis with structured social sentiment context
 
@@ -176,10 +176,7 @@ pip install -r requirements.txt
 # 2. Install Playwright for PDF generation
 python3 -m playwright install chromium
 
-# 3. Install perplexity-ask MCP server
-cd perplexity-ask && npm install && npm run build && cd ..
-
-# 4. Setup config
+# 3. Setup config
 cp mcp_agent.config.yaml.example mcp_agent.config.yaml
 cp mcp_agent.secrets.yaml.example mcp_agent.secrets.yaml
 # Edit mcp_agent.secrets.yaml with your OpenAI API key
@@ -355,8 +352,8 @@ npm run dev
 
 ### Korean Market
 - **[kospi_kosdaq](https://github.com/dragon1086/kospi-kosdaq-stock-server)** — KRX stock data
-- **[firecrawl](https://github.com/mendableai/firecrawl-mcp-server)** — Web crawling
-- **[perplexity](https://github.com/perplexityai/modelcontextprotocol)** — Web search
+- **[scrapegraph](https://github.com/ScrapeGraphAI/Scrapegraph-ai)** — AI web scraping
+- **[vane](https://github.com/ItzCrazyKns/Vane)** — AI web search (self-hosted)
 - **[sqlite](https://github.com/modelcontextprotocol/servers-archived)** — Trading simulation DB
 
 ### US Market
@@ -405,7 +402,7 @@ Analysis information is for reference only, not investment advice. All investmen
 Monthly operating costs (~$310/month):
 - OpenAI API: ~$235/month
 - Anthropic API: ~$11/month
-- Firecrawl + Perplexity: ~$35/month
+- Firecrawl: ~$35/month
 - Server infrastructure: ~$30/month
 
 Currently serving 450+ users for free.

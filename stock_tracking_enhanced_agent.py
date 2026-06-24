@@ -16,6 +16,7 @@ from cores.llm.openai_responses_llm import OpenAIResponsesLLM as OpenAIAugmented
 
 # Import core agents
 from cores.agents.trading_agents import create_sell_decision_agent
+from cores.llm.agent_model_map import resolve_agent_model
 from cores.utils import parse_llm_json
 
 logging.basicConfig(
@@ -1027,7 +1028,7 @@ class EnhancedStockTrackingAgent(StockTrackingAgent):
             response = await llm.generate_str(
                 message=prompt_message,
                 request_params=RequestParams(
-                    model="gpt-5.5",
+                    model=resolve_agent_model("sell_decision"),
                     maxTokens=30000
                 )
             )

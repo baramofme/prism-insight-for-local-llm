@@ -41,7 +41,7 @@ Run Ubuntu 24.04-based AI stock analysis system easily with Docker.
 
 #### MCP Servers
 - **kospi-kosdaq**: Korean stock data
-- **perplexity-ask**: AI search
+- **vane**: AI web search
 - **firecrawl**: Web crawling
 - **sqlite**: Database
 - **time**: Time management
@@ -73,7 +73,7 @@ If you don't have Docker:
 ### 3. Required API Keys
 - OpenAI API Key (https://platform.openai.com/api-keys)
 - Anthropic API Key (https://console.anthropic.com/settings/keys)
-- Perplexity API Key (https://www.perplexity.ai/settings/api)
+- Vane AI search engine (self-hosted, no API key needed)
 - Firecrawl API Key (https://www.firecrawl.dev/)
 - Telegram Bot Token (issued by [@BotFather](https://t.me/BotFather))
 - Telegram Channel ID
@@ -195,11 +195,10 @@ mcp:
     kospi_kosdaq:
       command: "python3"
       args: ["-m", "kospi_kosdaq_stock_server"]
-    perplexity:
-      command: "node"
-      args: ["perplexity-ask/dist/index.js"]
-      env:
-        PERPLEXITY_API_KEY: "your_perplexity_api_key_here"
+vane:
+  command: "python3"
+  args: ["vane_mcp_server.py"]
+  read_timeout_seconds: 120
     sqlite:
       command: "uv"
       args: ["--directory", "sqlite", "run", "mcp-server-sqlite", "--db-path", "stock_tracking_db"]
@@ -610,7 +609,7 @@ sudo chown -R $USER:$USER data reports pdf_reports
 └── prism-insight/            # Project root
     ├── cores/                # AI analysis engine
     ├── trading/              # Automated trading
-    ├── perplexity-ask/       # MCP server
+    ├── vane_mcp_server.py       # Vane MCP server (self-hosted search)
     ├── sqlite/               # Database
     ├── reports/              # Analysis reports
     └── pdf_reports/          # PDF reports

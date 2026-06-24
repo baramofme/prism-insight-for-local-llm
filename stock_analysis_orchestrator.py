@@ -24,6 +24,7 @@ from datetime import datetime
 from pathlib import Path
 
 from cores.openai_error_logging import log_openai_error
+from cores.llm.agent_model_map import resolve_agent_model
 
 # Logger configuration
 logging.basicConfig(
@@ -293,7 +294,7 @@ class StockAnalysisOrchestrator:
 
         Step 1: Prefetch index data (KOSPI/KOSDAQ OHLCV, sector_map) programmatically
         Step 2: Compute market regime from actual price data (not LLM)
-        Step 3: Run LLM agent with perplexity only for qualitative analysis
+        Step 3: Run LLM agent with vane only for qualitative analysis
 
         Args:
             reference_date: Analysis date (YYYYMMDD). Defaults to today.
@@ -319,7 +320,7 @@ class StockAnalysisOrchestrator:
                 logger.info(f"Pre-computed regime: {computed.get('market_regime')} "
                            f"(confidence: {computed.get('regime_confidence')})")
 
-            # Step 2: Run LLM agent with perplexity for qualitative analysis
+            # Step 2: Run LLM agent with vane for qualitative analysis
             from mcp_agent.app import MCPApp
             from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
             from cores.agents.macro_intelligence_agent import create_macro_intelligence_agent
@@ -328,7 +329,7 @@ class StockAnalysisOrchestrator:
 
             async with macro_app.run() as macro_run_context:
                 macro_logger = macro_run_context.logger
-                macro_logger.info("Macro intelligence agent starting (perplexity-only mode)...")
+                macro_logger.info("Macro intelligence agent starting (vane-only mode)...")
 
                 agent = create_macro_intelligence_agent(reference_date, language, prefetched_data=prefetched)
 
@@ -337,7 +338,7 @@ class StockAnalysisOrchestrator:
                 result = await llm.generate_str(
                     message=f"{reference_date} 기준 한국 주식시장 거시경제 분석을 수행하고 JSON으로 출력하세요.",
                     request_params=RequestParams(
-                        model="gpt-5.4-mini",
+                        model=resolve_agent_model("market_regime"),
                         reasoning_effort="none",
                         maxTokens=16000,
                         parallel_tool_calls=True,
@@ -670,7 +671,7 @@ class StockAnalysisOrchestrator:
                         logger.info(f"Translating telegram message to {lang}")
                         translated_message = await translate_telegram_message(
                             original_message,
-                            model="gpt-5-nano",
+                            model=resolve_agent_model("translation"),
                             from_lang="ko",
                             to_lang=lang
                         )
@@ -727,7 +728,7 @@ class StockAnalysisOrchestrator:
 
                         translated_report = await translate_telegram_message(
                             text_for_translation,
-                            model="gpt-5-nano",
+                            model=resolve_agent_model("translation"),
                             from_lang="ko",
                             to_lang=lang
                         )
@@ -829,7 +830,7 @@ class StockAnalysisOrchestrator:
                 try:
                     logger.info("Translating trigger alert message to English")
                     from cores.agents.telegram_translator_agent import translate_telegram_message
-                    message = await translate_telegram_message(message, model="gpt-5-nano")
+                    message = await translate_telegram_message(message, model=resolve_agent_model("translation"))
                     logger.info("Translation complete")
                 except Exception as e:
                     logger.error(f"Translation failed: {str(e)}. Using original Korean message.")
@@ -888,7 +889,7 @@ class StockAnalysisOrchestrator:
                     logger.info(f"Translating trigger alert to {lang}")
                     translated_message = await translate_telegram_message(
                         original_message,
-                        model="gpt-5-nano",
+                        model=resolve_agent_model("translation"),
                         from_lang="ko",
                         to_lang=lang
                     )

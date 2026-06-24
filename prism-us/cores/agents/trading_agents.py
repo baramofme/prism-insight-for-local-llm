@@ -2,7 +2,7 @@
 US Trading Decision Agents
 
 Agents for buy/sell decision making for US stocks.
-Uses yfinance MCP server for market data, sqlite for portfolio, and perplexity for analysis.
+Uses yfinance MCP server for market data, sqlite for portfolio, and vane for analysis.
 
 Note: These agents will be integrated in Phase 6 (Trading System).
 """
@@ -253,7 +253,7 @@ risk_reward_ratio  = expected_return_pct / expected_loss_pct
 
 - `time-get_current_time`: 가장 먼저 호출하십시오. 반환된 날짜를 모든 yahoo_finance 조회의 종료일로 사용합니다.
 - `yahoo_finance-get_historical_stock_prices`: S&P 500 / VIX / 종목 시계열 데이터.
-- `perplexity-ask`: 보고서에 동종업계 P/E 비교가 없을 때만 호출하십시오. 호출 시:
+- `vane-ask`: 보고서에 동종업계 P/E 비교가 없을 때만 호출하십시오. 호출 시:
   * "[Stock name] P/E P/B vs [Sector] industry average comparison"
   * "[Stock name] vs major peer competitors valuation comparison"
   * 질문에 현재 날짜를 포함하고, 답변의 날짜를 항상 검증하십시오
@@ -571,7 +571,7 @@ If the resulting R/R is below the matrix floor for the current regime → No Ent
 
 - `time-get_current_time`: call FIRST. Use the returned date as the end date for ALL yahoo_finance queries.
 - `yahoo_finance-get_historical_stock_prices`: S&P 500 / VIX / stock time-series.
-- `perplexity-ask`: only when sector PE comparison is missing from the report. When called:
+- `vane-ask`: only when sector PE comparison is missing from the report. When called:
   * "[Stock name] P/E P/B vs [Sector] industry average comparison"
   * "[Stock name] vs major peer competitors valuation comparison"
   * Include the current date in the query and verify the date returned in the response
@@ -663,7 +663,7 @@ Prohibited: `"$170"`, `"about $170"`, `"minimum 170"`.
     return Agent(
         name="us_trading_scenario_agent",
         instruction=instruction,
-        server_names=["yahoo_finance", "sqlite", "perplexity", "time"]
+        server_names=["yahoo_finance", "sqlite", "vane", "time"]
     )
 
 
@@ -710,7 +710,7 @@ def create_us_sell_decision_agent(language: str = "ko"):
 ### 0순위: 매도 판단의 핵심 원칙 (반드시 준수)
 
 **핵심-0) 법인 이벤트 최우선 점검 (뉴스 기반 강제청산):**
-- 매 판단 시 **반드시 먼저** perplexity 도구로 **구체적 키워드**로 영문 검색하십시오:
+- 매 판단 시 **반드시 먼저** vane 도구로 **구체적 키워드**로 영문 검색하십시오:
   `"<company> tender offer OR going private"`, `"<company> delisting"`,
   `"<company> bankruptcy OR Chapter 11 OR SEC deregistration"` (회사명 + 티커 + 2026). 최소 2개 쿼리.
 - **다음 중 하나라도 공식 확인되면 = 매도 트리거(최종 상폐일 미정이어도 매도):**
@@ -923,7 +923,7 @@ You are a professional analyst specializing in sell timing decisions for US stoc
 ### Priority 0: Core Principles for Sell Judgement (MUST follow)
 
 **Core-0) Corporate-Event Check First (news-driven forced exit):**
-- On EVERY decision, FIRST use the perplexity tool with **specific keyword queries**:
+- On EVERY decision, FIRST use the vane tool with **specific keyword queries**:
   `"<company> tender offer OR going private"`, `"<company> delisting"`,
   `"<company> bankruptcy OR Chapter 11 OR SEC deregistration"` (company + ticker + 2026). Run 2+ queries.
 - **If ANY of these is officially confirmed = SELL trigger (even if the final delisting DATE is not set):**
@@ -1055,6 +1055,6 @@ Trailing Stop %: Bull peak × 0.92 (-8%), Bear/Sideways peak × 0.95 (-5%)
     return Agent(
         name="us_sell_decision_agent",
         instruction=instruction,
-        # perplexity: 핵심-0 법인 이벤트(상폐/공개매수/파산 등) 뉴스 자율 점검에 필요
-        server_names=["yahoo_finance", "sqlite", "time", "perplexity"]
+        # vane: 핵심-0 법인 이벤트(상폐/공개매수/파산 등) 뉴스 자율 점검에 필요
+        server_names=["yahoo_finance", "sqlite", "time", "vane"]
     )

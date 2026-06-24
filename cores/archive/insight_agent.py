@@ -5,7 +5,7 @@ insight_agent.py — /insight 명령을 처리하는 메인 에이전트.
   1. retrieval: persistent_insights (FTS + embedding) + weekly_summary + report_archive
   2. synthesis: mcp-agent Agent + AnthropicAugmentedLLM (claude-sonnet-4-6)
                 function calling으로 필요시 MCP 도구 자동 선택
-                (perplexity / firecrawl / yahoo_finance / kospi_kosdaq)
+                (vane / firecrawl / yahoo_finance / kospi_kosdaq)
 
                 OpenAI gpt-5.x reasoning 모델은 function calling과 reasoning_effort를
                 동시에 지원하지 않아 (400 invalid_request_error) Claude로 전환.
@@ -35,15 +35,16 @@ from .archive_db import ARCHIVE_DB_PATH
 from .embedding import embed_text
 from .insight_prompts import INSIGHT_SYSTEM_PROMPT
 from .query_engine import QueryEngine, load_api_key
+from cores.llm.agent_model_map import resolve_agent_model
 
 logger = logging.getLogger(__name__)
 
 # Claude handles MCP function calling reliably in this repo (firecrawl pattern).
-DEFAULT_MODEL = "claude-sonnet-4-6"
+DEFAULT_MODEL = resolve_agent_model("report_followup")
 _MAX_REPORTS_IN_CONTEXT = 6
 
 # MCP 서버 연결 순서 — 무료 우선, 유료 후순 (프롬프트 가드레일과 함께 동작)
-_MCP_SERVERS = ["yahoo_finance", "kospi_kosdaq", "perplexity", "firecrawl"]
+_MCP_SERVERS = ["yahoo_finance", "kospi_kosdaq", "vane", "scrapegraph"]
 
 
 @dataclass
@@ -393,11 +394,11 @@ class InsightAgent:
 
         # 7. Cost tracking (fire-and-forget)
         try:
-            perp = parsed["tools_used"].count("perplexity") + sum(
-                1 for t in parsed["tools_used"] if t.startswith("perplexity")
+            perp = parsed["tools_used"].count("vane") + sum(
+                1 for t in parsed["tools_used"] if t.startswith("vane")
             )
             fcs = sum(
-                1 for t in parsed["tools_used"] if t.startswith("firecrawl")
+                1 for t in parsed["tools_used"] if t.startswith("scrapegraph")
             )
             await pi_store.increment_cost(
                 perplexity_calls=perp,

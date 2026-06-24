@@ -43,6 +43,10 @@ def _import_from_main_cores(module_name: str, relative_path: str):
     return module
 
 
+# Load resolve_agent_model from main project cores/llm/agent_model_map.py
+_agent_map_module = _import_from_main_cores("cores_llm_agent_model_map", "cores/llm/agent_model_map.py")
+resolve_agent_model = _agent_map_module.resolve_agent_model
+
 # Load parse_llm_json from main project cores/utils.py
 # (avoids prism-us/cores/ namespace collision)
 _utils_module = _import_from_main_cores("cores_utils", "cores/utils.py")
@@ -133,7 +137,7 @@ class USJournalManager:
 
                 response = await llm.generate_str(
                     message=prompt,
-                    request_params=RequestParams(model="gpt-5.4-mini", reasoning_effort="none", maxTokens=16000)
+                    request_params=RequestParams(model=resolve_agent_model("journal"), reasoning_effort="none", maxTokens=16000)
                 )
                 logger.info(f"US Journal agent response received: {len(response)} chars")
 

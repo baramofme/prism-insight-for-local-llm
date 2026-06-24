@@ -15,6 +15,7 @@ import yaml
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 from dotenv import load_dotenv
+from cores.llm.agent_model_map import resolve_agent_model
 
 # Set paths based on current script directory
 SCRIPT_DIR = Path(__file__).parent.resolve()
@@ -467,7 +468,7 @@ class PortfolioTelegramReporter:
                     # Translate message
                     translated_message = await translate_telegram_message(
                         original_message,
-                        model="gpt-5-nano",
+                        model=resolve_agent_model("translation"),
                         from_lang="ko",
                         to_lang=lang
                     )

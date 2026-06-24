@@ -78,8 +78,8 @@ COPY . /app/prism-insight
 # Playwright 브라우저 설치 (Chromium만)
 RUN playwright install --with-deps chromium
 
-# Perplexity MCP 서버 설치 (공식 npm 패키지)
-RUN npm install -g @perplexity-ai/mcp-server
+# Vane MCP server replaces Perplexity (self-hosted Python server)
+# RUN npm install -g @perplexity-ai/mcp-server  # replaced by vane_mcp_server.py
 
 # 한글 폰트 설치 (Ubuntu용)
 RUN python3 ./cores/ubuntu_font_installer.py || true

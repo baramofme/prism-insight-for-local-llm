@@ -24,11 +24,13 @@ import subprocess
 import time
 from typing import Optional
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 log = logging.getLogger("live.postmortem")
 
 # E2E 실측: 러너(+8R) 부검은 113s 소요 — 120s 는 경계선이라 180s 기본.
 LLM_TIMEOUT_SEC = int(os.environ.get("BTC_POSTMORTEM_TIMEOUT_SEC", "180"))
-DEFAULT_MODEL = os.environ.get("BTC_POSTMORTEM_MODEL", "sonnet")
+DEFAULT_MODEL = os.environ.get("BTC_POSTMORTEM_MODEL", resolve_agent_model("btc_postmortem"))
 _CLAUDE_FALLBACK = os.path.expanduser("~/.local/bin/claude")
 
 def _strategy_brief() -> str:
@@ -96,7 +98,7 @@ def _try_anthropic_sdk(prompt: str) -> Optional[str]:
         return None
     client = anthropic.Anthropic()
     msg = client.messages.create(
-        model=os.environ.get("BTC_POSTMORTEM_SDK_MODEL", "claude-sonnet-4-6"),
+        model=os.environ.get("BTC_POSTMORTEM_SDK_MODEL", resolve_agent_model("btc_postmortem")),
         max_tokens=4000,
         messages=[{"role": "user", "content": prompt}],
         timeout=LLM_TIMEOUT_SEC,

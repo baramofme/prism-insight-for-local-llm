@@ -20,6 +20,7 @@ from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
+from cores.llm.agent_model_map import resolve_agent_model
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -164,7 +165,7 @@ async def _send_broadcast(message: str, broadcast_languages: list):
 
                 logger.info(f"Translating intelligence report to {lang}")
                 translated = await translate_telegram_message(
-                    message, model="gpt-5-nano", from_lang="ko", to_lang=lang
+                    message, model=resolve_agent_model("translation"), from_lang="ko", to_lang=lang
                 )
                 if len(translated) > 4096:
                     for i in range(0, len(translated), 4096):

@@ -18,6 +18,8 @@ from mcp_agent.app import MCPApp
 from mcp_agent.workflows.llm.augmented_llm import RequestParams
 from mcp_agent.workflows.llm.augmented_llm_anthropic import AnthropicAugmentedLLM
 
+from cores.llm.agent_model_map import resolve_agent_model
+
 # Logger setup
 logger = logging.getLogger(__name__)
 
@@ -703,7 +705,7 @@ async def generate_follow_up_response(ticker, ticker_name, conversation_context,
                         2. 필요한 경우 추가 데이터를 조회할 수 있습니다:
                            - get_stock_ohlcv: 최신 주가 데이터 조회
                            - get_stock_trading_volume: 투자자별 거래 데이터
-                           - perplexity_ask: 최신 뉴스나 정보 검색
+                           - vane_ask: 최신 뉴스나 정보 검색
                         3. 사용자가 요청한 스타일({tone})을 유지하세요
                         4. 텔레그램 메시지 형식으로 자연스럽게 작성하세요
                         5. 이모티콘을 적극 활용하세요 (📈 📉 💰 🔥 💎 🚀 등)
@@ -716,7 +718,7 @@ async def generate_follow_up_response(ticker, ticker_name, conversation_context,
                         - 새로운 정보가 필요한 경우에만 도구를 사용
                         - 도구 호출 과정을 사용자에게 노출하지 마세요
                         """,
-            server_names=["perplexity", "kospi_kosdaq"]
+            server_names=["vane", "kospi_kosdaq"]
         )
 
         # LLM 연결
@@ -730,7 +732,7 @@ async def generate_follow_up_response(ticker, ticker_name, conversation_context,
                     필요한 경우 최신 데이터를 조회하여 정확한 정보를 제공하세요.
                     """,
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_followup"),
                 maxTokens=2000
             )
         )
@@ -823,7 +825,7 @@ async def generate_evaluation_response(ticker, ticker_name, avg_price, period, t
                                - fromdate, todate 포맷은 YYYYMMDD입니다. 그리고 todate가 현재날짜고, fromdate가 과거날짜입니다.
                                - 기관, 외국인, 개인 등 투자자별 매수/매도 패턴을 파악하고 해석하세요.
                             
-                            4. perplexity_ask 툴을 사용하여 다음 정보를 검색하세요. 최대한 1개의 쿼리로 통합해서 현재 날짜를 기준으로 검색해주세요. 특히 tool call(time-get_current_time)에서 가져온 년도를 꼭 참고하세요.
+                            4. vane_ask 툴을 사용하여 다음 정보를 검색하세요. 최대한 1개의 쿼리로 통합해서 현재 날짜를 기준으로 검색해주세요. 특히 tool call(time-get_current_time)에서 가져온 년도를 꼭 참고하세요.
                                - "종목코드 {ticker}의 정확한 회사 {ticker_name}에 대한 최근 뉴스 및 실적 분석 (유사 이름의 다른 회사와 혼동하지 말 것. 정확히 이 종목코드 {ticker}에 해당하는 {ticker_name} 회사만 검색."
                                - "{ticker_name}(종목코드: {ticker}) 소속 업종 동향 및 전망"
                                - "글로벌과 국내 증시 현황 및 전망"
@@ -907,7 +909,7 @@ async def generate_evaluation_response(ticker, ticker_name, avg_price, period, t
                           도구 호출은 내부 처리 과정이며 최종 응답에서는 도구 사용 결과만 자연스럽게 통합하여 제시해야 합니다.
                         {memory_section}
                         """,
-            server_names=["perplexity", "kospi_kosdaq", "time"]
+            server_names=["vane", "kospi_kosdaq", "time"]
         )
 
         # LLM 연결
@@ -924,10 +926,10 @@ async def generate_evaluation_response(ticker, ticker_name, avg_price, period, t
             message=f"""보고서를 바탕으로 종목 평가 응답을 생성해 주세요.
 
                     ## 참고 자료
-                    {report_content if report_content else "관련 보고서가 없습니다. 시장 데이터 조회와 perplexity 검색을 통해 최신 정보를 수집하여 평가해주세요."}
+                    {report_content if report_content else "관련 보고서가 없습니다. 시장 데이터 조회와 vane 검색을 통해 최신 정보를 수집하여 평가해주세요."}
                     """,
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_evaluation"),
                 maxTokens=8000
             )
         )
@@ -1026,7 +1028,7 @@ async def generate_us_evaluation_response(ticker, ticker_name, avg_price, period
                                - ticker="{ticker}"
                                - 최근 애널리스트 평가 동향을 파악하세요.
 
-                            5. perplexity_ask 툴을 사용하여 다음 정보를 검색하세요. 최대한 1개의 쿼리로 통합해서 현재 날짜를 기준으로 검색해주세요.
+                            5. vane_ask 툴을 사용하여 다음 정보를 검색하세요. 최대한 1개의 쿼리로 통합해서 현재 날짜를 기준으로 검색해주세요.
                                - "{ticker} {ticker_name} recent news earnings analysis stock forecast"
                                - "{ticker_name} sector outlook market trends"
 
@@ -1110,7 +1112,7 @@ async def generate_us_evaluation_response(ticker, ticker_name, avg_price, period
                         - 미국 주식 분석이므로 한국어로 응답하되, 가격은 달러($)로 표시하세요.
                         {memory_section}
                         """,
-            server_names=["perplexity", "yahoo_finance", "time"]
+            server_names=["vane", "yahoo_finance", "time"]
         )
 
         # LLM 연결
@@ -1121,10 +1123,10 @@ async def generate_us_evaluation_response(ticker, ticker_name, avg_price, period
             message=f"""미국 주식 {ticker_name}({ticker})에 대한 종목 평가 응답을 생성해 주세요.
 
                     먼저 yahoo_finance 도구를 사용하여 최신 주가 데이터, 기관 투자자 정보, 애널리스트 추천을 조회하고,
-                    perplexity로 최신 뉴스와 시장 동향을 검색한 후 종합적인 평가를 제공해주세요.
+                    vane로 최신 뉴스와 시장 동향을 검색한 후 종합적인 평가를 제공해주세요.
                     """,
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_evaluation"),
                 maxTokens=8000
             )
         )
@@ -1192,7 +1194,7 @@ async def generate_us_follow_up_response(ticker, ticker_name, conversation_conte
                         1. 이전 대화에서 제공한 정보와 일관성을 유지하세요
                         2. 필요한 경우 추가 데이터를 조회할 수 있습니다:
                            - yahoo_finance: get_historical_stock_prices, get_stock_info, get_recommendations
-                           - perplexity_ask: 최신 뉴스나 정보 검색
+                           - vane_ask: 최신 뉴스나 정보 검색
                         3. 사용자가 요청한 스타일({tone})을 유지하세요
                         4. 텔레그램 메시지 형식으로 자연스럽게 작성하세요
                         5. 이모티콘을 적극 활용하세요 (📈 📉 💰 🔥 💎 🚀 🇺🇸 💵 등)
@@ -1207,7 +1209,7 @@ async def generate_us_follow_up_response(ticker, ticker_name, conversation_conte
                         - 도구 호출 과정을 사용자에게 노출하지 마세요
                         - 한국어로 응답하되, 미국 주식이므로 가격은 달러($)로 표시
                         """,
-            server_names=["perplexity", "yahoo_finance"]
+            server_names=["vane", "yahoo_finance"]
         )
 
         # Connect to LLM
@@ -1221,7 +1223,7 @@ async def generate_us_follow_up_response(ticker, ticker_name, conversation_conte
                     필요한 경우 yahoo_finance를 통해 최신 데이터를 조회하여 정확한 정보를 제공하세요.
                     """,
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_followup"),
                 maxTokens=2000
             )
         )
@@ -1310,7 +1312,7 @@ async def generate_journal_conversation_response(
 4. 필요하다면 주식 관련 질문에 답변할 수 있습니다
 
 ## 주식 데이터 조회 (필요한 경우에만)
-- perplexity_ask: 최신 뉴스나 정보 검색
+- vane_ask: 최신 뉴스나 정보 검색
 - kospi_kosdaq: 한국 주식 정보 (get_stock_ohlcv, get_stock_trading_volume)
 사용자가 특정 종목에 대해 물어보면 도구를 사용해 최신 정보를 제공할 수 있습니다.
 
@@ -1327,7 +1329,7 @@ async def generate_journal_conversation_response(
 - "나에 대해 알아?" 같은 질문에는 기록된 내용을 바탕으로 답하세요
 - 사용자를 존중하고 공감하는 태도를 유지하세요
 """,
-            server_names=["perplexity", "kospi_kosdaq"]
+            server_names=["vane", "kospi_kosdaq"]
         )
 
         # Connect to LLM
@@ -1339,7 +1341,7 @@ async def generate_journal_conversation_response(
 
 위 메시지에 자연스럽게 응답해주세요. 사용자의 과거 기록(저널, 평가 등)을 참고하여 개인화된 답변을 제공하세요.""",
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_journal"),
                 maxTokens=2000
             )
         )
@@ -1428,7 +1430,7 @@ async def generate_firecrawl_search_response(search_query: str, analysis_prompt:
         response = await llm.generate_str(
             message=f"다음은 웹 검색 결과입니다:\n\n{context}\n\n---\n\n{analysis_prompt}",
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_search"),
                 maxTokens=2000
             )
         )
@@ -1454,11 +1456,11 @@ async def generate_firecrawl_search_response(search_query: str, analysis_prompt:
 # (kospi_kosdaq / yahoo_finance) are anchored to the real year, not the model's
 # training cutoff — otherwise Sonnet queries ~1-year-old data (#283).
 _FIRECRAWL_CMD_SERVERS = {
-    "signal":    ["perplexity", "kospi_kosdaq", "time"],
-    "us_signal": ["perplexity", "yahoo_finance", "time"],
-    "theme":     ["perplexity", "kospi_kosdaq", "time"],
-    "us_theme":  ["perplexity", "yahoo_finance", "time"],
-    "ask":       ["perplexity", "kospi_kosdaq", "yahoo_finance", "time"],
+    "signal":    ["vane", "kospi_kosdaq", "time"],
+    "us_signal": ["vane", "yahoo_finance", "time"],
+    "theme":     ["vane", "kospi_kosdaq", "time"],
+    "us_theme":  ["vane", "yahoo_finance", "time"],
+    "ask":       ["vane", "kospi_kosdaq", "yahoo_finance", "time"],
 }
 
 _FIRECRAWL_CMD_PERSONA = {
@@ -1492,16 +1494,16 @@ async def generate_firecrawl_followup_response(
     """
     try:
         app = await get_or_create_global_mcp_app()
-        server_names = _FIRECRAWL_CMD_SERVERS.get(command, ["perplexity"])
+        server_names = _FIRECRAWL_CMD_SERVERS.get(command, ["vane"])
         persona = _FIRECRAWL_CMD_PERSONA.get(command, "투자 분석 전문가")
         current_date = datetime.now().strftime("%Y년 %m월 %d일")
 
         _data_tool_guide = (
             "- 미국 종목 주가·재무·거래량 조회는 yahoo_finance 도구를 우선 사용하세요.\n"
-            "- 최신 뉴스·이벤트 맥락은 perplexity 도구로 보완하세요.\n"
+            "- 최신 뉴스·이벤트 맥락은 vane 도구로 보완하세요.\n"
         ) if command in ("us_signal", "us_theme", "ask") else (
             "- 한국 종목 주가·거래량 조회는 kospi_kosdaq 도구를 우선 사용하세요.\n"
-            "- 최신 뉴스·이벤트 맥락은 perplexity 도구로 보완하세요.\n"
+            "- 최신 뉴스·이벤트 맥락은 vane 도구로 보완하세요.\n"
         )
         agent = Agent(
             name="firecrawl_followup_agent",
@@ -1535,7 +1537,7 @@ async def generate_firecrawl_followup_response(
         response = await llm.generate_str(
             message=user_question,
             request_params=RequestParams(
-                model="claude-sonnet-4-6",
+                model=resolve_agent_model("report_followup"),
                 maxTokens=2000,
             ),
         )

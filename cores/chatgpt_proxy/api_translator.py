@@ -7,17 +7,22 @@ import json
 import time
 from typing import Any
 
+from cores.llm.agent_model_map import resolve_agent_model
+
+# Compute the default model once at module load time.
+_FALLBACK_MODEL = resolve_agent_model("archive_query")
+
 
 # Models not supported on Codex endpoint -> best available replacement
 _MODEL_MAP: dict[str, str] = {
-    "gpt-4o": "gpt-5.4-mini",
-    "gpt-4o-mini": "gpt-5.4-mini",
-    "gpt-4o-2024-08-06": "gpt-5.4-mini",
-    "gpt-4-turbo": "gpt-5.4-mini",
-    "gpt-4": "gpt-5.4-mini",
-    "gpt-3.5-turbo": "gpt-5.4-mini",
-    "o4-mini": "gpt-5.4-mini",
-    "o3-mini": "gpt-5.4-mini",
+    "gpt-4o": _FALLBACK_MODEL,
+    "gpt-4o-mini": _FALLBACK_MODEL,
+    "gpt-4o-2024-08-06": _FALLBACK_MODEL,
+    "gpt-4-turbo": _FALLBACK_MODEL,
+    "gpt-4": _FALLBACK_MODEL,
+    "gpt-3.5-turbo": _FALLBACK_MODEL,
+    "o4-mini": _FALLBACK_MODEL,
+    "o3-mini": _FALLBACK_MODEL,
 }
 
 
@@ -45,7 +50,7 @@ def prepare_responses_passthrough(body: dict) -> dict:
     Does not mutate the caller's dict.
     """
     out = dict(body)
-    out["model"] = _map_model(body.get("model", "gpt-5.4-mini"))
+    out["model"] = _map_model(body.get("model", _FALLBACK_MODEL))
     out["store"] = False   # MANDATORY: store:true returns 400
     out["stream"] = True   # MANDATORY: always stream upstream
     if not out.get("instructions"):
@@ -76,7 +81,7 @@ def translate_request(body: dict) -> dict:
     - response_format -> text.format
     """
     translated: dict[str, Any] = {
-        "model": _map_model(body.get("model", "gpt-4o")),
+        "model": _map_model(body.get("model", _FALLBACK_MODEL)),
     }
 
     # Messages -> Input (with role mapping)
