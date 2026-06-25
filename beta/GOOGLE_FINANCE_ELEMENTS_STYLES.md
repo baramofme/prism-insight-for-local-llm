@@ -625,3 +625,60 @@ font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-se
 *문서 생성일: 2026-06-22*
 *브라우저: Chrome (Playwright)*
 *대상: Google Finance (000660:KRX SK하이닉스)*
+
+---
+
+## 9. 갱신 (2026-06-25) — 베타 레이아웃 기본 전환
+
+> 라이브 재조사 결과 `www.google.com/finance/quote/000660:KRX` 가 **`/finance/beta/quote/...` 로 리다이렉트**됨. 베타 레이아웃이 기본값이 되었고(기존/베타 토글은 헤더에 잔존), 위 §1~§8(2026-06-22)은 **"기존(classic)" 레이아웃 기준**으로 보존한다. 아래는 베타 기준 검증 변경분(Playwright, viewport 1280×900, 디바이스 1배율).
+
+### 9.1 색상 — ★ 한국 현지 시장 색상 관례 (가장 중요한 정정)
+
+KRX 종목의 **라이브 기본값**은 §4.2 의 "국제(international)" 색상이 아니라 **현지 시장(한국)** 색상이다:
+
+| 의미 | 라이브 베타 (현지/KRX 기본) | HEX | §4.2 구 문서값 (국제) |
+|------|------------------------------|-----|----------------------|
+| **상승(+)** | rgb(192, 21, 29) | **#C0151D (빨강)** | #0E9E4B (녹색) ❌ |
+| **하락(−)** | rgb(51, 100, 240) | **#3364F0 (파랑)** | #FF4B4B (빨강) ❌ |
+
+- 설정 → **"가격 색상 시스템"** 에서 `현지 시장`(한국: 상승 빨강/하락 파랑) ↔ `국제`(상승 녹색/하락 빨강) 전환. 구현 시 **시장별 색상 토글**을 반드시 분기할 것.
+- 텍스트 색상도 정정: **Primary = #0a0a0a (rgb 10,10,10)** (구 #1f1f1f), **Secondary = #444746 (rgb 68,71,70)** (구 #5f6368).
+
+### 9.2 타이포그래피 정정
+
+| 요소 | 라이브 베타 | 구 문서값(§5) |
+|------|-------------|---------------|
+| **font-family** | `"Google Sans", sans-serif` | Roboto 등 fallback 포함 (간소화됨) |
+| **종목명(StockName)** | **20px / weight 400** | 16px / 500 ❌ |
+| **현재가(Price)** | 24px / 500 / #0a0a0a | 24px / 500 (색상만 정정) |
+| **변동률(Change)** | 12px / 500 | 16px (§9.1 Responsive) → 12px 로 정정 |
+| **콘텐츠 탭** | 14px / 500 · 선택 #1f1f1f · 비선택 **#444746** | 비선택 #5f6368 ❌ |
+
+### 9.3 컴포넌트 스타일 정정
+
+- **Header**: height 80px, **position: fixed**, 배경 white, **border-bottom 없음** (구 문서 `1px solid #e8eaed` ❌).
+- **기간 탭(선택 상태)**: 배경 **#E9EBF0 (rgb 233,235,240)**, **border-radius 8px** (구 16px ❌), padding 4px 10px, 12px/500/#0a0a0a.
+- **기간 탭 목록**: `1D 5D 1M 6M YTD 1Y 5Y 최대` (8개, **변동 없음** ✓).
+
+### 9.4 레이아웃 — 베타는 더 컴팩트
+
+세로 y 오프셋이 전반적으로 축소됨(1280px 기준): 종목명 y≈128(구 188), 기간 탭 y≈500(구 560), 콘텐츠 탭 y≈554(구 600). 좌측 콘텐츠 x=104 는 동일.
+
+### 9.5 CSS 변수 정정 (§8.1 대체)
+
+```css
+:root {
+  /* 텍스트 */
+  --color-text-primary: #0a0a0a;     /* 구 #1f1f1f */
+  --color-text-secondary: #444746;   /* 구 #5f6368 */
+  /* 변동 색상 — 시장별 분기 필수 */
+  --color-up-local: #C0151D;   --color-down-local: #3364F0;   /* 한국(KRX) 기본 */
+  --color-up-intl:  #0E9E4B;   --color-down-intl:  #FF4B4B;   /* 국제 */
+  /* 선택 배경 */
+  --color-bg-selected: #E9EBF0;      /* 기간 탭 선택 */
+  --radius-tab-selected: 8px;        /* 구 16px */
+  --font-family: "Google Sans", sans-serif;
+}
+```
+
+*갱신일: 2026-06-25 · 베타 레이아웃(`/finance/beta`) · viewport 1280×900 · Playwright*

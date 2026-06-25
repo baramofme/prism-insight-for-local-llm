@@ -15,6 +15,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Item, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from "@/components/ui/item";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -1207,11 +1210,15 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           </div>
 
           {/* Period filter bar */}
-          <div className="flex items-center justify-center gap-0 px-4 py-2 overflow-x-auto scroll-hide">
+          <ToggleGroup
+            value={[period]}
+            onValueChange={(v: string[]) => { const next = v[0] as PeriodFilter; if (next) setPeriod(next); }}
+            className="flex items-center justify-center gap-0 px-4 py-2 overflow-x-auto scroll-hide"
+          >
             {(['1D', '5D', '1M', '6M', 'YTD', '1Y', '5Y', '최대'] as PeriodFilter[]).map(p => (
-              <button key={p} onClick={() => setPeriod(p)} className={`px-3 py-1.5 text-[12px] rounded-full transition-colors whitespace-nowrap flex-shrink-0 ${p === period ? 'bg-muted text-foreground font-medium' : 'text-muted-foreground hover:bg-muted'}`}>{p}</button>
+              <ToggleGroupItem key={p} value={p} className="px-3 py-1.5 text-[12px] rounded-full whitespace-nowrap flex-shrink-0 text-muted-foreground data-[pressed]:bg-muted data-[pressed]:text-foreground data-[pressed]:font-medium">{p}</ToggleGroupItem>
             ))}
-          </div>
+          </ToggleGroup>
 
           {/* Comparison data table */}
           {compareAssets.length > 0 && (
@@ -2065,14 +2072,15 @@ export function StockDetail({
           </div>
 
           {/* Period Tabs */}
-          <div className="flex items-center gap-0.5 py-2 overflow-x-auto scroll-hide">
+          <ToggleGroup
+            value={[chartPeriod]}
+            onValueChange={(v: string[]) => { const next = v[0]; if (next) setChartPeriod(next as typeof chartPeriod); }}
+            className="flex items-center gap-0.5 py-2 overflow-x-auto scroll-hide"
+          >
             {(["1D", "5D", "1M", "6M", "YTD", "1Y", "5Y", "최대"] as const).map(p => (
-              <button key={p} onClick={() => setChartPeriod(p)}
-                className={`px-3 py-1 text-[12px] rounded-full transition-colors whitespace-nowrap flex-shrink-0 ${p === chartPeriod ? "bg-muted text-foreground font-medium" : "text-muted-foreground hover:bg-muted"}`}>
-                {p}
-              </button>
+              <ToggleGroupItem key={p} value={p} className="px-3 py-1 text-[12px] rounded-full whitespace-nowrap flex-shrink-0 text-muted-foreground data-[pressed]:bg-muted data-[pressed]:text-foreground data-[pressed]:font-medium">{p}</ToggleGroupItem>
             ))}
-          </div>
+          </ToggleGroup>
 
           {/* Comparison Table */}
           <div className="py-2">
@@ -2114,24 +2122,20 @@ export function StockDetail({
             </table>
           </div>
 
+          <Tabs value={activeContentTab} onValueChange={(v) => setActiveContentTab(v as "개요" | "실적" | "금융" | "조사")} className="gap-0">
           {/* Content Tabs */}
-          <div className={`flex items-center gap-0 py-1 border-b border-border ${vp >= 1040 ? "gap-0" : ""}`}>
+          <TabsList variant="line" className="h-auto w-full justify-start gap-1 rounded-none border-b border-border p-0">
             {(["개요", "실적", "금융"] as const).map(tab => (
-              <button key={tab} onClick={() => setActiveContentTab(tab)}
-                className={`px-4 py-2.5 text-[14px] font-medium border-b-2 transition-colors whitespace-nowrap ${activeContentTab === tab ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}>
-                {tab}
-              </button>
+              <TabsTrigger key={tab} value={tab} className="flex-none rounded-none px-4 py-2.5 text-[14px] after:bg-primary">{tab}</TabsTrigger>
             ))}
             {vp >= BREAKPOINTS.TABLET && (
-              <button className={`px-4 py-2.5 text-[14px] font-medium border-b-2 transition-colors whitespace-nowrap ${activeContentTab === "조사" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}>
-                조사
-              </button>
+              <TabsTrigger value="조사" className="flex-none rounded-none px-4 py-2.5 text-[14px] after:bg-primary">조사</TabsTrigger>
             )}
-          </div>
+          </TabsList>
 
           {/* Content Area */}
           <div className="py-4 pb-8">
-            {activeContentTab === "개요" && (
+            <TabsContent value="개요">
               <div className="space-y-6">
                 {/* AI Insights Card */}
                 <div className="bg-muted/50 rounded-xl p-4 border border-border">
@@ -2219,23 +2223,19 @@ export function StockDetail({
                 {/* News Section */}
                 <div>
                   <h3 className="text-[15px] font-bold text-foreground mb-3">뉴스</h3>
-                  <div className="divide-y divide-border">
+                  <ItemGroup className="divide-y divide-border">
                     {newsItems.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3 hover:bg-muted transition-colors cursor-pointer last:border-b-0">
-                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 border border-border">
+                      <Item key={idx} className="cursor-pointer rounded-none px-3 hover:bg-muted">
+                        <ItemMedia variant="icon" className="border border-border bg-white">
                           <Newspaper className="w-4 h-4 text-muted-foreground" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[13px] text-foreground leading-snug line-clamp-2">{item.title}</p>
-                          <div className="flex items-center gap-1.5 mt-1">
-                            <span className="text-[11px] text-muted-foreground">{item.source}</span>
-                            <span className="text-[11px] text-muted-foreground/75">·</span>
-                            <span className="text-[11px] text-muted-foreground">{item.time}</span>
-                          </div>
-                        </div>
-                      </div>
+                        </ItemMedia>
+                        <ItemContent className="gap-1">
+                          <ItemTitle className="text-[13px] leading-snug line-clamp-2">{item.title}</ItemTitle>
+                          <ItemDescription className="text-[11px]">{item.source} · {item.time}</ItemDescription>
+                        </ItemContent>
+                      </Item>
                     ))}
-                  </div>
+                  </ItemGroup>
                 </div>
 
                 {/* Profile Section */}
@@ -2253,9 +2253,9 @@ export function StockDetail({
                   </div>
                 </div>
               </div>
-            )}
+            </TabsContent>
 
-            {activeContentTab === "실적" && (
+            <TabsContent value="실적">
               <div className="py-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-3">
                   <span className="text-[20px]">📊</span>
@@ -2279,9 +2279,9 @@ export function StockDetail({
                   ))}
                 </div>
               </div>
-            )}
+            </TabsContent>
 
-            {activeContentTab === "금융" && (
+            <TabsContent value="금융">
               <div className="py-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-3">
                   <span className="text-[20px]">🏦</span>
@@ -2304,8 +2304,9 @@ export function StockDetail({
                   ))}
                 </div>
               </div>
-            )}
+            </TabsContent>
           </div>
+          </Tabs>
         </div>
       </div>
 

@@ -538,3 +538,41 @@ const BREAKPOINTS = {
 
 *Document generated from Playwright investigation of Google Finance (000660:KRX)*
 *Date: 2026-06-22*
+
+---
+
+## 13. Update (2026-06-25) — Beta Layout Is Now Default
+
+> Live `www.google.com/finance/quote/000660:KRX` **redirects to `/finance/beta/quote/...`**. The beta layout is the default (classic/beta toggle still in header). Sections 1–12 (2026-06-22) are retained as the **classic-layout** reference. Verified deltas below (Playwright; viewports 700 / 1280 / 1500).
+
+### 13.1 What still holds (macro responsive behavior)
+- **WIDE (≥1371px)**: main content still centers at **x≈344** (matches §5.3), left sidebar expanded (~232–286px). ✓
+- 4-breakpoint model (MOBILE/TABLET/DESKTOP/WIDE) and the "sidebar expands at 760 / right panel at 936 / content centers at 1371" pattern remains broadly valid.
+
+### 13.2 What changed in beta
+| Item | Classic (§1–12) | Beta (live 2026-06-25) |
+|------|-----------------|------------------------|
+| **MOBILE sidebar** | 69px icon-only rail; content x=80 | **Fully hidden**; content **x=16** (full-width, 16px padding) |
+| **MOBILE top tabs (조사)** | Visible | Not shown as before |
+| **Header** | 80px, border-bottom 1px #e8eaed | 80px, **position: fixed, no border-bottom** |
+| **Vertical rhythm** | name y=188, period y=560, tabs y=600 | **More compact**: name y≈128, period y≈500, tabs y≈554 |
+| **Semantic landmarks** | (implied) | No `<header>/<nav>/<main>/<footer>` — all divs |
+| **ref (eNN) IDs** | listed | **Volatile — do not rely on them** |
+
+### 13.3 Color reference correction (§9.3)
+KRX live default uses **local-market (Korea) colors**, not the international palette:
+
+| | Live beta (KRX local default) | §9.3 old value |
+|--|------------------------------|----------------|
+| **Positive (up)** | **#C0151D** rgb(192,21,29) — RED | Green #0D652D ❌ |
+| **Negative (down)** | **#3364F0** rgb(51,100,240) — BLUE | Red #C5221F ❌ |
+| Text primary | **#0a0a0a** | #202124 |
+| Text secondary | **#444746** | #5F6368 |
+| Tab indicator (selected period) | bg **#E9EBF0**, radius **8px** | — |
+
+→ Implementation must branch the up/down colors by **price-color system (local vs international)**; do not hardcode green-up/red-down for KRX.
+
+### 13.4 Period tabs
+`1D 5D 1M 6M YTD 1Y 5Y 최대` — 8 tabs, unchanged. ✓
+
+*Update date: 2026-06-25 · Beta layout (`/finance/beta`) · Playwright (700/1280/1500)*

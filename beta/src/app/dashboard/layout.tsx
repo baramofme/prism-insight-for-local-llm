@@ -3,12 +3,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard, Search, Briefcase, Settings, TrendingUp, Menu, X,
-  ArrowUp, ArrowDown, Plus, ListTree
+  LayoutDashboard,
+  Search,
+  Briefcase,
+  Settings,
+  TrendingUp,
+  ArrowUp,
+  ArrowDown,
+  Plus,
 } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -31,139 +52,108 @@ const watchlistItems = [
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const isGoogleFinance = pathname === "/dashboard";
-
-  if (isGoogleFinance) {
+  // The Google Finance clone (/dashboard) renders its own full-page shell.
+  if (pathname === "/dashboard") {
     return <>{children}</>;
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Mobile overlay */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-40 bg-black/50 lg:hidden" onClick={() => setSidebarOpen(false)} />
-      )}
-
-      {/* Sidebar */}
-      <aside className={cn(
-        "fixed inset-y-0 left-0 z-50 w-64 bg-card border-r border-border transform transition-transform duration-200 lg:relative lg:translate-x-0",
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      )}>
-        <div className="flex flex-col h-full p-4">
-          {/* Logo */}
-          <div className="flex items-center justify-between mb-8 px-2">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-primary" />
-              <span className="font-bold text-lg">PRISM</span>
-            </div>
-            <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(false)}>
-              <X className="h-5 w-5" />
-            </Button>
+    <SidebarProvider>
+      <Sidebar collapsible="icon">
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2 py-1.5">
+            <TrendingUp className="h-6 w-6 shrink-0 text-primary" />
+            <span className="text-lg font-bold group-data-[collapsible=icon]:hidden">
+              PRISM
+            </span>
           </div>
+        </SidebarHeader>
 
-          {/* Nav */}
-          <nav className="space-y-1">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const active = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setSidebarOpen(false)}
-                  className={cn(
-                    "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                    active
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <SidebarMenuItem key={item.href}>
+                      <SidebarMenuButton
+                        render={<Link href={item.href} />}
+                        isActive={pathname === item.href}
+                        tooltip={item.label}
+                      >
+                        <Icon />
+                        <span>{item.label}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
 
-          {/* Lists Section */}
-          <div className="mt-6 mb-2">
-            <div className="flex items-center justify-between px-1 mb-2">
-              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                <ListTree className="h-3 w-3" />
-                Lists
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-6 w-6 text-muted-foreground hover:text-foreground"
-              >
-                <Plus className="h-3.5 w-3.5" />
-              </Button>
-            </div>
-            <ScrollArea className="h-[280px] pr-1">
-              <div className="space-y-0.5">
+          <SidebarGroup>
+            <SidebarGroupLabel>Lists</SidebarGroupLabel>
+            <SidebarGroupAction title="목록 추가">
+              <Plus /> <span className="sr-only">목록 추가</span>
+            </SidebarGroupAction>
+            <SidebarGroupContent>
+              <SidebarMenu>
                 {watchlistItems.map((item) => (
-                  <button
-                    key={item.name}
-                    className={cn(
-                      "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors",
-                      "text-foreground hover:bg-accent"
-                    )}
-                    onClick={() => setSidebarOpen(false)}
-                    aria-label={`${item.name} 종목 보기`}
-                  >
-                    <span className="font-medium truncate">{item.name}</span>
-                    <div className={cn(
-                      "flex items-center gap-1 text-xs font-semibold tabular-nums",
-                      item.change >= 0 ? "text-green-500" : "text-red-500"
-                    )}>
-                      {item.change >= 0 ? (
-                        <ArrowUp className="h-3 w-3" />
-                      ) : (
-                        <ArrowDown className="h-3 w-3" />
-                      )}
-                      <span>{item.change >= 0 ? "+" : ""}{item.change}%</span>
-                    </div>
-                  </button>
+                  <SidebarMenuItem key={item.name}>
+                    <SidebarMenuButton tooltip={item.name}>
+                      <span className="truncate">{item.name}</span>
+                      <span
+                        className={cn(
+                          "ml-auto flex items-center gap-0.5 text-xs font-semibold tabular-nums",
+                          item.change >= 0 ? "text-green-500" : "text-red-500",
+                        )}
+                      >
+                        {item.change >= 0 ? (
+                          <ArrowUp className="h-3 w-3" />
+                        ) : (
+                          <ArrowDown className="h-3 w-3" />
+                        )}
+                        {item.change >= 0 ? "+" : ""}
+                        {item.change}%
+                      </span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
                 ))}
-              </div>
-            </ScrollArea>
-          </div>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
 
-          {/* User info placeholder */}
-          <div className="border-t border-border pt-4 mt-4">
-            <div className="flex items-center gap-3 px-2">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-medium">
-                U
-              </div>
-              <div className="text-sm">
-                <div className="font-medium">사용자</div>
-                <div className="text-xs text-muted-foreground">Free Plan</div>
-              </div>
+        <SidebarFooter>
+          <div className="flex items-center gap-2 px-2 py-1.5">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-medium">
+              U
+            </div>
+            <div className="text-sm group-data-[collapsible=icon]:hidden">
+              <div className="font-medium">사용자</div>
+              <div className="text-xs text-muted-foreground">Free Plan</div>
             </div>
           </div>
-        </div>
-      </aside>
+        </SidebarFooter>
 
-      {/* Main */}
-      <main className="flex-1 overflow-y-auto">
-        {/* Top bar (mobile) */}
-        <div className="lg:hidden flex items-center gap-3 p-4 border-b border-border bg-card">
-          <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(true)}>
-            <Menu className="h-5 w-5" />
-          </Button>
+        <SidebarRail />
+      </Sidebar>
+
+      <SidebarInset>
+        <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
+          <SidebarTrigger className="-ml-1" />
+          <Separator orientation="vertical" className="mr-2 h-4" />
           <div className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5 text-primary" />
             <span className="font-bold">PRISM</span>
           </div>
+        </header>
+        <div className="p-4 md:p-6 lg:p-8">
+          <div className="mx-auto max-w-7xl">{children}</div>
         </div>
-
-        <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
-          {children}
-        </div>
-      </main>
-    </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
