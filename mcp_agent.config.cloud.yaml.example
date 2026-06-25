@@ -1,0 +1,15 @@
+# ── Cloud LLM Configuration (OpenAI API) ──────────────────────────────────
+# Copy to mcp_agent.config.cloud.yaml and customize.
+#
+# This is a reference file. The router (cores/router.py) overrides the
+# base config's openai section programmatically for cloud routing, so
+# this file is only needed if you use a separate MCPApp(config_path=...)
+# directly (the guide's dual-config approach).
+#
+# Default cloud model: gpt-5.4-mini (reasoning_effort: none for speed)
+# API key is injected from mcp_agent.secrets.yaml by the router.
+
+openai:
+  base_url: "https://api.openai.com/v1"
+  default_model: "gpt-5.4-mini"
+  reasoning_effort: none

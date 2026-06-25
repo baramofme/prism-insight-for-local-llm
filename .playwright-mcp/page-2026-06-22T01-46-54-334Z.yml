@@ -1,0 +1,664 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Google Finance 베타 베타" [ref=e4] [cursor=pointer]:
+      - /url: ./
+      - generic [ref=e5]:
+        - img [ref=e6]
+        - heading "Google Finance 베타" [level=1] [ref=e8]: Finance
+        - generic [ref=e9]: 베타
+    - search [ref=e10]:
+      - generic [ref=e11]:
+        - group [ref=e12]:
+          - heading "인기 질문" [level=3] [ref=e13]
+          - group "인기 질문" [ref=e14]:
+            - button "오늘 시장 현황이 어떤가요?" [ref=e15] [cursor=pointer]:
+              - generic [ref=e16]: prompt_suggestion
+              - generic [ref=e17]: 오늘 시장 현황이 어떤가요?
+            - button "S&P 500과 다우존스 산업평균지수 비교" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: prompt_suggestion
+              - generic [ref=e20]: S&P 500과 다우존스 산업평균지수 비교
+        - button "주식, ETF 등을 검색하세요" [ref=e21]:
+          - generic [ref=e23]:
+            - generic [ref=e25]: search_spark
+            - generic [ref=e26]:
+              - generic [ref=e27]: 주
+              - generic [ref=e28]: 식
+              - generic [ref=e29]: ","
+              - generic [ref=e31]: E
+              - generic [ref=e32]: T
+              - generic [ref=e33]: F
+              - generic [ref=e35]: 등
+              - generic [ref=e36]: 을
+              - generic [ref=e38]: 검
+              - generic [ref=e39]: 색
+              - generic [ref=e40]: 하
+              - generic [ref=e41]: 세
+              - generic [ref=e42]: 요
+    - generic [ref=e43]:
+      - radiogroup "기존 Google Finance로 돌아가기" [ref=e44]:
+        - generic [ref=e45]:
+          - radio "기존" [ref=e46] [cursor=pointer]:
+            - generic [ref=e47]:
+              - generic [ref=e49]: 기존
+              - img [ref=e51]
+          - radio "베타" [checked] [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]:
+              - generic [ref=e57]: 베타
+              - img [ref=e59]
+      - generic [ref=e66]:
+        - button "설정" [ref=e67] [cursor=pointer]:
+          - generic [ref=e69]: settings
+        - tooltip [ref=e71]: 설정
+      - generic [ref=e72]:
+        - generic [ref=e73] [cursor=pointer]:
+          - generic [ref=e75]: feedback
+          - generic "의견 보내기" [ref=e76]
+        - tooltip [ref=e77]: 의견 보내기
+      - 'button "Google 계정: JIHOON YI (baram204@gmail.com)" [ref=e85] [cursor=pointer]':
+        - img [ref=e87]
+  - generic:
+    - generic:
+      - region "목록":
+        - generic [ref=e89]:
+          - generic [ref=e91]:
+            - generic [ref=e92]:
+              - heading "목록" [level=2] [ref=e93]
+              - generic [ref=e97]:
+                - button "목록 선택" [ref=e98] [cursor=pointer]:
+                  - generic [ref=e100]: arrow_drop_down
+                - tooltip [ref=e102]: 목록 선택
+            - generic [ref=e103]:
+              - button "새 목록" [ref=e104] [cursor=pointer]:
+                - generic [ref=e106]: playlist_add
+              - tooltip [ref=e108]: 새 목록
+            - generic [ref=e109]:
+              - button "펼치기 목록" [ref=e110] [cursor=pointer]:
+                - generic [ref=e112]: expand_content
+              - tooltip [ref=e114]: 펼치기
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e119]: 포트폴리오
+                - generic [ref=e120]:
+                  - button "포트폴리오 섹션 접기" [ref=e121] [cursor=pointer]:
+                    - generic [ref=e123]: keyboard_arrow_up
+                  - tooltip [ref=e125]: 접기
+              - button "투자중" [ref=e126] [cursor=pointer]:
+                - generic [ref=e127]: 투자중
+                - generic [ref=e128]:
+                  - generic [ref=e130]: $15,789,200.00
+                  - generic [ref=e131]:
+                    - generic [ref=e132]: +201,400.00
+                    - text: (
+                    - generic [ref=e133]: +1.29%
+                    - text: )
+            - generic [ref=e134]:
+              - generic [ref=e135]:
+                - generic [ref=e138]: 관심 목록
+                - button "info" [ref=e141] [cursor=pointer]:
+                  - generic [ref=e143]: info
+                - generic [ref=e147]:
+                  - button "관심 목록 목록 옵션" [ref=e148] [cursor=pointer]:
+                    - generic [ref=e150]: edit
+                  - tooltip [ref=e152]: 옵션
+                - generic [ref=e153]:
+                  - button "관심 목록 목록에 종목 코드 추가" [ref=e154] [cursor=pointer]:
+                    - generic [ref=e156]: add
+                  - tooltip [ref=e158]: 종목 코드 추가
+                - generic [ref=e159]:
+                  - button "관심 목록 목록 접기" [ref=e160] [cursor=pointer]:
+                    - generic [ref=e162]: keyboard_arrow_up
+                  - tooltip [ref=e164]: 접기
+              - table "관심 목록" [ref=e167]:
+                - rowgroup
+                - rowgroup [ref=e168]:
+                  - row "329180 HD현대중공업 HD현대중공업 — ₩636,000.00 -4.65%" [ref=e169]:
+                    - cell "329180 HD현대중공업 HD현대중공업" [ref=e170] [cursor=pointer]:
+                      - generic [ref=e172]:
+                        - generic [ref=e173]: "329180"
+                        - generic [ref=e174]: HD현대중공업
+                      - link "HD현대중공업" [ref=e177]:
+                        - /url: ./quote/329180:KRX
+                    - cell "—" [ref=e178] [cursor=pointer]
+                    - cell "₩636,000.00 -4.65%" [ref=e179] [cursor=pointer]:
+                      - generic [ref=e180]:
+                        - generic [ref=e182]: ₩636,000.00
+                        - generic [ref=e183]:
+                          - generic [ref=e184]: "-4.65%"
+                          - generic [ref=e186]: arrow_downward
+            - generic [ref=e189]:
+              - generic [ref=e190]:
+                - generic [ref=e193]: 주식 업종
+                - generic [ref=e194]:
+                  - button "주식 업종 목록 접기" [ref=e195] [cursor=pointer]:
+                    - generic [ref=e197]: keyboard_arrow_up
+                  - tooltip [ref=e199]: 접기
+              - table "주식 업종" [ref=e202]:
+                - rowgroup
+                - rowgroup [ref=e203]:
+                  - row "SIXB Materials Materials — 1,097.08 -0.45%" [ref=e204]:
+                    - cell "SIXB Materials Materials" [ref=e205] [cursor=pointer]:
+                      - generic [ref=e207]:
+                        - generic [ref=e208]: SIXB
+                        - generic [ref=e209]: Materials
+                      - link "Materials" [ref=e212]:
+                        - /url: ./quote/SIXB:INDEXCBOE
+                    - cell "—" [ref=e213] [cursor=pointer]
+                    - cell "1,097.08 -0.45%" [ref=e214] [cursor=pointer]:
+                      - generic [ref=e215]:
+                        - generic [ref=e217]: 1,097.08
+                        - generic [ref=e218]:
+                          - generic [ref=e219]: "-0.45%"
+                          - generic [ref=e221]: arrow_downward
+                  - row "SIXC Communications Communications — 571.79 +0.27%" [ref=e222]:
+                    - cell "SIXC Communications Communications" [ref=e223] [cursor=pointer]:
+                      - generic [ref=e225]:
+                        - generic [ref=e226]: SIXC
+                        - generic [ref=e227]: Communications
+                      - link "Communications" [ref=e230]:
+                        - /url: ./quote/SIXC:INDEXCBOE
+                    - cell "—" [ref=e231] [cursor=pointer]
+                    - cell "571.79 +0.27%" [ref=e232] [cursor=pointer]:
+                      - generic [ref=e233]:
+                        - generic [ref=e235]: "571.79"
+                        - generic [ref=e236]:
+                          - generic [ref=e237]: +0.27%
+                          - generic [ref=e239]: arrow_upward
+                  - row "SIXE Energy Energy — 1,124.31 -1.69%" [ref=e240]:
+                    - cell "SIXE Energy Energy" [ref=e241] [cursor=pointer]:
+                      - generic [ref=e243]:
+                        - generic [ref=e244]: SIXE
+                        - generic [ref=e245]: Energy
+                      - link "Energy" [ref=e248]:
+                        - /url: ./quote/SIXE:INDEXCBOE
+                    - cell "—" [ref=e249] [cursor=pointer]
+                    - cell "1,124.31 -1.69%" [ref=e250] [cursor=pointer]:
+                      - generic [ref=e251]:
+                        - generic [ref=e253]: 1,124.31
+                        - generic [ref=e254]:
+                          - generic [ref=e255]: "-1.69%"
+                          - generic [ref=e257]: arrow_downward
+                  - row "SIXI Industrials Industrials — 1,820.63 +0.72%" [ref=e258]:
+                    - cell "SIXI Industrials Industrials" [ref=e259] [cursor=pointer]:
+                      - generic [ref=e261]:
+                        - generic [ref=e262]: SIXI
+                        - generic [ref=e263]: Industrials
+                      - link "Industrials" [ref=e266]:
+                        - /url: ./quote/SIXI:INDEXCBOE
+                    - cell "—" [ref=e267] [cursor=pointer]
+                    - cell "1,820.63 +0.72%" [ref=e268] [cursor=pointer]:
+                      - generic [ref=e269]:
+                        - generic [ref=e271]: 1,820.63
+                        - generic [ref=e272]:
+                          - generic [ref=e273]: +0.72%
+                          - generic [ref=e275]: arrow_upward
+                  - row "SIXM Financials Financials — 658.84 -0.91%" [ref=e276]:
+                    - cell "SIXM Financials Financials" [ref=e277] [cursor=pointer]:
+                      - generic [ref=e279]:
+                        - generic [ref=e280]: SIXM
+                        - generic [ref=e281]: Financials
+                      - link "Financials" [ref=e284]:
+                        - /url: ./quote/SIXM:INDEXCBOE
+                    - cell "—" [ref=e285] [cursor=pointer]
+                    - cell "658.84 -0.91%" [ref=e286] [cursor=pointer]:
+                      - generic [ref=e287]:
+                        - generic [ref=e289]: "658.84"
+                        - generic [ref=e290]:
+                          - generic [ref=e291]: "-0.91%"
+                          - generic [ref=e293]: arrow_downward
+                  - row "SIXR Staples Staples — 837.82 -0.49%" [ref=e294]:
+                    - cell "SIXR Staples Staples" [ref=e295] [cursor=pointer]:
+                      - generic [ref=e297]:
+                        - generic [ref=e298]: SIXR
+                        - generic [ref=e299]: Staples
+                      - link "Staples" [ref=e302]:
+                        - /url: ./quote/SIXR:INDEXCBOE
+                    - cell "—" [ref=e303] [cursor=pointer]
+                    - cell "837.82 -0.49%" [ref=e304] [cursor=pointer]:
+                      - generic [ref=e305]:
+                        - generic [ref=e307]: "837.82"
+                        - generic [ref=e308]:
+                          - generic [ref=e309]: "-0.49%"
+                          - generic [ref=e311]: arrow_downward
+                  - row "SIXRE Real estate Real estate — 214.08 -0.29%" [ref=e312]:
+                    - cell "SIXRE Real estate Real estate" [ref=e313] [cursor=pointer]:
+                      - generic [ref=e315]:
+                        - generic [ref=e316]: SIXRE
+                        - generic [ref=e317]: Real estate
+                      - link "Real estate" [ref=e320]:
+                        - /url: ./quote/SIXRE:INDEXCBOE
+                    - cell "—" [ref=e321] [cursor=pointer]
+                    - cell "214.08 -0.29%" [ref=e322] [cursor=pointer]:
+                      - generic [ref=e323]:
+                        - generic [ref=e325]: "214.08"
+                        - generic [ref=e326]:
+                          - generic [ref=e327]: "-0.29%"
+                          - generic [ref=e329]: arrow_downward
+                  - row "SIXT Technology Technology — 3,853.63 +3.08%" [ref=e330]:
+                    - cell "SIXT Technology Technology" [ref=e331] [cursor=pointer]:
+                      - generic [ref=e333]:
+                        - generic [ref=e334]: SIXT
+                        - generic [ref=e335]: Technology
+                      - link "Technology" [ref=e338]:
+                        - /url: ./quote/SIXT:INDEXCBOE
+                    - cell "—" [ref=e339] [cursor=pointer]
+                    - cell "3,853.63 +3.08%" [ref=e340] [cursor=pointer]:
+                      - generic [ref=e341]:
+                        - generic [ref=e343]: 3,853.63
+                        - generic [ref=e344]:
+                          - generic [ref=e345]: +3.08%
+                          - generic [ref=e347]: arrow_upward
+                  - row "SIXU Utilities Utilities — 901.60 +0.66%" [ref=e348]:
+                    - cell "SIXU Utilities Utilities" [ref=e349] [cursor=pointer]:
+                      - generic [ref=e351]:
+                        - generic [ref=e352]: SIXU
+                        - generic [ref=e353]: Utilities
+                      - link "Utilities" [ref=e356]:
+                        - /url: ./quote/SIXU:INDEXCBOE
+                    - cell "—" [ref=e357] [cursor=pointer]
+                    - cell "901.60 +0.66%" [ref=e358] [cursor=pointer]:
+                      - generic [ref=e359]:
+                        - generic [ref=e361]: "901.60"
+                        - generic [ref=e362]:
+                          - generic [ref=e363]: +0.66%
+                          - generic [ref=e365]: arrow_upward
+                  - row "SIXV Health care Health care — 1,505.60 -0.85%" [ref=e366]:
+                    - cell "SIXV Health care Health care" [ref=e367] [cursor=pointer]:
+                      - generic [ref=e369]:
+                        - generic [ref=e370]: SIXV
+                        - generic [ref=e371]: Health care
+                      - link "Health care" [ref=e374]:
+                        - /url: ./quote/SIXV:INDEXCBOE
+                    - cell "—" [ref=e375] [cursor=pointer]
+                    - cell "1,505.60 -0.85%" [ref=e376] [cursor=pointer]:
+                      - generic [ref=e377]:
+                        - generic [ref=e379]: 1,505.60
+                        - generic [ref=e380]:
+                          - generic [ref=e381]: "-0.85%"
+                          - generic [ref=e383]: arrow_downward
+                  - row "SIXY Discretionary Discretionary — 2,365.50 +1.51%" [ref=e384]:
+                    - cell "SIXY Discretionary Discretionary" [ref=e385] [cursor=pointer]:
+                      - generic [ref=e387]:
+                        - generic [ref=e388]: SIXY
+                        - generic [ref=e389]: Discretionary
+                      - link "Discretionary" [ref=e392]:
+                        - /url: ./quote/SIXY:INDEXCBOE
+                    - cell "—" [ref=e393] [cursor=pointer]
+                    - cell "2,365.50 +1.51%" [ref=e394] [cursor=pointer]:
+                      - generic [ref=e395]:
+                        - generic [ref=e397]: 2,365.50
+                        - generic [ref=e398]:
+                          - generic [ref=e399]: +1.51%
+                          - generic [ref=e401]: arrow_upward
+  - generic [ref=e411]:
+    - generic [ref=e413]:
+      - link "홈" [ref=e414] [cursor=pointer]:
+        - /url: ./
+        - generic [ref=e415]: arrow_back
+        - generic [ref=e416]: 홈
+      - generic [ref=e417]: "|"
+      - generic "000660:KRX" [ref=e418]
+    - generic [ref=e421]:
+      - button "목록에 추가" [disabled]:
+        - generic:
+          - generic: check_indeterminate_small
+        - generic: 목록에 추가
+        - generic:
+          - img
+    - generic [ref=e425]:
+      - generic [ref=e427]:
+        - generic [ref=e429]: SK하이닉스
+        - generic [ref=e431]:
+          - generic [ref=e432]:
+            - generic [ref=e434]: ₩2,939,000.00
+            - generic [ref=e435]:
+              - generic [ref=e437]: arrow_upward
+              - generic [ref=e438]: +6.33%
+              - generic [ref=e441]:
+                - text: (
+                - generic [ref=e442]: +175,000.00
+                - text: ) 오늘
+          - generic [ref=e443]: 6월 22일, 오전 10시 24분 58초 UTC+9 · KRW
+      - generic [ref=e444]:
+        - generic [ref=e446]:
+          - button "차트 유형 선택 - 영역 선택됨" [ref=e450] [cursor=pointer]:
+            - generic [ref=e453]: area_chart
+            - generic [ref=e454]: 영역
+            - img [ref=e456]
+          - button "금융 기관과 비교" [ref=e463] [cursor=pointer]:
+            - generic [ref=e466]: stacked_line_chart
+            - generic [ref=e467]: 비교
+            - img [ref=e469]
+          - button "기술 지표 선택" [ref=e475] [cursor=pointer]:
+            - generic [ref=e478]: monitoring
+            - generic [ref=e479]: 지표
+            - img [ref=e481]
+        - generic [ref=e486]:
+          - img [ref=e487]:
+            - generic [ref=e488]:
+              - generic [ref=e490]:
+                - generic [ref=e492]: 2,700,000
+                - generic [ref=e494]: 2,750,000
+                - generic [ref=e496]: 2,800,000
+                - generic [ref=e498]: 2,850,000
+                - generic [ref=e500]: 2,900,000
+                - generic [ref=e502]: 2,950,000
+              - generic [ref=e504]:
+                - generic [ref=e507]: 오전 10:00
+                - generic [ref=e509]: 오후 12:00
+                - generic [ref=e511]: 오후 2:00
+          - generic [ref=e695]: 전일 종가 ₩2,764,000.00
+        - tablist "주식 차트 탭" [ref=e702]:
+          - tab "1D" [selected] [ref=e703] [cursor=pointer]
+          - tab "5D" [ref=e704] [cursor=pointer]
+          - tab "1M" [ref=e705] [cursor=pointer]
+          - tab "6M" [ref=e706] [cursor=pointer]
+          - tab "YTD" [ref=e707] [cursor=pointer]
+          - tab "1Y" [ref=e708] [cursor=pointer]
+          - tab "5Y" [ref=e709] [cursor=pointer]
+          - tab "최대" [ref=e710] [cursor=pointer]
+    - generic [ref=e713]:
+      - tablist [ref=e714]:
+        - generic [ref=e718]:
+          - tab "개요" [selected] [ref=e719] [cursor=pointer]:
+            - generic:
+              - generic: 개요
+          - tab "실적" [ref=e720] [cursor=pointer]:
+            - generic:
+              - generic: 실적
+          - tab "금융" [ref=e721] [cursor=pointer]:
+            - generic:
+              - generic: 금융
+      - tabpanel "개요" [ref=e722]:
+        - generic [ref=e724]:
+          - generic [ref=e728]:
+            - generic [ref=e729]:
+              - generic [ref=e730]:
+                - generic [ref=e732]: insights_auto
+                - generic [ref=e735]: SK Hynix는 AI 메모리 슈퍼사이클에 힘입어 지난 한 달간 강세를 보였습니다. 기록적인 영업이익률과 HBM 시장 내 독보적 지배력이 주요 동인입니다. 시장 컨센서스에 따르면 AI 인프라 수요 지속과 제품 판가 상승으로 인해 다음 분기에도 실적 성장세가 이어질 것으로 분석가들은 전망하고 있습니다.
+              - button "접기" [ref=e737] [cursor=pointer]:
+                - generic [ref=e739]: keyboard_arrow_down
+            - generic [ref=e742]: SK Hynix는 AI 메모리 슈퍼사이클에 힘입어 지난 한 달간 강세를 보였습니다. 기록적인 영업이익률과 HBM 시장 내 독보적 지배력이 주요 동인입니다. 시장 컨센서스에 따르면 AI 인프라 수요 지속과 제품 판가 상승으로 인해 다음 분기에도 실적 성장세가 이어질 것으로 분석가들은 전망하고 있습니다.
+            - generic [ref=e743]:
+              - generic [ref=e744]:
+                - generic [ref=e745]:
+                  - generic [ref=e747]: trending_up
+                  - text: 상승세 전망
+                - list [ref=e749]:
+                  - listitem [ref=e750]:
+                    - generic [ref=e751]:
+                      - generic "AI로 더 자세히 알아보기" [ref=e753] [cursor=pointer]: "기록적인 수익성 및 실적 성장:"
+                      - text: 2026년 1분기 매출 52.6조 원, 영업이익 37.6조 원으로 분기 기준 역대 최대 실적을 기록했습니다. 특히 영업이익률이 약 72%에 달하며 하드웨어 제조 업계에서 이례적인 수익성을 증명했으며, 2분기 영업이익 역시 약 62.7조 원 수준으로 증가할 것이라는 분석이 우세합니다.
+                  - listitem [ref=e754]:
+                    - generic [ref=e755]:
+                      - generic "AI로 더 자세히 알아보기" [ref=e757] [cursor=pointer]: "HBM 시장 내 지배적 위치 공고화:"
+                      - text: 글로벌 HBM 시장 점유율 약 58%를 차지하며 업계 1위를 유지하고 있습니다. 엔비디아의 차세대 플랫폼용 HBM4E 샘플 공급을 시작했으며, UBS 등 주요 기관은 2026년 차세대 HBM 시장에서도 약 70%의 높은 점유율을 기록할 것으로 관측하고 있습니다.
+                  - listitem [ref=e758]:
+                    - generic [ref=e759]:
+                      - generic "AI로 더 자세히 알아보기" [ref=e761] [cursor=pointer]: "미국 상장 및 주주 환원 기대감:"
+                      - text: 2026년 하반기 미국 증시 상장을 추진 중이며, 이를 통해 약 140억 달러 규모의 자금 조달과 기업 가치 재평가를 목표로 하고 있습니다. 상장 추진과 함께 유통 주식의 약 2% 규모인 자사주 매입 계획이 거론되며 강력한 주주 환원 의지를 보이고 있습니다.
+              - generic [ref=e762]:
+                - generic [ref=e763]:
+                  - generic [ref=e765]: trending_down
+                  - text: 하락세 전망
+                - list [ref=e767]:
+                  - listitem [ref=e768]:
+                    - generic [ref=e769]:
+                      - generic "AI로 더 자세히 알아보기" [ref=e771] [cursor=pointer]: "공급 확대에 따른 경쟁 심화 우려:"
+                      - text: 삼성전자와 마이크론 등 경쟁사들이 HBM4E 개발 및 증설을 가속화함에 따라 2026년 이후 가격 조정 국면에 진입할 수 있다는 신중론이 존재합니다. 특히 경쟁사의 기술 격차 축소와 생산 능력 확대는 장기적인 마진 압박 요인으로 작용할 수 있다는 전망이 나옵니다.
+                  - listitem [ref=e772]:
+                    - generic [ref=e773]:
+                      - generic "AI로 더 자세히 알아보기" [ref=e775] [cursor=pointer]: "지정학적 리스크 및 무역 규제:"
+                      - text: 글로벌 무역 정책의 변화와 반도체 수출 통제 강화는 글로벌 시장 접근성 및 가격 결정력에 지속적인 불확실성으로 작용하고 있습니다. 주요 지역의 자국 반도체 육성 정책 역시 공급망 관리와 비용 구조에 부담을 줄 수 있는 핵심 리스크로 꼽힙니다.
+          - generic [ref=e780]:
+            - generic [ref=e781]:
+              - generic [ref=e782]:
+                - generic [ref=e783]: 시가
+                - generic [ref=e784]: ₩2,728,000
+              - generic [ref=e785]:
+                - generic [ref=e786]: 고가
+                - generic [ref=e787]: ₩2,930,000
+              - generic [ref=e788]:
+                - generic [ref=e789]: 저가
+                - generic [ref=e790]: ₩2,728,000
+              - generic [ref=e791]:
+                - generic [ref=e792]: 시가총액
+                - generic [ref=e793]: 2,088.22조
+              - generic [ref=e794]:
+                - generic [ref=e795]: 평균 거래량
+                - generic [ref=e796]: 562.73만
+            - generic [ref=e797]:
+              - generic [ref=e798]:
+                - generic [ref=e799]: 거래량
+                - generic [ref=e800]: 175.82만
+              - generic [ref=e801]:
+                - generic [ref=e802]: 배당금
+                - generic [ref=e803]: 0.10%
+              - generic [ref=e804]:
+                - generic [ref=e805]: 분기 배당금
+                - generic [ref=e806]: ₩752
+              - generic [ref=e807]:
+                - generic [ref=e808]: 배당락일
+                - generic [ref=e809]: 2026. 5. 28.
+              - generic [ref=e810]:
+                - generic [ref=e811]: 주가수익률
+                - generic [ref=e812]: "27.74"
+            - generic [ref=e813]:
+              - generic [ref=e814]:
+                - generic [ref=e815]: 52주 최고가
+                - generic [ref=e816]: ₩2,930,000
+              - generic [ref=e817]:
+                - generic [ref=e818]: 52주 최저가
+                - generic [ref=e819]: ₩245,000
+              - generic [ref=e820]:
+                - generic [ref=e821]: EPS
+                - generic [ref=e822]: ₩105,627
+              - generic [ref=e823]:
+                - generic [ref=e824]: 유통 주식수
+                - generic [ref=e825]: 7.13억
+              - generic [ref=e826]:
+                - generic [ref=e827]: 직원 수
+                - generic [ref=e828]: 3만
+          - generic [ref=e830]:
+            - generic [ref=e831]: 관련 주식
+            - generic [ref=e832]:
+              - link "005930 삼성전자 ₩361,750.00 +2.19%" [ref=e834] [cursor=pointer]:
+                - /url: ./quote/005930:KRX
+                - generic [ref=e835]:
+                  - generic [ref=e836]:
+                    - generic [ref=e837]: "005930"
+                    - generic [ref=e839]: 삼성전자
+                    - generic [ref=e840]: ₩361,750.00
+                  - generic [ref=e841]:
+                    - generic [ref=e843]: +2.19%
+                    - generic [ref=e845]: arrow_upward
+              - link "015760 한국전력 ₩38,050.00 +0.40%" [ref=e849] [cursor=pointer]:
+                - /url: ./quote/015760:KRX
+                - generic [ref=e850]:
+                  - generic [ref=e851]:
+                    - generic [ref=e852]: "015760"
+                    - generic [ref=e854]: 한국전력
+                    - generic [ref=e855]: ₩38,050.00
+                  - generic [ref=e856]:
+                    - generic [ref=e858]: +0.40%
+                    - generic [ref=e860]: arrow_upward
+              - link "042700 한미반도체 ₩300,000.00 +1.69%" [ref=e864] [cursor=pointer]:
+                - /url: ./quote/042700:KRX
+                - generic [ref=e865]:
+                  - generic [ref=e866]:
+                    - generic [ref=e867]: "042700"
+                    - generic [ref=e869]: 한미반도체
+                    - generic [ref=e870]: ₩300,000.00
+                  - generic [ref=e871]:
+                    - generic [ref=e873]: +1.69%
+                    - generic [ref=e875]: arrow_upward
+              - link "285A 키오시아 ¥111,150.00 +2.35%" [ref=e879] [cursor=pointer]:
+                - /url: ./quote/285A:TYO
+                - generic [ref=e880]:
+                  - generic [ref=e881]:
+                    - generic [ref=e882]: 285A
+                    - generic [ref=e884]: 키오시아
+                    - generic [ref=e885]: ¥111,150.00
+                  - generic [ref=e886]:
+                    - generic [ref=e888]: +2.35%
+                    - generic [ref=e890]: arrow_upward
+          - generic [ref=e894]:
+            - generic [ref=e895]: 뉴스 기사
+            - generic [ref=e896]: 웹 소스 기반
+            - generic [ref=e897]:
+              - generic [ref=e898]:
+                - generic [ref=e899]:
+                  - generic [ref=e900]:
+                    - generic [ref=e901]:
+                      - img "매일경제" [ref=e903]
+                      - generic [ref=e904]: 매일경제
+                      - generic [ref=e905]: ·
+                      - generic [ref=e906]: 11분 전
+                    - link "ADR 승인 앞둔 SK하이닉스 쓸어담아 [주식 초고수는 지금]" [ref=e907] [cursor=pointer]:
+                      - /url: https://www.mk.co.kr/news/stock/12079669
+                      - generic [ref=e908]: ADR 승인 앞둔 SK하이닉스 쓸어담아 [주식 초고수는 지금]
+                  - generic [ref=e909]:
+                    - generic [ref=e910]:
+                      - img "브릿지경제" [ref=e912]
+                      - generic [ref=e913]: 브릿지경제
+                      - generic [ref=e914]: ·
+                      - generic [ref=e915]: 28분 전
+                    - link "“AI 반도체 훈풍에 주주환원까지”…NH투자, SK스퀘어 목표가 270만원으로 상향" [ref=e916] [cursor=pointer]:
+                      - /url: https://www.viva100.com/article/20260622500245
+                      - generic [ref=e917]: “AI 반도체 훈풍에 주주환원까지”…NH투자, SK스퀘어 목표가 270만원으로 상향
+                - generic [ref=e918]:
+                  - generic [ref=e919]:
+                    - generic [ref=e920]:
+                      - img "Seoul Economic Daily" [ref=e922]
+                      - generic [ref=e923]: Seoul Economic Daily
+                      - generic [ref=e924]: ·
+                      - generic [ref=e925]: 40분 전
+                    - link "Won at 1,500 Per Dollar Entrenched as US Investment Adds Risk" [ref=e926] [cursor=pointer]:
+                      - /url: https://en.sedaily.com/finance/2026/06/22/won-at-1500-per-dollar-entrenched-as-us-investment-adds-risk
+                      - generic [ref=e927]: Won at 1,500 Per Dollar Entrenched as US Investment Adds Risk
+                  - generic [ref=e928]:
+                    - generic [ref=e929]:
+                      - img "뉴스웍스" [ref=e931]
+                      - generic [ref=e932]: 뉴스웍스
+                      - generic [ref=e933]: ·
+                      - generic [ref=e934]: 46분 전
+                    - link "[ETF 열전] \"하이닉스 하나면 끝났다\"…주간 수익률 TOP10 휩쓴 단일종목 ETF" [ref=e935] [cursor=pointer]:
+                      - /url: https://www.newsworks.co.kr/news/articleView.html?idxno=844597
+                      - generic [ref=e936]: "[ETF 열전] \"하이닉스 하나면 끝났다\"…주간 수익률 TOP10 휩쓴 단일종목 ETF"
+                - generic [ref=e937]:
+                  - generic [ref=e938]:
+                    - generic [ref=e939]:
+                      - img "뉴스핌" [ref=e941]
+                      - generic [ref=e942]: 뉴스핌
+                      - generic [ref=e943]: ·
+                      - generic [ref=e944]: 1시간 전
+                    - link "[리포트 브리핑]SK하이닉스, 'P/E 10배는 테크 주식의 기본 배수다' 목표가 4,300,000원 - 한화투자증권" [ref=e945] [cursor=pointer]:
+                      - /url: https://m.newspim.com/news/view/20260622000181
+                      - generic [ref=e946]: "[리포트 브리핑]SK하이닉스, 'P/E 10배는 테크 주식의 기본 배수다' 목표가 4,300,000원 - 한화투자증권"
+                  - generic [ref=e947]:
+                    - generic [ref=e948]:
+                      - img "https://www.2news.co.kr/" [ref=e950]
+                      - generic [ref=e951]: https://www.2news.co.kr/
+                      - generic [ref=e952]: ·
+                      - generic [ref=e953]: 1시간 전
+                    - link "한화투자증권, SK하이닉스 목표가 430만 원으로 상향" [ref=e954] [cursor=pointer]:
+                      - /url: https://www.2news.co.kr/news/articleView.html?idxno=11915
+                      - generic [ref=e955]: 한화투자증권, SK하이닉스 목표가 430만 원으로 상향
+                - generic [ref=e956]:
+                  - generic [ref=e957]:
+                    - generic [ref=e958]:
+                      - img "Chosunbiz" [ref=e960]
+                      - generic [ref=e961]: Chosunbiz
+                      - generic [ref=e962]: ·
+                      - generic [ref=e963]: 2시간 전
+                    - link "NH證 “SK스퀘어, 반도체 비중 극대화 투자자 선호 계속된다…목표가 270만원” - 조선비즈" [ref=e964] [cursor=pointer]:
+                      - /url: https://biz.chosun.com/stock/stock_general/2026/06/22/X3HK67XLOBHNZLLBWKC62A6PZI/
+                      - generic [ref=e965]: NH證 “SK스퀘어, 반도체 비중 극대화 투자자 선호 계속된다…목표가 270만원” - 조선비즈
+                  - generic [ref=e966]:
+                    - generic [ref=e967]:
+                      - img "서울경제" [ref=e969]
+                      - generic [ref=e970]: 서울경제
+                      - generic [ref=e971]: ·
+                      - generic [ref=e972]: 2시간 전
+                    - link "SK하이닉스, 목표가 430만원…“최고의 투자 대상”[줍줍리포트]" [ref=e973] [cursor=pointer]:
+                      - /url: https://www.sedaily.com/article/20058391
+                      - generic [ref=e974]: SK하이닉스, 목표가 430만원…“최고의 투자 대상”[줍줍리포트]
+              - button "더보기" [ref=e975] [cursor=pointer]:
+                - text: 더보기
+                - generic [ref=e976]: keyboard_arrow_down
+          - generic [ref=e978]:
+            - generic [ref=e979]: 프로필
+            - generic [ref=e982]:
+              - text: SK하이닉스주식회사는 SK그룹의 계열사로 대한민국의 메모리 반도체 설계, 제조 기업으로 DRAM과 낸드플래시 제조 기업이다. 본사는 경기도 이천시 부발읍 경충대로 2091에 있다.
+              - link "Wikipedia" [ref=e983] [cursor=pointer]:
+                - /url: https://ko.wikipedia.org/wiki/SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4
+            - generic [ref=e985]:
+              - generic [ref=e986]: SK하이닉스에 관한 정보
+              - generic [ref=e987]:
+                - generic [ref=e988]:
+                  - generic [ref=e989]:
+                    - generic [ref=e990]: CEO
+                    - generic [ref=e991]: 곽노정
+                  - generic [ref=e992]:
+                    - generic [ref=e993]: 직원
+                    - generic [ref=e994]: 3.24만
+                  - generic [ref=e995]:
+                    - generic [ref=e996]: 창립일
+                    - generic [ref=e997]: 2월 1983
+                - generic [ref=e998]:
+                  - generic [ref=e999]:
+                    - generic [ref=e1000]: 본사
+                    - generic [ref=e1001]: "-"
+                  - generic [ref=e1002]:
+                    - generic [ref=e1003]: 업종
+                    - generic [ref=e1004]: "-"
+                  - generic [ref=e1005]:
+                    - generic [ref=e1006]: 웹사이트
+                    - link "skhynix.com" [ref=e1008] [cursor=pointer]:
+                      - /url: http://www.skhynix.com/
+                      - generic [ref=e1009]: skhynix.com
+  - generic:
+    - region "조사 패널":
+      - generic [ref=e1011]:
+        - generic [ref=e1014]:
+          - heading "조사" [level=2] [ref=e1015]
+          - generic [ref=e1016]:
+            - button "새 대화목록" [ref=e1017] [cursor=pointer]:
+              - generic [ref=e1019]: edit_square
+            - tooltip [ref=e1021]: 새 대화목록
+          - generic [ref=e1023]:
+            - button "대화목록 기록" [ref=e1024] [cursor=pointer]:
+              - generic [ref=e1026]: notes_spark
+            - tooltip [ref=e1028]: 대화목록 기록
+          - tooltip [ref=e1029]: 접기
+          - generic [ref=e1030]:
+            - button "펼치기 조사" [ref=e1031] [cursor=pointer]:
+              - generic [ref=e1033]: expand_content
+            - tooltip [ref=e1035]: 펼치기
+        - search [ref=e1040]:
+          - generic [ref=e1043]:
+            - combobox "질문하기" [ref=e1045]
+            - generic [ref=e1046]:
+              - generic [ref=e1051]:
+                - button "도구 추가" [ref=e1052] [cursor=pointer]:
+                  - generic [ref=e1054]: add
+                - tooltip [ref=e1056]: 도구 추가
+              - generic [ref=e1058]:
+                - button "AI에 질문하기" [disabled] [ref=e1059]:
+                  - generic [ref=e1061]: arrow_upward
+                - tooltip [ref=e1063]: AI에 질문하기
+  - generic [ref=e1065]:
+    - generic [ref=e1066]:
+      - text: AI 콘텐츠에는 오류가 있을 수 있습니다.
+      - link "자세히 알아보기" [ref=e1067] [cursor=pointer]:
+        - /url: https://support.google.com/websearch?p=googlefinancebeta
+    - generic [ref=e1068]:
+      - link "도움말" [ref=e1069] [cursor=pointer]:
+        - /url: https://support.google.com/websearch?p=googlefinancebeta
+      - generic [ref=e1070] [cursor=pointer]: 의견 보내기
+      - link "개인 정보 보호" [ref=e1071] [cursor=pointer]:
+        - /url: https://policies.google.com/privacy
+      - link "약관" [ref=e1072] [cursor=pointer]:
+        - /url: https://policies.google.com/terms
+      - link "면책 조항" [ref=e1073] [cursor=pointer]:
+        - /url: https://www.google.com/googlefinance/disclaimer/

@@ -1,0 +1,242 @@
+{
+  // ==========================================================================
+  // PRISM Model Configuration
+  // ==========================================================================
+  // This file is the single source of truth for:
+  //   1. Provider endpoint definitions (base URLs, API key env vars)
+  //   2. Agent-to-model mappings (which provider+model each agent uses)
+  //
+  // Edit this file to change models — no Python code changes needed.
+  // The system reads this file at startup via cores/llm/jsonc_loader.py.
+  //
+  // Format:
+  //   - JSONC: standard JSON with // and /* */ comments, trailing commas OK.
+  //   - Naming convention: agent names use snake_case.
+  // ==========================================================================
+
+  // -------------------------------------------------------------------------
+  // 1. PROVIDERS — endpoint configurations
+  // -------------------------------------------------------------------------
+  // Each key is a logical provider name referenced by agents below.
+  //
+  // Fields:
+  //   base_url:         OpenAI-compatible endpoint URL.  Omit / set null for
+  //                     the SDK's built-in default (OpenAI / Anthropic).
+  //   api_key_env:      Env var that holds the API key.  null = no key needed.
+  //   default_model:    Model used when no agent-specific override is given.
+  //   reasoning_effort: "none" | "low" | "medium" | "high"
+  // -------------------------------------------------------------------------
+  "providers": {
+    "local": {
+      "base_url": "http://localhost:8081/v1",
+      "api_key_env": null,
+      "default_model": "Qwen-3.6-Coder",
+      "reasoning_effort": "none"
+    },
+    "openai": {
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "default_model": "gpt-5.4-mini",
+      "reasoning_effort": "none"
+    },
+    "anthropic": {
+      "base_url": null,
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "default_model": "claude-sonnet-4-6",
+      "reasoning_effort": "none"
+    }
+  },
+
+  // -------------------------------------------------------------------------
+  // 2. AGENTS — which provider + model each logical agent uses
+  // -------------------------------------------------------------------------
+  // Each key is a logical agent name.  Value is:
+  //   provider:    Must match a key in "providers" above.
+  //   model:       Model identifier passed to the LLM backend.
+  //   max_tokens:  Max completion tokens.
+  //   reasoning_effort:  Optional override; inherits from provider if absent.
+  //
+  // Agents are grouped by team for readability.
+  // -------------------------------------------------------------------------
+  "agents": {
+
+    // ---- Macro (1 agent) ------------------------------------------------
+    // Market regime detection, sector rotation, risk events.
+    "market_regime": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+
+    // ---- Analysis (6 agents) ---------------------------------------------
+    // Technical, financial, industry, news, market index analysis.
+    "price_volume_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "institutional_holdings_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "investor_trading_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "company_status": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "company_overview": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "news_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "market_index_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+
+    // ---- Strategy (1 agent) ----------------------------------------------
+    // Investment strategy synthesis.
+    "investment_strategy": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+
+    // ---- Communication (3 agents) ----------------------------------------
+    // Summary, quality evaluation, multi-language translation.
+    "summary": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000,
+      "reasoning_effort": "none"
+    },
+    "quality_evaluation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000,
+      "reasoning_effort": "none"
+    },
+    "translation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 8000
+    },
+
+    // ---- Trading (3 agents) ----------------------------------------------
+    // Sell decisions, trade execution, trading journal.
+    "sell_decision": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 30000
+    },
+    "trading": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 30000
+    },
+    "journal": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000,
+      "reasoning_effort": "none"
+    },
+
+    // ---- Consultation (2 agents) -----------------------------------------
+    // User consultation via Telegram.
+    "consultation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 32000
+    },
+    "tele_consultation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+
+    // ---- Archive / Query -------------------------------------------------
+    "archive_query": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000,
+      "reasoning_effort": "none"
+    },
+
+    // ---- Compression (tracking/compression.py) ---------------------------
+    "compression": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 8000,
+      "reasoning_effort": "none"
+    },
+
+    // ---- Telegram bot general consultation -------------------------------
+    "telegram_bot": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000,
+      "reasoning_effort": "none"
+    },
+
+    // ---- Company name translation ----------------------------------------
+    "company_name_translation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 8000,
+      "reasoning_effort": "none"
+    },
+
+    // ---- Report generator --------------------------------------
+    "report_followup": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 2000
+    },
+    "report_evaluation": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+    "report_search": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+    "report_journal": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+
+    // ---- BTC postmortem (prism-btc) --------------------------------------
+    "btc_postmortem": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    },
+
+    // ---- Events: Jeoningu trading ----------------------------------------
+    "jeoningu_sell": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 8000
+    },
+    "jeoningu_analysis": {
+      "provider": "local",
+      "model": "Qwen-3.6-Coder",
+      "max_tokens": 16000
+    }
+  }
+}

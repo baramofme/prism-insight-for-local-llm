@@ -1,0 +1,3796 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e2]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - img [ref=e9]
+          - generic [ref=e11]: Platinum Sponsor
+        - link "WrksAI WrksAI" [ref=e13] [cursor=pointer]:
+          - /url: https://wrks.ai/en
+          - img "WrksAI"
+          - generic [ref=e14]: WrksAI
+          - img [ref=e15]
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - img [ref=e21]
+            - generic [ref=e24]:
+              - generic [ref=e25]:
+                - heading "Prism Insight" [level=1] [ref=e26]
+                - generic [ref=e27]: Open Source
+              - paragraph [ref=e28]: "업데이트: 6월 19일 오후 05:10"
+          - generic [ref=e30]:
+            - button "🇰🇷 한국주식 Season 2" [ref=e31]:
+              - generic [ref=e32]: 🇰🇷
+              - generic [ref=e33]: 한국주식
+              - generic [ref=e34]: Season 2
+            - button "🇺🇸 미국주식" [ref=e35]:
+              - generic [ref=e36]: 🇺🇸
+              - generic [ref=e37]: 미국주식
+          - generic [ref=e38]:
+            - link "GitHub Repository" [ref=e39] [cursor=pointer]:
+              - /url: https://github.com/dragon1086/prism-insight
+              - img
+            - link "Telegram Channel" [ref=e40] [cursor=pointer]:
+              - /url: https://t.me/stock_ai_agent
+              - img
+            - button "EN / 한" [ref=e41]:
+              - img [ref=e42]
+              - generic [ref=e46]: EN
+              - generic [ref=e47]: /
+              - generic [ref=e48]: 한
+            - button "테마 전환" [ref=e49]:
+              - img
+              - img
+              - generic [ref=e50]: 테마 전환
+        - navigation [ref=e51]:
+          - button "대시보드" [ref=e52]
+          - button "AI 보유 분석" [ref=e53]
+          - button "거래 내역" [ref=e54]
+          - button "관심 종목" [ref=e55]
+          - button "💡 인사이트" [ref=e56]
+          - button "🧪 실험실" [ref=e57]
+    - main [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - img [ref=e63]
+            - generic [ref=e66]:
+              - heading "관심 종목" [level=2] [ref=e67]
+              - paragraph [ref=e68]: AI가 분석한 투자 후보 종목 (최근 1개월)
+          - generic [ref=e69]: 전체 종목 90개 종목
+        - generic [ref=e70]:
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - img [ref=e74]
+              - generic [ref=e77]: 전체 종목
+            - paragraph [ref=e78]: 90개
+            - paragraph [ref=e79]: 최근 1개월 분석
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - img [ref=e83]
+              - generic [ref=e87]: 최고 점수
+            - paragraph [ref=e88]: 9점
+            - paragraph [ref=e89]: 가장 유망한 종목
+          - generic [ref=e91]:
+            - generic [ref=e92]:
+              - img [ref=e93]
+              - generic [ref=e95]: 평균 점수
+            - paragraph [ref=e96]: 3.1점
+            - paragraph [ref=e97]: 10점 만점 기준
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - img [ref=e101]
+              - generic [ref=e104]: 최근 7일
+            - paragraph [ref=e105]: 23개
+            - paragraph [ref=e106]: 최근 분석 종목
+        - generic [ref=e107]:
+          - generic [ref=e109]:
+            - img [ref=e110]
+            - text: 섹터별 분포 TOP 3
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - generic [ref=e117]: "1"
+                - paragraph [ref=e118]: 전기·전자
+              - generic [ref=e119]: 43개
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - generic [ref=e122]: "2"
+                - paragraph [ref=e123]: Unknown
+              - generic [ref=e124]: 18개
+            - generic [ref=e125]:
+              - generic [ref=e126]:
+                - generic [ref=e127]: "3"
+                - paragraph [ref=e128]: 기계·장비
+              - generic [ref=e129]: 6개
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: 2026년 6월 19일
+              - generic [ref=e135]: 5개 분석
+            - generic [ref=e137]:
+              - generic [ref=e140]:
+                - generic [ref=e142]:
+                  - generic [ref=e143]:
+                    - heading "미래에셋생명" [level=3] [ref=e144]
+                    - generic [ref=e145]: "085620"
+                  - generic [ref=e146]:
+                    - generic [ref=e147]: 보험
+                    - generic [ref=e148]: 단기
+                    - generic [ref=e149]: 2/4점
+                - generic [ref=e150]:
+                  - generic [ref=e151]:
+                    - paragraph [ref=e152]: 현재가
+                    - paragraph [ref=e153]: ₩34,375
+                  - generic [ref=e154]:
+                    - paragraph [ref=e155]: 목표가
+                    - paragraph [ref=e156]: ₩37,200
+                  - generic [ref=e157]:
+                    - paragraph [ref=e158]: 손절가
+                    - paragraph [ref=e159]: ₩32,020
+                - generic [ref=e160]:
+                  - generic [ref=e161]:
+                    - paragraph [ref=e162]: 손익비
+                    - generic [ref=e163]: "1.2"
+                  - generic [ref=e164]:
+                    - generic [ref=e165]:
+                      - paragraph [ref=e166]: 목표 수익
+                      - paragraph [ref=e167]: +8.1%
+                    - generic [ref=e168]:
+                      - paragraph [ref=e169]: 예상 손실
+                      - paragraph [ref=e170]: "-7.0%"
+                - generic [ref=e172]:
+                  - img [ref=e173]
+                  - generic [ref=e175]:
+                    - paragraph [ref=e176]:
+                      - text: "결정: Skip"
+                      - generic [ref=e177]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e178]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e179]: "미진입 사유: 단독 미진입 사유: PER 48.48배가 업종 PER 16.98배의 약 2.9배로 업종 평균 2.5배 이상입니다. 추가로 F2 재무 건전성 미달로 buy_score가 2점에 그쳐 effective_score 3점이 parabolic regime min_score 4점에 미달합니다."
+                - button "AI 분석 상세" [ref=e181]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e184]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]:
+                    - heading "삼성SDI" [level=3] [ref=e188]
+                    - generic [ref=e189]: "006400"
+                  - generic [ref=e190]:
+                    - generic [ref=e191]: 전기·전자
+                    - generic [ref=e192]: 단기
+                    - generic [ref=e193]: 2/4점
+                - generic [ref=e194]:
+                  - generic [ref=e195]:
+                    - paragraph [ref=e196]: 현재가
+                    - paragraph [ref=e197]: ₩549,000
+                  - generic [ref=e198]:
+                    - paragraph [ref=e199]: 목표가
+                    - paragraph [ref=e200]: ₩838,304
+                  - generic [ref=e201]:
+                    - paragraph [ref=e202]: 손절가
+                    - paragraph [ref=e203]: ₩527,000
+                - generic [ref=e204]:
+                  - generic [ref=e205]:
+                    - paragraph [ref=e206]: 손익비
+                    - generic [ref=e207]: "12.5"
+                  - generic [ref=e208]:
+                    - generic [ref=e209]:
+                      - paragraph [ref=e210]: 목표 수익
+                      - paragraph [ref=e211]: +52.4%
+                    - generic [ref=e212]:
+                      - paragraph [ref=e213]: 예상 손실
+                      - paragraph [ref=e214]: "-4.2%"
+                - generic [ref=e216]:
+                  - img [ref=e217]
+                  - generic [ref=e219]:
+                    - paragraph [ref=e220]:
+                      - text: "결정: Skip"
+                      - generic [ref=e221]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e222]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e223]: "미진입 사유: effective_score 3이 parabolic regime min_score 4에 미달한다. 또한 펀더멘털 게이트에서 F1 수익성, F3 성장성이 동시에 미달해 CAN SLIM의 C·A 기준이 약하다."
+                - button "AI 분석 상세" [ref=e225]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e228]:
+                - generic [ref=e230]:
+                  - generic [ref=e231]:
+                    - heading "삼성전기우" [level=3] [ref=e232]
+                    - generic [ref=e233]: "009155"
+                  - generic [ref=e234]:
+                    - generic [ref=e235]: 전기·전자
+                    - generic [ref=e236]: 단기
+                    - generic [ref=e237]: 8/4점
+                - generic [ref=e238]:
+                  - generic [ref=e239]:
+                    - paragraph [ref=e240]: 현재가
+                    - paragraph [ref=e241]: ₩785,000
+                  - generic [ref=e242]:
+                    - paragraph [ref=e243]: 목표가
+                    - paragraph [ref=e244]: ₩833,000
+                  - generic [ref=e245]:
+                    - paragraph [ref=e246]: 손절가
+                    - paragraph [ref=e247]: ₩731,000
+                - generic [ref=e248]:
+                  - generic [ref=e249]:
+                    - paragraph [ref=e250]: 손익비
+                    - generic [ref=e251]: "0.9"
+                  - generic [ref=e252]:
+                    - generic [ref=e253]:
+                      - paragraph [ref=e254]: 목표 수익
+                      - paragraph [ref=e255]: +6.0%
+                    - generic [ref=e256]:
+                      - paragraph [ref=e257]: 예상 손실
+                      - paragraph [ref=e258]: "-7.0%"
+                - generic [ref=e260]:
+                  - img [ref=e261]
+                  - generic [ref=e263]:
+                    - paragraph [ref=e264]:
+                      - text: "결정: Enter"
+                      - generic [ref=e265]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e266]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e268]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e271]:
+                - generic [ref=e273]:
+                  - generic [ref=e274]:
+                    - heading "삼성전기우" [level=3] [ref=e275]
+                    - generic [ref=e276]: "009155"
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: 전기·전자
+                    - generic [ref=e279]: 단기
+                    - generic [ref=e280]: 9/4점
+                - generic [ref=e281]:
+                  - generic [ref=e282]:
+                    - paragraph [ref=e283]: 현재가
+                    - paragraph [ref=e284]: ₩820,000
+                  - generic [ref=e285]:
+                    - paragraph [ref=e286]: 목표가
+                    - paragraph [ref=e287]: ₩900,000
+                  - generic [ref=e288]:
+                    - paragraph [ref=e289]: 손절가
+                    - paragraph [ref=e290]: ₩764,000
+                - generic [ref=e291]:
+                  - generic [ref=e292]:
+                    - paragraph [ref=e293]: 손익비
+                    - generic [ref=e294]: "1.4"
+                  - generic [ref=e295]:
+                    - generic [ref=e296]:
+                      - paragraph [ref=e297]: 목표 수익
+                      - paragraph [ref=e298]: +9.6%
+                    - generic [ref=e299]:
+                      - paragraph [ref=e300]: 예상 손실
+                      - paragraph [ref=e301]: "-6.9%"
+                - generic [ref=e303]:
+                  - img [ref=e304]
+                  - generic [ref=e306]:
+                    - paragraph [ref=e307]:
+                      - text: "결정: Enter"
+                      - generic [ref=e308]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e309]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e311]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e314]:
+                - generic [ref=e316]:
+                  - generic [ref=e317]:
+                    - heading "삼성전기" [level=3] [ref=e318]
+                    - generic [ref=e319]: "009150"
+                  - generic [ref=e320]:
+                    - generic [ref=e321]: 전기·전자
+                    - generic [ref=e322]: 단기
+                    - generic [ref=e323]: 9/4점
+                - generic [ref=e324]:
+                  - generic [ref=e325]:
+                    - paragraph [ref=e326]: 현재가
+                    - paragraph [ref=e327]: ₩2,315,000
+                  - generic [ref=e328]:
+                    - paragraph [ref=e329]: 목표가
+                    - paragraph [ref=e330]: ₩2,400,000
+                  - generic [ref=e331]:
+                    - paragraph [ref=e332]: 손절가
+                    - paragraph [ref=e333]: ₩2,200,000
+                - generic [ref=e334]:
+                  - generic [ref=e335]:
+                    - paragraph [ref=e336]: 손익비
+                    - generic [ref=e337]: "0.7"
+                  - generic [ref=e338]:
+                    - generic [ref=e339]:
+                      - paragraph [ref=e340]: 목표 수익
+                      - paragraph [ref=e341]: +3.6%
+                    - generic [ref=e342]:
+                      - paragraph [ref=e343]: 예상 손실
+                      - paragraph [ref=e344]: "-5.0%"
+                - generic [ref=e346]:
+                  - img [ref=e347]
+                  - generic [ref=e349]:
+                    - paragraph [ref=e350]:
+                      - text: "결정: Enter"
+                      - generic [ref=e351]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e352]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e354]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e355]:
+            - generic [ref=e357]:
+              - generic [ref=e358]: 2026년 6월 18일
+              - generic [ref=e359]: 5개 분석
+            - generic [ref=e361]:
+              - generic [ref=e364]:
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - heading "SK하이닉스" [level=3] [ref=e368]
+                    - generic [ref=e369]: "000660"
+                  - generic [ref=e370]:
+                    - generic [ref=e371]: 전기·전자
+                    - generic [ref=e372]: 중기
+                    - generic [ref=e373]: 9/4점
+                - generic [ref=e374]:
+                  - generic [ref=e375]:
+                    - paragraph [ref=e376]: 현재가
+                    - paragraph [ref=e377]: ₩2,722,000
+                  - generic [ref=e378]:
+                    - paragraph [ref=e379]: 목표가
+                    - paragraph [ref=e380]: ₩3,275,000
+                  - generic [ref=e381]:
+                    - paragraph [ref=e382]: 손절가
+                    - paragraph [ref=e383]: ₩2,538,000
+                - generic [ref=e384]:
+                  - generic [ref=e385]:
+                    - paragraph [ref=e386]: 손익비
+                    - generic [ref=e387]: "2.9"
+                  - generic [ref=e388]:
+                    - generic [ref=e389]:
+                      - paragraph [ref=e390]: 목표 수익
+                      - paragraph [ref=e391]: +20.0%
+                    - generic [ref=e392]:
+                      - paragraph [ref=e393]: 예상 손실
+                      - paragraph [ref=e394]: "-7.0%"
+                - generic [ref=e396]:
+                  - img [ref=e397]
+                  - generic [ref=e399]:
+                    - paragraph [ref=e400]:
+                      - text: "결정: Enter"
+                      - generic [ref=e401]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e402]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e404]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e407]:
+                - generic [ref=e409]:
+                  - generic [ref=e410]:
+                    - heading "LG이노텍" [level=3] [ref=e411]
+                    - generic [ref=e412]: "011070"
+                  - generic [ref=e413]:
+                    - generic [ref=e414]: 전기·전자
+                    - generic [ref=e415]: 중기
+                    - generic [ref=e416]: 7/4점
+                - generic [ref=e417]:
+                  - generic [ref=e418]:
+                    - paragraph [ref=e419]: 현재가
+                    - paragraph [ref=e420]: ₩1,283,000
+                  - generic [ref=e421]:
+                    - paragraph [ref=e422]: 목표가
+                    - paragraph [ref=e423]: ₩1,481,600
+                  - generic [ref=e424]:
+                    - paragraph [ref=e425]: 손절가
+                    - paragraph [ref=e426]: ₩1,243,000
+                - generic [ref=e427]:
+                  - generic [ref=e428]:
+                    - paragraph [ref=e429]: 손익비
+                    - generic [ref=e430]: "4.3"
+                  - generic [ref=e431]:
+                    - generic [ref=e432]:
+                      - paragraph [ref=e433]: 목표 수익
+                      - paragraph [ref=e434]: +15.0%
+                    - generic [ref=e435]:
+                      - paragraph [ref=e436]: 예상 손실
+                      - paragraph [ref=e437]: "-3.5%"
+                - generic [ref=e439]:
+                  - img [ref=e440]
+                  - generic [ref=e442]:
+                    - paragraph [ref=e443]:
+                      - text: "결정: Enter"
+                      - generic [ref=e444]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e445]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e447]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e450]:
+                - generic [ref=e452]:
+                  - generic [ref=e453]:
+                    - heading "삼성전기" [level=3] [ref=e454]
+                    - generic [ref=e455]: "009150"
+                  - generic [ref=e456]:
+                    - generic [ref=e457]: 전기·전자
+                    - generic [ref=e458]: 단기
+                    - generic [ref=e459]: 9/4점
+                - generic [ref=e460]:
+                  - generic [ref=e461]:
+                    - paragraph [ref=e462]: 현재가
+                    - paragraph [ref=e463]: ₩2,203,000
+                  - generic [ref=e464]:
+                    - paragraph [ref=e465]: 목표가
+                    - paragraph [ref=e466]: ₩2,538,000
+                  - generic [ref=e467]:
+                    - paragraph [ref=e468]: 손절가
+                    - paragraph [ref=e469]: ₩2,053,000
+                - generic [ref=e470]:
+                  - generic [ref=e471]:
+                    - paragraph [ref=e472]: 손익비
+                    - generic [ref=e473]: "2.1"
+                  - generic [ref=e474]:
+                    - generic [ref=e475]:
+                      - paragraph [ref=e476]: 목표 수익
+                      - paragraph [ref=e477]: +15.0%
+                    - generic [ref=e478]:
+                      - paragraph [ref=e479]: 예상 손실
+                      - paragraph [ref=e480]: "-7.0%"
+                - generic [ref=e482]:
+                  - img [ref=e483]
+                  - generic [ref=e485]:
+                    - paragraph [ref=e486]:
+                      - text: "결정: Enter"
+                      - generic [ref=e487]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e488]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e490]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e493]:
+                - generic [ref=e495]:
+                  - generic [ref=e496]:
+                    - heading "SK하이닉스" [level=3] [ref=e497]
+                    - generic [ref=e498]: "000660"
+                  - generic [ref=e499]:
+                    - generic [ref=e500]: Unknown
+                    - generic [ref=e501]: Short-term
+                    - generic [ref=e502]: 0/0점
+                - generic [ref=e503]:
+                  - generic [ref=e504]:
+                    - paragraph [ref=e505]: 현재가
+                    - paragraph [ref=e506]: ₩2,634,000
+                  - generic [ref=e507]:
+                    - paragraph [ref=e508]: 목표가
+                    - paragraph [ref=e509]: ₩0
+                  - generic [ref=e510]:
+                    - paragraph [ref=e511]: 손절가
+                    - paragraph [ref=e512]: ₩0
+                - generic [ref=e514]:
+                  - img [ref=e515]
+                  - generic [ref=e517]:
+                    - paragraph [ref=e518]: "결정: Already holding"
+                    - paragraph [ref=e519]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e521]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e524]:
+                - generic [ref=e526]:
+                  - generic [ref=e527]:
+                    - heading "대원전선" [level=3] [ref=e528]
+                    - generic [ref=e529]: "006340"
+                  - generic [ref=e530]:
+                    - generic [ref=e531]: 전기·전자
+                    - generic [ref=e532]: 단기
+                    - generic [ref=e533]: 7/4점
+                - generic [ref=e534]:
+                  - generic [ref=e535]:
+                    - paragraph [ref=e536]: 현재가
+                    - paragraph [ref=e537]: ₩12,790
+                  - generic [ref=e538]:
+                    - paragraph [ref=e539]: 목표가
+                    - paragraph [ref=e540]: ₩13,510
+                  - generic [ref=e541]:
+                    - paragraph [ref=e542]: 손절가
+                    - paragraph [ref=e543]: ₩12,300
+                - generic [ref=e544]:
+                  - generic [ref=e545]:
+                    - paragraph [ref=e546]: 손익비
+                    - generic [ref=e547]: "1.6"
+                  - generic [ref=e548]:
+                    - generic [ref=e549]:
+                      - paragraph [ref=e550]: 목표 수익
+                      - paragraph [ref=e551]: +5.8%
+                    - generic [ref=e552]:
+                      - paragraph [ref=e553]: 예상 손실
+                      - paragraph [ref=e554]: "-3.7%"
+                - generic [ref=e556]:
+                  - img [ref=e557]
+                  - generic [ref=e559]:
+                    - paragraph [ref=e560]:
+                      - text: "결정: Enter"
+                      - generic [ref=e561]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e562]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e564]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e565]:
+            - generic [ref=e567]:
+              - generic [ref=e568]: 2026년 6월 17일
+              - generic [ref=e569]: 5개 분석
+            - generic [ref=e571]:
+              - generic [ref=e574]:
+                - generic [ref=e576]:
+                  - generic [ref=e577]:
+                    - heading "SK하이닉스" [level=3] [ref=e578]
+                    - generic [ref=e579]: "000660"
+                  - generic [ref=e580]:
+                    - generic [ref=e581]: Unknown
+                    - generic [ref=e582]: Short-term
+                    - generic [ref=e583]: 0/0점
+                - generic [ref=e584]:
+                  - generic [ref=e585]:
+                    - paragraph [ref=e586]: 현재가
+                    - paragraph [ref=e587]: ₩2,511,000
+                  - generic [ref=e588]:
+                    - paragraph [ref=e589]: 목표가
+                    - paragraph [ref=e590]: ₩0
+                  - generic [ref=e591]:
+                    - paragraph [ref=e592]: 손절가
+                    - paragraph [ref=e593]: ₩0
+                - generic [ref=e595]:
+                  - img [ref=e596]
+                  - generic [ref=e598]:
+                    - paragraph [ref=e599]: "결정: Already holding"
+                    - paragraph [ref=e600]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e602]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e605]:
+                - generic [ref=e607]:
+                  - generic [ref=e608]:
+                    - heading "대원전선" [level=3] [ref=e609]
+                    - generic [ref=e610]: "006340"
+                  - generic [ref=e611]:
+                    - generic [ref=e612]: 전기·전자
+                    - generic [ref=e613]: 단기
+                    - generic [ref=e614]: 2/5점
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - paragraph [ref=e617]: 현재가
+                    - paragraph [ref=e618]: ₩12,290
+                  - generic [ref=e619]:
+                    - paragraph [ref=e620]: 목표가
+                    - paragraph [ref=e621]: ₩13,700
+                  - generic [ref=e622]:
+                    - paragraph [ref=e623]: 손절가
+                    - paragraph [ref=e624]: ₩11,650
+                - generic [ref=e625]:
+                  - generic [ref=e626]:
+                    - paragraph [ref=e627]: 손익비
+                    - generic [ref=e628]: "1.8"
+                  - generic [ref=e629]:
+                    - generic [ref=e630]:
+                      - paragraph [ref=e631]: 목표 수익
+                      - paragraph [ref=e632]: +10.6%
+                    - generic [ref=e633]:
+                      - paragraph [ref=e634]: 예상 손실
+                      - paragraph [ref=e635]: "-6.0%"
+                - generic [ref=e637]:
+                  - img [ref=e638]
+                  - generic [ref=e640]:
+                    - paragraph [ref=e641]:
+                      - text: "결정: Skip"
+                      - generic [ref=e642]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e643]: "AI 판단: Skip / 점수 부족 (2/5) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e644]: "미진입 사유: effective_score 3점이 distribution day kill switch 적용 후 sideways 기준 min_score 5점에 미달합니다. 또한 F4 경쟁우위 식별 미달로 펀더멘털 게이트가 완전 통과하지 못했고, 현재 보유 6개가 High 리스크 기준 max_portfolio_size 6개에 이미 도달했습니다. 주요 지지선 11,100원이 현재가 대비 약 -10.4%로 사용 가능한 지지 기반 손절 설정도 어렵습니다."
+                - button "AI 분석 상세" [ref=e646]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e649]:
+                - generic [ref=e651]:
+                  - generic [ref=e652]:
+                    - heading "제주반도체" [level=3] [ref=e653]
+                    - generic [ref=e654]: "080220"
+                  - generic [ref=e655]:
+                    - generic [ref=e656]: Unknown
+                    - generic [ref=e657]: Short-term
+                    - generic [ref=e658]: 0/0점
+                - generic [ref=e659]:
+                  - generic [ref=e660]:
+                    - paragraph [ref=e661]: 현재가
+                    - paragraph [ref=e662]: ₩112,400
+                  - generic [ref=e663]:
+                    - paragraph [ref=e664]: 목표가
+                    - paragraph [ref=e665]: ₩0
+                  - generic [ref=e666]:
+                    - paragraph [ref=e667]: 손절가
+                    - paragraph [ref=e668]: ₩0
+                - generic [ref=e670]:
+                  - img [ref=e671]
+                  - generic [ref=e673]:
+                    - paragraph [ref=e674]: "결정: Already holding"
+                    - paragraph [ref=e675]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e677]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e680]:
+                - generic [ref=e682]:
+                  - generic [ref=e683]:
+                    - heading "SK스퀘어" [level=3] [ref=e684]
+                    - generic [ref=e685]: "402340"
+                  - generic [ref=e686]:
+                    - generic [ref=e687]: Unknown
+                    - generic [ref=e688]: Short-term
+                    - generic [ref=e689]: 0/0점
+                - generic [ref=e690]:
+                  - generic [ref=e691]:
+                    - paragraph [ref=e692]: 현재가
+                    - paragraph [ref=e693]: ₩1,574,000
+                  - generic [ref=e694]:
+                    - paragraph [ref=e695]: 목표가
+                    - paragraph [ref=e696]: ₩0
+                  - generic [ref=e697]:
+                    - paragraph [ref=e698]: 손절가
+                    - paragraph [ref=e699]: ₩0
+                - generic [ref=e701]:
+                  - img [ref=e702]
+                  - generic [ref=e704]:
+                    - paragraph [ref=e705]: "결정: Already holding"
+                    - paragraph [ref=e706]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e708]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e711]:
+                - generic [ref=e713]:
+                  - generic [ref=e714]:
+                    - heading "HPSP" [level=3] [ref=e715]
+                    - generic [ref=e716]: "403870"
+                  - generic [ref=e717]:
+                    - generic [ref=e718]: 기계·장비
+                    - generic [ref=e719]: 단기
+                    - generic [ref=e720]: 7/4점
+                - generic [ref=e721]:
+                  - generic [ref=e722]:
+                    - paragraph [ref=e723]: 현재가
+                    - paragraph [ref=e724]: ₩65,400
+                  - generic [ref=e725]:
+                    - paragraph [ref=e726]: 목표가
+                    - paragraph [ref=e727]: ₩70,300
+                  - generic [ref=e728]:
+                    - paragraph [ref=e729]: 손절가
+                    - paragraph [ref=e730]: ₩63,100
+                - generic [ref=e731]:
+                  - generic [ref=e732]:
+                    - paragraph [ref=e733]: 손익비
+                    - generic [ref=e734]: "2.1"
+                  - generic [ref=e735]:
+                    - generic [ref=e736]:
+                      - paragraph [ref=e737]: 목표 수익
+                      - paragraph [ref=e738]: +7.5%
+                    - generic [ref=e739]:
+                      - paragraph [ref=e740]: 예상 손실
+                      - paragraph [ref=e741]: "-3.5%"
+                - generic [ref=e743]:
+                  - img [ref=e744]
+                  - generic [ref=e746]:
+                    - paragraph [ref=e747]:
+                      - text: "결정: Skip"
+                      - generic [ref=e748]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e749]: "AI 판단: Skip"
+                    - paragraph [ref=e750]: "미진입 사유: 포트폴리오 제약 미달: 시장 리스크 Medium과 현재 보유 8종목 기준 max_portfolio_size=8로 산정되어 신규 슬롯이 없습니다. 종목 자체는 F1~F4, 모멘텀, R/R 기준을 충족하지만 1슬롯 전량매수 시스템상 신규 편입 불가입니다."
+                - button "AI 분석 상세" [ref=e752]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e753]:
+            - generic [ref=e755]:
+              - generic [ref=e756]: 2026년 6월 16일
+              - generic [ref=e757]: 5개 분석
+            - generic [ref=e759]:
+              - generic [ref=e762]:
+                - generic [ref=e764]:
+                  - generic [ref=e765]:
+                    - heading "광전자" [level=3] [ref=e766]
+                    - generic [ref=e767]: "017900"
+                  - generic [ref=e768]:
+                    - generic [ref=e769]: 전기·전자
+                    - generic [ref=e770]: 단기
+                    - generic [ref=e771]: 2/5점
+                - generic [ref=e772]:
+                  - generic [ref=e773]:
+                    - paragraph [ref=e774]: 현재가
+                    - paragraph [ref=e775]: ₩10,580
+                  - generic [ref=e776]:
+                    - paragraph [ref=e777]: 목표가
+                    - paragraph [ref=e778]: ₩11,360
+                  - generic [ref=e779]:
+                    - paragraph [ref=e780]: 손절가
+                    - paragraph [ref=e781]: ₩10,000
+                - generic [ref=e782]:
+                  - generic [ref=e783]:
+                    - paragraph [ref=e784]: 손익비
+                    - generic [ref=e785]: "1.3"
+                  - generic [ref=e786]:
+                    - generic [ref=e787]:
+                      - paragraph [ref=e788]: 목표 수익
+                      - paragraph [ref=e789]: +7.4%
+                    - generic [ref=e790]:
+                      - paragraph [ref=e791]: 예상 손실
+                      - paragraph [ref=e792]: "-5.5%"
+                - generic [ref=e794]:
+                  - img [ref=e795]
+                  - generic [ref=e797]:
+                    - paragraph [ref=e798]:
+                      - text: "결정: Skip"
+                      - generic [ref=e799]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e800]: "AI 판단: Skip / 점수 부족 (2/5) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e801]: "미진입 사유: 단독 사유: 펀더멘털 게이트 F1·F3 미달 상태에서 distribution_days 약 5건으로 신규매수 기준 sideways가 적용됩니다. 또한 effective_score 3이 min_score 5에 미달합니다. R/R과 최소 모멘텀 요건은 충족하나 점수와 펀더멘털 기준이 부족합니다."
+                - button "AI 분석 상세" [ref=e803]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e806]:
+                - generic [ref=e808]:
+                  - generic [ref=e809]:
+                    - heading "SK하이닉스" [level=3] [ref=e810]
+                    - generic [ref=e811]: "000660"
+                  - generic [ref=e812]:
+                    - generic [ref=e813]: Unknown
+                    - generic [ref=e814]: Short-term
+                    - generic [ref=e815]: 0/0점
+                - generic [ref=e816]:
+                  - generic [ref=e817]:
+                    - paragraph [ref=e818]: 현재가
+                    - paragraph [ref=e819]: ₩2,361,000
+                  - generic [ref=e820]:
+                    - paragraph [ref=e821]: 목표가
+                    - paragraph [ref=e822]: ₩0
+                  - generic [ref=e823]:
+                    - paragraph [ref=e824]: 손절가
+                    - paragraph [ref=e825]: ₩0
+                - generic [ref=e827]:
+                  - img [ref=e828]
+                  - generic [ref=e830]:
+                    - paragraph [ref=e831]: "결정: Already holding"
+                    - paragraph [ref=e832]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e834]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e837]:
+                - generic [ref=e839]:
+                  - generic [ref=e840]:
+                    - heading "주성엔지니어링" [level=3] [ref=e841]
+                    - generic [ref=e842]: "036930"
+                  - generic [ref=e843]:
+                    - generic [ref=e844]: 기계·장비
+                    - generic [ref=e845]: 단기
+                    - generic [ref=e846]: 2/5점
+                - generic [ref=e847]:
+                  - generic [ref=e848]:
+                    - paragraph [ref=e849]: 현재가
+                    - paragraph [ref=e850]: ₩226,000
+                  - generic [ref=e851]:
+                    - paragraph [ref=e852]: 목표가
+                    - paragraph [ref=e853]: ₩245,500
+                  - generic [ref=e854]:
+                    - paragraph [ref=e855]: 손절가
+                    - paragraph [ref=e856]: ₩212,000
+                - generic [ref=e857]:
+                  - generic [ref=e858]:
+                    - paragraph [ref=e859]: 손익비
+                    - generic [ref=e860]: "1.5"
+                  - generic [ref=e861]:
+                    - generic [ref=e862]:
+                      - paragraph [ref=e863]: 목표 수익
+                      - paragraph [ref=e864]: +8.9%
+                    - generic [ref=e865]:
+                      - paragraph [ref=e866]: 예상 손실
+                      - paragraph [ref=e867]: "-6.0%"
+                - generic [ref=e869]:
+                  - img [ref=e870]
+                  - generic [ref=e872]:
+                    - paragraph [ref=e873]:
+                      - text: "결정: Skip"
+                      - generic [ref=e874]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e875]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e876]: "미진입 사유: sideways 체제에서 F1 펀더멘털 게이트 미달로 진입 불가, PER 297.96배가 업종 PER 40.70배의 2.5배를 초과하는 단독 미진입 사유, effective_score 3점이 min_score 5점 미달, 보유 7개 상태에서 buy_score 6점 기준도 미달합니다."
+                - button "AI 분석 상세" [ref=e878]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e881]:
+                - generic [ref=e883]:
+                  - generic [ref=e884]:
+                    - heading "코스모로보틱스" [level=3] [ref=e885]
+                    - generic [ref=e886]: "439960"
+                  - generic [ref=e887]:
+                    - generic [ref=e888]: 의료·정밀기기
+                    - generic [ref=e889]: 단기
+                    - generic [ref=e890]: 2/5점
+                - generic [ref=e891]:
+                  - generic [ref=e892]:
+                    - paragraph [ref=e893]: 현재가
+                    - paragraph [ref=e894]: ₩27,750
+                  - generic [ref=e895]:
+                    - paragraph [ref=e896]: 목표가
+                    - paragraph [ref=e897]: ₩33,000
+                  - generic [ref=e898]:
+                    - paragraph [ref=e899]: 손절가
+                    - paragraph [ref=e900]: ₩28,000
+                - generic [ref=e901]:
+                  - generic [ref=e902]:
+                    - paragraph [ref=e903]: 손익비
+                    - generic [ref=e904]: "3.5"
+                  - generic [ref=e905]:
+                    - generic [ref=e906]:
+                      - paragraph [ref=e907]: 목표 수익
+                      - paragraph [ref=e908]: +13.4%
+                    - generic [ref=e909]:
+                      - paragraph [ref=e910]: 예상 손실
+                      - paragraph [ref=e911]: "-3.8%"
+                - generic [ref=e913]:
+                  - img [ref=e914]
+                  - generic [ref=e916]:
+                    - paragraph [ref=e917]:
+                      - text: "결정: Skip"
+                      - generic [ref=e918]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e919]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e920]: "미진입 사유: 펀더멘털 게이트 F1 수익성 미달 상태에서 시장 체제가 sideways이므로 미진입입니다. 또한 effective_score 2점이 sideways 기준 min_score 5점에 미달하고, 현재 보유 종목이 7개라 신규 진입 기준인 buy_score 6점 이상에도 미달합니다."
+                - button "AI 분석 상세" [ref=e922]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e925]:
+                - generic [ref=e927]:
+                  - generic [ref=e928]:
+                    - heading "광전자" [level=3] [ref=e929]
+                    - generic [ref=e930]: "017900"
+                  - generic [ref=e931]:
+                    - generic [ref=e932]: 전기·전자
+                    - generic [ref=e933]: 단기
+                    - generic [ref=e934]: 2/5점
+                - generic [ref=e935]:
+                  - generic [ref=e936]:
+                    - paragraph [ref=e937]: 현재가
+                    - paragraph [ref=e938]: ₩10,560
+                  - generic [ref=e939]:
+                    - paragraph [ref=e940]: 목표가
+                    - paragraph [ref=e941]: ₩12,028
+                  - generic [ref=e942]:
+                    - paragraph [ref=e943]: 손절가
+                    - paragraph [ref=e944]: ₩9,908
+                - generic [ref=e945]:
+                  - generic [ref=e946]:
+                    - paragraph [ref=e947]: 손익비
+                    - generic [ref=e948]: "2.4"
+                  - generic [ref=e949]:
+                    - generic [ref=e950]:
+                      - paragraph [ref=e951]: 목표 수익
+                      - paragraph [ref=e952]: +14.1%
+                    - generic [ref=e953]:
+                      - paragraph [ref=e954]: 예상 손실
+                      - paragraph [ref=e955]: "-6.0%"
+                - generic [ref=e957]:
+                  - img [ref=e958]
+                  - generic [ref=e960]:
+                    - paragraph [ref=e961]:
+                      - text: "결정: Skip"
+                      - generic [ref=e962]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e963]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e964]: "미진입 사유: 펀더멘털 게이트 F1·F3 미달 상태에서 시장 체제가 sideways로 분류되어 단독 미진입 사유에 해당합니다. 또한 effective_score 3이 sideways min_score 5에 미달하고, 현재 보유 7개로 포트폴리오 제약상 buy_score 6 이상 기준도 충족하지 못합니다. 1차 의미 있는 지지선 9,000~9,300원은 현재가 대비 10% 이상 아래라 사용 가능한 지지 기반 손절 설정도 부적합합니다."
+                - button "AI 분석 상세" [ref=e966]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e967]:
+            - generic [ref=e969]:
+              - generic [ref=e970]: 2026년 6월 15일
+              - generic [ref=e971]: 3개 분석
+            - generic [ref=e973]:
+              - generic [ref=e976]:
+                - generic [ref=e978]:
+                  - generic [ref=e979]:
+                    - heading "HL만도" [level=3] [ref=e980]
+                    - generic [ref=e981]: "204320"
+                  - generic [ref=e982]:
+                    - generic [ref=e983]: 운송장비·부품
+                    - generic [ref=e984]: 단기
+                    - generic [ref=e985]: 8/4점
+                - generic [ref=e986]:
+                  - generic [ref=e987]:
+                    - paragraph [ref=e988]: 현재가
+                    - paragraph [ref=e989]: ₩69,700
+                  - generic [ref=e990]:
+                    - paragraph [ref=e991]: 목표가
+                    - paragraph [ref=e992]: ₩76,200
+                  - generic [ref=e993]:
+                    - paragraph [ref=e994]: 손절가
+                    - paragraph [ref=e995]: ₩65,000
+                - generic [ref=e996]:
+                  - generic [ref=e997]:
+                    - paragraph [ref=e998]: 손익비
+                    - generic [ref=e999]: "1.4"
+                  - generic [ref=e1000]:
+                    - generic [ref=e1001]:
+                      - paragraph [ref=e1002]: 목표 수익
+                      - paragraph [ref=e1003]: +9.3%
+                    - generic [ref=e1004]:
+                      - paragraph [ref=e1005]: 예상 손실
+                      - paragraph [ref=e1006]: "-6.7%"
+                - generic [ref=e1008]:
+                  - img [ref=e1009]
+                  - generic [ref=e1011]:
+                    - paragraph [ref=e1012]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1013]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e1014]: "AI 판단: Skip"
+                    - paragraph [ref=e1015]: "미진입 사유: 단독 미진입 사유 충족: 2025A PER 30.51배가 업종 PER 11.75배의 약 2.6배로 업종 평균 2.5배 이상. 펀더멘털·거래량·손익비 조건은 통과했지만, 현재 이익 기준 극단적 고평가 규칙에 해당하여 신규 진입 불가."
+                - button "AI 분석 상세" [ref=e1017]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1020]:
+                - generic [ref=e1022]:
+                  - generic [ref=e1023]:
+                    - heading "SK하이닉스" [level=3] [ref=e1024]
+                    - generic [ref=e1025]: "000660"
+                  - generic [ref=e1026]:
+                    - generic [ref=e1027]: Unknown
+                    - generic [ref=e1028]: Short-term
+                    - generic [ref=e1029]: 0/0점
+                - generic [ref=e1030]:
+                  - generic [ref=e1031]:
+                    - paragraph [ref=e1032]: 현재가
+                    - paragraph [ref=e1033]: ₩2,287,000
+                  - generic [ref=e1034]:
+                    - paragraph [ref=e1035]: 목표가
+                    - paragraph [ref=e1036]: ₩0
+                  - generic [ref=e1037]:
+                    - paragraph [ref=e1038]: 손절가
+                    - paragraph [ref=e1039]: ₩0
+                - generic [ref=e1041]:
+                  - img [ref=e1042]
+                  - generic [ref=e1044]:
+                    - paragraph [ref=e1045]: "결정: Already holding"
+                    - paragraph [ref=e1046]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e1048]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1051]:
+                - generic [ref=e1053]:
+                  - generic [ref=e1054]:
+                    - heading "삼성전기" [level=3] [ref=e1055]
+                    - generic [ref=e1056]: "009150"
+                  - generic [ref=e1057]:
+                    - generic [ref=e1058]: Unknown
+                    - generic [ref=e1059]: Short-term
+                    - generic [ref=e1060]: 0/0점
+                - generic [ref=e1061]:
+                  - generic [ref=e1062]:
+                    - paragraph [ref=e1063]: 현재가
+                    - paragraph [ref=e1064]: ₩1,960,000
+                  - generic [ref=e1065]:
+                    - paragraph [ref=e1066]: 목표가
+                    - paragraph [ref=e1067]: ₩0
+                  - generic [ref=e1068]:
+                    - paragraph [ref=e1069]: 손절가
+                    - paragraph [ref=e1070]: ₩0
+                - generic [ref=e1072]:
+                  - img [ref=e1073]
+                  - generic [ref=e1075]:
+                    - paragraph [ref=e1076]: "결정: Already holding"
+                    - paragraph [ref=e1077]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e1079]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1080]:
+            - generic [ref=e1082]:
+              - generic [ref=e1083]: 2026년 6월 12일
+              - generic [ref=e1084]: 3개 분석
+            - generic [ref=e1086]:
+              - generic [ref=e1089]:
+                - generic [ref=e1091]:
+                  - generic [ref=e1092]:
+                    - heading "SK하이닉스" [level=3] [ref=e1093]
+                    - generic [ref=e1094]: "000660"
+                  - generic [ref=e1095]:
+                    - generic [ref=e1096]: Unknown
+                    - generic [ref=e1097]: Short-term
+                    - generic [ref=e1098]: 0/0점
+                - generic [ref=e1099]:
+                  - generic [ref=e1100]:
+                    - paragraph [ref=e1101]: 현재가
+                    - paragraph [ref=e1102]: ₩2,180,000
+                  - generic [ref=e1103]:
+                    - paragraph [ref=e1104]: 목표가
+                    - paragraph [ref=e1105]: ₩0
+                  - generic [ref=e1106]:
+                    - paragraph [ref=e1107]: 손절가
+                    - paragraph [ref=e1108]: ₩0
+                - generic [ref=e1110]:
+                  - img [ref=e1111]
+                  - generic [ref=e1113]:
+                    - paragraph [ref=e1114]: "결정: Already holding"
+                    - paragraph [ref=e1115]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e1117]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1120]:
+                - generic [ref=e1122]:
+                  - generic [ref=e1123]:
+                    - heading "삼성전자" [level=3] [ref=e1124]
+                    - generic [ref=e1125]: "005930"
+                  - generic [ref=e1126]:
+                    - generic [ref=e1127]: 전기·전자
+                    - generic [ref=e1128]: 중기
+                    - generic [ref=e1129]: 7/5점
+                - generic [ref=e1130]:
+                  - generic [ref=e1131]:
+                    - paragraph [ref=e1132]: 현재가
+                    - paragraph [ref=e1133]: ₩322,500
+                  - generic [ref=e1134]:
+                    - paragraph [ref=e1135]: 목표가
+                    - paragraph [ref=e1136]: ₩437,500
+                  - generic [ref=e1137]:
+                    - paragraph [ref=e1138]: 손절가
+                    - paragraph [ref=e1139]: ₩303,150
+                - generic [ref=e1140]:
+                  - generic [ref=e1141]:
+                    - paragraph [ref=e1142]: 손익비
+                    - generic [ref=e1143]: "5.9"
+                  - generic [ref=e1144]:
+                    - generic [ref=e1145]:
+                      - paragraph [ref=e1146]: 목표 수익
+                      - paragraph [ref=e1147]: +35.7%
+                    - generic [ref=e1148]:
+                      - paragraph [ref=e1149]: 예상 손실
+                      - paragraph [ref=e1150]: "-6.0%"
+                - generic [ref=e1152]:
+                  - img [ref=e1153]
+                  - generic [ref=e1155]:
+                    - paragraph [ref=e1156]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1157]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e1158]: "AI 판단: Skip"
+                    - paragraph [ref=e1159]: "미진입 사유: 포트폴리오 제약 미달: 시장 리스크 High로 max_portfolio_size를 6으로 설정했으며 현재 보유 종목이 이미 6개입니다. 신규 진입 시 슬롯 한도를 초과하고, 기존 SK하이닉스·테크윙과 반도체 체인 노출이 중복됩니다."
+                - button "AI 분석 상세" [ref=e1161]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1164]:
+                - generic [ref=e1166]:
+                  - generic [ref=e1167]:
+                    - heading "SK하이닉스" [level=3] [ref=e1168]
+                    - generic [ref=e1169]: "000660"
+                  - generic [ref=e1170]:
+                    - generic [ref=e1171]: Unknown
+                    - generic [ref=e1172]: Short-term
+                    - generic [ref=e1173]: 0/0점
+                - generic [ref=e1174]:
+                  - generic [ref=e1175]:
+                    - paragraph [ref=e1176]: 현재가
+                    - paragraph [ref=e1177]: ₩2,287,000
+                  - generic [ref=e1178]:
+                    - paragraph [ref=e1179]: 목표가
+                    - paragraph [ref=e1180]: ₩0
+                  - generic [ref=e1181]:
+                    - paragraph [ref=e1182]: 손절가
+                    - paragraph [ref=e1183]: ₩0
+                - generic [ref=e1185]:
+                  - img [ref=e1186]
+                  - generic [ref=e1188]:
+                    - paragraph [ref=e1189]: "결정: Already holding"
+                    - paragraph [ref=e1190]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e1192]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1193]:
+            - generic [ref=e1195]:
+              - generic [ref=e1196]: 2026년 6월 11일
+              - generic [ref=e1197]: 3개 분석
+            - generic [ref=e1199]:
+              - generic [ref=e1202]:
+                - generic [ref=e1204]:
+                  - generic [ref=e1205]:
+                    - heading "미래에셋벤처투자" [level=3] [ref=e1206]
+                    - generic [ref=e1207]: "100790"
+                  - generic [ref=e1208]:
+                    - generic [ref=e1209]: 기타금융
+                    - generic [ref=e1210]: 단기
+                    - generic [ref=e1211]: 7/6점
+                - generic [ref=e1212]:
+                  - generic [ref=e1213]:
+                    - paragraph [ref=e1214]: 현재가
+                    - paragraph [ref=e1215]: ₩41,600
+                  - generic [ref=e1216]:
+                    - paragraph [ref=e1217]: 목표가
+                    - paragraph [ref=e1218]: ₩48,000
+                  - generic [ref=e1219]:
+                    - paragraph [ref=e1220]: 손절가
+                    - paragraph [ref=e1221]: ₩39,760
+                - generic [ref=e1222]:
+                  - generic [ref=e1223]:
+                    - paragraph [ref=e1224]: 손익비
+                    - generic [ref=e1225]: "2.9"
+                  - generic [ref=e1226]:
+                    - generic [ref=e1227]:
+                      - paragraph [ref=e1228]: 목표 수익
+                      - paragraph [ref=e1229]: +14.7%
+                    - generic [ref=e1230]:
+                      - paragraph [ref=e1231]: 예상 손실
+                      - paragraph [ref=e1232]: "-5.0%"
+                - generic [ref=e1234]:
+                  - img [ref=e1235]
+                  - generic [ref=e1237]:
+                    - paragraph [ref=e1238]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1239]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e1240]: "AI 판단: Skip"
+                    - paragraph [ref=e1241]: "미진입 사유: 단독 사유 2: PER 67.76배가 업종 평균 9.05배의 약 7.5배로 극단적 고평가입니다. 또한 strong_bear 행에서 요구되는 additional_confirmation_count 1개 이상 조건이 0개로 미달입니다."
+                - button "AI 분석 상세" [ref=e1243]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1246]:
+                - generic [ref=e1248]:
+                  - generic [ref=e1249]:
+                    - heading "삼성전자" [level=3] [ref=e1250]
+                    - generic [ref=e1251]: "005930"
+                  - generic [ref=e1252]:
+                    - generic [ref=e1253]: 전기·전자
+                    - generic [ref=e1254]: 중기
+                    - generic [ref=e1255]: 6/6점
+                - generic [ref=e1256]:
+                  - generic [ref=e1257]:
+                    - paragraph [ref=e1258]: 현재가
+                    - paragraph [ref=e1259]: ₩293,500
+                  - generic [ref=e1260]:
+                    - paragraph [ref=e1261]: 목표가
+                    - paragraph [ref=e1262]: ₩437,500
+                  - generic [ref=e1263]:
+                    - paragraph [ref=e1264]: 손절가
+                    - paragraph [ref=e1265]: ₩286,400
+                - generic [ref=e1266]:
+                  - generic [ref=e1267]:
+                    - paragraph [ref=e1268]: 손익비
+                    - generic [ref=e1269]: "19.5"
+                  - generic [ref=e1270]:
+                    - generic [ref=e1271]:
+                      - paragraph [ref=e1272]: 목표 수익
+                      - paragraph [ref=e1273]: +48.9%
+                    - generic [ref=e1274]:
+                      - paragraph [ref=e1275]: 예상 손실
+                      - paragraph [ref=e1276]: "-2.5%"
+                - generic [ref=e1278]:
+                  - img [ref=e1279]
+                  - generic [ref=e1281]:
+                    - paragraph [ref=e1282]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1283]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1284]: "AI 판단: Skip"
+                    - paragraph [ref=e1285]: "미진입 사유: strong_bear 기준에서 momentum_signal_count가 최소 2개 필요하나 현재는 매크로 섹터 리더 트리거 자동 가산 1개만 충족합니다. 외국인+기관 3거래일 연속 순매수는 없고, 52주 신고가 95% 근접도 아니며, 단기 섹터 가격 추세도 약세입니다."
+                - button "AI 분석 상세" [ref=e1287]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1290]:
+                - generic [ref=e1292]:
+                  - generic [ref=e1293]:
+                    - heading "광전자" [level=3] [ref=e1294]
+                    - generic [ref=e1295]: "017900"
+                  - generic [ref=e1296]:
+                    - generic [ref=e1297]: 전기·전자
+                    - generic [ref=e1298]: 단기
+                    - generic [ref=e1299]: 2/6점
+                - generic [ref=e1300]:
+                  - generic [ref=e1301]:
+                    - paragraph [ref=e1302]: 현재가
+                    - paragraph [ref=e1303]: ₩9,325
+                  - generic [ref=e1304]:
+                    - paragraph [ref=e1305]: 목표가
+                    - paragraph [ref=e1306]: ₩10,580
+                  - generic [ref=e1307]:
+                    - paragraph [ref=e1308]: 손절가
+                    - paragraph [ref=e1309]: ₩8,845
+                - generic [ref=e1310]:
+                  - generic [ref=e1311]:
+                    - paragraph [ref=e1312]: 손익비
+                    - generic [ref=e1313]: "2.7"
+                  - generic [ref=e1314]:
+                    - generic [ref=e1315]:
+                      - paragraph [ref=e1316]: 목표 수익
+                      - paragraph [ref=e1317]: +13.6%
+                    - generic [ref=e1318]:
+                      - paragraph [ref=e1319]: 예상 손실
+                      - paragraph [ref=e1320]: "-5.0%"
+                - generic [ref=e1322]:
+                  - img [ref=e1323]
+                  - generic [ref=e1325]:
+                    - paragraph [ref=e1326]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1327]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e1328]: "AI 판단: Skip / 점수 부족 (2/6)"
+                    - paragraph [ref=e1329]: "미진입 사유: strong_bear 체제에서 펀더멘털 게이트 F3 성장성 미달은 단독 미진입 사유입니다. 또한 effective_score 3이 min_score 6에 미달하고, strong_bear 요구 조건인 모멘텀 신호 2개 이상에도 미달합니다."
+                - button "AI 분석 상세" [ref=e1331]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1332]:
+            - generic [ref=e1334]:
+              - generic [ref=e1335]: 2026년 6월 10일
+              - generic [ref=e1336]: 4개 분석
+            - generic [ref=e1338]:
+              - generic [ref=e1341]:
+                - generic [ref=e1343]:
+                  - generic [ref=e1344]:
+                    - heading "케이뱅크" [level=3] [ref=e1345]
+                    - generic [ref=e1346]: "279570"
+                  - generic [ref=e1347]:
+                    - generic [ref=e1348]: 은행
+                    - generic [ref=e1349]: 단기
+                    - generic [ref=e1350]: 2/6점
+                - generic [ref=e1351]:
+                  - generic [ref=e1352]:
+                    - paragraph [ref=e1353]: 현재가
+                    - paragraph [ref=e1354]: ₩5,930
+                  - generic [ref=e1355]:
+                    - paragraph [ref=e1356]: 목표가
+                    - paragraph [ref=e1357]: ₩9,000
+                  - generic [ref=e1358]:
+                    - paragraph [ref=e1359]: 손절가
+                    - paragraph [ref=e1360]: ₩5,700
+                - generic [ref=e1361]:
+                  - generic [ref=e1362]:
+                    - paragraph [ref=e1363]: 손익비
+                    - generic [ref=e1364]: "11.7"
+                  - generic [ref=e1365]:
+                    - generic [ref=e1366]:
+                      - paragraph [ref=e1367]: 목표 수익
+                      - paragraph [ref=e1368]: +51.0%
+                    - generic [ref=e1369]:
+                      - paragraph [ref=e1370]: 예상 손실
+                      - paragraph [ref=e1371]: "-4.4%"
+                - generic [ref=e1373]:
+                  - img [ref=e1374]
+                  - generic [ref=e1376]:
+                    - paragraph [ref=e1377]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1378]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e1379]: "AI 판단: Skip / 점수 부족 (2/6)"
+                    - paragraph [ref=e1380]: "미진입 사유: 펀더 게이트 F1/F2 미달 상태에서 strong_bear regime이 적용되며, effective_score 1이 min_score 6에 크게 미달합니다. 거래량 급증, 외국인+기관 단기 순매수, 손익비는 충족하지만 C/A 품질이 CAN SLIM 기준에 부족합니다."
+                - button "AI 분석 상세" [ref=e1382]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1385]:
+                - generic [ref=e1387]:
+                  - generic [ref=e1388]:
+                    - heading "주성엔지니어링" [level=3] [ref=e1389]
+                    - generic [ref=e1390]: "036930"
+                  - generic [ref=e1391]:
+                    - generic [ref=e1392]: 기계·장비
+                    - generic [ref=e1393]: 중기
+                    - generic [ref=e1394]: 2/6점
+                - generic [ref=e1395]:
+                  - generic [ref=e1396]:
+                    - paragraph [ref=e1397]: 현재가
+                    - paragraph [ref=e1398]: ₩195,100
+                  - generic [ref=e1399]:
+                    - paragraph [ref=e1400]: 목표가
+                    - paragraph [ref=e1401]: ₩221,440
+                  - generic [ref=e1402]:
+                    - paragraph [ref=e1403]: 손절가
+                    - paragraph [ref=e1404]: ₩185,500
+                - generic [ref=e1405]:
+                  - generic [ref=e1406]:
+                    - paragraph [ref=e1407]: 손익비
+                    - generic [ref=e1408]: "2.7"
+                  - generic [ref=e1409]:
+                    - generic [ref=e1410]:
+                      - paragraph [ref=e1411]: 목표 수익
+                      - paragraph [ref=e1412]: +13.4%
+                    - generic [ref=e1413]:
+                      - paragraph [ref=e1414]: 예상 손실
+                      - paragraph [ref=e1415]: "-5.0%"
+                - generic [ref=e1417]:
+                  - img [ref=e1418]
+                  - generic [ref=e1420]:
+                    - paragraph [ref=e1421]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1422]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1423]: "AI 판단: Skip / 점수 부족 (2/6)"
+                    - paragraph [ref=e1424]: "미진입 사유: 단독 사유 2: PER 253.87배가 업종 평균 40.75배의 2.5배를 크게 초과합니다. 또한 strong_bear 체제에서 F1 수익성 게이트가 미달이며, effective_score 3점이 min_score 6점에 미달합니다."
+                - button "AI 분석 상세" [ref=e1426]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1429]:
+                - generic [ref=e1431]:
+                  - generic [ref=e1432]:
+                    - heading "SK네트웍스" [level=3] [ref=e1433]
+                    - generic [ref=e1434]: "001740"
+                  - generic [ref=e1435]:
+                    - generic [ref=e1436]: 유통
+                    - generic [ref=e1437]: 단기
+                    - generic [ref=e1438]: 2/5점
+                - generic [ref=e1439]:
+                  - generic [ref=e1440]:
+                    - paragraph [ref=e1441]: 현재가
+                    - paragraph [ref=e1442]: ₩13,880
+                  - generic [ref=e1443]:
+                    - paragraph [ref=e1444]: 목표가
+                    - paragraph [ref=e1445]: ₩15,200
+                  - generic [ref=e1446]:
+                    - paragraph [ref=e1447]: 손절가
+                    - paragraph [ref=e1448]: ₩13,200
+                - generic [ref=e1449]:
+                  - generic [ref=e1450]:
+                    - paragraph [ref=e1451]: 손익비
+                    - generic [ref=e1452]: "1.9"
+                  - generic [ref=e1453]:
+                    - generic [ref=e1454]:
+                      - paragraph [ref=e1455]: 목표 수익
+                      - paragraph [ref=e1456]: +9.4%
+                    - generic [ref=e1457]:
+                      - paragraph [ref=e1458]: 예상 손실
+                      - paragraph [ref=e1459]: "-5.0%"
+                - generic [ref=e1461]:
+                  - img [ref=e1462]
+                  - generic [ref=e1464]:
+                    - paragraph [ref=e1465]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1466]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1467]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e1468]: "미진입 사유: 펀더멘털 게이트 F3 성장성 미달 상태에서 시장 체제가 moderate_bear이므로 단독 미진입 사유에 해당합니다. 또한 effective_score 1이 moderate_bear 기준 min_score 5에 크게 미달합니다."
+                - button "AI 분석 상세" [ref=e1470]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1473]:
+                - generic [ref=e1475]:
+                  - generic [ref=e1476]:
+                    - heading "주성엔지니어링" [level=3] [ref=e1477]
+                    - generic [ref=e1478]: "036930"
+                  - generic [ref=e1479]:
+                    - generic [ref=e1480]: 기계·장비
+                    - generic [ref=e1481]: 단기
+                    - generic [ref=e1482]: 2/5점
+                - generic [ref=e1483]:
+                  - generic [ref=e1484]:
+                    - paragraph [ref=e1485]: 현재가
+                    - paragraph [ref=e1486]: ₩216,500
+                  - generic [ref=e1487]:
+                    - paragraph [ref=e1488]: 목표가
+                    - paragraph [ref=e1489]: ₩228,700
+                  - generic [ref=e1490]:
+                    - paragraph [ref=e1491]: 손절가
+                    - paragraph [ref=e1492]: ₩210,000
+                - generic [ref=e1493]:
+                  - generic [ref=e1494]:
+                    - paragraph [ref=e1495]: 손익비
+                    - generic [ref=e1496]: "1.9"
+                  - generic [ref=e1497]:
+                    - generic [ref=e1498]:
+                      - paragraph [ref=e1499]: 목표 수익
+                      - paragraph [ref=e1500]: +5.6%
+                    - generic [ref=e1501]:
+                      - paragraph [ref=e1502]: 예상 손실
+                      - paragraph [ref=e1503]: "-3.0%"
+                - generic [ref=e1505]:
+                  - img [ref=e1506]
+                  - generic [ref=e1508]:
+                    - paragraph [ref=e1509]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1510]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1511]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e1512]: "미진입 사유: F1 수익성 게이트 미달 상태에서 시장 체제가 moderate_bear이며, 현재 PER이 업종 평균의 약 6.2배로 단독 미진입 조건에 해당합니다. 또한 effective_score 3점이 moderate_bear 기준 min_score 5점에 미달합니다."
+                - button "AI 분석 상세" [ref=e1514]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1515]:
+            - generic [ref=e1517]:
+              - generic [ref=e1518]: 2026년 6월 9일
+              - generic [ref=e1519]: 3개 분석
+            - generic [ref=e1521]:
+              - generic [ref=e1524]:
+                - generic [ref=e1526]:
+                  - generic [ref=e1527]:
+                    - heading "대주전자재료" [level=3] [ref=e1528]
+                    - generic [ref=e1529]: "078600"
+                  - generic [ref=e1530]:
+                    - generic [ref=e1531]: 전기·전자
+                    - generic [ref=e1532]: 중기
+                    - generic [ref=e1533]: 5/4점
+                - generic [ref=e1534]:
+                  - generic [ref=e1535]:
+                    - paragraph [ref=e1536]: 현재가
+                    - paragraph [ref=e1537]: ₩113,800
+                  - generic [ref=e1538]:
+                    - paragraph [ref=e1539]: 목표가
+                    - paragraph [ref=e1540]: ₩215,000
+                  - generic [ref=e1541]:
+                    - paragraph [ref=e1542]: 손절가
+                    - paragraph [ref=e1543]: ₩109,700
+                - generic [ref=e1544]:
+                  - generic [ref=e1545]:
+                    - paragraph [ref=e1546]: 손익비
+                    - generic [ref=e1547]: "25.3"
+                  - generic [ref=e1548]:
+                    - generic [ref=e1549]:
+                      - paragraph [ref=e1550]: 목표 수익
+                      - paragraph [ref=e1551]: +89.1%
+                    - generic [ref=e1552]:
+                      - paragraph [ref=e1553]: 예상 손실
+                      - paragraph [ref=e1554]: "-3.5%"
+                - generic [ref=e1556]:
+                  - img [ref=e1557]
+                  - generic [ref=e1559]:
+                    - paragraph [ref=e1560]:
+                      - text: "결정: Enter"
+                      - generic [ref=e1561]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e1562]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e1564]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1567]:
+                - generic [ref=e1569]:
+                  - generic [ref=e1570]:
+                    - heading "SK네트웍스" [level=3] [ref=e1571]
+                    - generic [ref=e1572]: "001740"
+                  - generic [ref=e1573]:
+                    - generic [ref=e1574]: 유통
+                    - generic [ref=e1575]: 단기
+                    - generic [ref=e1576]: 2/5점
+                - generic [ref=e1577]:
+                  - generic [ref=e1578]:
+                    - paragraph [ref=e1579]: 현재가
+                    - paragraph [ref=e1580]: ₩14,920
+                  - generic [ref=e1581]:
+                    - paragraph [ref=e1582]: 목표가
+                    - paragraph [ref=e1583]: ₩15,500
+                  - generic [ref=e1584]:
+                    - paragraph [ref=e1585]: 손절가
+                    - paragraph [ref=e1586]: ₩13,850
+                - generic [ref=e1587]:
+                  - generic [ref=e1588]:
+                    - paragraph [ref=e1589]: 손익비
+                    - generic [ref=e1590]: "1.3"
+                  - generic [ref=e1591]:
+                    - generic [ref=e1592]:
+                      - paragraph [ref=e1593]: 목표 수익
+                      - paragraph [ref=e1594]: +6.3%
+                    - generic [ref=e1595]:
+                      - paragraph [ref=e1596]: 예상 손실
+                      - paragraph [ref=e1597]: "-5.0%"
+                - generic [ref=e1599]:
+                  - img [ref=e1600]
+                  - generic [ref=e1602]:
+                    - paragraph [ref=e1603]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1604]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e1605]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e1606]: "미진입 사유: moderate_bear 체제에서 F3 성장성 미달로 펀더멘털 게이트를 통과하지 못했습니다. 또한 effective_score 2가 min_score 5에 미달하고, 목표가 15,500원 기준 R/R 1.3이 floor 1.5에 미달합니다. 1차 지지선 13,000원도 현재가 대비 약 -10.8%로 차트상 손절 기준으로 쓰기 어렵습니다."
+                - button "AI 분석 상세" [ref=e1608]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1611]:
+                - generic [ref=e1613]:
+                  - generic [ref=e1614]:
+                    - heading "주성엔지니어링" [level=3] [ref=e1615]
+                    - generic [ref=e1616]: "036930"
+                  - generic [ref=e1617]:
+                    - generic [ref=e1618]: 기계·장비
+                    - generic [ref=e1619]: 단기
+                    - generic [ref=e1620]: 2/5점
+                - generic [ref=e1621]:
+                  - generic [ref=e1622]:
+                    - paragraph [ref=e1623]: 현재가
+                    - paragraph [ref=e1624]: ₩195,800
+                  - generic [ref=e1625]:
+                    - paragraph [ref=e1626]: 목표가
+                    - paragraph [ref=e1627]: ₩210,000
+                  - generic [ref=e1628]:
+                    - paragraph [ref=e1629]: 손절가
+                    - paragraph [ref=e1630]: ₩183,600
+                - generic [ref=e1631]:
+                  - generic [ref=e1632]:
+                    - paragraph [ref=e1633]: 손익비
+                    - generic [ref=e1634]: "1.7"
+                  - generic [ref=e1635]:
+                    - generic [ref=e1636]:
+                      - paragraph [ref=e1637]: 목표 수익
+                      - paragraph [ref=e1638]: +8.7%
+                    - generic [ref=e1639]:
+                      - paragraph [ref=e1640]: 예상 손실
+                      - paragraph [ref=e1641]: "-5.0%"
+                - generic [ref=e1643]:
+                  - img [ref=e1644]
+                  - generic [ref=e1646]:
+                    - paragraph [ref=e1647]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1648]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1649]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e1650]: "미진입 사유: moderate_bear 체제에서 F1 펀더멘털 게이트 미달이 발생했고, 2025A PER이 업종 평균의 약 6.7배로 단독 미진입 사유에 해당합니다. 또한 effective_score 3점이 moderate_bear 기준 min_score 5점에 미달합니다."
+                - button "AI 분석 상세" [ref=e1652]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1653]:
+            - generic [ref=e1655]:
+              - generic [ref=e1656]: 2026년 6월 8일
+              - generic [ref=e1657]: 4개 분석
+            - generic [ref=e1659]:
+              - generic [ref=e1662]:
+                - generic [ref=e1664]:
+                  - generic [ref=e1665]:
+                    - heading "SGC에너지" [level=3] [ref=e1666]
+                    - generic [ref=e1667]: "005090"
+                  - generic [ref=e1668]:
+                    - generic [ref=e1669]: 전기·가스
+                    - generic [ref=e1670]: 단기
+                    - generic [ref=e1671]: 2/6점
+                - generic [ref=e1672]:
+                  - generic [ref=e1673]:
+                    - paragraph [ref=e1674]: 현재가
+                    - paragraph [ref=e1675]: ₩47,000
+                  - generic [ref=e1676]:
+                    - paragraph [ref=e1677]: 목표가
+                    - paragraph [ref=e1678]: ₩81,667
+                  - generic [ref=e1679]:
+                    - paragraph [ref=e1680]: 손절가
+                    - paragraph [ref=e1681]: ₩46,000
+                - generic [ref=e1682]:
+                  - generic [ref=e1683]:
+                    - paragraph [ref=e1684]: 손익비
+                    - generic [ref=e1685]: "16.8"
+                  - generic [ref=e1686]:
+                    - generic [ref=e1687]:
+                      - paragraph [ref=e1688]: 목표 수익
+                      - paragraph [ref=e1689]: +70.1%
+                    - generic [ref=e1690]:
+                      - paragraph [ref=e1691]: 예상 손실
+                      - paragraph [ref=e1692]: "-4.2%"
+                - generic [ref=e1694]:
+                  - img [ref=e1695]
+                  - generic [ref=e1697]:
+                    - paragraph [ref=e1698]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1699]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e1700]: "AI 판단: Skip / 점수 부족 (2/6)"
+                    - paragraph [ref=e1701]: "미진입 사유: strong_bear 체제에서 펀더멘털 게이트 F2·F3 미달, effective_score 1 < min_score 6, additional_confirmation_count 0 < 필요 1. 또한 장중 54,200원까지 상승 후 48,000원 마감으로 50,000원 저항 회복 실패와 대량 윗꼬리 성격이 나타남."
+                - button "AI 분석 상세" [ref=e1703]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1706]:
+                - generic [ref=e1708]:
+                  - generic [ref=e1709]:
+                    - heading "NAVER" [level=3] [ref=e1710]
+                    - generic [ref=e1711]: "035420"
+                  - generic [ref=e1712]:
+                    - generic [ref=e1713]: IT 서비스
+                    - generic [ref=e1714]: 단기
+                    - generic [ref=e1715]: 7/6점
+                - generic [ref=e1716]:
+                  - generic [ref=e1717]:
+                    - paragraph [ref=e1718]: 현재가
+                    - paragraph [ref=e1719]: ₩283,000
+                  - generic [ref=e1720]:
+                    - paragraph [ref=e1721]: 목표가
+                    - paragraph [ref=e1722]: ₩301,381
+                  - generic [ref=e1723]:
+                    - paragraph [ref=e1724]: 손절가
+                    - paragraph [ref=e1725]: ₩271,500
+                - generic [ref=e1726]:
+                  - generic [ref=e1727]:
+                    - paragraph [ref=e1728]: 손익비
+                    - generic [ref=e1729]: "1.3"
+                  - generic [ref=e1730]:
+                    - generic [ref=e1731]:
+                      - paragraph [ref=e1732]: 목표 수익
+                      - paragraph [ref=e1733]: +5.9%
+                    - generic [ref=e1734]:
+                      - paragraph [ref=e1735]: 예상 손실
+                      - paragraph [ref=e1736]: "-4.6%"
+                - generic [ref=e1738]:
+                  - img [ref=e1739]
+                  - generic [ref=e1741]:
+                    - paragraph [ref=e1742]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1743]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1744]: "AI 판단: Skip"
+                    - paragraph [ref=e1745]: "미진입 사유: strong_bear 기준 R/R floor 1.8 미달: 목표가 301381, 손절 271500 기준 기대수익 5.9%, 기대손실 4.6%, R/R 1.3입니다. 펀더멘털·모멘텀·추가 확인 조건은 충족했으나 손익비가 약세장 기준을 통과하지 못했습니다."
+                - button "AI 분석 상세" [ref=e1747]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1750]:
+                - generic [ref=e1752]:
+                  - generic [ref=e1753]:
+                    - heading "대한광통신" [level=3] [ref=e1754]
+                    - generic [ref=e1755]: "010170"
+                  - generic [ref=e1756]:
+                    - generic [ref=e1757]: 전기·전자
+                    - generic [ref=e1758]: 단기
+                    - generic [ref=e1759]: 2/5점
+                - generic [ref=e1760]:
+                  - generic [ref=e1761]:
+                    - paragraph [ref=e1762]: 현재가
+                    - paragraph [ref=e1763]: ₩17,230
+                  - generic [ref=e1764]:
+                    - paragraph [ref=e1765]: 목표가
+                    - paragraph [ref=e1766]: ₩19,700
+                  - generic [ref=e1767]:
+                    - paragraph [ref=e1768]: 손절가
+                    - paragraph [ref=e1769]: ₩16,460
+                - generic [ref=e1770]:
+                  - generic [ref=e1771]:
+                    - paragraph [ref=e1772]: 손익비
+                    - generic [ref=e1773]: "2.7"
+                  - generic [ref=e1774]:
+                    - generic [ref=e1775]:
+                      - paragraph [ref=e1776]: 목표 수익
+                      - paragraph [ref=e1777]: +13.7%
+                    - generic [ref=e1778]:
+                      - paragraph [ref=e1779]: 예상 손실
+                      - paragraph [ref=e1780]: "-5.0%"
+                - generic [ref=e1782]:
+                  - img [ref=e1783]
+                  - generic [ref=e1785]:
+                    - paragraph [ref=e1786]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1787]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e1788]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e1789]: "미진입 사유: moderate_bear 체제에서 펀더멘털 게이트 F1·F2·F3 미달은 단독 미진입 조건입니다. 또한 effective_score 3점이 min_score 5점에 미달하고, 모멘텀 신호도 1개로 moderate_bear 요구치 2개에 미달합니다. 주요 지지선 15,000원은 현재가 대비 약 -13.4%로 사용 가능한 손절 지지선 범위를 벗어납니다."
+                - button "AI 분석 상세" [ref=e1791]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1794]:
+                - generic [ref=e1796]:
+                  - generic [ref=e1797]:
+                    - heading "제주반도체" [level=3] [ref=e1798]
+                    - generic [ref=e1799]: "080220"
+                  - generic [ref=e1800]:
+                    - generic [ref=e1801]: 전기·전자
+                    - generic [ref=e1802]: 단기
+                    - generic [ref=e1803]: 6/5점
+                - generic [ref=e1804]:
+                  - generic [ref=e1805]:
+                    - paragraph [ref=e1806]: 현재가
+                    - paragraph [ref=e1807]: ₩91,800
+                  - generic [ref=e1808]:
+                    - paragraph [ref=e1809]: 목표가
+                    - paragraph [ref=e1810]: ₩99,500
+                  - generic [ref=e1811]:
+                    - paragraph [ref=e1812]: 손절가
+                    - paragraph [ref=e1813]: ₩88,900
+                - generic [ref=e1814]:
+                  - generic [ref=e1815]:
+                    - paragraph [ref=e1816]: 손익비
+                    - generic [ref=e1817]: "2.2"
+                  - generic [ref=e1818]:
+                    - generic [ref=e1819]:
+                      - paragraph [ref=e1820]: 목표 수익
+                      - paragraph [ref=e1821]: +7.9%
+                    - generic [ref=e1822]:
+                      - paragraph [ref=e1823]: 예상 손실
+                      - paragraph [ref=e1824]: "-3.6%"
+                - generic [ref=e1826]:
+                  - img [ref=e1827]
+                  - generic [ref=e1829]:
+                    - paragraph [ref=e1830]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1831]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e1832]: "AI 판단: Skip"
+                    - paragraph [ref=e1833]: "미진입 사유: moderate_bear 매트릭스에서 요구되는 모멘텀 신호 2개 이상 조건 미달: 현재 인정 가능한 신호는 트리거 자동 가산 1개뿐입니다. R/R 2.2, 손절폭 3.6%, effective_score 6, 추가 확인 2개는 기준을 충족하지만, 최근 완성 거래일 기준 외국인·기관 동반 순매도와 5일선·20일선 하회로 모멘텀 요건이 부족합니다."
+                - button "AI 분석 상세" [ref=e1835]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e1836]:
+            - generic [ref=e1838]:
+              - generic [ref=e1839]: 2026년 6월 5일
+              - generic [ref=e1840]: 1개 분석
+            - generic [ref=e1845]:
+              - generic [ref=e1847]:
+                - generic [ref=e1848]:
+                  - heading "서진시스템" [level=3] [ref=e1849]
+                  - generic [ref=e1850]: "178320"
+                - generic [ref=e1851]:
+                  - generic [ref=e1852]: 전기·전자
+                  - generic [ref=e1853]: 단기
+                  - generic [ref=e1854]: 2/4점
+              - generic [ref=e1855]:
+                - generic [ref=e1856]:
+                  - paragraph [ref=e1857]: 현재가
+                  - paragraph [ref=e1858]: ₩66,500
+                - generic [ref=e1859]:
+                  - paragraph [ref=e1860]: 목표가
+                  - paragraph [ref=e1861]: ₩73,500
+                - generic [ref=e1862]:
+                  - paragraph [ref=e1863]: 손절가
+                  - paragraph [ref=e1864]: ₩62,600
+              - generic [ref=e1865]:
+                - generic [ref=e1866]:
+                  - paragraph [ref=e1867]: 손익비
+                  - generic [ref=e1868]: "1.7"
+                - generic [ref=e1869]:
+                  - generic [ref=e1870]:
+                    - paragraph [ref=e1871]: 목표 수익
+                    - paragraph [ref=e1872]: +10.4%
+                  - generic [ref=e1873]:
+                    - paragraph [ref=e1874]: 예상 손실
+                    - paragraph [ref=e1875]: "-6.0%"
+              - generic [ref=e1877]:
+                - img [ref=e1878]
+                - generic [ref=e1880]:
+                  - paragraph [ref=e1881]:
+                    - text: "결정: Skip"
+                    - generic [ref=e1882]: "(진입 체크리스트: 4/6)"
+                  - paragraph [ref=e1883]: "AI 판단: Skip / 점수 부족 (2/4)"
+                  - paragraph [ref=e1884]: "미진입 사유: 펀더멘털 게이트 F1 수익성 및 F2 재무건전성 미달, effective_score 3점으로 strong_bull 기준 min_score 4점 미달입니다."
+              - button "AI 분석 상세" [ref=e1886]:
+                - img
+                - text: AI 분석 상세
+                - img
+          - generic [ref=e1887]:
+            - generic [ref=e1889]:
+              - generic [ref=e1890]: 2026년 6월 4일
+              - generic [ref=e1891]: 4개 분석
+            - generic [ref=e1893]:
+              - generic [ref=e1896]:
+                - generic [ref=e1898]:
+                  - generic [ref=e1899]:
+                    - heading "성호전자" [level=3] [ref=e1900]
+                    - generic [ref=e1901]: "043260"
+                  - generic [ref=e1902]:
+                    - generic [ref=e1903]: 전기·전자
+                    - generic [ref=e1904]: 단기
+                    - generic [ref=e1905]: 8/4점
+                - generic [ref=e1906]:
+                  - generic [ref=e1907]:
+                    - paragraph [ref=e1908]: 현재가
+                    - paragraph [ref=e1909]: ₩51,500
+                  - generic [ref=e1910]:
+                    - paragraph [ref=e1911]: 목표가
+                    - paragraph [ref=e1912]: ₩100,000
+                  - generic [ref=e1913]:
+                    - paragraph [ref=e1914]: 손절가
+                    - paragraph [ref=e1915]: ₩47,710
+                - generic [ref=e1916]:
+                  - generic [ref=e1917]:
+                    - paragraph [ref=e1918]: 손익비
+                    - generic [ref=e1919]: "13.6"
+                  - generic [ref=e1920]:
+                    - generic [ref=e1921]:
+                      - paragraph [ref=e1922]: 목표 수익
+                      - paragraph [ref=e1923]: +94.9%
+                    - generic [ref=e1924]:
+                      - paragraph [ref=e1925]: 예상 손실
+                      - paragraph [ref=e1926]: "-7.0%"
+                - generic [ref=e1928]:
+                  - img [ref=e1929]
+                  - generic [ref=e1931]:
+                    - paragraph [ref=e1932]:
+                      - text: "결정: Enter"
+                      - generic [ref=e1933]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e1934]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e1936]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1939]:
+                - generic [ref=e1941]:
+                  - generic [ref=e1942]:
+                    - heading "케이엠더블유" [level=3] [ref=e1943]
+                    - generic [ref=e1944]: "032500"
+                  - generic [ref=e1945]:
+                    - generic [ref=e1946]: 전기·전자
+                    - generic [ref=e1947]: 단기
+                    - generic [ref=e1948]: 2/4점
+                - generic [ref=e1949]:
+                  - generic [ref=e1950]:
+                    - paragraph [ref=e1951]: 현재가
+                    - paragraph [ref=e1952]: ₩37,350
+                  - generic [ref=e1953]:
+                    - paragraph [ref=e1954]: 목표가
+                    - paragraph [ref=e1955]: ₩70,000
+                  - generic [ref=e1956]:
+                    - paragraph [ref=e1957]: 손절가
+                    - paragraph [ref=e1958]: ₩35,000
+                - generic [ref=e1959]:
+                  - generic [ref=e1960]:
+                    - paragraph [ref=e1961]: 손익비
+                    - generic [ref=e1962]: "16.1"
+                  - generic [ref=e1963]:
+                    - generic [ref=e1964]:
+                      - paragraph [ref=e1965]: 목표 수익
+                      - paragraph [ref=e1966]: +88.9%
+                    - generic [ref=e1967]:
+                      - paragraph [ref=e1968]: 예상 손실
+                      - paragraph [ref=e1969]: "-5.5%"
+                - generic [ref=e1971]:
+                  - img [ref=e1972]
+                  - generic [ref=e1974]:
+                    - paragraph [ref=e1975]:
+                      - text: "결정: Skip"
+                      - generic [ref=e1976]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e1977]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e1978]: "미진입 사유: F1 수익성 및 F3 성장성 미달로 펀더멘털 게이트를 통과하지 못했고, effective_score 3이 parabolic regime의 min_score 4보다 낮습니다."
+                - button "AI 분석 상세" [ref=e1980]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e1983]:
+                - generic [ref=e1985]:
+                  - generic [ref=e1986]:
+                    - heading "광전자" [level=3] [ref=e1987]
+                    - generic [ref=e1988]: "017900"
+                  - generic [ref=e1989]:
+                    - generic [ref=e1990]: 전기·전자
+                    - generic [ref=e1991]: 단기
+                    - generic [ref=e1992]: 2/4점
+                - generic [ref=e1993]:
+                  - generic [ref=e1994]:
+                    - paragraph [ref=e1995]: 현재가
+                    - paragraph [ref=e1996]: ₩9,890
+                  - generic [ref=e1997]:
+                    - paragraph [ref=e1998]: 목표가
+                    - paragraph [ref=e1999]: ₩10,450
+                  - generic [ref=e2000]:
+                    - paragraph [ref=e2001]: 손절가
+                    - paragraph [ref=e2002]: ₩9,550
+                - generic [ref=e2003]:
+                  - generic [ref=e2004]:
+                    - paragraph [ref=e2005]: 손익비
+                    - generic [ref=e2006]: "1.6"
+                  - generic [ref=e2007]:
+                    - generic [ref=e2008]:
+                      - paragraph [ref=e2009]: 목표 수익
+                      - paragraph [ref=e2010]: +5.6%
+                    - generic [ref=e2011]:
+                      - paragraph [ref=e2012]: 예상 손실
+                      - paragraph [ref=e2013]: "-3.5%"
+                - generic [ref=e2015]:
+                  - img [ref=e2016]
+                  - generic [ref=e2018]:
+                    - paragraph [ref=e2019]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2020]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2021]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e2022]: "미진입 사유: 펀더멘털 게이트에서 F1 수익성 연속성 및 F3 성장성이 미달이고, effective_score 3이 parabolic regime min_score 4에 미달합니다. R/R과 손절폭은 기준을 충족하지만 CAN SLIM 기준의 성장주 품질이 부족합니다."
+                - button "AI 분석 상세" [ref=e2024]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2027]:
+                - generic [ref=e2029]:
+                  - generic [ref=e2030]:
+                    - heading "대한광통신" [level=3] [ref=e2031]
+                    - generic [ref=e2032]: "010170"
+                  - generic [ref=e2033]:
+                    - generic [ref=e2034]: 전기·전자
+                    - generic [ref=e2035]: 단기
+                    - generic [ref=e2036]: 2/4점
+                - generic [ref=e2037]:
+                  - generic [ref=e2038]:
+                    - paragraph [ref=e2039]: 현재가
+                    - paragraph [ref=e2040]: ₩20,650
+                  - generic [ref=e2041]:
+                    - paragraph [ref=e2042]: 목표가
+                    - paragraph [ref=e2043]: ₩22,510
+                  - generic [ref=e2044]:
+                    - paragraph [ref=e2045]: 손절가
+                    - paragraph [ref=e2046]: ₩19,930
+                - generic [ref=e2047]:
+                  - generic [ref=e2048]:
+                    - paragraph [ref=e2049]: 손익비
+                    - generic [ref=e2050]: "2.6"
+                  - generic [ref=e2051]:
+                    - generic [ref=e2052]:
+                      - paragraph [ref=e2053]: 목표 수익
+                      - paragraph [ref=e2054]: +9.0%
+                    - generic [ref=e2055]:
+                      - paragraph [ref=e2056]: 예상 손실
+                      - paragraph [ref=e2057]: "-3.5%"
+                - generic [ref=e2059]:
+                  - img [ref=e2060]
+                  - generic [ref=e2062]:
+                    - paragraph [ref=e2063]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2064]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2065]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e2066]: "미진입 사유: 펀더멘털 게이트 F2 재무건전성, F3 성장성 미달이며, 2026E PER이 업종 평균의 2.5배를 초과하는 극단적 고평가입니다. 또한 effective_score 3점으로 parabolic regime min_score 4점에 미달합니다."
+                - button "AI 분석 상세" [ref=e2068]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e2069]:
+            - generic [ref=e2071]:
+              - generic [ref=e2072]: 2026년 6월 2일
+              - generic [ref=e2073]: 5개 분석
+            - generic [ref=e2075]:
+              - generic [ref=e2078]:
+                - generic [ref=e2080]:
+                  - generic [ref=e2081]:
+                    - heading "LG전자" [level=3] [ref=e2082]
+                    - generic [ref=e2083]: "066570"
+                  - generic [ref=e2084]:
+                    - generic [ref=e2085]: 전기·전자
+                    - generic [ref=e2086]: 단기
+                    - generic [ref=e2087]: 7/4점
+                - generic [ref=e2088]:
+                  - generic [ref=e2089]:
+                    - paragraph [ref=e2090]: 현재가
+                    - paragraph [ref=e2091]: ₩389,000
+                  - generic [ref=e2092]:
+                    - paragraph [ref=e2093]: 목표가
+                    - paragraph [ref=e2094]: ₩428,200
+                  - generic [ref=e2095]:
+                    - paragraph [ref=e2096]: 손절가
+                    - paragraph [ref=e2097]: ₩375,400
+                - generic [ref=e2098]:
+                  - generic [ref=e2099]:
+                    - paragraph [ref=e2100]: 손익비
+                    - generic [ref=e2101]: "2.9"
+                  - generic [ref=e2102]:
+                    - generic [ref=e2103]:
+                      - paragraph [ref=e2104]: 목표 수익
+                      - paragraph [ref=e2105]: +10.1%
+                    - generic [ref=e2106]:
+                      - paragraph [ref=e2107]: 예상 손실
+                      - paragraph [ref=e2108]: "-3.5%"
+                - generic [ref=e2110]:
+                  - img [ref=e2111]
+                  - generic [ref=e2113]:
+                    - paragraph [ref=e2114]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2115]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2116]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2118]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2121]:
+                - generic [ref=e2123]:
+                  - generic [ref=e2124]:
+                    - heading "주성엔지니어링" [level=3] [ref=e2125]
+                    - generic [ref=e2126]: "036930"
+                  - generic [ref=e2127]:
+                    - generic [ref=e2128]: 기계·장비
+                    - generic [ref=e2129]: 단기
+                    - generic [ref=e2130]: 2/4점
+                - generic [ref=e2131]:
+                  - generic [ref=e2132]:
+                    - paragraph [ref=e2133]: 현재가
+                    - paragraph [ref=e2134]: ₩195,400
+                  - generic [ref=e2135]:
+                    - paragraph [ref=e2136]: 목표가
+                    - paragraph [ref=e2137]: ₩205,900
+                  - generic [ref=e2138]:
+                    - paragraph [ref=e2139]: 손절가
+                    - paragraph [ref=e2140]: ₩185,500
+                - generic [ref=e2141]:
+                  - generic [ref=e2142]:
+                    - paragraph [ref=e2143]: 손익비
+                    - generic [ref=e2144]: "1.0"
+                  - generic [ref=e2145]:
+                    - generic [ref=e2146]:
+                      - paragraph [ref=e2147]: 목표 수익
+                      - paragraph [ref=e2148]: +5.3%
+                    - generic [ref=e2149]:
+                      - paragraph [ref=e2150]: 예상 손실
+                      - paragraph [ref=e2151]: "-5.1%"
+                - generic [ref=e2153]:
+                  - img [ref=e2154]
+                  - generic [ref=e2156]:
+                    - paragraph [ref=e2157]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2158]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2159]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2160]: "미진입 사유: 단독 사유: PER이 업종 평균의 약 5.6배로 2.5배 기준을 초과합니다. 또한 F1 수익성 및 F3 성장성 미달로 펀더멘털 게이트가 약하고, effective_score 3점이 parabolic regime의 min_score 4점에 미달합니다."
+                - button "AI 분석 상세" [ref=e2162]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2165]:
+                - generic [ref=e2167]:
+                  - generic [ref=e2168]:
+                    - heading "SK하이닉스" [level=3] [ref=e2169]
+                    - generic [ref=e2170]: "000660"
+                  - generic [ref=e2171]:
+                    - generic [ref=e2172]: 전기·전자
+                    - generic [ref=e2173]: 중기
+                    - generic [ref=e2174]: 8/4점
+                - generic [ref=e2175]:
+                  - generic [ref=e2176]:
+                    - paragraph [ref=e2177]: 현재가
+                    - paragraph [ref=e2178]: ₩2,304,000
+                  - generic [ref=e2179]:
+                    - paragraph [ref=e2180]: 목표가
+                    - paragraph [ref=e2181]: ₩2,512,083
+                  - generic [ref=e2182]:
+                    - paragraph [ref=e2183]: 손절가
+                    - paragraph [ref=e2184]: ₩2,224,000
+                - generic [ref=e2185]:
+                  - generic [ref=e2186]:
+                    - paragraph [ref=e2187]: 손익비
+                    - generic [ref=e2188]: "2.6"
+                  - generic [ref=e2189]:
+                    - generic [ref=e2190]:
+                      - paragraph [ref=e2191]: 목표 수익
+                      - paragraph [ref=e2192]: +9.0%
+                    - generic [ref=e2193]:
+                      - paragraph [ref=e2194]: 예상 손실
+                      - paragraph [ref=e2195]: "-3.5%"
+                - generic [ref=e2197]:
+                  - img [ref=e2198]
+                  - generic [ref=e2200]:
+                    - paragraph [ref=e2201]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2202]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2203]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2205]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2208]:
+                - generic [ref=e2210]:
+                  - generic [ref=e2211]:
+                    - heading "삼성전자" [level=3] [ref=e2212]
+                    - generic [ref=e2213]: "005930"
+                  - generic [ref=e2214]:
+                    - generic [ref=e2215]: 전기·전자
+                    - generic [ref=e2216]: 중기
+                    - generic [ref=e2217]: 9/4점
+                - generic [ref=e2218]:
+                  - generic [ref=e2219]:
+                    - paragraph [ref=e2220]: 현재가
+                    - paragraph [ref=e2221]: ₩362,000
+                  - generic [ref=e2222]:
+                    - paragraph [ref=e2223]: 목표가
+                    - paragraph [ref=e2224]: ₩396,667
+                  - generic [ref=e2225]:
+                    - paragraph [ref=e2226]: 손절가
+                    - paragraph [ref=e2227]: ₩349,000
+                - generic [ref=e2228]:
+                  - generic [ref=e2229]:
+                    - paragraph [ref=e2230]: 손익비
+                    - generic [ref=e2231]: "2.5"
+                  - generic [ref=e2232]:
+                    - generic [ref=e2233]:
+                      - paragraph [ref=e2234]: 목표 수익
+                      - paragraph [ref=e2235]: +9.4%
+                    - generic [ref=e2236]:
+                      - paragraph [ref=e2237]: 예상 손실
+                      - paragraph [ref=e2238]: "-3.7%"
+                - generic [ref=e2240]:
+                  - img [ref=e2241]
+                  - generic [ref=e2243]:
+                    - paragraph [ref=e2244]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2245]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2246]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2248]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2251]:
+                - generic [ref=e2253]:
+                  - generic [ref=e2254]:
+                    - heading "성호전자" [level=3] [ref=e2255]
+                    - generic [ref=e2256]: "043260"
+                  - generic [ref=e2257]:
+                    - generic [ref=e2258]: 전기·전자
+                    - generic [ref=e2259]: 단기
+                    - generic [ref=e2260]: 7/4점
+                - generic [ref=e2261]:
+                  - generic [ref=e2262]:
+                    - paragraph [ref=e2263]: 현재가
+                    - paragraph [ref=e2264]: ₩41,100
+                  - generic [ref=e2265]:
+                    - paragraph [ref=e2266]: 목표가
+                    - paragraph [ref=e2267]: ₩100,000
+                  - generic [ref=e2268]:
+                    - paragraph [ref=e2269]: 손절가
+                    - paragraph [ref=e2270]: ₩39,000
+                - generic [ref=e2271]:
+                  - generic [ref=e2272]:
+                    - paragraph [ref=e2273]: 손익비
+                    - generic [ref=e2274]: "29.5"
+                  - generic [ref=e2275]:
+                    - generic [ref=e2276]:
+                      - paragraph [ref=e2277]: 목표 수익
+                      - paragraph [ref=e2278]: +143.9%
+                    - generic [ref=e2279]:
+                      - paragraph [ref=e2280]: 예상 손실
+                      - paragraph [ref=e2281]: "-4.9%"
+                - generic [ref=e2283]:
+                  - img [ref=e2284]
+                  - generic [ref=e2286]:
+                    - paragraph [ref=e2287]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2288]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2289]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2291]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e2292]:
+            - generic [ref=e2294]:
+              - generic [ref=e2295]: 2026년 6월 1일
+              - generic [ref=e2296]: 5개 분석
+            - generic [ref=e2298]:
+              - generic [ref=e2301]:
+                - generic [ref=e2303]:
+                  - generic [ref=e2304]:
+                    - heading "롯데에너지머티리얼즈" [level=3] [ref=e2305]
+                    - generic [ref=e2306]: "020150"
+                  - generic [ref=e2307]:
+                    - generic [ref=e2308]: 전기·전자
+                    - generic [ref=e2309]: 단기
+                    - generic [ref=e2310]: 2/4점
+                - generic [ref=e2311]:
+                  - generic [ref=e2312]:
+                    - paragraph [ref=e2313]: 현재가
+                    - paragraph [ref=e2314]: ₩64,200
+                  - generic [ref=e2315]:
+                    - paragraph [ref=e2316]: 목표가
+                    - paragraph [ref=e2317]: ₩82,238
+                  - generic [ref=e2318]:
+                    - paragraph [ref=e2319]: 손절가
+                    - paragraph [ref=e2320]: ₩60,100
+                - generic [ref=e2321]:
+                  - generic [ref=e2322]:
+                    - paragraph [ref=e2323]: 손익비
+                    - generic [ref=e2324]: "4.4"
+                  - generic [ref=e2325]:
+                    - generic [ref=e2326]:
+                      - paragraph [ref=e2327]: 목표 수익
+                      - paragraph [ref=e2328]: +28.1%
+                    - generic [ref=e2329]:
+                      - paragraph [ref=e2330]: 예상 손실
+                      - paragraph [ref=e2331]: "-6.4%"
+                - generic [ref=e2333]:
+                  - img [ref=e2334]
+                  - generic [ref=e2336]:
+                    - paragraph [ref=e2337]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2338]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2339]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e2340]: "미진입 사유: 펀더멘털 게이트 F1 수익성, F3 성장성 미달이며 effective_score 3이 parabolic regime의 min_score 4에 미달합니다. 또한 포트폴리오 내 전기·전자 보유가 이미 3개라 동일 섹터 집중도가 높습니다."
+                - button "AI 분석 상세" [ref=e2342]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2345]:
+                - generic [ref=e2347]:
+                  - generic [ref=e2348]:
+                    - heading "삼성전자" [level=3] [ref=e2349]
+                    - generic [ref=e2350]: "005930"
+                  - generic [ref=e2351]:
+                    - generic [ref=e2352]: 전기·전자
+                    - generic [ref=e2353]: 중기
+                    - generic [ref=e2354]: 9/4점
+                - generic [ref=e2355]:
+                  - generic [ref=e2356]:
+                    - paragraph [ref=e2357]: 현재가
+                    - paragraph [ref=e2358]: ₩349,000
+                  - generic [ref=e2359]:
+                    - paragraph [ref=e2360]: 목표가
+                    - paragraph [ref=e2361]: ₩396,667
+                  - generic [ref=e2362]:
+                    - paragraph [ref=e2363]: 손절가
+                    - paragraph [ref=e2364]: ₩325,035
+                - generic [ref=e2365]:
+                  - generic [ref=e2366]:
+                    - paragraph [ref=e2367]: 손익비
+                    - generic [ref=e2368]: "1.9"
+                  - generic [ref=e2369]:
+                    - generic [ref=e2370]:
+                      - paragraph [ref=e2371]: 목표 수익
+                      - paragraph [ref=e2372]: +13.5%
+                    - generic [ref=e2373]:
+                      - paragraph [ref=e2374]: 예상 손실
+                      - paragraph [ref=e2375]: "-7.0%"
+                - generic [ref=e2377]:
+                  - img [ref=e2378]
+                  - generic [ref=e2380]:
+                    - paragraph [ref=e2381]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2382]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2383]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2385]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2388]:
+                - generic [ref=e2390]:
+                  - generic [ref=e2391]:
+                    - heading "LG디스플레이" [level=3] [ref=e2392]
+                    - generic [ref=e2393]: "034220"
+                  - generic [ref=e2394]:
+                    - generic [ref=e2395]: 전기·전자
+                    - generic [ref=e2396]: 단기
+                    - generic [ref=e2397]: 6/4점
+                - generic [ref=e2398]:
+                  - generic [ref=e2399]:
+                    - paragraph [ref=e2400]: 현재가
+                    - paragraph [ref=e2401]: ₩17,090
+                  - generic [ref=e2402]:
+                    - paragraph [ref=e2403]: 목표가
+                    - paragraph [ref=e2404]: ₩17,770
+                  - generic [ref=e2405]:
+                    - paragraph [ref=e2406]: 손절가
+                    - paragraph [ref=e2407]: ₩16,090
+                - generic [ref=e2408]:
+                  - generic [ref=e2409]:
+                    - paragraph [ref=e2410]: 손익비
+                    - generic [ref=e2411]: "0.8"
+                  - generic [ref=e2412]:
+                    - generic [ref=e2413]:
+                      - paragraph [ref=e2414]: 목표 수익
+                      - paragraph [ref=e2415]: +4.3%
+                    - generic [ref=e2416]:
+                      - paragraph [ref=e2417]: 예상 손실
+                      - paragraph [ref=e2418]: "-5.6%"
+                - generic [ref=e2420]:
+                  - img [ref=e2421]
+                  - generic [ref=e2423]:
+                    - paragraph [ref=e2424]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2425]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e2426]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2428]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2431]:
+                - generic [ref=e2433]:
+                  - generic [ref=e2434]:
+                    - heading "삼성전자" [level=3] [ref=e2435]
+                    - generic [ref=e2436]: "005930"
+                  - generic [ref=e2437]:
+                    - generic [ref=e2438]: Unknown
+                    - generic [ref=e2439]: Short-term
+                    - generic [ref=e2440]: 0/0점
+                - generic [ref=e2441]:
+                  - generic [ref=e2442]:
+                    - paragraph [ref=e2443]: 현재가
+                    - paragraph [ref=e2444]: ₩325,250
+                  - generic [ref=e2445]:
+                    - paragraph [ref=e2446]: 목표가
+                    - paragraph [ref=e2447]: ₩0
+                  - generic [ref=e2448]:
+                    - paragraph [ref=e2449]: 손절가
+                    - paragraph [ref=e2450]: ₩0
+                - generic [ref=e2452]:
+                  - img [ref=e2453]
+                  - generic [ref=e2455]:
+                    - paragraph [ref=e2456]: "결정: Already holding"
+                    - paragraph [ref=e2457]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e2459]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2462]:
+                - generic [ref=e2464]:
+                  - generic [ref=e2465]:
+                    - heading "PS일렉트로닉스" [level=3] [ref=e2466]
+                    - generic [ref=e2467]: "332570"
+                  - generic [ref=e2468]:
+                    - generic [ref=e2469]: 전기·전자
+                    - generic [ref=e2470]: 단기
+                    - generic [ref=e2471]: 2/4점
+                - generic [ref=e2472]:
+                  - generic [ref=e2473]:
+                    - paragraph [ref=e2474]: 현재가
+                    - paragraph [ref=e2475]: ₩13,050
+                  - generic [ref=e2476]:
+                    - paragraph [ref=e2477]: 목표가
+                    - paragraph [ref=e2478]: ₩14,180
+                  - generic [ref=e2479]:
+                    - paragraph [ref=e2480]: 손절가
+                    - paragraph [ref=e2481]: ₩12,118
+                - generic [ref=e2482]:
+                  - generic [ref=e2483]:
+                    - paragraph [ref=e2484]: 손익비
+                    - generic [ref=e2485]: "1.3"
+                  - generic [ref=e2486]:
+                    - generic [ref=e2487]:
+                      - paragraph [ref=e2488]: 목표 수익
+                      - paragraph [ref=e2489]: +8.8%
+                    - generic [ref=e2490]:
+                      - paragraph [ref=e2491]: 예상 손실
+                      - paragraph [ref=e2492]: "-7.0%"
+                - generic [ref=e2494]:
+                  - img [ref=e2495]
+                  - generic [ref=e2497]:
+                    - paragraph [ref=e2498]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2499]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e2500]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e2501]: "미진입 사유: effective_score 2가 strong_bull 기준 min_score 4에 미달합니다. F1 수익성 게이트가 미달이고, 이를 보완할 구체적 뉴스 catalyst 없이 외국인 순매도 우위와 개인 매수 흡수 구조가 지속되고 있습니다."
+                - button "AI 분석 상세" [ref=e2503]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e2504]:
+            - generic [ref=e2506]:
+              - generic [ref=e2507]: 2026년 5월 29일
+              - generic [ref=e2508]: 2개 분석
+            - generic [ref=e2510]:
+              - generic [ref=e2513]:
+                - generic [ref=e2515]:
+                  - generic [ref=e2516]:
+                    - heading "삼성전자우" [level=3] [ref=e2517]
+                    - generic [ref=e2518]: "005935"
+                  - generic [ref=e2519]:
+                    - generic [ref=e2520]: 전기·전자
+                    - generic [ref=e2521]: 중기
+                    - generic [ref=e2522]: 9/4점
+                - generic [ref=e2523]:
+                  - generic [ref=e2524]:
+                    - paragraph [ref=e2525]: 현재가
+                    - paragraph [ref=e2526]: ₩206,500
+                  - generic [ref=e2527]:
+                    - paragraph [ref=e2528]: 목표가
+                    - paragraph [ref=e2529]: ₩396,667
+                  - generic [ref=e2530]:
+                    - paragraph [ref=e2531]: 손절가
+                    - paragraph [ref=e2532]: ₩192,100
+                - generic [ref=e2533]:
+                  - generic [ref=e2534]:
+                    - paragraph [ref=e2535]: 손익비
+                    - generic [ref=e2536]: "13.2"
+                  - generic [ref=e2537]:
+                    - generic [ref=e2538]:
+                      - paragraph [ref=e2539]: 목표 수익
+                      - paragraph [ref=e2540]: +92.1%
+                    - generic [ref=e2541]:
+                      - paragraph [ref=e2542]: 예상 손실
+                      - paragraph [ref=e2543]: "-7.0%"
+                - generic [ref=e2545]:
+                  - img [ref=e2546]
+                  - generic [ref=e2548]:
+                    - paragraph [ref=e2549]:
+                      - text: "결정: Enter"
+                      - generic [ref=e2550]: "(진입 체크리스트: 6/6)"
+                    - paragraph [ref=e2551]: 섹터 집중 (전기·전자)
+                - button "AI 분석 상세" [ref=e2553]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2556]:
+                - generic [ref=e2558]:
+                  - generic [ref=e2559]:
+                    - heading "채비" [level=3] [ref=e2560]
+                    - generic [ref=e2561]: 0011T0
+                  - generic [ref=e2562]:
+                    - generic [ref=e2563]: 전기·전자
+                    - generic [ref=e2564]: 단기
+                    - generic [ref=e2565]: 2/4점
+                - generic [ref=e2566]:
+                  - generic [ref=e2567]:
+                    - paragraph [ref=e2568]: 현재가
+                    - paragraph [ref=e2569]: ₩11,210
+                  - generic [ref=e2570]:
+                    - paragraph [ref=e2571]: 목표가
+                    - paragraph [ref=e2572]: ₩12,728
+                  - generic [ref=e2573]:
+                    - paragraph [ref=e2574]: 손절가
+                    - paragraph [ref=e2575]: ₩10,453
+                - generic [ref=e2576]:
+                  - generic [ref=e2577]:
+                    - paragraph [ref=e2578]: 손익비
+                    - generic [ref=e2579]: "1.9"
+                  - generic [ref=e2580]:
+                    - generic [ref=e2581]:
+                      - paragraph [ref=e2582]: 목표 수익
+                      - paragraph [ref=e2583]: +13.2%
+                    - generic [ref=e2584]:
+                      - paragraph [ref=e2585]: 예상 손실
+                      - paragraph [ref=e2586]: "-7.0%"
+                - generic [ref=e2588]:
+                  - img [ref=e2589]
+                  - generic [ref=e2591]:
+                    - paragraph [ref=e2592]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2593]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2594]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2595]: "미진입 사유: effective_score 2점이 strong_bull 기준 min_score 4점에 미달합니다. 또한 F1 영업이익 흑자 기준과 F2 부채비율 기준을 동시에 충족하지 못해 성장주 모멘텀 매수의 품질 기준이 부족합니다."
+                - button "AI 분석 상세" [ref=e2597]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e2598]:
+            - generic [ref=e2600]:
+              - generic [ref=e2601]: 2026년 5월 28일
+              - generic [ref=e2602]: 5개 분석
+            - generic [ref=e2604]:
+              - generic [ref=e2607]:
+                - generic [ref=e2609]:
+                  - generic [ref=e2610]:
+                    - heading "흥아해운" [level=3] [ref=e2611]
+                    - generic [ref=e2612]: "003280"
+                  - generic [ref=e2613]:
+                    - generic [ref=e2614]: 운송·창고
+                    - generic [ref=e2615]: 단기
+                    - generic [ref=e2616]: 2/4점
+                - generic [ref=e2617]:
+                  - generic [ref=e2618]:
+                    - paragraph [ref=e2619]: 현재가
+                    - paragraph [ref=e2620]: ₩2,270
+                  - generic [ref=e2621]:
+                    - paragraph [ref=e2622]: 목표가
+                    - paragraph [ref=e2623]: ₩2,623
+                  - generic [ref=e2624]:
+                    - paragraph [ref=e2625]: 손절가
+                    - paragraph [ref=e2626]: ₩2,205
+                - generic [ref=e2627]:
+                  - generic [ref=e2628]:
+                    - paragraph [ref=e2629]: 손익비
+                    - generic [ref=e2630]: "1.8"
+                  - generic [ref=e2631]:
+                    - generic [ref=e2632]:
+                      - paragraph [ref=e2633]: 목표 수익
+                      - paragraph [ref=e2634]: +11.4%
+                    - generic [ref=e2635]:
+                      - paragraph [ref=e2636]: 예상 손실
+                      - paragraph [ref=e2637]: "-6.4%"
+                - generic [ref=e2639]:
+                  - img [ref=e2640]
+                  - generic [ref=e2642]:
+                    - paragraph [ref=e2643]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2644]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2645]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2646]: "미진입 사유: effective_score 3점으로 moderate_bull regime의 min_score 4점에 미달합니다. 또한 F1 최근 분기 수익성 검증 부족, F2 부채비율 검증 불가로 펀더멘털 게이트가 완전 통과되지 않았습니다."
+                - button "AI 분석 상세" [ref=e2648]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2651]:
+                - generic [ref=e2653]:
+                  - generic [ref=e2654]:
+                    - heading "더블유씨피" [level=3] [ref=e2655]
+                    - generic [ref=e2656]: "393890"
+                  - generic [ref=e2657]:
+                    - generic [ref=e2658]: 전기·전자
+                    - generic [ref=e2659]: 단기
+                    - generic [ref=e2660]: 2/4점
+                - generic [ref=e2661]:
+                  - generic [ref=e2662]:
+                    - paragraph [ref=e2663]: 현재가
+                    - paragraph [ref=e2664]: ₩17,090
+                  - generic [ref=e2665]:
+                    - paragraph [ref=e2666]: 목표가
+                    - paragraph [ref=e2667]: ₩23,667
+                  - generic [ref=e2668]:
+                    - paragraph [ref=e2669]: 손절가
+                    - paragraph [ref=e2670]: ₩16,200
+                - generic [ref=e2671]:
+                  - generic [ref=e2672]:
+                    - paragraph [ref=e2673]: 손익비
+                    - generic [ref=e2674]: "6.7"
+                  - generic [ref=e2675]:
+                    - generic [ref=e2676]:
+                      - paragraph [ref=e2677]: 목표 수익
+                      - paragraph [ref=e2678]: +37.8%
+                    - generic [ref=e2679]:
+                      - paragraph [ref=e2680]: 예상 손실
+                      - paragraph [ref=e2681]: "-5.6%"
+                - generic [ref=e2683]:
+                  - img [ref=e2684]
+                  - generic [ref=e2686]:
+                    - paragraph [ref=e2687]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2688]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2689]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2690]: "미진입 사유: F1 수익성 및 F3 성장성 펀더멘털 게이트 미달, effective_score 3 < moderate_bull min_score 4. 최근 4개 분기 영업적자와 매출 감소가 CAN SLIM의 C·A 기준을 충족하지 못합니다."
+                - button "AI 분석 상세" [ref=e2692]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2695]:
+                - generic [ref=e2697]:
+                  - generic [ref=e2698]:
+                    - heading "삼성전기" [level=3] [ref=e2699]
+                    - generic [ref=e2700]: "009150"
+                  - generic [ref=e2701]:
+                    - generic [ref=e2702]: Unknown
+                    - generic [ref=e2703]: Short-term
+                    - generic [ref=e2704]: 0/0점
+                - generic [ref=e2705]:
+                  - generic [ref=e2706]:
+                    - paragraph [ref=e2707]: 현재가
+                    - paragraph [ref=e2708]: ₩1,852,000
+                  - generic [ref=e2709]:
+                    - paragraph [ref=e2710]: 목표가
+                    - paragraph [ref=e2711]: ₩0
+                  - generic [ref=e2712]:
+                    - paragraph [ref=e2713]: 손절가
+                    - paragraph [ref=e2714]: ₩0
+                - generic [ref=e2716]:
+                  - img [ref=e2717]
+                  - generic [ref=e2719]:
+                    - paragraph [ref=e2720]: "결정: Already holding"
+                    - paragraph [ref=e2721]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e2723]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2726]:
+                - generic [ref=e2728]:
+                  - generic [ref=e2729]:
+                    - heading "코스모로보틱스" [level=3] [ref=e2730]
+                    - generic [ref=e2731]: "439960"
+                  - generic [ref=e2732]:
+                    - generic [ref=e2733]: 의료·정밀기기
+                    - generic [ref=e2734]: 단기
+                    - generic [ref=e2735]: 2/4점
+                - generic [ref=e2736]:
+                  - generic [ref=e2737]:
+                    - paragraph [ref=e2738]: 현재가
+                    - paragraph [ref=e2739]: ₩43,850
+                  - generic [ref=e2740]:
+                    - paragraph [ref=e2741]: 목표가
+                    - paragraph [ref=e2742]: ₩48,740
+                  - generic [ref=e2743]:
+                    - paragraph [ref=e2744]: 손절가
+                    - paragraph [ref=e2745]: ₩40,830
+                - generic [ref=e2746]:
+                  - generic [ref=e2747]:
+                    - paragraph [ref=e2748]: 손익비
+                    - generic [ref=e2749]: "1.6"
+                  - generic [ref=e2750]:
+                    - generic [ref=e2751]:
+                      - paragraph [ref=e2752]: 목표 수익
+                      - paragraph [ref=e2753]: +11.0%
+                    - generic [ref=e2754]:
+                      - paragraph [ref=e2755]: 예상 손실
+                      - paragraph [ref=e2756]: "-7.0%"
+                - generic [ref=e2758]:
+                  - img [ref=e2759]
+                  - generic [ref=e2761]:
+                    - paragraph [ref=e2762]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2763]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e2764]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2765]: "미진입 사유: effective_score 1점으로 moderate_bull regime의 min_score 4점 미달입니다. 또한 F1 수익성 게이트가 미달이고, 기관·외국인의 연속 순매수 및 섹터 주도 신호가 부족해 현재 가격에서 CAN SLIM 진입 기준을 충족하지 못합니다."
+                - button "AI 분석 상세" [ref=e2767]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2770]:
+                - generic [ref=e2772]:
+                  - generic [ref=e2773]:
+                    - heading "마키나락스" [level=3] [ref=e2774]
+                    - generic [ref=e2775]: "477850"
+                  - generic [ref=e2776]:
+                    - generic [ref=e2777]: IT 서비스
+                    - generic [ref=e2778]: 단기
+                    - generic [ref=e2779]: 2/4점
+                - generic [ref=e2780]:
+                  - generic [ref=e2781]:
+                    - paragraph [ref=e2782]: 현재가
+                    - paragraph [ref=e2783]: ₩39,200
+                  - generic [ref=e2784]:
+                    - paragraph [ref=e2785]: 목표가
+                    - paragraph [ref=e2786]: ₩43,980
+                  - generic [ref=e2787]:
+                    - paragraph [ref=e2788]: 손절가
+                    - paragraph [ref=e2789]: ₩36,800
+                - generic [ref=e2790]:
+                  - generic [ref=e2791]:
+                    - paragraph [ref=e2792]: 손익비
+                    - generic [ref=e2793]: "2.1"
+                  - generic [ref=e2794]:
+                    - generic [ref=e2795]:
+                      - paragraph [ref=e2796]: 목표 수익
+                      - paragraph [ref=e2797]: +12.5%
+                    - generic [ref=e2798]:
+                      - paragraph [ref=e2799]: 예상 손실
+                      - paragraph [ref=e2800]: "-5.9%"
+                - generic [ref=e2802]:
+                  - img [ref=e2803]
+                  - generic [ref=e2805]:
+                    - paragraph [ref=e2806]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2807]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e2808]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2809]: "미진입 사유: effective_score 3점이 moderate_bull 기준 min_score 4점에 미달합니다. 핵심 미달 요인은 F1 수익성 실패, 기관 5거래일 연속 순매도, 외국인 최근 매도 확대, 상장 직후 대량 하락 거래가 동반된 분배성 수급입니다."
+                - button "AI 분석 상세" [ref=e2811]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e2812]:
+            - generic [ref=e2814]:
+              - generic [ref=e2815]: 2026년 5월 27일
+              - generic [ref=e2816]: 5개 분석
+            - generic [ref=e2818]:
+              - generic [ref=e2821]:
+                - generic [ref=e2823]:
+                  - generic [ref=e2824]:
+                    - heading "SK하이닉스" [level=3] [ref=e2825]
+                    - generic [ref=e2826]: "000660"
+                  - generic [ref=e2827]:
+                    - generic [ref=e2828]: Unknown
+                    - generic [ref=e2829]: Short-term
+                    - generic [ref=e2830]: 0/0점
+                - generic [ref=e2831]:
+                  - generic [ref=e2832]:
+                    - paragraph [ref=e2833]: 현재가
+                    - paragraph [ref=e2834]: ₩2,280,000
+                  - generic [ref=e2835]:
+                    - paragraph [ref=e2836]: 목표가
+                    - paragraph [ref=e2837]: ₩0
+                  - generic [ref=e2838]:
+                    - paragraph [ref=e2839]: 손절가
+                    - paragraph [ref=e2840]: ₩0
+                - generic [ref=e2842]:
+                  - img [ref=e2843]
+                  - generic [ref=e2845]:
+                    - paragraph [ref=e2846]: "결정: Already holding"
+                    - paragraph [ref=e2847]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e2849]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2852]:
+                - generic [ref=e2854]:
+                  - generic [ref=e2855]:
+                    - heading "엘앤씨바이오" [level=3] [ref=e2856]
+                    - generic [ref=e2857]: "290650"
+                  - generic [ref=e2858]:
+                    - generic [ref=e2859]: 제약
+                    - generic [ref=e2860]: 단기
+                    - generic [ref=e2861]: 2/4점
+                - generic [ref=e2862]:
+                  - generic [ref=e2863]:
+                    - paragraph [ref=e2864]: 현재가
+                    - paragraph [ref=e2865]: ₩79,200
+                  - generic [ref=e2866]:
+                    - paragraph [ref=e2867]: 목표가
+                    - paragraph [ref=e2868]: ₩87,900
+                  - generic [ref=e2869]:
+                    - paragraph [ref=e2870]: 손절가
+                    - paragraph [ref=e2871]: ₩73,900
+                - generic [ref=e2872]:
+                  - generic [ref=e2873]:
+                    - paragraph [ref=e2874]: 손익비
+                    - generic [ref=e2875]: "1.5"
+                  - generic [ref=e2876]:
+                    - generic [ref=e2877]:
+                      - paragraph [ref=e2878]: 목표 수익
+                      - paragraph [ref=e2879]: +10.7%
+                    - generic [ref=e2880]:
+                      - paragraph [ref=e2881]: 예상 손실
+                      - paragraph [ref=e2882]: "-6.9%"
+                - generic [ref=e2884]:
+                  - img [ref=e2885]
+                  - generic [ref=e2887]:
+                    - paragraph [ref=e2888]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2889]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e2890]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2891]: "미진입 사유: 펀더멘털 게이트 F1·F2 미달: 최근 2개 분기 영업이익 흑자와 부채비율 기준을 확인할 수 없습니다. 또한 effective_score 2가 parabolic regime의 min_score 4에 미달합니다."
+                - button "AI 분석 상세" [ref=e2893]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2896]:
+                - generic [ref=e2898]:
+                  - generic [ref=e2899]:
+                    - heading "네이처셀" [level=3] [ref=e2900]
+                    - generic [ref=e2901]: "007390"
+                  - generic [ref=e2902]:
+                    - generic [ref=e2903]: 제약
+                    - generic [ref=e2904]: 단기
+                    - generic [ref=e2905]: 2/4점
+                - generic [ref=e2906]:
+                  - generic [ref=e2907]:
+                    - paragraph [ref=e2908]: 현재가
+                    - paragraph [ref=e2909]: ₩32,800
+                  - generic [ref=e2910]:
+                    - paragraph [ref=e2911]: 목표가
+                    - paragraph [ref=e2912]: ₩36,920
+                  - generic [ref=e2913]:
+                    - paragraph [ref=e2914]: 손절가
+                    - paragraph [ref=e2915]: ₩31,060
+                - generic [ref=e2916]:
+                  - generic [ref=e2917]:
+                    - paragraph [ref=e2918]: 손익비
+                    - generic [ref=e2919]: "1.5"
+                  - generic [ref=e2920]:
+                    - generic [ref=e2921]:
+                      - paragraph [ref=e2922]: 목표 수익
+                      - paragraph [ref=e2923]: +10.5%
+                    - generic [ref=e2924]:
+                      - paragraph [ref=e2925]: 예상 손실
+                      - paragraph [ref=e2926]: "-7.0%"
+                - generic [ref=e2928]:
+                  - img [ref=e2929]
+                  - generic [ref=e2931]:
+                    - paragraph [ref=e2932]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2933]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e2934]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2935]: "미진입 사유: 펀더멘털 게이트 F1·F2·F3 미달, effective_score 3점으로 parabolic regime min_score 4점 미달, 보고서상 1차 주요 지지선 29,250원이 현재가 대비 -12.4%로 사용 가능한 주요 지지 손절선 범위를 초과합니다."
+                - button "AI 분석 상세" [ref=e2937]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2940]:
+                - generic [ref=e2942]:
+                  - generic [ref=e2943]:
+                    - heading "네이처셀" [level=3] [ref=e2944]
+                    - generic [ref=e2945]: "007390"
+                  - generic [ref=e2946]:
+                    - generic [ref=e2947]: 제약
+                    - generic [ref=e2948]: 단기
+                    - generic [ref=e2949]: 2/4점
+                - generic [ref=e2950]:
+                  - generic [ref=e2951]:
+                    - paragraph [ref=e2952]: 현재가
+                    - paragraph [ref=e2953]: ₩32,350
+                  - generic [ref=e2954]:
+                    - paragraph [ref=e2955]: 목표가
+                    - paragraph [ref=e2956]: ₩35,000
+                  - generic [ref=e2957]:
+                    - paragraph [ref=e2958]: 손절가
+                    - paragraph [ref=e2959]: ₩30,200
+                - generic [ref=e2960]:
+                  - generic [ref=e2961]:
+                    - paragraph [ref=e2962]: 손익비
+                    - generic [ref=e2963]: "1.1"
+                  - generic [ref=e2964]:
+                    - generic [ref=e2965]:
+                      - paragraph [ref=e2966]: 목표 수익
+                      - paragraph [ref=e2967]: +7.9%
+                    - generic [ref=e2968]:
+                      - paragraph [ref=e2969]: 예상 손실
+                      - paragraph [ref=e2970]: "-6.9%"
+                - generic [ref=e2972]:
+                  - img [ref=e2973]
+                  - generic [ref=e2975]:
+                    - paragraph [ref=e2976]:
+                      - text: "결정: Skip"
+                      - generic [ref=e2977]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e2978]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e2979]: "미진입 사유: 펀더멘털 게이트 F1~F4 미달, effective_score 2가 strong_bull 기준 min_score 4 미달. 또한 외국인·기관 수급이 최근 순매도 우위이고, PBR이 동종 바이오 대비 극단적 프리미엄 구간입니다."
+                - button "AI 분석 상세" [ref=e2981]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e2984]:
+                - generic [ref=e2986]:
+                  - generic [ref=e2987]:
+                    - heading "엑스게이트" [level=3] [ref=e2988]
+                    - generic [ref=e2989]: "356680"
+                  - generic [ref=e2990]:
+                    - generic [ref=e2991]: IT 서비스
+                    - generic [ref=e2992]: 단기
+                    - generic [ref=e2993]: 2/4점
+                - generic [ref=e2994]:
+                  - generic [ref=e2995]:
+                    - paragraph [ref=e2996]: 현재가
+                    - paragraph [ref=e2997]: ₩28,600
+                  - generic [ref=e2998]:
+                    - paragraph [ref=e2999]: 목표가
+                    - paragraph [ref=e3000]: ₩29,840
+                  - generic [ref=e3001]:
+                    - paragraph [ref=e3002]: 손절가
+                    - paragraph [ref=e3003]: ₩27,550
+                - generic [ref=e3004]:
+                  - generic [ref=e3005]:
+                    - paragraph [ref=e3006]: 손익비
+                    - generic [ref=e3007]: "1.0"
+                  - generic [ref=e3008]:
+                    - generic [ref=e3009]:
+                      - paragraph [ref=e3010]: 목표 수익
+                      - paragraph [ref=e3011]: +4.0%
+                    - generic [ref=e3012]:
+                      - paragraph [ref=e3013]: 예상 손실
+                      - paragraph [ref=e3014]: "-4.0%"
+                - generic [ref=e3016]:
+                  - img [ref=e3017]
+                  - generic [ref=e3019]:
+                    - paragraph [ref=e3020]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3021]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e3022]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3023]: "미진입 사유: 단독 미진입 사유 충족: PER 211.0배가 업종 평균 약 29.5배의 2.5배를 크게 초과합니다. 또한 F1 최근 2개 분기 영업이익 흑자와 F2 부채비율 기준이 확인되지 않아 펀더멘털 게이트가 완전 통과되지 않았고, effective_score 3점이 strong_bull min_score 4점에 미달합니다."
+                - button "AI 분석 상세" [ref=e3025]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e3026]:
+            - generic [ref=e3028]:
+              - generic [ref=e3029]: 2026년 5월 26일
+              - generic [ref=e3030]: 6개 분석
+            - generic [ref=e3032]:
+              - generic [ref=e3035]:
+                - generic [ref=e3037]:
+                  - generic [ref=e3038]:
+                    - heading "삼현" [level=3] [ref=e3039]
+                    - generic [ref=e3040]: "437730"
+                  - generic [ref=e3041]:
+                    - generic [ref=e3042]: 운송장비·부품
+                    - generic [ref=e3043]: 단기
+                    - generic [ref=e3044]: 2/4점
+                - generic [ref=e3045]:
+                  - generic [ref=e3046]:
+                    - paragraph [ref=e3047]: 현재가
+                    - paragraph [ref=e3048]: ₩59,800
+                  - generic [ref=e3049]:
+                    - paragraph [ref=e3050]: 목표가
+                    - paragraph [ref=e3051]: ₩63,200
+                  - generic [ref=e3052]:
+                    - paragraph [ref=e3053]: 손절가
+                    - paragraph [ref=e3054]: ₩55,700
+                - generic [ref=e3055]:
+                  - generic [ref=e3056]:
+                    - paragraph [ref=e3057]: 손익비
+                    - generic [ref=e3058]: "0.8"
+                  - generic [ref=e3059]:
+                    - generic [ref=e3060]:
+                      - paragraph [ref=e3061]: 목표 수익
+                      - paragraph [ref=e3062]: +5.6%
+                    - generic [ref=e3063]:
+                      - paragraph [ref=e3064]: 예상 손실
+                      - paragraph [ref=e3065]: "-6.9%"
+                - generic [ref=e3067]:
+                  - img [ref=e3068]
+                  - generic [ref=e3070]:
+                    - paragraph [ref=e3071]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3072]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3073]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3074]: "미진입 사유: effective_score 3점으로 parabolic regime min_score 4점 미달. 또한 F1·F2·F4 펀더멘털 게이트가 미달이며, 보고서상 1차 주요 지지선 53500은 현재가 대비 약 -10.6%로 단독 미진입 사유에 해당합니다."
+                - button "AI 분석 상세" [ref=e3076]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3079]:
+                - generic [ref=e3081]:
+                  - generic [ref=e3082]:
+                    - heading "코리아써키트" [level=3] [ref=e3083]
+                    - generic [ref=e3084]: "007810"
+                  - generic [ref=e3085]:
+                    - generic [ref=e3086]: 전기·전자
+                    - generic [ref=e3087]: 단기
+                    - generic [ref=e3088]: 2/4점
+                - generic [ref=e3089]:
+                  - generic [ref=e3090]:
+                    - paragraph [ref=e3091]: 현재가
+                    - paragraph [ref=e3092]: ₩113,000
+                  - generic [ref=e3093]:
+                    - paragraph [ref=e3094]: 목표가
+                    - paragraph [ref=e3095]: ₩118,520
+                  - generic [ref=e3096]:
+                    - paragraph [ref=e3097]: 손절가
+                    - paragraph [ref=e3098]: ₩105,500
+                - generic [ref=e3099]:
+                  - generic [ref=e3100]:
+                    - paragraph [ref=e3101]: 손익비
+                    - generic [ref=e3102]: "0.8"
+                  - generic [ref=e3103]:
+                    - generic [ref=e3104]:
+                      - paragraph [ref=e3105]: 목표 수익
+                      - paragraph [ref=e3106]: +5.3%
+                    - generic [ref=e3107]:
+                      - paragraph [ref=e3108]: 예상 손실
+                      - paragraph [ref=e3109]: "-6.3%"
+                - generic [ref=e3111]:
+                  - img [ref=e3112]
+                  - generic [ref=e3114]:
+                    - paragraph [ref=e3115]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3116]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3117]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3118]: "미진입 사유: 펀더멘털 게이트 F1·F2·F3 미달이며, effective_score 3점이 parabolic regime 최소 기준 4점에 미달합니다. 모멘텀과 손익비는 충족하지만 CAN SLIM의 C·A 검증이 부족해 현재 1슬롯 전량 매수 기준을 통과하지 못했습니다."
+                - button "AI 분석 상세" [ref=e3120]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3123]:
+                - generic [ref=e3125]:
+                  - generic [ref=e3126]:
+                    - heading "SK하이닉스" [level=3] [ref=e3127]
+                    - generic [ref=e3128]: "000660"
+                  - generic [ref=e3129]:
+                    - generic [ref=e3130]: Unknown
+                    - generic [ref=e3131]: Short-term
+                    - generic [ref=e3132]: 0/0점
+                - generic [ref=e3133]:
+                  - generic [ref=e3134]:
+                    - paragraph [ref=e3135]: 현재가
+                    - paragraph [ref=e3136]: ₩2,076,500
+                  - generic [ref=e3137]:
+                    - paragraph [ref=e3138]: 목표가
+                    - paragraph [ref=e3139]: ₩0
+                  - generic [ref=e3140]:
+                    - paragraph [ref=e3141]: 손절가
+                    - paragraph [ref=e3142]: ₩0
+                - generic [ref=e3144]:
+                  - img [ref=e3145]
+                  - generic [ref=e3147]:
+                    - paragraph [ref=e3148]: "결정: Already holding"
+                    - paragraph [ref=e3149]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3151]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3154]:
+                - generic [ref=e3156]:
+                  - generic [ref=e3157]:
+                    - heading "SK하이닉스" [level=3] [ref=e3158]
+                    - generic [ref=e3159]: "000660"
+                  - generic [ref=e3160]:
+                    - generic [ref=e3161]: Unknown
+                    - generic [ref=e3162]: Short-term
+                    - generic [ref=e3163]: 0/0점
+                - generic [ref=e3164]:
+                  - generic [ref=e3165]:
+                    - paragraph [ref=e3166]: 현재가
+                    - paragraph [ref=e3167]: ₩2,010,000
+                  - generic [ref=e3168]:
+                    - paragraph [ref=e3169]: 목표가
+                    - paragraph [ref=e3170]: ₩0
+                  - generic [ref=e3171]:
+                    - paragraph [ref=e3172]: 손절가
+                    - paragraph [ref=e3173]: ₩0
+                - generic [ref=e3175]:
+                  - img [ref=e3176]
+                  - generic [ref=e3178]:
+                    - paragraph [ref=e3179]: "결정: Already holding"
+                    - paragraph [ref=e3180]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3182]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3185]:
+                - generic [ref=e3187]:
+                  - generic [ref=e3188]:
+                    - heading "세미파이브" [level=3] [ref=e3189]
+                    - generic [ref=e3190]: "490470"
+                  - generic [ref=e3191]:
+                    - generic [ref=e3192]: 일반서비스
+                    - generic [ref=e3193]: 단기
+                    - generic [ref=e3194]: 2/4점
+                - generic [ref=e3195]:
+                  - generic [ref=e3196]:
+                    - paragraph [ref=e3197]: 현재가
+                    - paragraph [ref=e3198]: ₩42,650
+                  - generic [ref=e3199]:
+                    - paragraph [ref=e3200]: 목표가
+                    - paragraph [ref=e3201]: ₩45,020
+                  - generic [ref=e3202]:
+                    - paragraph [ref=e3203]: 손절가
+                    - paragraph [ref=e3204]: ₩41,200
+                - generic [ref=e3205]:
+                  - generic [ref=e3206]:
+                    - paragraph [ref=e3207]: 손익비
+                    - generic [ref=e3208]: "1.5"
+                  - generic [ref=e3209]:
+                    - generic [ref=e3210]:
+                      - paragraph [ref=e3211]: 목표 수익
+                      - paragraph [ref=e3212]: +5.4%
+                    - generic [ref=e3213]:
+                      - paragraph [ref=e3214]: 예상 손실
+                      - paragraph [ref=e3215]: "-3.5%"
+                - generic [ref=e3217]:
+                  - img [ref=e3218]
+                  - generic [ref=e3220]:
+                    - paragraph [ref=e3221]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3222]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3223]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3224]: "미진입 사유: 펀더멘털 게이트 F1/F2/F3 미달이며, effective_score 3이 moderate_bull 기준 min_score 4에 미달합니다. R/R 1.5와 손절폭 3.5%는 기준을 충족하지만, 모멘텀 신호는 갭 상승 트리거 자동 1개에 그치고 외국인+기관 3거래일 연속 순매수·거래량 200% 이상·52주 고점 95% 근접이 확인되지 않습니다."
+                - button "AI 분석 상세" [ref=e3226]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3229]:
+                - generic [ref=e3231]:
+                  - generic [ref=e3232]:
+                    - heading "삼성전기" [level=3] [ref=e3233]
+                    - generic [ref=e3234]: "009150"
+                  - generic [ref=e3235]:
+                    - generic [ref=e3236]: Unknown
+                    - generic [ref=e3237]: Short-term
+                    - generic [ref=e3238]: 0/0점
+                - generic [ref=e3239]:
+                  - generic [ref=e3240]:
+                    - paragraph [ref=e3241]: 현재가
+                    - paragraph [ref=e3242]: ₩1,468,000
+                  - generic [ref=e3243]:
+                    - paragraph [ref=e3244]: 목표가
+                    - paragraph [ref=e3245]: ₩0
+                  - generic [ref=e3246]:
+                    - paragraph [ref=e3247]: 손절가
+                    - paragraph [ref=e3248]: ₩0
+                - generic [ref=e3250]:
+                  - img [ref=e3251]
+                  - generic [ref=e3253]:
+                    - paragraph [ref=e3254]: "결정: Already holding"
+                    - paragraph [ref=e3255]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3257]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e3258]:
+            - generic [ref=e3260]:
+              - generic [ref=e3261]: 2026년 5월 22일
+              - generic [ref=e3262]: 6개 분석
+            - generic [ref=e3264]:
+              - generic [ref=e3267]:
+                - generic [ref=e3269]:
+                  - generic [ref=e3270]:
+                    - heading "한올바이오파마" [level=3] [ref=e3271]
+                    - generic [ref=e3272]: "009420"
+                  - generic [ref=e3273]:
+                    - generic [ref=e3274]: 제약
+                    - generic [ref=e3275]: 단기
+                    - generic [ref=e3276]: 2/4점
+                - generic [ref=e3277]:
+                  - generic [ref=e3278]:
+                    - paragraph [ref=e3279]: 현재가
+                    - paragraph [ref=e3280]: ₩57,300
+                  - generic [ref=e3281]:
+                    - paragraph [ref=e3282]: 목표가
+                    - paragraph [ref=e3283]: ₩61,220
+                  - generic [ref=e3284]:
+                    - paragraph [ref=e3285]: 손절가
+                    - paragraph [ref=e3286]: ₩55,000
+                - generic [ref=e3287]:
+                  - generic [ref=e3288]:
+                    - paragraph [ref=e3289]: 손익비
+                    - generic [ref=e3290]: "1.0"
+                  - generic [ref=e3291]:
+                    - generic [ref=e3292]:
+                      - paragraph [ref=e3293]: 목표 수익
+                      - paragraph [ref=e3294]: +5.4%
+                    - generic [ref=e3295]:
+                      - paragraph [ref=e3296]: 예상 손실
+                      - paragraph [ref=e3297]: "-5.3%"
+                - generic [ref=e3299]:
+                  - img [ref=e3300]
+                  - generic [ref=e3302]:
+                    - paragraph [ref=e3303]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3304]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e3305]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3306]: "미진입 사유: effective_score 2가 moderate_bull 기준 min_score 4에 미달합니다. 또한 F1·F2·F3 펀더멘털 게이트가 미달했고, 목표가 61,220원 기준 R/R 1.0배가 moderate_bull floor 1.2배에 미달합니다. 외부 비교치 기준 PER도 업종 평균 대비 2.5배를 초과하는 극단적 고평가 구간입니다."
+                - button "AI 분석 상세" [ref=e3308]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3311]:
+                - generic [ref=e3313]:
+                  - generic [ref=e3314]:
+                    - heading "알멕" [level=3] [ref=e3315]
+                    - generic [ref=e3316]: "354320"
+                  - generic [ref=e3317]:
+                    - generic [ref=e3318]: 금속
+                    - generic [ref=e3319]: 단기
+                    - generic [ref=e3320]: 2/4점
+                - generic [ref=e3321]:
+                  - generic [ref=e3322]:
+                    - paragraph [ref=e3323]: 현재가
+                    - paragraph [ref=e3324]: ₩94,300
+                  - generic [ref=e3325]:
+                    - paragraph [ref=e3326]: 목표가
+                    - paragraph [ref=e3327]: ₩102,080
+                  - generic [ref=e3328]:
+                    - paragraph [ref=e3329]: 손절가
+                    - paragraph [ref=e3330]: ₩90,000
+                - generic [ref=e3331]:
+                  - generic [ref=e3332]:
+                    - paragraph [ref=e3333]: 손익비
+                    - generic [ref=e3334]: "1.7"
+                  - generic [ref=e3335]:
+                    - generic [ref=e3336]:
+                      - paragraph [ref=e3337]: 목표 수익
+                      - paragraph [ref=e3338]: +8.1%
+                    - generic [ref=e3339]:
+                      - paragraph [ref=e3340]: 예상 손실
+                      - paragraph [ref=e3341]: "-4.7%"
+                - generic [ref=e3343]:
+                  - img [ref=e3344]
+                  - generic [ref=e3346]:
+                    - paragraph [ref=e3347]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3348]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e3349]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3350]: "미진입 사유: 펀더멘털 게이트에서 F2 재무 건전성, F3 성장성 기준이 수치 부재로 미달이며, effective_score 2가 moderate_bull 기준 min_score 4에 미달"
+                - button "AI 분석 상세" [ref=e3352]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3355]:
+                - generic [ref=e3357]:
+                  - generic [ref=e3358]:
+                    - heading "삼성전기" [level=3] [ref=e3359]
+                    - generic [ref=e3360]: "009150"
+                  - generic [ref=e3361]:
+                    - generic [ref=e3362]: Unknown
+                    - generic [ref=e3363]: Short-term
+                    - generic [ref=e3364]: 0/0점
+                - generic [ref=e3365]:
+                  - generic [ref=e3366]:
+                    - paragraph [ref=e3367]: 현재가
+                    - paragraph [ref=e3368]: ₩1,350,000
+                  - generic [ref=e3369]:
+                    - paragraph [ref=e3370]: 목표가
+                    - paragraph [ref=e3371]: ₩0
+                  - generic [ref=e3372]:
+                    - paragraph [ref=e3373]: 손절가
+                    - paragraph [ref=e3374]: ₩0
+                - generic [ref=e3376]:
+                  - img [ref=e3377]
+                  - generic [ref=e3379]:
+                    - paragraph [ref=e3380]: "결정: Already holding"
+                    - paragraph [ref=e3381]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3383]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3386]:
+                - generic [ref=e3388]:
+                  - generic [ref=e3389]:
+                    - heading "빛과전자" [level=3] [ref=e3390]
+                    - generic [ref=e3391]: "069540"
+                  - generic [ref=e3392]:
+                    - generic [ref=e3393]: 전기·전자
+                    - generic [ref=e3394]: 단기
+                    - generic [ref=e3395]: 2/4점
+                - generic [ref=e3396]:
+                  - generic [ref=e3397]:
+                    - paragraph [ref=e3398]: 현재가
+                    - paragraph [ref=e3399]: ₩6,280
+                  - generic [ref=e3400]:
+                    - paragraph [ref=e3401]: 목표가
+                    - paragraph [ref=e3402]: ₩6,853
+                  - generic [ref=e3403]:
+                    - paragraph [ref=e3404]: 손절가
+                    - paragraph [ref=e3405]: ₩5,900
+                - generic [ref=e3406]:
+                  - generic [ref=e3407]:
+                    - paragraph [ref=e3408]: 손익비
+                    - generic [ref=e3409]: "1.6"
+                  - generic [ref=e3410]:
+                    - generic [ref=e3411]:
+                      - paragraph [ref=e3412]: 목표 수익
+                      - paragraph [ref=e3413]: +9.4%
+                    - generic [ref=e3414]:
+                      - paragraph [ref=e3415]: 예상 손실
+                      - paragraph [ref=e3416]: "-5.8%"
+                - generic [ref=e3418]:
+                  - img [ref=e3419]
+                  - generic [ref=e3421]:
+                    - paragraph [ref=e3422]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3423]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e3424]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3425]: "미진입 사유: 펀더멘털 게이트 F1/F2/F3/F4 미달이며, effective_score 3이 moderate_bull 기준 min_score 4에 미달합니다. 또한 현재 보유 3종목이 모두 전기·전자라 동일 섹터 집중이 확대됩니다."
+                - button "AI 분석 상세" [ref=e3427]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3430]:
+                - generic [ref=e3432]:
+                  - generic [ref=e3433]:
+                    - heading "HD현대에너지솔루션" [level=3] [ref=e3434]
+                    - generic [ref=e3435]: "322000"
+                  - generic [ref=e3436]:
+                    - generic [ref=e3437]: 전기·전자
+                    - generic [ref=e3438]: 단기
+                    - generic [ref=e3439]: 2/4점
+                - generic [ref=e3440]:
+                  - generic [ref=e3441]:
+                    - paragraph [ref=e3442]: 현재가
+                    - paragraph [ref=e3443]: ₩200,500
+                  - generic [ref=e3444]:
+                    - paragraph [ref=e3445]: 목표가
+                    - paragraph [ref=e3446]: ₩211,400
+                  - generic [ref=e3447]:
+                    - paragraph [ref=e3448]: 손절가
+                    - paragraph [ref=e3449]: ₩192,500
+                - generic [ref=e3450]:
+                  - generic [ref=e3451]:
+                    - paragraph [ref=e3452]: 손익비
+                    - generic [ref=e3453]: "1.2"
+                  - generic [ref=e3454]:
+                    - generic [ref=e3455]:
+                      - paragraph [ref=e3456]: 목표 수익
+                      - paragraph [ref=e3457]: +5.2%
+                    - generic [ref=e3458]:
+                      - paragraph [ref=e3459]: 예상 손실
+                      - paragraph [ref=e3460]: "-4.2%"
+                - generic [ref=e3462]:
+                  - img [ref=e3463]
+                  - generic [ref=e3465]:
+                    - paragraph [ref=e3466]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3467]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3468]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3469]: "미진입 사유: 펀더멘털 게이트 F1·F2·F3 미달, effective_score 2 < moderate_bull min_score 4. 갭 상승 모멘텀 트리거로 모멘텀 1개는 충족했지만, CAN SLIM의 C·A 품질 근거가 부족하여 현재 가격에서 1슬롯 신규 매수 기준을 통과하지 못함."
+                - button "AI 분석 상세" [ref=e3471]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3474]:
+                - generic [ref=e3476]:
+                  - generic [ref=e3477]:
+                    - heading "쏠리드" [level=3] [ref=e3478]
+                    - generic [ref=e3479]: "050890"
+                  - generic [ref=e3480]:
+                    - generic [ref=e3481]: 전기·전자
+                    - generic [ref=e3482]: 단기
+                    - generic [ref=e3483]: 2/4점
+                - generic [ref=e3484]:
+                  - generic [ref=e3485]:
+                    - paragraph [ref=e3486]: 현재가
+                    - paragraph [ref=e3487]: ₩17,660
+                  - generic [ref=e3488]:
+                    - paragraph [ref=e3489]: 목표가
+                    - paragraph [ref=e3490]: ₩18,650
+                  - generic [ref=e3491]:
+                    - paragraph [ref=e3492]: 손절가
+                    - paragraph [ref=e3493]: ₩17,206
+                - generic [ref=e3494]:
+                  - generic [ref=e3495]:
+                    - paragraph [ref=e3496]: 손익비
+                    - generic [ref=e3497]: "1.3"
+                  - generic [ref=e3498]:
+                    - generic [ref=e3499]:
+                      - paragraph [ref=e3500]: 목표 수익
+                      - paragraph [ref=e3501]: +4.6%
+                    - generic [ref=e3502]:
+                      - paragraph [ref=e3503]: 예상 손실
+                      - paragraph [ref=e3504]: "-3.5%"
+                - generic [ref=e3506]:
+                  - img [ref=e3507]
+                  - generic [ref=e3509]:
+                    - paragraph [ref=e3510]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3511]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3512]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3513]: "미진입 사유: effective_score 3점으로 moderate_bull 기준 min_score 4점 미달. 또한 F1·F2·F3 펀더멘털 게이트가 2-1 수치 부재 및 EPS 둔화로 통과하지 못함."
+                - button "AI 분석 상세" [ref=e3515]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e3516]:
+            - generic [ref=e3518]:
+              - generic [ref=e3519]: 2026년 5월 21일
+              - generic [ref=e3520]: 6개 분석
+            - generic [ref=e3522]:
+              - generic [ref=e3525]:
+                - generic [ref=e3527]:
+                  - generic [ref=e3528]:
+                    - heading "SFA반도체" [level=3] [ref=e3529]
+                    - generic [ref=e3530]: "036540"
+                  - generic [ref=e3531]:
+                    - generic [ref=e3532]: 전기·전자
+                    - generic [ref=e3533]: 단기
+                    - generic [ref=e3534]: 2/4점
+                - generic [ref=e3535]:
+                  - generic [ref=e3536]:
+                    - paragraph [ref=e3537]: 현재가
+                    - paragraph [ref=e3538]: ₩8,990
+                  - generic [ref=e3539]:
+                    - paragraph [ref=e3540]: 목표가
+                    - paragraph [ref=e3541]: ₩9,960
+                  - generic [ref=e3542]:
+                    - paragraph [ref=e3543]: 손절가
+                    - paragraph [ref=e3544]: ₩8,500
+                - generic [ref=e3545]:
+                  - generic [ref=e3546]:
+                    - paragraph [ref=e3547]: 손익비
+                    - generic [ref=e3548]: "1.9"
+                  - generic [ref=e3549]:
+                    - generic [ref=e3550]:
+                      - paragraph [ref=e3551]: 목표 수익
+                      - paragraph [ref=e3552]: +10.7%
+                    - generic [ref=e3553]:
+                      - paragraph [ref=e3554]: 예상 손실
+                      - paragraph [ref=e3555]: "-5.6%"
+                - generic [ref=e3557]:
+                  - img [ref=e3558]
+                  - generic [ref=e3560]:
+                    - paragraph [ref=e3561]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3562]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3563]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3564]: "미진입 사유: 펀더멘털 게이트 F1/F2/F3 정량 기준 미달이며, effective_score 3이 moderate_bull 기준 min_score 4에 미달합니다. 개별 실적 또는 신규 catalyst가 아니라 섹터 순환매 중심이라 펀더 미달을 보완할 근거가 부족합니다."
+                - button "AI 분석 상세" [ref=e3566]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3569]:
+                - generic [ref=e3571]:
+                  - generic [ref=e3572]:
+                    - heading "삼성전자" [level=3] [ref=e3573]
+                    - generic [ref=e3574]: "005930"
+                  - generic [ref=e3575]:
+                    - generic [ref=e3576]: Unknown
+                    - generic [ref=e3577]: Short-term
+                    - generic [ref=e3578]: 0/0점
+                - generic [ref=e3579]:
+                  - generic [ref=e3580]:
+                    - paragraph [ref=e3581]: 현재가
+                    - paragraph [ref=e3582]: ₩298,500
+                  - generic [ref=e3583]:
+                    - paragraph [ref=e3584]: 목표가
+                    - paragraph [ref=e3585]: ₩0
+                  - generic [ref=e3586]:
+                    - paragraph [ref=e3587]: 손절가
+                    - paragraph [ref=e3588]: ₩0
+                - generic [ref=e3590]:
+                  - img [ref=e3591]
+                  - generic [ref=e3593]:
+                    - paragraph [ref=e3594]: "결정: Already holding"
+                    - paragraph [ref=e3595]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3597]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3600]:
+                - generic [ref=e3602]:
+                  - generic [ref=e3603]:
+                    - heading "SK하이닉스" [level=3] [ref=e3604]
+                    - generic [ref=e3605]: "000660"
+                  - generic [ref=e3606]:
+                    - generic [ref=e3607]: Unknown
+                    - generic [ref=e3608]: Short-term
+                    - generic [ref=e3609]: 0/0점
+                - generic [ref=e3610]:
+                  - generic [ref=e3611]:
+                    - paragraph [ref=e3612]: 현재가
+                    - paragraph [ref=e3613]: ₩1,945,000
+                  - generic [ref=e3614]:
+                    - paragraph [ref=e3615]: 목표가
+                    - paragraph [ref=e3616]: ₩0
+                  - generic [ref=e3617]:
+                    - paragraph [ref=e3618]: 손절가
+                    - paragraph [ref=e3619]: ₩0
+                - generic [ref=e3621]:
+                  - img [ref=e3622]
+                  - generic [ref=e3624]:
+                    - paragraph [ref=e3625]: "결정: Already holding"
+                    - paragraph [ref=e3626]: "AI 판단: Already holding"
+                - button "AI 분석 상세" [ref=e3628]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3631]:
+                - generic [ref=e3633]:
+                  - generic [ref=e3634]:
+                    - heading "코스모로보틱스" [level=3] [ref=e3635]
+                    - generic [ref=e3636]: "439960"
+                  - generic [ref=e3637]:
+                    - generic [ref=e3638]: 의료·정밀기기
+                    - generic [ref=e3639]: 단기
+                    - generic [ref=e3640]: 2/4점
+                - generic [ref=e3641]:
+                  - generic [ref=e3642]:
+                    - paragraph [ref=e3643]: 현재가
+                    - paragraph [ref=e3644]: ₩57,900
+                  - generic [ref=e3645]:
+                    - paragraph [ref=e3646]: 목표가
+                    - paragraph [ref=e3647]: ₩66,600
+                  - generic [ref=e3648]:
+                    - paragraph [ref=e3649]: 손절가
+                    - paragraph [ref=e3650]: ₩56,200
+                - generic [ref=e3651]:
+                  - generic [ref=e3652]:
+                    - paragraph [ref=e3653]: 손익비
+                    - generic [ref=e3654]: "2.8"
+                  - generic [ref=e3655]:
+                    - generic [ref=e3656]:
+                      - paragraph [ref=e3657]: 목표 수익
+                      - paragraph [ref=e3658]: +13.1%
+                    - generic [ref=e3659]:
+                      - paragraph [ref=e3660]: 예상 손실
+                      - paragraph [ref=e3661]: "-4.6%"
+                - generic [ref=e3663]:
+                  - img [ref=e3664]
+                  - generic [ref=e3666]:
+                    - paragraph [ref=e3667]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3668]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e3669]: "AI 판단: Skip / 점수 부족 (2/4)"
+                    - paragraph [ref=e3670]: "미진입 사유: 단독 사유 5: effective_score 3이 moderate_bull 기준 min_score 4 미만입니다. 또한 F1~F4 펀더멘털 게이트가 모두 미달이며, 외국인+기관의 연속 순매수도 확인되지 않아 CAN SLIM 품질 기준을 충족하지 못합니다."
+                - button "AI 분석 상세" [ref=e3672]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3675]:
+                - generic [ref=e3677]:
+                  - generic [ref=e3678]:
+                    - heading "현대모비스" [level=3] [ref=e3679]
+                    - generic [ref=e3680]: "012330"
+                  - generic [ref=e3681]:
+                    - generic [ref=e3682]: 운송장비·부품
+                    - generic [ref=e3683]: 단기
+                    - generic [ref=e3684]: 7/4점
+                - generic [ref=e3685]:
+                  - generic [ref=e3686]:
+                    - paragraph [ref=e3687]: 현재가
+                    - paragraph [ref=e3688]: ₩624,000
+                  - generic [ref=e3689]:
+                    - paragraph [ref=e3690]: 목표가
+                    - paragraph [ref=e3691]: ₩644,600
+                  - generic [ref=e3692]:
+                    - paragraph [ref=e3693]: 손절가
+                    - paragraph [ref=e3694]: ₩579,390
+                - generic [ref=e3695]:
+                  - generic [ref=e3696]:
+                    - paragraph [ref=e3697]: 손익비
+                    - generic [ref=e3698]: "0.5"
+                  - generic [ref=e3699]:
+                    - generic [ref=e3700]:
+                      - paragraph [ref=e3701]: 목표 수익
+                      - paragraph [ref=e3702]: +3.5%
+                    - generic [ref=e3703]:
+                      - paragraph [ref=e3704]: 예상 손실
+                      - paragraph [ref=e3705]: "-7.0%"
+                - generic [ref=e3707]:
+                  - img [ref=e3708]
+                  - generic [ref=e3710]:
+                    - paragraph [ref=e3711]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3712]: "(진입 체크리스트: 5/6)"
+                    - paragraph [ref=e3713]: "AI 판단: Skip"
+                    - paragraph [ref=e3714]: "미진입 사유: R/R floor 미달: moderate_bull 기준 요구 손익비 1.2 이상이나, 현재가 623000 기준 1차 저항 650000까지 80% 목표가 644600 적용 시 기대수익률 3.5%, 손절폭 7.0%, 손익비 0.5에 그침."
+                - button "AI 분석 상세" [ref=e3716]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3719]:
+                - generic [ref=e3721]:
+                  - generic [ref=e3722]:
+                    - heading "대원전선" [level=3] [ref=e3723]
+                    - generic [ref=e3724]: "006340"
+                  - generic [ref=e3725]:
+                    - generic [ref=e3726]: 전기·전자
+                    - generic [ref=e3727]: 단기
+                    - generic [ref=e3728]: 2/4점
+                - generic [ref=e3729]:
+                  - generic [ref=e3730]:
+                    - paragraph [ref=e3731]: 현재가
+                    - paragraph [ref=e3732]: ₩15,510
+                  - generic [ref=e3733]:
+                    - paragraph [ref=e3734]: 목표가
+                    - paragraph [ref=e3735]: ₩17,680
+                  - generic [ref=e3736]:
+                    - paragraph [ref=e3737]: 손절가
+                    - paragraph [ref=e3738]: ₩14,650
+                - generic [ref=e3739]:
+                  - generic [ref=e3740]:
+                    - paragraph [ref=e3741]: 손익비
+                    - generic [ref=e3742]: "2.1"
+                  - generic [ref=e3743]:
+                    - generic [ref=e3744]:
+                      - paragraph [ref=e3745]: 목표 수익
+                      - paragraph [ref=e3746]: +13.2%
+                    - generic [ref=e3747]:
+                      - paragraph [ref=e3748]: 예상 손실
+                      - paragraph [ref=e3749]: "-6.2%"
+                - generic [ref=e3751]:
+                  - img [ref=e3752]
+                  - generic [ref=e3754]:
+                    - paragraph [ref=e3755]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3756]: "(진입 체크리스트: 4/6)"
+                    - paragraph [ref=e3757]: "AI 판단: Skip / 점수 부족 (2/4) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3758]: "미진입 사유: effective_score 3 < moderate_bull min_score 4입니다. 또한 F1/F2 펀더멘털 게이트가 미달이고, PER·PBR이 업종 최상단이라 현재 모멘텀만으로 1슬롯 전체 매수 기준을 충족하지 못합니다."
+                - button "AI 분석 상세" [ref=e3760]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+          - generic [ref=e3761]:
+            - generic [ref=e3763]:
+              - generic [ref=e3764]: 2026년 5월 20일
+              - generic [ref=e3765]: 5개 분석
+            - generic [ref=e3767]:
+              - generic [ref=e3770]:
+                - generic [ref=e3772]:
+                  - generic [ref=e3773]:
+                    - heading "삼화콘덴서" [level=3] [ref=e3774]
+                    - generic [ref=e3775]: "001820"
+                  - generic [ref=e3776]:
+                    - generic [ref=e3777]: 전기·전자
+                    - generic [ref=e3778]: 단기
+                    - generic [ref=e3779]: 2/5점
+                - generic [ref=e3780]:
+                  - generic [ref=e3781]:
+                    - paragraph [ref=e3782]: 현재가
+                    - paragraph [ref=e3783]: ₩77,200
+                  - generic [ref=e3784]:
+                    - paragraph [ref=e3785]: 목표가
+                    - paragraph [ref=e3786]: ₩88,400
+                  - generic [ref=e3787]:
+                    - paragraph [ref=e3788]: 손절가
+                    - paragraph [ref=e3789]: ₩73,100
+                - generic [ref=e3790]:
+                  - generic [ref=e3791]:
+                    - paragraph [ref=e3792]: 손익비
+                    - generic [ref=e3793]: "3.0"
+                  - generic [ref=e3794]:
+                    - generic [ref=e3795]:
+                      - paragraph [ref=e3796]: 목표 수익
+                      - paragraph [ref=e3797]: +15.0%
+                    - generic [ref=e3798]:
+                      - paragraph [ref=e3799]: 예상 손실
+                      - paragraph [ref=e3800]: "-4.9%"
+                - generic [ref=e3802]:
+                  - img [ref=e3803]
+                  - generic [ref=e3805]:
+                    - paragraph [ref=e3806]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3807]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3808]: "AI 판단: Skip / 점수 부족 (2/5) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3809]: "미진입 사유: moderate_bear 체제에서 펀더멘털 게이트 F1·F2·F3 미달이 발생했습니다. 또한 effective_score 3 < min_score 5이며, 현재 PER 62.98배가 업계 평균 PER 13~15배의 2.5배를 초과하는 단독 배제 조건에 해당합니다. 주요 차트 지지선 67,000원도 현재가 대비 -12.9%로 손절 지지선 -10% 이하 단독 배제 조건에 해당합니다."
+                - button "AI 분석 상세" [ref=e3811]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3814]:
+                - generic [ref=e3816]:
+                  - generic [ref=e3817]:
+                    - heading "빛과전자" [level=3] [ref=e3818]
+                    - generic [ref=e3819]: "069540"
+                  - generic [ref=e3820]:
+                    - generic [ref=e3821]: 전기·전자
+                    - generic [ref=e3822]: 단기
+                    - generic [ref=e3823]: 2/5점
+                - generic [ref=e3824]:
+                  - generic [ref=e3825]:
+                    - paragraph [ref=e3826]: 현재가
+                    - paragraph [ref=e3827]: ₩5,270
+                  - generic [ref=e3828]:
+                    - paragraph [ref=e3829]: 목표가
+                    - paragraph [ref=e3830]: ₩5,666
+                  - generic [ref=e3831]:
+                    - paragraph [ref=e3832]: 손절가
+                    - paragraph [ref=e3833]: ₩5,070
+                - generic [ref=e3834]:
+                  - generic [ref=e3835]:
+                    - paragraph [ref=e3836]: 손익비
+                    - generic [ref=e3837]: "2.3"
+                  - generic [ref=e3838]:
+                    - generic [ref=e3839]:
+                      - paragraph [ref=e3840]: 목표 수익
+                      - paragraph [ref=e3841]: +7.9%
+                    - generic [ref=e3842]:
+                      - paragraph [ref=e3843]: 예상 손실
+                      - paragraph [ref=e3844]: "-3.4%"
+                - generic [ref=e3846]:
+                  - img [ref=e3847]
+                  - generic [ref=e3849]:
+                    - paragraph [ref=e3850]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3851]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e3852]: "AI 판단: Skip / 점수 부족 (2/5) / 섹터 집중 (전기·전자)"
+                    - paragraph [ref=e3853]: "미진입 사유: 펀더멘털 게이트 F1~F4 미달이며 시장 체제가 moderate_bear입니다. 또한 effective_score 3이 moderate_bear min_score 5에 미달합니다."
+                - button "AI 분석 상세" [ref=e3855]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3858]:
+                - generic [ref=e3860]:
+                  - generic [ref=e3861]:
+                    - heading "코스모로보틱스" [level=3] [ref=e3862]
+                    - generic [ref=e3863]: "439960"
+                  - generic [ref=e3864]:
+                    - generic [ref=e3865]: 의료·정밀기기
+                    - generic [ref=e3866]: 단기
+                    - generic [ref=e3867]: 2/5점
+                - generic [ref=e3868]:
+                  - generic [ref=e3869]:
+                    - paragraph [ref=e3870]: 현재가
+                    - paragraph [ref=e3871]: ₩53,300
+                  - generic [ref=e3872]:
+                    - paragraph [ref=e3873]: 목표가
+                    - paragraph [ref=e3874]: ₩59,000
+                  - generic [ref=e3875]:
+                    - paragraph [ref=e3876]: 손절가
+                    - paragraph [ref=e3877]: ₩51,600
+                - generic [ref=e3878]:
+                  - generic [ref=e3879]:
+                    - paragraph [ref=e3880]: 손익비
+                    - generic [ref=e3881]: "2.4"
+                  - generic [ref=e3882]:
+                    - generic [ref=e3883]:
+                      - paragraph [ref=e3884]: 목표 수익
+                      - paragraph [ref=e3885]: +9.7%
+                    - generic [ref=e3886]:
+                      - paragraph [ref=e3887]: 예상 손실
+                      - paragraph [ref=e3888]: "-4.1%"
+                - generic [ref=e3890]:
+                  - img [ref=e3891]
+                  - generic [ref=e3893]:
+                    - paragraph [ref=e3894]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3895]: "(진입 체크리스트: 2/6)"
+                    - paragraph [ref=e3896]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e3897]: "미진입 사유: 단독 사유 3: moderate_bear 시장 체제에서 펀더멘털 게이트 F1~F4가 미달입니다. 또한 effective_score 3이 min_score 5에 미달하고, moderate_bear 요구 조건인 additional_confirmation_count 1개 이상도 충족하지 못했습니다."
+                - button "AI 분석 상세" [ref=e3899]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3902]:
+                - generic [ref=e3904]:
+                  - generic [ref=e3905]:
+                    - heading "심텍" [level=3] [ref=e3906]
+                    - generic [ref=e3907]: "222800"
+                  - generic [ref=e3908]:
+                    - generic [ref=e3909]: 전기·전자
+                    - generic [ref=e3910]: 단기
+                    - generic [ref=e3911]: 2/5점
+                - generic [ref=e3912]:
+                  - generic [ref=e3913]:
+                    - paragraph [ref=e3914]: 현재가
+                    - paragraph [ref=e3915]: ₩105,600
+                  - generic [ref=e3916]:
+                    - paragraph [ref=e3917]: 목표가
+                    - paragraph [ref=e3918]: ₩116,900
+                  - generic [ref=e3919]:
+                    - paragraph [ref=e3920]: 손절가
+                    - paragraph [ref=e3921]: ₩100,200
+                - generic [ref=e3922]:
+                  - generic [ref=e3923]:
+                    - paragraph [ref=e3924]: 손익비
+                    - generic [ref=e3925]: "2.2"
+                  - generic [ref=e3926]:
+                    - generic [ref=e3927]:
+                      - paragraph [ref=e3928]: 목표 수익
+                      - paragraph [ref=e3929]: +10.8%
+                    - generic [ref=e3930]:
+                      - paragraph [ref=e3931]: 예상 손실
+                      - paragraph [ref=e3932]: "-5.0%"
+                - generic [ref=e3934]:
+                  - img [ref=e3935]
+                  - generic [ref=e3937]:
+                    - paragraph [ref=e3938]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3939]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3940]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e3941]: "미진입 사유: 펀더멘털 게이트 F1·F2·F3 검증 실패입니다. 현재 시장 체제는 moderate_bear로, 펀더멘털 항목 1개라도 미달 시 미진입 규칙이 적용됩니다. 또한 effective_score 3이 min_score 5에 미달합니다."
+                - button "AI 분석 상세" [ref=e3943]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+              - generic [ref=e3946]:
+                - generic [ref=e3948]:
+                  - generic [ref=e3949]:
+                    - heading "제주반도체" [level=3] [ref=e3950]
+                    - generic [ref=e3951]: "080220"
+                  - generic [ref=e3952]:
+                    - generic [ref=e3953]: 전기·전자
+                    - generic [ref=e3954]: 단기
+                    - generic [ref=e3955]: 2/5점
+                - generic [ref=e3956]:
+                  - generic [ref=e3957]:
+                    - paragraph [ref=e3958]: 현재가
+                    - paragraph [ref=e3959]: ₩96,000
+                  - generic [ref=e3960]:
+                    - paragraph [ref=e3961]: 목표가
+                    - paragraph [ref=e3962]: ₩111,000
+                  - generic [ref=e3963]:
+                    - paragraph [ref=e3964]: 손절가
+                    - paragraph [ref=e3965]: ₩92,600
+                - generic [ref=e3966]:
+                  - generic [ref=e3967]:
+                    - paragraph [ref=e3968]: 손익비
+                    - generic [ref=e3969]: "4.1"
+                  - generic [ref=e3970]:
+                    - generic [ref=e3971]:
+                      - paragraph [ref=e3972]: 목표 수익
+                      - paragraph [ref=e3973]: +15.4%
+                    - generic [ref=e3974]:
+                      - paragraph [ref=e3975]: 예상 손실
+                      - paragraph [ref=e3976]: "-3.7%"
+                - generic [ref=e3978]:
+                  - img [ref=e3979]
+                  - generic [ref=e3981]:
+                    - paragraph [ref=e3982]:
+                      - text: "결정: Skip"
+                      - generic [ref=e3983]: "(진입 체크리스트: 3/6)"
+                    - paragraph [ref=e3984]: "AI 판단: Skip / 점수 부족 (2/5)"
+                    - paragraph [ref=e3985]: "미진입 사유: 단독 미진입 사유 충족: PER 약 82.0배로 업종 평균 26.7배의 2.5배를 초과합니다. 또한 moderate_bear 체제에서 F1·F2·F3 펀더멘털 게이트가 미달이고, effective_score 3점이 min_score 5점에 미달합니다."
+                - button "AI 분석 상세" [ref=e3987]:
+                  - img
+                  - text: AI 분석 상세
+                  - img
+    - contentinfo [ref=e3988]:
+      - generic [ref=e3991]:
+        - generic [ref=e3992]:
+          - generic [ref=e3993]:
+            - heading "🔍 PRISM-INSIGHT" [level=3] [ref=e3994]
+            - paragraph [ref=e3995]:
+              - text: AI 기반 주식 분석 및 매매 시스템
+              - text: 완전 오픈소스 무료 프로젝트 • MIT License
+            - generic [ref=e3997]:
+              - generic [ref=e4000]: GPT-4.1
+              - generic [ref=e4001]: •
+              - generic [ref=e4004]: GPT-5.1
+              - generic [ref=e4005]: •
+              - generic [ref=e4008]: Claude 4.5
+          - generic [ref=e4009]:
+            - heading "주요 기능" [level=4] [ref=e4010]
+            - list [ref=e4011]:
+              - listitem [ref=e4012]:
+                - generic [ref=e4013]: ✓
+                - generic [ref=e4014]: 12개 AI 에이전트 협업 분석
+              - listitem [ref=e4015]:
+                - generic [ref=e4016]: ✓
+                - generic [ref=e4017]: 급등주 자동 포착 & 리포트
+              - listitem [ref=e4018]:
+                - generic [ref=e4019]: ✓
+                - generic [ref=e4020]: 매매 시뮬레이션 & 자동매매
+              - listitem [ref=e4021]:
+                - generic [ref=e4022]: ✓
+                - generic [ref=e4023]: 실시간 성과 대시보드
+          - generic [ref=e4024]:
+            - heading "바로가기" [level=4] [ref=e4025]
+            - generic [ref=e4026]:
+              - link "GitHub Repository 소스코드 & 이슈 관리" [ref=e4027] [cursor=pointer]:
+                - /url: https://github.com/dragon1086/prism-insight
+                - img [ref=e4029]
+                - generic [ref=e4032]:
+                  - generic [ref=e4033]: GitHub Repository
+                  - generic [ref=e4034]: 소스코드 & 이슈 관리
+              - link "Telegram Channel 급등주 & 분석 리포트" [ref=e4035] [cursor=pointer]:
+                - /url: https://t.me/stock_ai_agent
+                - img [ref=e4037]
+                - generic [ref=e4040]:
+                  - generic [ref=e4041]: Telegram Channel
+                  - generic [ref=e4042]: 급등주 & 분석 리포트
+              - link "About PRISM-INSIGHT footer.landingDesc" [ref=e4043] [cursor=pointer]:
+                - /url: https://prism-insight-landing.vercel.app
+                - img [ref=e4045]
+                - generic [ref=e4048]:
+                  - generic [ref=e4049]: About PRISM-INSIGHT
+                  - generic [ref=e4050]: footer.landingDesc
+            - link "⭐ 10주 만에 250+ Stars 달성" [ref=e4052] [cursor=pointer]:
+              - /url: https://github.com/dragon1086/prism-insight
+              - generic [ref=e4053]: ⭐
+              - generic [ref=e4054]: 10주 만에 250+ Stars 달성
+        - generic [ref=e4056]:
+          - generic [ref=e4057]:
+            - generic [ref=e4058]:
+              - generic [ref=e4059]: © 2025 PRISM-INSIGHT
+              - generic [ref=e4060]: •
+              - generic [ref=e4061]: All rights reserved
+            - generic [ref=e4062]:
+              - generic [ref=e4063]: •
+              - link "Platinum Sponsor WrksAI WrksAI" [ref=e4064] [cursor=pointer]:
+                - /url: https://wrks.ai/en
+                - generic [ref=e4065]: Platinum Sponsor
+                - generic [ref=e4066]:
+                  - img "WrksAI"
+                  - generic [ref=e4067]: WrksAI
+          - generic [ref=e4068]:
+            - generic [ref=e4069]: Open Source
+            - generic [ref=e4070]: MIT License
+        - paragraph [ref=e4072]: ⚠️ 본 시스템에서 제공하는 분석 정보는 투자 참고용이며, 투자 권유를 목적으로 하지 않습니다. 모든 투자 결정과 그에 따른 손익은 투자자 본인의 책임입니다.

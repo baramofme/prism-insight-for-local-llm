@@ -1,0 +1,367 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: Finance
+          - generic [ref=e9]: Beta
+        - generic [ref=e10]:
+          - button "검색" [ref=e11]:
+            - img [ref=e12]
+          - button "설정" [ref=e15]:
+            - img [ref=e16]
+          - button "피드백" [ref=e19]:
+            - img [ref=e20]
+          - generic "사용자 프로필" [ref=e22] [cursor=pointer]: U
+    - generic [ref=e23]:
+      - complementary [ref=e24]:
+        - generic [ref=e27] [cursor=pointer]: 목록
+        - generic [ref=e28]:
+          - generic [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: 투자중
+            - generic [ref=e31]: $19.6M
+            - generic [ref=e32]:
+              - img [ref=e33]
+              - text: +2.36%
+          - generic [ref=e36]:
+            - generic [ref=e37] [cursor=pointer]:
+              - generic [ref=e38]: "9180"
+              - generic [ref=e39]:
+                - img [ref=e40]
+                - text: "-2.49%"
+            - generic [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: "5930"
+              - generic [ref=e45]:
+                - img [ref=e46]
+                - text: "-2.34%"
+            - generic [ref=e49] [cursor=pointer]:
+              - generic [ref=e50]: "0660"
+              - generic [ref=e51]:
+                - img [ref=e52]
+                - text: +2.94%
+          - generic [ref=e55]:
+            - generic [ref=e56] [cursor=pointer]:
+              - generic [ref=e57]: SIXB
+              - generic [ref=e58]:
+                - img [ref=e59]
+                - text: "-0.45%"
+            - generic [ref=e62] [cursor=pointer]:
+              - generic [ref=e63]: SIXC
+              - generic [ref=e64]:
+                - img [ref=e65]
+                - text: +0.27%
+            - generic [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: SIXE
+              - generic [ref=e70]:
+                - img [ref=e71]
+                - text: "-1.69%"
+            - generic [ref=e74] [cursor=pointer]:
+              - generic [ref=e75]: SIXI
+              - generic [ref=e76]:
+                - img [ref=e77]
+                - text: +0.72%
+            - generic [ref=e80] [cursor=pointer]:
+              - generic [ref=e81]: SIXM
+              - generic [ref=e82]:
+                - img [ref=e83]
+                - text: "-0.91%"
+      - main [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - button "미국" [ref=e90]
+            - button "유럽" [ref=e91]
+            - button "아시아" [ref=e92]
+            - button "중남미" [ref=e93]
+            - button "통화" [ref=e94]
+            - button "암호화폐" [ref=e95]
+            - button "선물" [ref=e96]
+          - generic [ref=e97]:
+            - generic [ref=e98]: "최신 업데이트: 2026. 6. 22. 오후 12:34 (KST)"
+            - generic [ref=e99]: 준비 완료
+          - generic [ref=e100]:
+            - generic [ref=e101] [cursor=pointer]:
+              - generic [ref=e102]: 닛케이 평균주가
+              - generic [ref=e103]: 71,250.06
+              - generic [ref=e104]: (+$199.50)
+              - generic [ref=e105]:
+                - generic [ref=e106]: +0.28%
+                - img [ref=e107]
+              - img [ref=e111]
+            - generic [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]: 상해종합주가지수
+              - generic [ref=e116]: 4,090.48
+              - generic [ref=e117]: (-$17.59)
+              - generic [ref=e118]:
+                - generic [ref=e119]: "-0.43%"
+                - img [ref=e120]
+              - img [ref=e124]
+            - generic [ref=e127] [cursor=pointer]:
+              - generic [ref=e128]: 항셍지수
+              - generic [ref=e129]: 23,924.81
+              - generic [ref=e130]: (-$380.40)
+              - generic [ref=e131]:
+                - generic [ref=e132]: "-1.59%"
+                - img [ref=e133]
+              - img [ref=e137]
+            - generic [ref=e140] [cursor=pointer]:
+              - generic [ref=e141]: BSE 센섹스
+              - generic [ref=e142]: 76,802.90
+              - generic [ref=e143]: (-$599.06)
+              - generic [ref=e144]:
+                - generic [ref=e145]: "-0.78%"
+                - img [ref=e146]
+              - img [ref=e150]
+            - generic [ref=e153] [cursor=pointer]:
+              - generic [ref=e154]: 니프티50
+              - generic [ref=e155]: 24,013.10
+              - generic [ref=e156]: (-$153.68)
+              - generic [ref=e157]:
+                - generic [ref=e158]: "-0.64%"
+                - img [ref=e159]
+              - img [ref=e163]
+          - generic [ref=e166]:
+            - heading "아시아 시장 요약" [level=2] [ref=e167]
+            - generic [ref=e168]:
+              - generic [ref=e170]:
+                - generic [ref=e171] [cursor=pointer]: 닛케이지수, 역사적 고점 기록하며 지리적 리스크 완화
+                - generic [ref=e172]:
+                  - generic [ref=e173]: 2 sites
+                  - button [ref=e174]:
+                    - img [ref=e175]
+              - generic [ref=e178]:
+                - generic [ref=e179] [cursor=pointer]: 일본은행, 금리인상 기조 전환으로 인플레이션 대응 본격화
+                - generic [ref=e180]:
+                  - generic [ref=e181]: 3 sites
+                  - button [ref=e182]:
+                    - img [ref=e183]
+              - generic [ref=e186]:
+                - generic [ref=e187] [cursor=pointer]: 중국 경제 회복세 불균형, 증시 불안정 지속
+                - generic [ref=e188]:
+                  - generic [ref=e189]: 2 sites
+                  - button [ref=e190]:
+                    - img [ref=e191]
+              - generic [ref=e194]:
+                - generic [ref=e195] [cursor=pointer]: 동남아 통화, 공격적 금리 조치에도 압력
+                - generic [ref=e196]:
+                  - generic [ref=e197]: 2 sites
+                  - button [ref=e198]:
+                    - img [ref=e199]
+          - generic [ref=e201]:
+            - heading "뉴스 기사 더보기" [level=2] [ref=e202]
+            - paragraph [ref=e203]: 웹 소스 기반
+            - generic [ref=e204]:
+              - generic [ref=e206] [cursor=pointer]:
+                - img [ref=e208]
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - generic [ref=e213]: 문화일보
+                    - generic [ref=e214]: ·
+                    - generic [ref=e215]:
+                      - img [ref=e216]
+                      - generic [ref=e219]: 4분 전
+                  - paragraph [ref=e220]: 굳건한 '삼전닉스' 꽃길...삼성·SK하이닉스 견인
+              - generic [ref=e222] [cursor=pointer]:
+                - img [ref=e224]
+                - generic [ref=e227]:
+                  - generic [ref=e228]:
+                    - generic [ref=e229]: 네이버
+                    - generic [ref=e230]: ·
+                    - generic [ref=e231]:
+                      - img [ref=e232]
+                      - generic [ref=e235]: 28분 전
+                  - paragraph [ref=e236]: "'코스피 9000' 기쁨보다는 불안감 우세…외국인 순매수 전환"
+              - generic [ref=e238] [cursor=pointer]:
+                - img [ref=e240]
+                - generic [ref=e243]:
+                  - generic [ref=e244]:
+                    - generic [ref=e245]: 연합뉴스
+                    - generic [ref=e246]: ·
+                    - generic [ref=e247]:
+                      - img [ref=e248]
+                      - generic [ref=e251]: 1시간 전
+                  - paragraph [ref=e252]: 삼성전자, 차세대 메모리반도체 양산 확대 계획 발표
+              - generic [ref=e254] [cursor=pointer]:
+                - img [ref=e256]
+                - generic [ref=e259]:
+                  - generic [ref=e260]:
+                    - generic [ref=e261]: 한국경제
+                    - generic [ref=e262]: ·
+                    - generic [ref=e263]:
+                      - img [ref=e264]
+                      - generic [ref=e267]: 2시간 전
+                  - paragraph [ref=e268]: SK하이닉스, AI 반도체 수주 물량 2분기부터 본격 납품
+            - button "더보기" [ref=e269]
+          - generic [ref=e270]:
+            - generic [ref=e271]:
+              - heading "최다 거래 종목" [level=3] [ref=e272]
+              - generic [ref=e273]:
+                - generic [ref=e274] [cursor=pointer]:
+                  - generic [ref=e275]:
+                    - generic [ref=e276]: (067290)
+                    - generic [ref=e277]: JW신약
+                  - generic [ref=e278]:
+                    - generic [ref=e279]: ₩2,335
+                    - generic [ref=e280]:
+                      - generic [ref=e281]: +13.08%
+                      - img [ref=e282]
+                - generic [ref=e285] [cursor=pointer]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]: (036180)
+                    - generic [ref=e288]: GW바이오텍
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: ₩2
+                    - generic [ref=e291]:
+                      - generic [ref=e292]: "-60.00%"
+                      - img [ref=e293]
+                - generic [ref=e296] [cursor=pointer]:
+                  - generic [ref=e297]:
+                    - generic [ref=e298]: (005930)
+                    - generic [ref=e299]: 삼성전자
+                  - generic [ref=e300]:
+                    - generic [ref=e301]: ₩354,000
+                    - generic [ref=e302]:
+                      - generic [ref=e303]: "-2.34%"
+                      - img [ref=e304]
+                - generic [ref=e307] [cursor=pointer]:
+                  - generic [ref=e308]:
+                    - generic [ref=e309]: (046970)
+                    - generic [ref=e310]: 우리로
+                  - generic [ref=e311]:
+                    - generic [ref=e312]: ₩7,350
+                    - generic [ref=e313]:
+                      - generic [ref=e314]: "-9.82%"
+                      - img [ref=e315]
+            - generic [ref=e318]:
+              - heading "일 최대 상승 종목" [level=3] [ref=e319]
+              - generic [ref=e320]:
+                - generic [ref=e321] [cursor=pointer]:
+                  - generic [ref=e322]:
+                    - generic [ref=e323]: (014950)
+                    - generic [ref=e324]: 삼익제약
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: ₩8,410
+                    - generic [ref=e327]:
+                      - generic [ref=e328]: +29.98%
+                      - img [ref=e329]
+                - generic [ref=e332] [cursor=pointer]:
+                  - generic [ref=e333]:
+                    - generic [ref=e334]: (320000)
+                    - generic [ref=e335]: 한울반도체
+                  - generic [ref=e336]:
+                    - generic [ref=e337]: ₩17,820
+                    - generic [ref=e338]:
+                      - generic [ref=e339]: +29.98%
+                      - img [ref=e340]
+                - generic [ref=e343] [cursor=pointer]:
+                  - generic [ref=e344]:
+                    - generic [ref=e345]: (058730)
+                    - generic [ref=e346]: 다스코
+                  - generic [ref=e347]:
+                    - generic [ref=e348]: ₩3,470
+                    - generic [ref=e349]:
+                      - generic [ref=e350]: +29.96%
+                      - img [ref=e351]
+                - generic [ref=e354] [cursor=pointer]:
+                  - generic [ref=e355]:
+                    - generic [ref=e356]: (056090)
+                    - generic [ref=e357]: 시지메드텍
+                  - generic [ref=e358]:
+                    - generic [ref=e359]: ₩1,618
+                    - generic [ref=e360]:
+                      - generic [ref=e361]: +29.96%
+                      - img [ref=e362]
+            - generic [ref=e365]:
+              - heading "일 최대 하락 종목" [level=3] [ref=e366]
+              - generic [ref=e367]:
+                - generic [ref=e368] [cursor=pointer]:
+                  - generic [ref=e369]:
+                    - generic [ref=e370]: (054630)
+                    - generic [ref=e371]: 에이디칩스
+                  - generic [ref=e372]:
+                    - generic [ref=e373]: ₩15
+                    - generic [ref=e374]:
+                      - generic [ref=e375]: "-84.04%"
+                      - img [ref=e376]
+                - generic [ref=e379] [cursor=pointer]:
+                  - generic [ref=e380]:
+                    - generic [ref=e381]: (001140)
+                    - generic [ref=e382]: 국보
+                  - generic [ref=e383]:
+                    - generic [ref=e384]: ₩14
+                    - generic [ref=e385]:
+                      - generic [ref=e386]: "-83.53%"
+                      - img [ref=e387]
+                - generic [ref=e390] [cursor=pointer]:
+                  - generic [ref=e391]:
+                    - generic [ref=e392]: (217620)
+                    - generic [ref=e393]: 선샤인푸드케어
+                  - generic [ref=e394]:
+                    - generic [ref=e395]: ₩5
+                    - generic [ref=e396]:
+                      - generic [ref=e397]: "-78.26%"
+                      - img [ref=e398]
+                - generic [ref=e401] [cursor=pointer]:
+                  - generic [ref=e402]:
+                    - generic [ref=e403]: (057880)
+                    - generic [ref=e404]: 푸른소나무
+                  - generic [ref=e405]:
+                    - generic [ref=e406]: ₩6
+                    - generic [ref=e407]:
+                      - generic [ref=e408]: "-68.42%"
+                      - img [ref=e409]
+      - complementary [ref=e412]:
+        - generic [ref=e413]:
+          - generic [ref=e414]:
+            - heading "조사" [level=2] [ref=e415]
+            - generic [ref=e416]:
+              - button "새 대화목록" [ref=e417]:
+                - img [ref=e418]
+              - button "대화목록 기록" [ref=e421]:
+                - img [ref=e422]
+              - button "접기" [ref=e425]:
+                - img [ref=e426]
+              - button "펼치기" [ref=e429]:
+                - img [ref=e430]
+          - generic [ref=e435]:
+            - generic [ref=e436]: JIHOON님, 안녕하세요. 금융 관련 질문을 해 보세요.
+            - generic [ref=e437]:
+              - generic [ref=e438] [cursor=pointer]:
+                - generic [ref=e439]: 오늘 시장 현황이 어떤가요?
+                - img [ref=e440]
+              - generic [ref=e443] [cursor=pointer]:
+                - generic [ref=e444]: 왜 한국 KOSPI 지수가 9,000포인트를 돌파했나요?
+                - img [ref=e445]
+              - generic [ref=e448] [cursor=pointer]:
+                - generic [ref=e449]: 일본은행의 금리 인상이 Nikkei 225에 미치는 영향은 무엇인가요?
+                - img [ref=e450]
+            - generic [ref=e453]:
+              - generic [ref=e454]: 가능한 작업 알아보기
+              - generic [ref=e455]:
+                - button "Deep Search" [ref=e456]:
+                  - img [ref=e457]
+                  - text: Deep Search
+                - button "내 관심 목록 분석" [ref=e460]:
+                  - img [ref=e461]
+                  - text: 내 관심 목록 분석
+          - generic [ref=e465]:
+            - textbox "질문하기" [ref=e466]
+            - generic [ref=e467]:
+              - button "도구 추가" [ref=e468]:
+                - img
+              - button "AI에 질문하기" [disabled]:
+                - generic: ↑
+    - contentinfo [ref=e469]:
+      - generic [ref=e470]:
+        - generic [ref=e471]: AI 콘텐츠에는 오류가 있을 수 있습니다. 자세히 알아보기
+        - generic [ref=e472]:
+          - generic [ref=e473] [cursor=pointer]: 도움말
+          - generic [ref=e474]: ·
+          - generic [ref=e475] [cursor=pointer]: 의견 보내기
+          - generic [ref=e476]: ·
+          - generic [ref=e477] [cursor=pointer]: 개인 정보 보호
+          - generic [ref=e478]: ·
+          - generic [ref=e479] [cursor=pointer]: 약관
+          - generic [ref=e480]: ·
+          - generic [ref=e481] [cursor=pointer]: 면책 조항
+  - button "Open Next.js Dev Tools" [ref=e487] [cursor=pointer]:
+    - img [ref=e488]

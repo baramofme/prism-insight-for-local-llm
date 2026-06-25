@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]:
+        - img [ref=e7]
+        - generic [ref=e10]: PRISM
+      - generic [ref=e11]: 로그인
+      - generic [ref=e12]: AI 기반 주식 분석 플랫폼
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]: 이메일
+          - textbox "이메일" [ref=e17]:
+            - /placeholder: name@example.com
+        - generic [ref=e18]:
+          - generic [ref=e19]: 비밀번호
+          - textbox "비밀번호" [ref=e20]:
+            - /placeholder: ••••••••
+        - button "로그인" [ref=e21]
+      - generic [ref=e22]:
+        - text: 계정이 없으신가요?
+        - link "회원가입" [ref=e23] [cursor=pointer]:
+          - /url: /signup
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]:
+    - img [ref=e30]

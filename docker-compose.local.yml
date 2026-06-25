@@ -1,0 +1,32 @@
+# PRISM-INSIGHT Local LLM Quick Start
+# Uses host LLM server (localhost:8081) via host networking
+services:
+  prism-insight:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prism-insight:local
+    container_name: prism-local
+    network_mode: host
+    environment:
+      OPENAI_API_KEY: sk-dummy
+      VANE_PORT: "3003"
+      VANE_BASE_URL: http://localhost:3003
+    volumes:
+      # Override configs with our local LLM setup
+      - ./mcp_agent.config.yaml:/app/prism-insight/mcp_agent.config.yaml
+      - ./mcp_agent.secrets.yaml:/app/prism-insight/mcp_agent.secrets.yaml
+      - ./prism-models.jsonc:/app/prism-insight/prism-models.jsonc
+      # Output directory for reports
+      - ./quickstart-output/reports:/app/prism-insight/reports
+      - ./quickstart-output/pdf_reports:/app/prism-insight/prism-us/pdf_reports
+    working_dir: /app/prism-insight
+    # Skip quickstart-entrypoint (overwrites configs). Pre-import cores.llm
+    # in same process to avoid prism-us/cores/ shadowing cores/llm/
+    entrypoint:
+      [
+        "python3", "-u", "-c",
+        "import cores.llm\nimport sys\nsys.argv = ['demo.py'] + sys.argv[1:]\nexec(open('/app/prism-insight/demo.py').read(), {'__file__': '/app/prism-insight/demo.py', '__name__': '__main__'})",
+        "AAPL"
+      ]
+    restart: "no"

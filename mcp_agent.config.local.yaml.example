@@ -1,0 +1,19 @@
+# ── Local LLM Configuration (llama.cpp) ───────────────────────────────────
+# Copy to mcp_agent.config.local.yaml and customize.
+#
+# Requires a running llama.cpp server:
+#   llama-server -m Qwen-3.6-Coder-Q4_K_M.gguf \
+#     --host 0.0.0.0 --port 8081 \
+#     -ngl auto --parallel 1 \
+#     --cont-batching --slots 1 \
+#     --ctx-size 256000 \
+#     --flash-attn on
+#
+# Current local endpoint (Docker):
+#   http://localhost:8081/v1  →  Qwen-3.6-Coder (llama.cpp)
+
+openai:
+  base_url: "http://localhost:8081/v1"
+  api_key: "not-needed"
+  default_model: "Qwen-3.6-Coder"
+  reasoning_effort: none
