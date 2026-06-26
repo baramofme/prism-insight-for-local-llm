@@ -46,6 +46,13 @@ export const navGroups: NavGroup[] = [
         items: []
       },
       {
+        title: 'Finance',
+        url: '/dashboard/finance/000660:KRX',
+        icon: 'trendingUp',
+        isActive: false,
+        items: []
+      },
+      {
         title: 'Workspaces',
         url: '/dashboard/workspaces',
         icon: 'workspace',
