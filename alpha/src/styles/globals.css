@@ -75,3 +75,51 @@
   /* Apply the reveal animation */
   animation: reveal 0.4s ease-in-out forwards;
 }
+
+/* ── 좌측 사이드바 펼침 폭: 뷰포트별 확장 (우측 border 1px는 컴포넌트 기본 border-r) ── */
+@media (min-width: 1380px) {
+  [data-slot='sidebar-wrapper'] {
+    --sidebar-width: 300px !important;
+  }
+  [data-slot='sidebar'][data-state='expanded'] [data-slot='sidebar-inner'] {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  [data-slot='sidebar'][data-state='expanded'] [data-slot='sidebar-header'],
+  [data-slot='sidebar'][data-state='expanded'] [data-slot='sidebar-content'],
+  [data-slot='sidebar'][data-state='expanded'] [data-slot='sidebar-footer'] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 1480px) {
+  [data-slot='sidebar-wrapper'] {
+    --sidebar-width: 320px !important;
+  }
+}
+
+/* ── <1380 좌측 레일: 접힘 80px → 호버 시 320px 오버레이 (GF 베타 동작) ── */
+/* 컨테이너만 넓혀 콘텐츠 위에 떠서 펼침(gap=80px 유지 → 콘텐츠 안 밂) */
+@media (min-width: 768px) and (max-width: 1379.98px) {
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-container'] {
+    width: 320px !important;
+    z-index: 50;
+  }
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-inner'] {
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.12);
+  }
+  /* 호버 시 메뉴 버튼 풀폭 복원 (아이콘 모드 size-8 덮기) */
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-menu-button'] {
+    width: 100% !important;
+    height: 2rem !important;
+  }
+  /* 그룹 라벨/액션/뱃지 복원 */
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-group-label'] {
+    margin-top: 0 !important;
+    opacity: 1 !important;
+  }
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-menu-action'],
+  [data-slot='sidebar'][data-collapsible='icon']:hover [data-slot='sidebar-menu-badge'] {
+    display: flex !important;
+  }
+}

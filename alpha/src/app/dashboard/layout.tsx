@@ -4,6 +4,7 @@ import Header from '@/components/layout/header';
 import { InfoSidebar } from '@/components/layout/info-sidebar';
 import { InfobarProvider } from '@/components/ui/infobar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarAutoCollapse } from '@/components/layout/sidebar-auto-collapse';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
@@ -23,6 +24,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <KBar>
       <SidebarProvider defaultOpen={defaultOpen}>
+        <SidebarAutoCollapse />
         <AppSidebar />
         <SidebarInset>
           <Header />

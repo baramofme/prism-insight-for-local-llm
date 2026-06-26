@@ -10,7 +10,7 @@ export const env = {
   APP_ORIGIN:
     process.env.APP_ORIGIN ??
     process.env.NEXT_PUBLIC_APP_ORIGIN ??
-    "http://localhost:3039",
+    "http://localhost:3040",
   ENVIRONMENT: process.env.ENVIRONMENT ?? process.env.NODE_ENV ?? "development",
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID ?? "",
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET ?? "",
