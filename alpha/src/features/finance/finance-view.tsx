@@ -40,12 +40,16 @@ export function FinanceView({ detail }: { detail: StockDetail }) {
           type='single'
           value={period}
           onValueChange={(v) => v && setPeriod(v as Period)}
-          variant='outline'
+          variant='default'
           size='sm'
-          className='flex-wrap justify-start'
+          className='rounded-none p-0 gap-1.5 h-6 flex-wrap justify-start'
         >
           {PERIODS.map((p) => (
-            <ToggleGroupItem key={p} value={p} className='px-3'>
+            <ToggleGroupItem
+              key={p}
+              value={p}
+              className='rounded-none bg-transparent h-6 px-1 min-w-0 text-xs text-[#56595E] font-normal hover:bg-transparent hover:text-[#56595E] data-[state=on]:bg-transparent data-[state=on]:text-[#0A0A0A] data-[state=on]:font-medium'
+            >
               {p}
             </ToggleGroupItem>
           ))}
@@ -53,9 +57,13 @@ export function FinanceView({ detail }: { detail: StockDetail }) {
       </div>
 
       <Tabs value={tab} onValueChange={(v) => setTab(v as ContentTab)}>
-        <TabsList>
+        <TabsList className='bg-transparent rounded-none p-0 h-auto gap-6 border-b border-border w-full'>
           {CONTENT_TABS.map((t) => (
-            <TabsTrigger key={t.value} value={t.value}>
+            <TabsTrigger
+              key={t.value}
+              value={t.value}
+              className='rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 py-1.5 h-auto text-sm font-medium text-[#444746] data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-[#1F1F1F] data-[state=active]:border-b-[#1F1F1F] hover:bg-transparent'
+            >
               {t.label}
             </TabsTrigger>
           ))}
