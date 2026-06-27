@@ -1,0 +1,58 @@
+{
+  "active_plan": "/home/baramofme/IdeaProjects/prism-insight-for-local-llm/.sisyphus/plans/clerk-cleanup.md",
+  "started_at": "2026-06-27T07:47:37.984Z",
+  "session_ids": [
+    "ses_0fb2c2f9affemCYxlZIvoSkD3S"
+  ],
+  "session_origins": {
+    "ses_0fb2c2f9affemCYxlZIvoSkD3S": "direct"
+  },
+  "plan_name": "clerk-cleanup",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "`.env.local` — 빈 Clerk env 변수 제거",
+      "session_id": "ses_0f7ecb264ffeHN3FxBLgn5e5rP",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-27T07:56:43.273Z"
+    },
+    "todo:3": {
+      "task_key": "todo:3",
+      "task_label": "3",
+      "task_title": "`about/page.tsx` — \"Authentication by Clerk\" → Better Auth",
+      "session_id": "ses_0f7e957f0ffeSxZKIgV8SCLD22",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-27T08:00:19.280Z"
+    },
+    "todo:5": {
+      "task_key": "todo:5",
+      "task_label": "5",
+      "task_title": "`infoconfig.ts` — Clerk Organizations/Billing 문서 문자열 대체",
+      "session_id": "ses_0f7e709f9ffe24WYjPbLrrFskP",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-27T08:05:36.387Z"
+    },
+    "todo:11": {
+      "task_key": "todo:11",
+      "task_label": "11",
+      "task_title": "`CLAUDE.md` — Clerk 참조 링크 수정",
+      "session_id": "ses_0f7e1fd4fffeiD5U4eBtcyupRx",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-27T08:13:17.166Z"
+    },
+    "final-wave:f1": {
+      "task_key": "final-wave:f1",
+      "task_label": "F1",
+      "task_title": "**Clerk 참조 완전 제거 검증** — `quick`",
+      "session_id": "ses_0f7d687a3ffeSQqSAZrc8uJLN7",
+      "agent": "explore",
+      "updated_at": "2026-06-27T08:20:08.147Z"
+    }
+  }
+}
