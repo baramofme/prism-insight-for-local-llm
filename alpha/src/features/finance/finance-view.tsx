@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect } from 'react';
 import { parseAsStringEnum, useQueryState } from 'nuqs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useInfobar } from '@/components/ui/infobar';
 import { StockHeader } from './components/stock-header';
 import { PriceChart } from './components/price-chart';
 import { KeyMetrics } from './components/key-metrics';
@@ -29,9 +31,30 @@ export function FinanceView({ detail }: { detail: StockDetail }) {
   });
   const quote = { ...detail.quote, ...live.data };
   const up = quote.changePct >= 0;
+  const { setContent } = useInfobar();
+
+  useEffect(() => {
+    setContent({
+      title: `${detail.quote.name} 연구`,
+      sections: [
+        {
+          title: '핵심 지표',
+          description: detail.metrics.map((m) => `${m.label}: ${m.value}`).join('\n'),
+        },
+        {
+          title: '최근 가격 변동',
+          description: `현재가: ${detail.quote.price.toLocaleString()} ${detail.quote.currency}`,
+        },
+      ],
+    });
+    return () => {
+      setContent(null);
+    };
+  }, [setContent, detail]);
 
   return (
-    <div className='mx-auto w-full max-w-3xl space-y-6'>
+    <div className='mx-auto w-full max-w-[1820px] space-y-6'>
+      <div className='text-sm text-muted-foreground'>Finance / {detail.quote.name}</div>
       <StockHeader quote={quote} />
 
       <div className='space-y-2'>
