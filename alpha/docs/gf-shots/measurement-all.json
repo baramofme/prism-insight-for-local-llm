@@ -1,0 +1,269 @@
+{
+  "1024": {
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "__gfSrc": {
+      "gf-main-stockheader": {
+        "name": "gf-main-stockheader",
+        "html": "<span jsslot=\"\" class=\"rtaOSd-AznF2e-LUERP-bN97Pc\" jsname=\"l3SEO\" jsaction=\"transitionend:e204de\" data-gf=\"gf-main-stockheader\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><button class=\"rtaOSd-AznF2e rtaOSd-AznF2e-OWXEXe-auswjd rtaOSd-AznF2e-OWXEXe-jJNx8e-QBLLGd\" role=\"tab\" aria-selected=\"true\" tabindex=\"0\" id=\"main\" jscontroller=\"dsBBae\" jsaction=\"click:h5M12e;clickmod:h5M12e;pointerdown:FEiYhc;pointerup:mF5Elf;pointerenter:EX0mI;pointerleave:vpvbp;pointercancel:xyn4sd;contextmenu:xexox;focus:h06R8; blur:zjh6rb; mlnRJb:fLiPzd;\" aria-describedby=\"\" data-tooltip-enabled=\"false\" data-sk",
+        "box": {
+          "x": 104,
+          "y": 80,
+          "w": 896,
+          "h": 47
+        },
+        "style": {
+          "display": "flex",
+          "position": "relative",
+          "width": "896px",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "normal",
+          "flex": "1/0/auto"
+        }
+      },
+      "gf-main-metrics": "(없음)",
+      "gf-main-periodtabs": {
+        "name": "gf-main-periodtabs",
+        "html": "<div class=\"mmIeZd l8C4ve\" role=\"tablist\" aria-label=\"Stock chart tabs\" data-gf=\"gf-main-periodtabs\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><div data-tab-id=\"1dayTab\" tabindex=\"0\" class=\"D249ge qS6roe\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1D\" aria-selected=\"true\">1D</div><div data-tab-id=\"5dayTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"5D\" aria-selected=\"false\">5D</div><div data-tab-id=\"1monthTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1M\" aria-selected",
+        "box": {
+          "x": 168,
+          "y": 560,
+          "w": 335,
+          "h": 24
+        },
+        "style": {
+          "display": "flex",
+          "position": "static",
+          "width": "335.484px",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "6px",
+          "flex": "0/1/auto"
+        }
+      },
+      "gf-main-contenttabs": "(없음)",
+      "gf-main-news": "(없음)",
+      "gf-main-related": "(없음)",
+      "gf-main-profile": "(없음)"
+    },
+    "computed": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\""
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)"
+      },
+      "changePct": {
+        "text": "+2.52%",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(4, 110, 0)"
+      },
+      "changeChip": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      "gfMain": {
+        "w": 944,
+        "h": 820
+      }
+    }
+  },
+  "1430": {
+    "viewport": {
+      "width": 1430,
+      "height": 900
+    },
+    "__gfSrc": {
+      "gf-main-stockheader": {
+        "name": "gf-main-stockheader",
+        "html": "<span jsslot=\"\" class=\"rtaOSd-AznF2e-LUERP-bN97Pc\" jsname=\"l3SEO\" jsaction=\"transitionend:e204de\" data-gf=\"gf-main-stockheader\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><button class=\"rtaOSd-AznF2e rtaOSd-AznF2e-OWXEXe-auswjd rtaOSd-AznF2e-OWXEXe-jJNx8e-QBLLGd\" role=\"tab\" aria-selected=\"true\" tabindex=\"0\" id=\"main\" jscontroller=\"dsBBae\" jsaction=\"click:h5M12e;clickmod:h5M12e;pointerdown:FEiYhc;pointerup:mF5Elf;pointerenter:EX0mI;pointerleave:vpvbp;pointercancel:xyn4sd;contextmenu:xexox;focus:h06R8; blur:zjh6rb; mlnRJb:fLiPzd;\" aria-describedby=\"\" data-tooltip-enabled=\"false\" data-sk",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "style": {
+          "display": "flex",
+          "position": "relative",
+          "width": "auto",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "normal",
+          "flex": "1/0/auto"
+        }
+      },
+      "gf-main-metrics": "(없음)",
+      "gf-main-periodtabs": {
+        "name": "gf-main-periodtabs",
+        "html": "<div class=\"mmIeZd l8C4ve\" role=\"tablist\" aria-label=\"Stock chart tabs\" data-gf=\"gf-main-periodtabs\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><div data-tab-id=\"1dayTab\" tabindex=\"0\" class=\"D249ge qS6roe\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1D\" aria-selected=\"true\">1D</div><div data-tab-id=\"5dayTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"5D\" aria-selected=\"false\">5D</div><div data-tab-id=\"1monthTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1M\" aria-selected",
+        "box": {
+          "x": 340,
+          "y": 500,
+          "w": 335,
+          "h": 24
+        },
+        "style": {
+          "display": "flex",
+          "position": "static",
+          "width": "335.484px",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "6px",
+          "flex": "0/1/auto"
+        }
+      },
+      "gf-main-contenttabs": "(없음)",
+      "gf-main-news": "(없음)",
+      "gf-main-related": "(없음)",
+      "gf-main-profile": "(없음)"
+    },
+    "computed": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\""
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)"
+      },
+      "changePct": {
+        "text": "+2.52%",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(4, 110, 0)"
+      },
+      "changeChip": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "rect": {
+          "x": 934.484375,
+          "y": 157,
+          "w": 41.15625,
+          "h": 16
+        }
+      },
+      "gfMain": {
+        "w": 786,
+        "h": 820
+      }
+    }
+  },
+  "1680": {
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    },
+    "__gfSrc": {
+      "gf-main-stockheader": {
+        "name": "gf-main-stockheader",
+        "html": "<span jsslot=\"\" class=\"rtaOSd-AznF2e-LUERP-bN97Pc\" jsname=\"l3SEO\" jsaction=\"transitionend:e204de\" data-gf=\"gf-main-stockheader\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><button class=\"rtaOSd-AznF2e rtaOSd-AznF2e-OWXEXe-auswjd rtaOSd-AznF2e-OWXEXe-jJNx8e-QBLLGd\" role=\"tab\" aria-selected=\"true\" tabindex=\"0\" id=\"main\" jscontroller=\"dsBBae\" jsaction=\"click:h5M12e;clickmod:h5M12e;pointerdown:FEiYhc;pointerup:mF5Elf;pointerenter:EX0mI;pointerleave:vpvbp;pointercancel:xyn4sd;contextmenu:xexox;focus:h06R8; blur:zjh6rb; mlnRJb:fLiPzd;\" aria-describedby=\"\" data-tooltip-enabled=\"false\" data-sk",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "style": {
+          "display": "flex",
+          "position": "relative",
+          "width": "auto",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "normal",
+          "flex": "1/0/auto"
+        }
+      },
+      "gf-main-metrics": "(없음)",
+      "gf-main-periodtabs": {
+        "name": "gf-main-periodtabs",
+        "html": "<div class=\"mmIeZd l8C4ve\" role=\"tablist\" aria-label=\"Stock chart tabs\" data-gf=\"gf-main-periodtabs\" style=\"outline: rgba(255, 0, 128, 0.4) dashed 1px;\"><div data-tab-id=\"1dayTab\" tabindex=\"0\" class=\"D249ge qS6roe\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1D\" aria-selected=\"true\">1D</div><div data-tab-id=\"5dayTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"5D\" aria-selected=\"false\">5D</div><div data-tab-id=\"1monthTab\" tabindex=\"0\" class=\"D249ge\" jsname=\"AMZHSb\" jsaction=\"click:qqZdnc\" role=\"tab\" aria-label=\"1M\" aria-selected",
+        "box": {
+          "x": 360,
+          "y": 500,
+          "w": 335,
+          "h": 24
+        },
+        "style": {
+          "display": "flex",
+          "position": "static",
+          "width": "335.484px",
+          "maxWidth": "none",
+          "margin": "0px",
+          "padding": "0px",
+          "gap": "6px",
+          "flex": "0/1/auto"
+        }
+      },
+      "gf-main-contenttabs": "(없음)",
+      "gf-main-news": "(없음)",
+      "gf-main-related": "(없음)",
+      "gf-main-profile": "(없음)"
+    },
+    "computed": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\""
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)"
+      },
+      "changePct": {
+        "text": "+2.52%",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(4, 110, 0)"
+      },
+      "changeChip": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "rect": {
+          "x": 934.484375,
+          "y": 157,
+          "w": 41.15625,
+          "h": 16
+        }
+      },
+      "gfMain": {
+        "w": 840,
+        "h": 820
+      }
+    }
+  }
+}

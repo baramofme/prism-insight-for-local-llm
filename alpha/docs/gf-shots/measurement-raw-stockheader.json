@@ -1,0 +1,152 @@
+{
+  "1024": {
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "stockData": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\"",
+        "lineHeight": "20px",
+        "letterSpacing": "normal"
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "changePct": {
+        "text": "+2.52%arrow_upward",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans Text\", sans-serif"
+      },
+      "changeChip": {
+        "tag": "DIV",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "backgroundColor": "rgb(233, 235, 240)",
+        "color": "rgb(10, 10, 10)",
+        "borderRadius": "24px",
+        "padding": "0px"
+      },
+      "asOf": {
+        "text": "000660:KRX",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)"
+      }
+    }
+  },
+  "1430": {
+    "viewport": {
+      "width": 1430,
+      "height": 900
+    },
+    "stockData": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\"",
+        "lineHeight": "20px",
+        "letterSpacing": "normal"
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "changePct": {
+        "text": "+2.52%arrow_upward",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans Text\", sans-serif"
+      },
+      "changeChip": {
+        "tag": "DIV",
+        "rect": {
+          "x": 335.15625,
+          "y": 16,
+          "w": 700,
+          "h": 48
+        },
+        "backgroundColor": "rgb(233, 235, 240)",
+        "color": "rgb(10, 10, 10)",
+        "borderRadius": "24px",
+        "padding": "0px"
+      },
+      "asOf": {
+        "text": "000660:KRX",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)"
+      }
+    }
+  },
+  "1680": {
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    },
+    "stockData": {
+      "stockName": {
+        "text": "Finance",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "fontFamily": "\"Google Sans\"",
+        "lineHeight": "20px",
+        "letterSpacing": "normal"
+      },
+      "price": {
+        "text": "₩2,673,000.00",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "changePct": {
+        "text": "+2.52%arrow_upward",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "fontFamily": "\"Google Sans Text\", sans-serif"
+      },
+      "changeChip": {
+        "tag": "DIV",
+        "rect": {
+          "x": 335.15625,
+          "y": 16,
+          "w": 700,
+          "h": 48
+        },
+        "backgroundColor": "rgb(233, 235, 240)",
+        "color": "rgb(10, 10, 10)",
+        "borderRadius": "24px",
+        "padding": "0px"
+      },
+      "asOf": {
+        "text": "000660:KRX",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)"
+      }
+    }
+  }
+}

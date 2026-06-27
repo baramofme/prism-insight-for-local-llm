@@ -1,0 +1,641 @@
+{
+  "1024": {
+    "stockName": {
+      "text": "SK Hynix Inc",
+      "fontSize": "20px",
+      "fontWeight": "400",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif",
+      "lineHeight": "32px",
+      "rect": {
+        "x": 152,
+        "y": 188,
+        "w": 458.421875,
+        "h": 26
+      }
+    },
+    "price": {
+      "text": "₩2,673,000.00",
+      "fontSize": "24px",
+      "fontWeight": "500",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif"
+    },
+    "changePct": {
+      "text": "+2.52%",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(4, 110, 0)",
+      "fontFamily": "\"Google Sans Text\", sans-serif"
+    },
+    "periodTabs": {
+      "rect": {
+        "x": 168,
+        "y": 560.328125,
+        "w": 335.484375,
+        "h": 24
+      },
+      "display": "flex",
+      "gap": "6px",
+      "padding": "0px",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottom": "0px none rgb(10, 10, 10)"
+    },
+    "periodTabItems": [
+      {
+        "text": "1D",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "selected": "true",
+        "rect": {
+          "x": 168,
+          "y": 560.328125,
+          "w": 33.8125,
+          "h": 24
+        }
+      },
+      {
+        "text": "5D",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 207.8125,
+          "y": 560.328125,
+          "w": 35.03125,
+          "h": 24
+        }
+      },
+      {
+        "text": "1M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 248.84375,
+          "y": 560.328125,
+          "w": 35.15625,
+          "h": 24
+        }
+      },
+      {
+        "text": "6M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 290,
+          "y": 560.328125,
+          "w": 36.875,
+          "h": 24
+        }
+      },
+      {
+        "text": "YTD",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 332.875,
+          "y": 560.328125,
+          "w": 42.09375,
+          "h": 24
+        }
+      },
+      {
+        "text": "1Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 380.96875,
+          "y": 560.328125,
+          "w": 31.84375,
+          "h": 24
+        }
+      },
+      {
+        "text": "5Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 418.8125,
+          "y": 560.328125,
+          "w": 33.46875,
+          "h": 24
+        }
+      },
+      {
+        "text": "MAX",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 458.28125,
+          "y": 560.328125,
+          "w": 45.203125,
+          "h": 24
+        }
+      }
+    ],
+    "contentTabs": [
+      {
+        "text": "Overview",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "true"
+      },
+      {
+        "text": "Earnings",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      },
+      {
+        "text": "Financials",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      }
+    ],
+    "overviewSections": [],
+    "gfMain": {
+      "w": 944,
+      "h": 820,
+      "x": 80,
+      "y": 80
+    },
+    "left-nav": {
+      "w": 81,
+      "x": 0
+    },
+    "right-panel": {
+      "w": 0,
+      "x": 0
+    },
+    "header": {
+      "w": 1024,
+      "x": 0
+    }
+  },
+  "1430": {
+    "stockName": {
+      "text": "SK Hynix Inc",
+      "fontSize": "20px",
+      "fontWeight": "400",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif",
+      "lineHeight": "32px",
+      "rect": {
+        "x": 324,
+        "y": 128,
+        "w": 458.421875,
+        "h": 26
+      }
+    },
+    "price": {
+      "text": "₩2,673,000.00",
+      "fontSize": "24px",
+      "fontWeight": "500",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif"
+    },
+    "changePct": {
+      "text": "+2.52%",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(4, 110, 0)",
+      "fontFamily": "\"Google Sans Text\", sans-serif"
+    },
+    "periodTabs": {
+      "rect": {
+        "x": 340,
+        "y": 500.328125,
+        "w": 335.484375,
+        "h": 24
+      },
+      "display": "flex",
+      "gap": "6px",
+      "padding": "0px",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottom": "0px none rgb(10, 10, 10)"
+    },
+    "periodTabItems": [
+      {
+        "text": "1D",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "selected": "true",
+        "rect": {
+          "x": 340,
+          "y": 500.328125,
+          "w": 33.8125,
+          "h": 24
+        }
+      },
+      {
+        "text": "5D",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 379.8125,
+          "y": 500.328125,
+          "w": 35.03125,
+          "h": 24
+        }
+      },
+      {
+        "text": "1M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 420.84375,
+          "y": 500.328125,
+          "w": 35.15625,
+          "h": 24
+        }
+      },
+      {
+        "text": "6M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 462,
+          "y": 500.328125,
+          "w": 36.875,
+          "h": 24
+        }
+      },
+      {
+        "text": "YTD",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 504.875,
+          "y": 500.328125,
+          "w": 42.09375,
+          "h": 24
+        }
+      },
+      {
+        "text": "1Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 552.96875,
+          "y": 500.328125,
+          "w": 31.84375,
+          "h": 24
+        }
+      },
+      {
+        "text": "5Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 590.8125,
+          "y": 500.328125,
+          "w": 33.46875,
+          "h": 24
+        }
+      },
+      {
+        "text": "MAX",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 630.28125,
+          "y": 500.328125,
+          "w": 45.203125,
+          "h": 24
+        }
+      }
+    ],
+    "contentTabs": [
+      {
+        "text": "Overview",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "true"
+      },
+      {
+        "text": "Earnings",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      },
+      {
+        "text": "Financials",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      }
+    ],
+    "overviewSections": [],
+    "gfMain": {
+      "w": 786,
+      "h": 820,
+      "x": 300,
+      "y": 80
+    },
+    "left-nav": {
+      "w": 301,
+      "x": 0
+    },
+    "right-panel": {
+      "w": 334,
+      "x": 1086
+    },
+    "header": {
+      "w": 1430,
+      "x": 0
+    }
+  },
+  "1680": {
+    "stockName": {
+      "text": "SK Hynix Inc",
+      "fontSize": "20px",
+      "fontWeight": "400",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif",
+      "lineHeight": "32px",
+      "rect": {
+        "x": 344,
+        "y": 128,
+        "w": 458.421875,
+        "h": 26
+      }
+    },
+    "price": {
+      "text": "₩2,673,000.00",
+      "fontSize": "24px",
+      "fontWeight": "500",
+      "color": "rgb(10, 10, 10)",
+      "fontFamily": "\"Google Sans\", sans-serif"
+    },
+    "changePct": {
+      "text": "+2.52%",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(4, 110, 0)",
+      "fontFamily": "\"Google Sans Text\", sans-serif"
+    },
+    "periodTabs": {
+      "rect": {
+        "x": 360,
+        "y": 500.328125,
+        "w": 335.484375,
+        "h": 24
+      },
+      "display": "flex",
+      "gap": "6px",
+      "padding": "0px",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottom": "0px none rgb(10, 10, 10)"
+    },
+    "periodTabItems": [
+      {
+        "text": "1D",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(10, 10, 10)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "selected": "true",
+        "rect": {
+          "x": 360,
+          "y": 500.328125,
+          "w": 33.8125,
+          "h": 24
+        }
+      },
+      {
+        "text": "5D",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 399.8125,
+          "y": 500.328125,
+          "w": 35.03125,
+          "h": 24
+        }
+      },
+      {
+        "text": "1M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 440.84375,
+          "y": 500.328125,
+          "w": 35.15625,
+          "h": 24
+        }
+      },
+      {
+        "text": "6M",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 482,
+          "y": 500.328125,
+          "w": 36.875,
+          "h": 24
+        }
+      },
+      {
+        "text": "YTD",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 524.875,
+          "y": 500.328125,
+          "w": 42.09375,
+          "h": 24
+        }
+      },
+      {
+        "text": "1Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 572.96875,
+          "y": 500.328125,
+          "w": 31.84375,
+          "h": 24
+        }
+      },
+      {
+        "text": "5Y",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 610.8125,
+          "y": 500.328125,
+          "w": 33.46875,
+          "h": 24
+        }
+      },
+      {
+        "text": "MAX",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "color": "rgb(86, 89, 94)",
+        "padding": "4px 10px",
+        "borderBottom": "0px none rgb(86, 89, 94)",
+        "selected": "false",
+        "rect": {
+          "x": 650.28125,
+          "y": 500.328125,
+          "w": 45.203125,
+          "h": 24
+        }
+      }
+    ],
+    "contentTabs": [
+      {
+        "text": "Overview",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "true"
+      },
+      {
+        "text": "Earnings",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      },
+      {
+        "text": "Financials",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "padding": "0px 16px",
+        "selected": "false"
+      }
+    ],
+    "overviewSections": [],
+    "gfMain": {
+      "w": 840,
+      "h": 820,
+      "x": 320,
+      "y": 80
+    },
+    "left-nav": {
+      "w": 321,
+      "x": 0
+    },
+    "right-panel": {
+      "w": 510,
+      "x": 1160
+    },
+    "header": {
+      "w": 1680,
+      "x": 0
+    }
+  }
+}

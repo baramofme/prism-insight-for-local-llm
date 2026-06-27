@@ -1,0 +1,1643 @@
+{
+  "desktop_1680": {
+    "gf-main-stockheader": {
+      "container": {
+        "box": {
+          "w": 407,
+          "h": 32
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "12px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "₩339,500.00",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 152,
+          "height": 30
+        },
+        {
+          "tag": "i",
+          "text": "arrow_downward",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#f0f2f5",
+          "fontFamily": "\"Google Material Icons\"",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(240, 242, 245)",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "tag": "span",
+          "text": "-5.30%",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "color": "#3364f0",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(51, 100, 240)",
+          "width": 65,
+          "height": 25
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-metrics": {
+      "container": {
+        "box": {
+          "w": 792,
+          "h": 204
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "20px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "시가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩354,000",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "고가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩356,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "저가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩321,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "시가총액",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "2,163.38조",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "평균 거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,187.77만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,973.60만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "0.49%",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 115,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "분기 배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 119,
+          "height": 16
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-periodtabs": {
+      "container": {
+        "box": {
+          "w": 332,
+          "h": 24
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "6px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "1D",
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 34,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5D",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "6M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 37,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "YTD",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 32,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 33,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "최대",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-contenttabs": {
+      "container": {
+        "box": {
+          "w": 792,
+          "h": 47
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "relative"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "개요",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#1f1f1f",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(31, 31, 31)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "실적",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "금융",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-news": {
+      "container": {
+        "box": {
+          "w": 792,
+          "h": 28
+        },
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "32px 0px 0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [],
+      "activeIndicator": null
+    }
+  },
+  "transitional_1430": {
+    "gf-main-stockheader": {
+      "container": {
+        "box": {
+          "w": 407,
+          "h": 32
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "12px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "₩339,500.00",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 152,
+          "height": 30
+        },
+        {
+          "tag": "i",
+          "text": "arrow_downward",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#f0f2f5",
+          "fontFamily": "\"Google Material Icons\"",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(240, 242, 245)",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "tag": "span",
+          "text": "-5.30%",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "color": "#3364f0",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(51, 100, 240)",
+          "width": 65,
+          "height": 25
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-metrics": {
+      "container": {
+        "box": {
+          "w": 738,
+          "h": 204
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "20px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "시가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩354,000",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "고가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩356,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "저가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩321,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "시가총액",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "2,163.38조",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "평균 거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,187.77만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,973.60만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "0.49%",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 106,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "분기 배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 110,
+          "height": 16
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-periodtabs": {
+      "container": {
+        "box": {
+          "w": 332,
+          "h": 24
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "6px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "1D",
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 34,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5D",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "6M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 37,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "YTD",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 32,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 33,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "최대",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-contenttabs": {
+      "container": {
+        "box": {
+          "w": 738,
+          "h": 47
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "relative"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "개요",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#1f1f1f",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(31, 31, 31)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "실적",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "금융",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-news": {
+      "container": {
+        "box": {
+          "w": 738,
+          "h": 28
+        },
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "32px 0px 0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [],
+      "activeIndicator": null
+    }
+  },
+  "tablet_1024": {
+    "gf-main-stockheader": {
+      "container": {
+        "box": {
+          "w": 407,
+          "h": 32
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "12px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "₩339,500.00",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 152,
+          "height": 30
+        },
+        {
+          "tag": "i",
+          "text": "arrow_downward",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#f0f2f5",
+          "fontFamily": "\"Google Material Icons\"",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(240, 242, 245)",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "tag": "span",
+          "text": "-5.30%",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "color": "#3364f0",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "inline",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(51, 100, 240)",
+          "width": 65,
+          "height": 25
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-metrics": {
+      "container": {
+        "box": {
+          "w": 800,
+          "h": 204
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "20px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "시가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩354,000",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "고가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩356,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "저가",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "₩321,500",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "시가총액",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "2,163.38조",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "평균 거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,187.77만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "거래량",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "3,973.60만",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "0.49%",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 117,
+          "height": 16
+        },
+        {
+          "tag": "div",
+          "text": "분기 배당금",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans\", sans-serif",
+          "display": "block",
+          "padding": "0px 4px 0px 0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 121,
+          "height": 16
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-periodtabs": {
+      "container": {
+        "box": {
+          "w": 332,
+          "h": 24
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "6px",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "text": "1D",
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "color": "#0a0a0a",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(10, 10, 10)",
+          "width": 34,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5D",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 35,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "6M",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 37,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "YTD",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "1Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 32,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "5Y",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 33,
+          "height": 24
+        },
+        {
+          "tag": "div",
+          "text": "최대",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "color": "#56595e",
+          "fontFamily": "\"Google Sans Text\", sans-serif",
+          "display": "flex",
+          "padding": "4px 10px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(86, 89, 94)",
+          "width": 42,
+          "height": 24
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-contenttabs": {
+      "container": {
+        "box": {
+          "w": 800,
+          "h": 47
+        },
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "relative"
+      },
+      "typography": {
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [
+        {
+          "tag": "span",
+          "text": "개요",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#1f1f1f",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(31, 31, 31)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "실적",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        },
+        {
+          "tag": "span",
+          "text": "금융",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "#444746",
+          "fontFamily": "\"Google Sans Flex\", \"Google Sans Text\", \"Google Sans\", Roboto, Arial, sans-serif",
+          "display": "block",
+          "padding": "0px",
+          "gap": "normal",
+          "borderBottom": "0px none rgb(68, 71, 70)",
+          "width": 26,
+          "height": 20
+        }
+      ],
+      "activeIndicator": null
+    },
+    "gf-main-news": {
+      "container": {
+        "box": {
+          "w": 800,
+          "h": 28
+        },
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "padding": "0px",
+        "margin": "32px 0px 0px",
+        "gridTemplateColumns": "none",
+        "borderBottom": "0px none rgb(10, 10, 10)",
+        "borderTop": "0px none rgb(10, 10, 10)",
+        "overflow": "visible",
+        "position": "static"
+      },
+      "typography": {
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "color": "#0a0a0a",
+        "fontFamily": "\"Google Sans\", sans-serif"
+      },
+      "children": [],
+      "activeIndicator": null
+    }
+  }
+}
