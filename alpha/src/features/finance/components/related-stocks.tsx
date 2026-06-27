@@ -20,9 +20,9 @@ export function RelatedStocks({ items }: { items: RelatedStock[] }) {
             <Card className='py-0'>
               <CardContent className='space-y-1 p-4'>
                 <div className='text-muted-foreground text-xs'>{s.ticker}</div>
-                <div className='truncate text-sm font-medium'>{s.name}</div>
-                <div className='text-sm font-medium tabular-nums'>{formatPrice(s.price, s.currency)}</div>
-                <div className={`text-xs font-medium tabular-nums ${changeColorClass(s.changePct)}`}>
+                <div className='truncate text-base font-medium'>{s.name}</div>
+                <div className='text-xs text-muted-foreground tabular-nums'>{formatPrice(s.price, s.currency)}</div>
+                <div className={`text-base font-medium tabular-nums ${changeColorClass(s.changePct)}`}>
                   {formatPct(s.changePct)}
                 </div>
               </CardContent>

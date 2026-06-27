@@ -11,7 +11,7 @@ export function CompanyProfileCard({ profile }: { profile: CompanyProfile }) {
   return (
     <Collapsible open={open} onOpenChange={setOpen} className='space-y-2'>
       <p className={open ? '' : 'line-clamp-3'}>{profile.description}</p>
-      <CollapsibleContent className='grid grid-cols-1 gap-2 text-sm sm:grid-cols-2'>
+      <CollapsibleContent className='grid grid-cols-1 gap-2 text-xs sm:grid-cols-2'>
         {profile.ceo && (<div><span className='text-muted-foreground'>CEO </span>{profile.ceo}</div>)}
         {profile.employees && (<div><span className='text-muted-foreground'>직원 </span>{profile.employees}</div>)}
         {profile.headquarters && (<div><span className='text-muted-foreground'>본사 </span>{profile.headquarters}</div>)}
