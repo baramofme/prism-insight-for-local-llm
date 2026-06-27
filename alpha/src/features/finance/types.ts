@@ -41,6 +41,8 @@ export interface NewsItem {
   title: string;
   source: string;
   time: string;
+  summary?: string;
+  url?: string;
 }
 
 export interface CompanyProfile {
@@ -61,4 +63,36 @@ export interface StockDetail {
   news: NewsItem[];
   profile: CompanyProfile;
   series: Record<Period, SeriesPoint[]>;
+}
+
+export interface Sector {
+  ticker: string; // "SIXB" ~ "SIXY"
+  name: string;   // "Materials", "Communications", etc.
+  price: number;
+  change: number;
+  changePercent: number;
+}
+
+export interface MarketIndex {
+  name: string;    // "KOSPI", "S&P 500", etc.
+  value: number;
+  change: number;
+  changePercent: number;
+  region: 'KR' | 'US' | 'JP' | 'EU';
+}
+
+export interface MarketMover {
+  symbol: string;
+  name: string;
+  price: number;
+  changePercent: number;
+  market: 'KRX' | 'NYSE' | 'NASDAQ' | 'TYO';
+}
+
+export interface WatchlistItem {
+  symbol: string;
+  name: string;
+  price: number;
+  changePercent: number;
+  market: 'KRX' | 'NYSE' | 'NASDAQ' | 'TYO';
 }

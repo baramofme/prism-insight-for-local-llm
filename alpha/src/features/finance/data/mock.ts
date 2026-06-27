@@ -1,4 +1,4 @@
-import type { Period, SeriesPoint, StockDetail } from '../types';
+import type { NewsItem, Period, Sector, SeriesPoint, StockDetail, MarketIndex, MarketMover, WatchlistItem } from '../types';
 import { PERIODS } from '../types';
 
 // Deterministic pseudo-random so SSR and client render identically.
@@ -94,3 +94,67 @@ export function getStockDetail(symbol: string): StockDetail {
     series
   };
 }
+
+// ── Market Overview Mock Data ──
+
+export const MOCK_SECTORS: Sector[] = [
+  { ticker: 'SIXB', name: 'Materials', price: 1234.56, change: 5.55, changePercent: 0.45 },
+  { ticker: 'SIXC', name: 'Communications', price: 2345.67, change: -7.51, changePercent: -0.32 },
+  { ticker: 'SIXE', name: 'Energy', price: 1876.54, change: -23.08, changePercent: -1.23 },
+  { ticker: 'SIXI', name: 'Industrials', price: 3210.98, change: 27.94, changePercent: 0.87 },
+  { ticker: 'SIXM', name: 'Financials', price: 2109.87, change: 32.91, changePercent: 1.56 },
+  { ticker: 'SIXR', name: 'Staples', price: 1543.21, change: 1.85, changePercent: 0.12 },
+  { ticker: 'SIXRE', name: 'Real Estate', price: 987.65, change: -7.70, changePercent: -0.78 },
+  { ticker: 'SIXT', name: 'Technology', price: 3656.35, change: -60.33, changePercent: -1.65 },
+  { ticker: 'SIXU', name: 'Utilities', price: 1432.10, change: 4.87, changePercent: 0.34 },
+  { ticker: 'SIXV', name: 'Health Care', price: 2567.89, change: 14.38, changePercent: 0.56 },
+  { ticker: 'SIXY', name: 'Discretionary', price: 1890.12, change: 4.35, changePercent: 0.23 }
+];
+
+export const MOCK_INDICES: MarketIndex[] = [
+  { name: 'KOSPI', value: 2765.43, change: 12.34, changePercent: 0.45, region: 'KR' },
+  { name: 'KOSDAQ', value: 876.54, change: -3.21, changePercent: -0.37, region: 'KR' },
+  { name: 'S&P 500', value: 5432.10, change: 23.45, changePercent: 0.43, region: 'US' },
+  { name: 'NASDAQ', value: 17654.32, change: 156.78, changePercent: 0.89, region: 'US' },
+  { name: 'Nikkei 225', value: 38765.43, change: 234.56, changePercent: 0.61, region: 'JP' }
+];
+
+export const MOCK_NEWS: NewsItem[] = [
+  { id: 'm1', title: 'Fed, 기준금리 동결… 연내 2회 인하 전망 유지', source: '연합뉴스', time: '1시간 전', summary: '연방준비제도가 기준금리를 동결하고 연내 2회 인하 전망을 유지했다.' },
+  { id: 'm2', title: '뉴욕증시, 기술주 강세… 나스닥 사상 최고치 경신', source: '한국경제', time: '2시간 전' },
+  { id: 'm3', title: '반도체 수출 7개월 연속 증가… 6월 역대 최대 실적', source: '매일경제', time: '3시간 전' },
+  { id: 'm4', title: '中 경기부양책 발표 앞두고… 원자재주 강세', source: '서울경제', time: '4시간 전' },
+  { id: 'm5', title: '외국인 코스피 순매수 3조원 돌파… 연중 최대', source: '조선비즈', time: '5시간 전' }
+];
+
+export const MOCK_MARKET_MOVERS = {
+  mostActive: [
+    { symbol: '005930:KRX', name: '삼성전자', price: 75400, changePercent: 1.34, market: 'KRX' as const },
+    { symbol: '000660:KRX', name: 'SK하이닉스', price: 291700, changePercent: 5.29, market: 'KRX' as const },
+    { symbol: 'AAPL', name: 'Apple', price: 245.67, changePercent: 0.89, market: 'NASDAQ' as const }
+  ],
+  gainers: [
+    { symbol: '005935:KRX', name: '삼성전자우', price: 62300, changePercent: 3.45, market: 'KRX' as const },
+    { symbol: '035420:KRX', name: 'NAVER', price: 198500, changePercent: 2.78, market: 'KRX' as const },
+    { symbol: 'NVDA', name: 'NVIDIA', price: 895.34, changePercent: 1.56, market: 'NASDAQ' as const }
+  ],
+  losers: [
+    { symbol: '051910:KRX', name: 'LG화학', price: 320000, changePercent: -2.34, market: 'KRX' as const },
+    { symbol: '207940:KRX', name: '삼성바이오로직스', price: 890000, changePercent: -1.78, market: 'KRX' as const },
+    { symbol: 'TSLA', name: 'Tesla', price: 345.67, changePercent: -3.21, market: 'NASDAQ' as const }
+  ]
+};
+
+export const MOCK_WATCHLIST: WatchlistItem[] = [
+  { symbol: '000660:KRX', name: 'SK하이닉스', price: 291700, changePercent: 5.29, market: 'KRX' },
+  { symbol: '005930:KRX', name: '삼성전자', price: 75400, changePercent: 1.34, market: 'KRX' },
+  { symbol: 'AAPL', name: 'Apple', price: 245.67, changePercent: 0.89, market: 'NASDAQ' },
+  { symbol: 'NVDA', name: 'NVIDIA', price: 895.34, changePercent: 1.56, market: 'NASDAQ' },
+  { symbol: 'TSLA', name: 'Tesla', price: 345.67, changePercent: -3.21, market: 'NASDAQ' }
+];
+
+export function getAllSectors(): Sector[] { return MOCK_SECTORS; }
+export function getMarketIndices(): MarketIndex[] { return MOCK_INDICES; }
+export function getMarketNews(): NewsItem[] { return MOCK_NEWS; }
+export function getMarketMovers() { return MOCK_MARKET_MOVERS; }
+export function getWatchlist(): WatchlistItem[] { return MOCK_WATCHLIST; }
