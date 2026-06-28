@@ -32,7 +32,6 @@ export default function DashboardPage() {
   const [researchPanelExpanded, setResearchPanelExpanded] = useState(false);
   const [researchPanelVisible, setResearchPanelVisible] = useState(true);
   const prevSidebarModeRef = useRef<"minimized" | "hover" | "normal" | "expanded">("minimized");
-  const [isHydrated, setIsHydrated] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(1200);
   const [mobileView, setMobileView] = useState<"default" | "portfolio" | "stockDetail">("default");
   const [selectedStock, setSelectedStock] = useState<{
@@ -121,28 +120,18 @@ export default function DashboardPage() {
   }, [sidebarMode]);
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    const update = () => {
-        if (!timeoutId) {
-            setViewportWidth(window.innerWidth);
-            timeoutId = setTimeout(() => { timeoutId = null; }, 100);
-        }
-    };
+    const update = () => setViewportWidth(window.innerWidth);
     update();
-    setIsHydrated(true);
     window.addEventListener("resize", update);
-    return () => {
-        window.removeEventListener("resize", update);
-        if (timeoutId) clearTimeout(timeoutId);
-    };
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   useEffect(() => {
-    setSidebarMode(prev => {
-      if (prev === "minimized" && viewportWidth >= BREAKPOINTS.TABLET) return "normal";
-      return prev;
-    });
-  }, [viewportWidth]);
+    const vp = window.innerWidth;
+    if (vp >= BREAKPOINTS.TABLET && sidebarMode === "minimized") {
+      setSidebarMode("normal");
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -163,7 +152,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     if (mode === "expanded") {
       if (vp >= BREAKPOINTS.WIDE) {
         const leftW = 272;
-        const rightW = 597;
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = 792;
         const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
         return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -172,7 +161,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
       if (vp >= BREAKPOINTS.TABLET) {
         const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
         const leftW = 252 + progress * (272 - 252);
-        const rightW = 283 + progress * (597 - 283);
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = Math.min(792, 644 + progress * (792 - 644));
         return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
       }
@@ -189,7 +178,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     if (mode === "normal") {
       if (vp >= BREAKPOINTS.WIDE) {
         const leftW = 272;
-        const rightW = 597;
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = 792;
         const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
         return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -198,7 +187,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
       if (vp >= BREAKPOINTS.TABLET) {
         const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
         const leftW = 252 + progress * (272 - 252);
-        const rightW = 283 + progress * (597 - 283);
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = Math.min(792, 644 + progress * (792 - 644));
         return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
       }
@@ -215,7 +204,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     if (mode === "hover") {
       if (vp >= BREAKPOINTS.WIDE) {
         const leftW = 80;
-        const rightW = 597;
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = 792;
         const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
         return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -224,7 +213,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
       if (vp >= BREAKPOINTS.TABLET) {
         const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
         const leftW = 80;
-        const rightW = 283 + progress * (597 - 283);
+        const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
         const centerW = Math.min(792, 644 + progress * (792 - 644));
         return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin: 0 };
       }
@@ -240,7 +229,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     // ── Collapsed mode (default): Minimal sidebar ────────────────────
     if (vp >= BREAKPOINTS.WIDE) {
       const leftW = 80;
-      const rightW = 597;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
       const centerW = 792;
       // collapsed: narrower left panel → larger wrapper margin for centering
       const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2 + 96;
@@ -250,7 +239,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 80;
-      const rightW = 283 + progress * (597 - 283);
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
       const centerW = Math.min(792, 644 + progress * (792 - 644));
       return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin: 0 };
     }
@@ -264,7 +253,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
     return { leftW: 80, centerW: vp - 80, rightW: 0, centerMaxW: 800, wrapperMargin: 0 };
   };
 
-  const vp = isHydrated ? viewportWidth : 375;
+  const vp = viewportWidth || 1200;
   const { leftW, centerW, rightW, wrapperMargin } = calcPanelWidths(vp, sidebarMode);
 
   const centerProgress = BREAKPOINTS.WIDE > BREAKPOINTS.TABLET
@@ -273,12 +262,12 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
   const centerLeftMargin = 0;
 
   return (
-    <div id="ds-root" style={{ colorScheme: "light" }} className="min-h-screen bg-white text-[#1f1f1f]">
+    <div style={{ colorScheme: "light" }} className="min-h-screen bg-white text-[#1f1f1f]">
       <style>{`.scroll-hide::-webkit-scrollbar { display: none; } .scroll-hide { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div className="flex flex-col h-screen">
-        <header id="ds-header" className="sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full">
+        <header className="sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full">
           <div className="grid items-center px-4 py-2" style={{ gridTemplateColumns: '324px 1fr auto' }}>
-            <div id="ds-header-branding" className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <Button variant="ghost" size="icon" className="md:hidden p-2 hover:bg-[#f8f9fa] rounded-full transition-colors">
                 <Menu className="w-5 h-5 text-[#5f6368]" />
               </Button>
@@ -288,7 +277,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
               </div>
             </div>
             <div className="hidden min-[1040px]:flex justify-start">
-              <div id="ds-search-bar" className="relative w-full max-w-xl" ref={searchDropdownRef}>
+              <div className="relative w-full max-w-xl" ref={searchDropdownRef}>
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5f6368]" />
                 <input
                   type="text"
@@ -386,7 +375,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
                 )}
               </div>
             </div>
-            <div id="ds-header-actions" className="relative flex items-center justify-end gap-0.5" ref={settingsDropdownRef}>
+            <div className="relative flex items-center justify-end gap-0.5" ref={settingsDropdownRef}>
               {/* Search Icon Button */}
               <button
                 onMouseEnter={(e) => { setTooltip("검색 또는 질문하기"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
@@ -466,9 +455,9 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
           </div>
         </header>
 
-        <div id="ds-layout-body" className={`flex flex-1 overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(Math.max(1661, vp + wrapperMargin * 2), 1820), marginInline: 'auto' } : undefined}>
-          <div id="ds-sidebar-mobile"><NavigationPanel mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} /></div>
-          {(!isHydrated || vp >= BREAKPOINTS.MOBILE) && <div id="ds-sidebar-desktop"><NavigationPanel centerBounds={centerBounds} sidebarMode={vp < BREAKPOINTS.TABLET ? "normal" : sidebarMode} setSidebarMode={vp < BREAKPOINTS.TABLET ? () => {} : handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} /></div>}
+        <div className={`flex flex-1 overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(Math.max(1661, vp + wrapperMargin * 2), 1820), marginInline: 'auto' } : undefined}>
+          <NavigationPanel mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
+          {vp >= BREAKPOINTS.MOBILE && <NavigationPanel centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
           {/* Spacer: when sidebar is fixed (overlay), keep center position stable */}
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
 
@@ -489,12 +478,12 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
             </div>
           ) : (
             <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
-            <main id="ds-main-content" ref={centerRef} className="flex-1 overflow-y-auto scroll-hide min-h-0">
+            <main ref={centerRef} className="flex-1 overflow-y-auto scroll-hide min-h-0">
               <div className="px-3 py-4 max-w-4xl pb-4">
               <div className="flex items-center gap-1.5 mb-4 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [& scrollbar-width:none]">
-                  {["미국", "유럽", "아시아", "중남미", "통화", "암호화폐", "선물"].map((tab) => (
-                    <button key={tab} onClick={() => setActiveRegion(tab)}
-                      className={`region-tab px-3 py-1.5 rounded-full text-[14px] whitespace-nowrap transition-colors ${activeRegion === tab ? "bg-muted text-foreground font-medium" : "text-muted-foreground hover:bg-muted/60"}`} data-testid="region-tab">{tab}</button>
+                 {["미국", "유럽", "아시아", "중남미", "통화", "암호화폐", "선물"].map((tab) => (
+                   <button key={tab} onClick={() => setActiveRegion(tab)}
+                     className={`px-3 py-1.5 rounded-full text-[14px] whitespace-nowrap transition-colors ${activeRegion === tab ? "bg-muted text-foreground font-medium" : "text-muted-foreground hover:bg-muted/60"}`}>{tab}</button>
                  ))}
                </div>
 
@@ -505,7 +494,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
 
               <div className="grid grid-cols-5 gap-2 mb-6">
                 {currentIndices.slice(0, 5).map((item) => (
-                  <div className="index-card" data-testid="index-card"><IndexCard key={item.name} item={item} vp={vp} /></div>
+                  <IndexCard key={item.name} item={item} vp={vp} />
                 ))}
               </div>
 
@@ -516,7 +505,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
                   <h2 className="text-[20px] font-medium text-[#1f1f1f] mb-3">{activeRegion} 시장 요약</h2>
                   <div className="space-y-1">
                     {marketSummaries.slice(0, 4).map((summary) => (
-                      <div className="market-summary-card" data-testid="market-summary-card"><MarketSummaryCard key={summary.id} summary={summary} /></div>
+                      <MarketSummaryCard key={summary.id} summary={summary} />
                     ))}
                   </div>
                 </div>
@@ -526,9 +515,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
                 <h2 className="text-[20px] font-medium text-[#1f1f1f] mb-1">뉴스 기사 더보기</h2>
                 <p className="text-[12px] text-[#5f6368] mb-3">웹 소스 기반</p>
                 <div className={`grid gap-2 ${vp < BREAKPOINTS.MOBILE ? "grid-cols-1" : "grid-cols-2"}`}>
-                    {(vp < BREAKPOINTS.MOBILE ? displayNews.slice(0, 4) : displayNews).map((item) => (
-                      <div key={item.id} className="news-item" data-testid="news-item"><NewsItem item={item} /></div>
-                    ))}
+                  {(vp < BREAKPOINTS.MOBILE ? displayNews.slice(0, 4) : displayNews).map((item) => (<NewsItem key={item.id} item={item} />))}
                 </div>
                 {vp >= BREAKPOINTS.MOBILE && newsItems.length > 4 && !showMoreNews && (
                   <button onClick={() => setShowMoreNews(true)} className="mt-3 w-full py-2 text-[14px] text-[#1a73e8] hover:bg-[#f8f9fa] rounded-lg transition-colors">더보기</button>
@@ -537,11 +524,11 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
 
               <div className={`mb-6 ${vp < BREAKPOINTS.MOBILE ? "flex flex-col gap-4" : "flex gap-6 overflow-x-auto scroll-hide"}`} style={vp < BREAKPOINTS.MOBILE ? {} : { scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {[
-                    { title: "최다 거래 종목", stocks: mostActiveStocks, showVolume: true },
-                    { title: "일 최대 상승 종목", stocks: gainers, showVolume: false },
-                    { title: "일 최대 하락 종목", stocks: losers, showVolume: false },
-                  ].map((tbl) => (
-                    <div key={tbl.title} className={`stock-table-section ${vp < BREAKPOINTS.MOBILE ? "" : "flex-1 min-w-0"}`} data-testid="stock-table-section">
+                  { title: "최다 거래 종목", stocks: mostActiveStocks, showVolume: true },
+                  { title: "일 최대 상승 종목", stocks: gainers, showVolume: false },
+                  { title: "일 최대 하락 종목", stocks: losers, showVolume: false },
+                ].map((tbl) => (
+                  <div key={tbl.title} className={vp < BREAKPOINTS.MOBILE ? "" : "flex-1 min-w-0"}>
                     <h3 className={`${vp < BREAKPOINTS.MOBILE ? "text-[20px]" : "text-[14px]"} font-medium text-[#1f1f1f] mb-2`}>{tbl.title}</h3>
                     <div className="space-y-0.5">
                       {tbl.stocks.map((stock) => (
@@ -557,7 +544,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
           </div>
           )}
 
-          {rightW > 0 && researchPanelVisible && <div id="ds-research-panel"><ResearchPanel centerBounds={centerBounds} collapsedWidth={rightW} expanded={researchPanelExpanded} setExpanded={handleResearchPanelToggle} wrapperMargin={wrapperMargin} rightW={rightW} onClose={() => setResearchPanelVisible(false)} /></div>}
+          {vp >= BREAKPOINTS.RIGHT_PANEL_MIN && researchPanelVisible && <ResearchPanel centerBounds={centerBounds} collapsedWidth={rightW} expanded={researchPanelExpanded} setExpanded={handleResearchPanelToggle} wrapperMargin={wrapperMargin} rightW={rightW} onClose={() => setResearchPanelVisible(false)} />}
           {rightW > 0 && !researchPanelVisible && (
             <div className="flex-shrink-0 self-stretch flex flex-col border-l border-[#e8eaed] bg-white">
               <button
@@ -573,7 +560,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
           )}
         </div>
 
-        <footer id="ds-footer" className="border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 pb-[80px] max-w-[1820px] mx-auto w-full">
+        <footer className="border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 pb-[80px] max-w-[1820px] mx-auto w-full">
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-muted-foreground">
             <Alert variant="default" className="bg-muted/40 border-none px-3 py-1.5 rounded-md h-auto">
               <Info className="h-3 w-3 mr-1.5 text-primary" />
@@ -594,7 +581,7 @@ const lastUpdateTime = useMemo(() => { const d = new Date(); const h = d.getHour
             </nav>
           </div>
         </footer>
-                {<div id="ds-mobile-input"><FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} /></div>}
+                {<FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />}
       </div>
     </div>
   );
