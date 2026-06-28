@@ -27,18 +27,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
+import { BREAKPOINTS } from "@/lib/breakpoints";
 import { Chart, AreaSeries, LineSeries } from 'lightweight-charts-react-components';
 import { ColorType } from 'lightweight-charts';
 import { SectionHeader, SimpleStockNav, ListNavigation } from "./navigation-list";
-
-// ─── Responsive Breakpoints (Google Finance pattern) ───────────────────────
-const BREAKPOINTS = {
-  MOBILE: 760,      // <760px: Full-screen, no panels
-  TABLET: 936,      // 760~935px: Left sidebar only
-  RIGHT_PANEL: 936, // ≥936px: Right panel (조사) visible
-  DESKTOP: 1371,    // 936~1370px: Left + right panels, tabs hidden
-  WIDE: 1371,       // ≥1371px: Full layout, sidebar shifted
-} as const;
 
 // ─── Sparkline Utilities ────────────────────────────────────────────────────
 
@@ -2417,11 +2409,10 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   sidebarRef.current = sidebarMode;
 
   useEffect(() => {
-    if (mobile) return;
     const vp = window.innerWidth;
     setIsWide(vp >= BREAKPOINTS.WIDE);
     wasTabletRef.current = vp >= BREAKPOINTS.TABLET;
-    if (vp >= BREAKPOINTS.TABLET && sidebarMode === "minimized") {
+    if (!mobile && vp >= BREAKPOINTS.TABLET && sidebarMode === "minimized") {
       setSidebarMode("normal");
     }
     const handleResize = () => {
@@ -2429,15 +2420,17 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       const nowWide = vp >= BREAKPOINTS.WIDE;
       const prevWide = isWideRef.current;
       setIsWide(nowWide);
-      if (nowWide !== prevWide) {
-        if (nowWide && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) setSidebarMode("normal");
-      }
-      const nowTablet = vp >= BREAKPOINTS.TABLET;
       const prevTablet = wasTabletRef.current;
+      const nowTablet = vp >= BREAKPOINTS.TABLET;
       wasTabletRef.current = nowTablet;
-      if (nowTablet !== prevTablet) {
-        if (nowTablet && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) setSidebarMode("normal");
-        else if (!nowTablet && sidebarRef.current === "normal") setSidebarMode("minimized");
+      if (!mobile) {
+        if (nowWide !== prevWide && nowWide && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) {
+          setSidebarMode("normal");
+        }
+        if (nowTablet !== prevTablet) {
+          if (nowTablet && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) setSidebarMode("normal");
+          else if (!nowTablet && sidebarRef.current === "normal") setSidebarMode("minimized");
+        }
       }
     };
     window.addEventListener("resize", handleResize);
@@ -2498,7 +2491,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   };
 
   return (<>{mobile && open && <div className="fixed inset-0 bg-black/30 z-40 md:hidden" onClick={onClose} />}
-<aside className={`${mobile ? "fixed md:hidden" : ""} ${mobile ? "inset-y-0 left-0 z-50 transition-all duration-200" : ""} ${mobile ? (open ? "translate-x-0" : "-translate-x-full") : ""} ${sidebarClasses} flex-col border-r border-border bg-white overflow-y-auto scroll-hide flex-shrink-0 lg:pb-0 pb-[80px]`}
+<aside className={`${mobile ? "fixed md:hidden top-[64px] bottom-0 left-0 z-50 transition-all duration-200" : ""} ${sidebarClasses} flex-col border-r border-border bg-white overflow-y-auto scroll-hide flex-shrink-0 lg:pb-0 pb-[80px]`}
   onMouseEnter={mobile ? undefined : handleMouseEnter}
   onMouseLeave={mobile ? undefined : handleMouseLeave}
   style={mobile ? { transform: open ? "translateX(0)" : "translateX(-100%)" } : sidebarStyle}

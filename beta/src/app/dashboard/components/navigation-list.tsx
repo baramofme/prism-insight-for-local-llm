@@ -60,17 +60,21 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
 }) {
   return (
     <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="mb-1">
-      <CollapsibleTrigger>
-        <div className="flex items-center justify-between w-full px-0 py-0 h-auto bg-transparent hover:bg-transparent text-left inline-flex gap-2 rounded-md transition-colors focus-within:ring-2 focus-within:ring-ring focus-within:outline-none disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4 [&_button:hover]:bg-muted/50">
-          <SectionHeader 
-            title={title} 
-            rightButtons={[...rightButtons]} 
-          />
-          <span aria-label={isOpen ? "닫기" : "열기"}>
-            {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
-          </span>
-        </div>
-      </CollapsibleTrigger>
+      <div className="flex items-center w-full">
+        <CollapsibleTrigger className="flex-1 min-w-0">
+          <div className="flex items-center justify-between w-full py-1 px-2 cursor-pointer">
+            <span className="text-[14px] font-medium text-foreground truncate">{title}</span>
+            <span aria-label={isOpen ? "닫기" : "열기"}>
+              {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+            </span>
+          </div>
+        </CollapsibleTrigger>
+        {rightButtons.length > 0 && (
+          <div className="flex items-center gap-0.5 shrink-0 pr-2">
+            {rightButtons}
+          </div>
+        )}
+      </div>
       <CollapsibleContent>
         <div className="pl-2 space-y-0.5 py-1">
           {children}
