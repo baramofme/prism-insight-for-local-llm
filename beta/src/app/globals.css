@@ -46,6 +46,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --breakpoint-gf-sm: 760px;       /* 네비 숨김↔표현 전환 */
+  --breakpoint-gf-md: 1380px;      /* 콘텐츠 레이아웃 미세 조정 */
+  --breakpoint-gf-lg: 1480px;      /* 네비 축소↔펼침 전환 */
+  --breakpoint-gf-xl: 1820px;      /* 최대 너비 제한 */
+  --nav-width-collapsed: 80px;     /* 축소된 네비 레일 폭 */
+  --nav-width-expanded: 320px;     /* 펼친 네비 레일 폭 */
+  --gf-main-margin-left: var(--nav-width-expanded); /* 기본 메인 마진 */
 }
 
 :root {
@@ -81,6 +88,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Google Finance UI Colors (Light Mode) */
+  --gf-color-rise: oklch(0.72 0.19 149);       /* #046E00 상승 */
+  --gf-color-fall: oklch(0.63 0.25 25);        /* #D32F2F 하강 */
+  --gf-text-primary: oklch(0.145 0 0);          /* #0A0A0A 주요 텍스트 */
+  --gf-text-secondary: oklch(0.556 0 0);        /* #56595E 보조 텍스트 */
+  --gf-border-subtle: oklch(0.922 0 0);         /* 미세 테두리 */
+  --gf-bg-hover: oklch(0.97 0 0);               /* 호버 배경 */
+  --gf-chart-positive: oklch(0.72 0.19 149);    /* 차트 양수 컬러 */
+  --gf-chart-negative: oklch(0.63 0.25 25);     /* 차트 음수 컬러 */
+  --gf-tab-active-underline: oklch(0.205 0 0);  /* 활성 탭 언더라인 */
+  --gf-surface-elevated: oklch(1 0 0);           /* elevated 표면 */
 }
 
 .dark {
@@ -115,6 +134,101 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Google Finance UI Colors (Dark Mode) */
+  --gf-color-rise: oklch(0.78 0.18 152);        /* 다크 상승 (조명도 ↑) */
+  --gf-color-fall: oklch(0.71 0.2 22);          /* 다크 하강 (조명도 ↑) */
+  --gf-text-primary: oklch(0.985 0 0);          /* #F5F5F5 주요 텍스트 */
+  --gf-text-secondary: oklch(0.708 0 0);        /* #9E9E9E 보조 텍스트 */
+  --gf-border-subtle: oklch(1 0 0 / 10%);       /* 미세 테두리 */
+  --gf-bg-hover: oklch(1 0 0 / 8%);             /* 호버 배경 */
+  --gf-chart-positive: oklch(0.78 0.18 152);    /* 차트 양수 컬러 */
+  --gf-chart-negative: oklch(0.71 0.2 22);      /* 차트 음수 컬러 */
+  --gf-tab-active-underline: oklch(0.922 0 0);  /* 활성 탭 언더라인 */
+  --gf-surface-elevated: oklch(0.205 0 0);       /* elevated 표면 */
+}
+
+/* ============================================================
+ * Google Finance 반응형 레이아웃 CSS 변수 (미디어 쿼리 기반)
+ *
+ * 브레이크포인트:
+ *   <760px   : 모바일 — 네비 숨김, margin-left 0
+ *   ≥760px   : 태블릿 — 네비 collapsed(80px), margin-left 80px
+ *   ≥1380px  : 데스크톱 — 네비 자동 펼침 준비 (collapsed 유지)
+ *   ≥1480px  : 와이드 — 네비 expanded(320px), margin-left 320px
+ *   ≥1820px  : 전체 컨테이너 max-width 1820px + 센터링
+ * ============================================================ */
+
+/* 기본값: 모바일 (<760px) — 네비 없음 */
+html {
+  --main-margin-left: 0;
+}
+
+/* ≥760px: 네비 등장 (collapsed 80px) */
+@media (min-width: 760px) {
+  html {
+    --main-margin-left: var(--nav-width-collapsed); /* 80px */
+  }
+}
+
+/* ≥1380px: 콘텐츠 영역 미세 조정 (네비 폭은 동일하나 레이아웃 전환 지점) */
+@media (min-width: 1380px) {
+  html {
+    --main-margin-left: var(--nav-width-collapsed); /* 80px 유지 */
+  }
+}
+
+/* ≥1480px: 네비 펼침 (expanded 320px) */
+@media (min-width: 1480px) {
+  html {
+    --main-margin-left: var(--nav-width-expanded); /* 320px */
+  }
+}
+
+/* ============================================================
+ * GF Semantic Identifier Classes
+ * Marker-only — all visual styling via Tailwind utilities
+ * ============================================================ */
+.gf-root,
+.gf-header, .gf-header__logo, .gf-header__logo-text, .gf-header__beta-badge,
+.gf-header__nav, .gf-header__controls, .gf-header__icon-btn, .gf-header__profile,
+.gf-sidebar, .gf-sidebar__title, .gf-sidebar__nav, .gf-sidebar__item,
+.gf-sidebar__section, .gf-sidebar__menu-item, .gf-sidebar__toolbar,
+.gf-main, .gf-breadcrumb, .gf-breadcrumb__link, .gf-breadcrumb__separator, .gf-breadcrumb__current,
+.gf-addtolist, .gf-addtolist__btn,
+.gf-toptabs, .gf-toptabs__tab,
+.gf-stockheader, .gf-stockheader__name, .gf-stockheader__price-section,
+.gf-stockheader__price, .gf-stockheader__change-icon, .gf-stockheader__change-rate,
+.gf-stockheader__timestamp,
+.gf-chart, .gf-chart__controls, .gf-chart__ctrl-btn, .gf-chart__svg, .gf-chart__prevclose,
+.gf-periodtabs, .gf-periodtabs__tab,
+.gf-contenttabs, .gf-contenttabs__tab,
+.gf-contentpanel, .gf-ai, .gf-ai__card, .gf-ai__card--positive, .gf-ai__card--negative,
+.gf-metrics, .gf-metrics__title, .gf-metrics__grid, .gf-metrics__cell,
+.gf-metrics__label, .gf-metrics__value,
+.gf-related, .gf-related__title, .gf-related__grid, .gf-related__card,
+.gf-related__ticker, .gf-related__name, .gf-related__price, .gf-related__change,
+.gf-news, .gf-news__title, .gf-news__source, .gf-news__list, .gf-news__item,
+.gf-news__icon, .gf-news__content, .gf-news__headline, .gf-news__meta, .gf-news__more-btn,
+.gf-profile, .gf-profile__title, .gf-profile__description, .gf-profile__info,
+.gf-rightpanel, .gf-rightpanel__greeting, .gf-rightpanel__popularq,
+.gf-rightpanel__question-btn, .gf-rightpanel__section-title, .gf-rightpanel__input,
+.gf-rightpanel__actions, .gf-rightpanel__action-btn,
+.gf-footer, .gf-footer__disclaimer, .gf-footer__disclaimer-link,
+.gf-footer__links, .gf-footer__link, .gf-footer__link-separator,
+.gf-footer__search, .gf-footer__search-input, .gf-footer__popular-title,
+.gf-footer__popular-questions, .gf-footer__question-chip,
+.gf-footer__filter, .gf-footer__filter-btn,
+.gf-footer__recommendations, .gf-footer__recommendation-item,
+.gf-index-card, .gf-index-card__name, .gf-index-card__value,
+.gf-index-card__change, .gf-index-card__sparkline,
+.gf-index-grid, .gf-market-summary, .gf-market-summary__card,
+.gf-market-summary__title, .gf-market-summary__content,
+.gf-stock-table, .gf-stock-table__row, .gf-stock-table__cell,
+.gf-stock-tables, .gf-regiontabs, .gf-regiontabs__tab,
+.gf-mobile-portfolio, .gf-mobile-portfolio-detail,
+.gf-nav-rail, .gf-layout, .gf-layout__main, .gf-layout__right {
+  /* Semantic identifier only — no style overrides */
 }
 
 @layer base {

@@ -3,7 +3,8 @@ import { ChevronDown, ChevronUp, ArrowUpRight, ArrowDownRight } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
-import { MiniChart, formatPrice, getSparklineColor } from "./main-content";
+import { MiniChart } from "../_components/overview/mini-chart";
+import { formatPrice, getSparklineColor } from "../_lib/format";
 
 export function SectionHeader({ title, rightButtons = [] }: { 
   title: string; 

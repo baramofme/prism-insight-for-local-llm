@@ -1,1 +1,1 @@
-export { ResearchPanel } from './main-content';
+export { ResearchPanel } from "../_components/research/research-panel";

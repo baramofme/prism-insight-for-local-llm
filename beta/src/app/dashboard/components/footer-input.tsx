@@ -1,1 +1,1 @@
-export { FooterInput } from './main-content';
+export { FooterInput } from "../_components/footer/footer-input";

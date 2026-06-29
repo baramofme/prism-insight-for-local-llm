@@ -1,1 +1,1 @@
-export { NavigationPanel } from './main-content';
+export { NavigationPanel } from "../_components/nav/navigation-panel";

@@ -1,58 +1,76 @@
 {
-  "active_plan": "/home/baramofme/IdeaProjects/prism-insight-for-local-llm/.sisyphus/plans/clerk-cleanup.md",
-  "started_at": "2026-06-27T07:47:37.984Z",
+  "active_plan": "/home/baramofme/IdeaProjects/prism-insight-for-local-llm/.sisyphus/plans/research-panel-responsive.md",
+  "started_at": "2026-06-28T18:01:38.083Z",
   "session_ids": [
-    "ses_0fb2c2f9affemCYxlZIvoSkD3S"
+    "ses_0f127556affeO6LJuuX324aRCs",
+    "ses_0f027f63effeJttS35zm7G2vSm",
+    "ses_0f01f7e3affezga6ylYUSMMfMU",
+    "ses_0f01700deffeFNNMiL4IrcxEzC",
+    "ses_0efef7082ffeAbrEmsudiPWi0M"
   ],
   "session_origins": {
-    "ses_0fb2c2f9affemCYxlZIvoSkD3S": "direct"
+    "ses_0f127556affeO6LJuuX324aRCs": "direct",
+    "ses_0f027f63effeJttS35zm7G2vSm": "appended",
+    "ses_0f01f7e3affezga6ylYUSMMfMU": "appended",
+    "ses_0f01700deffeFNNMiL4IrcxEzC": "appended",
+    "ses_0efef7082ffeAbrEmsudiPWi0M": "appended"
   },
-  "plan_name": "clerk-cleanup",
+  "plan_name": "research-panel-responsive",
   "agent": "atlas",
   "task_sessions": {
     "todo:1": {
       "task_key": "todo:1",
       "task_label": "1",
-      "task_title": "`.env.local` — 빈 Clerk env 변수 제거",
-      "session_id": "ses_0f7ecb264ffeHN3FxBLgn5e5rP",
+      "task_title": "BREAKPOINTS 상수 추가 (RIGHT_PANEL_MIN, RIGHT_PANEL_WIDE_A, RIGHT_PANEL_WIDE_B)",
+      "session_id": "ses_0f092b35affeS1Gh1tBqT0NuSa",
       "agent": "Sisyphus-Junior",
       "category": "quick",
-      "updated_at": "2026-06-27T07:56:43.273Z"
+      "updated_at": "2026-06-28T18:12:25.976Z"
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "calcPanelWidths() rightW 계산 로직 수정 — step function 적용",
+      "session_id": "ses_0f0898fccffeVSpSKhDfa2R821",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-06-28T18:25:55.932Z"
     },
     "todo:3": {
       "task_key": "todo:3",
       "task_label": "3",
-      "task_title": "`about/page.tsx` — \"Authentication by Clerk\" → Better Auth",
-      "session_id": "ses_0f7e957f0ffeSxZKIgV8SCLD22",
+      "task_title": "CSS 가시성 클래스 변경 + JS 렌더링 조건 수정",
+      "session_id": "ses_0f07c03f0ffeGW083LmDzqLEW8",
       "agent": "Sisyphus-Junior",
       "category": "quick",
-      "updated_at": "2026-06-27T08:00:19.280Z"
-    },
-    "todo:5": {
-      "task_key": "todo:5",
-      "task_label": "5",
-      "task_title": "`infoconfig.ts` — Clerk Organizations/Billing 문서 문자열 대체",
-      "session_id": "ses_0f7e709f9ffe24WYjPbLrrFskP",
-      "agent": "Sisyphus-Junior",
-      "category": "quick",
-      "updated_at": "2026-06-27T08:05:36.387Z"
-    },
-    "todo:11": {
-      "task_key": "todo:11",
-      "task_label": "11",
-      "task_title": "`CLAUDE.md` — Clerk 참조 링크 수정",
-      "session_id": "ses_0f7e1fd4fffeiD5U4eBtcyupRx",
-      "agent": "Sisyphus-Junior",
-      "category": "quick",
-      "updated_at": "2026-06-27T08:13:17.166Z"
+      "updated_at": "2026-06-28T18:36:42.443Z"
     },
     "final-wave:f1": {
       "task_key": "final-wave:f1",
       "task_label": "F1",
-      "task_title": "**Clerk 참조 완전 제거 검증** — `quick`",
-      "session_id": "ses_0f7d687a3ffeSQqSAZrc8uJLN7",
-      "agent": "explore",
-      "updated_at": "2026-06-27T08:20:08.147Z"
+      "task_title": "**Plan Compliance Audit** — `oracle`",
+      "session_id": "ses_0f002bff8ffekDxrapU6p8zOSN",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-06-28T21:03:11.925Z"
+    },
+    "final-wave:f2": {
+      "task_key": "final-wave:f2",
+      "task_label": "F2",
+      "task_title": "**Code Quality Review** — `unspecified-high`",
+      "session_id": "ses_0efe83b96ffeK4q2YB4WAFxNWO",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-06-28T21:20:50.644Z"
+    },
+    "final-wave:f4": {
+      "task_key": "final-wave:f4",
+      "task_label": "F4",
+      "task_title": "**Scope Fidelity Check** — `deep`",
+      "session_id": "ses_0efb70da4ffebZe8uRpDWJJ1Vt",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-28T22:40:45.162Z"
     }
   }
 }
