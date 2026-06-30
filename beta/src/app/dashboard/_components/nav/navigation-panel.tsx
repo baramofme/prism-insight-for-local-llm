@@ -200,7 +200,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       />
 
       <ListNavigation title="포트폴리오" isOpen={portfolioOpen} onToggleOpen={() => setPortfolioOpen(!portfolioOpen)}>
-        <div id="gf-leftnav-investing" className="gf-sidebar__item cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
+        <div id="gf-leftnav-investing" className="gf-sidebar__item p-3 cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground mb-0.5">투자중</div>
           <div className="text-[16px] font-bold text-foreground mb-0.5">$19,653,380.00</div>
           <div className="flex items-center gap-0.5 text-[14px] text-[#0E9E4B]">

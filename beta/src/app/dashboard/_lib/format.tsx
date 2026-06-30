@@ -3,7 +3,12 @@
 import { useMemo } from "react";
 
 export function formatPrice(price: string): string {
-  return price.replace(/(₩[\d,]+)\.00$/, '$1');
+  // KRW (₩/원): drop the decimal part entirely.
+  // Other currencies & index points: keep decimals as-is.
+  if (price.includes("₩") || price.includes("원")) {
+    return price.replace(/\.\d+$/, "");
+  }
+  return price;
 }
 
 export function getSparklineColor(isPositive: boolean): string {
