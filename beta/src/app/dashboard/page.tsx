@@ -33,6 +33,8 @@ export default function DashboardPage() {
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
   const [footerQuestion, setFooterQuestion] = useState("");
   const [footerQuestionId, setFooterQuestionId] = useState(0);
+  // Below the research-panel breakpoint GF shows 홈/조사 tabs in the center.
+  const [centerTab, setCenterTab] = useState<"home" | "research">("home");
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -131,11 +133,28 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
-              <OverviewContent
-                activeRegion={activeRegion} setActiveRegionAction={setActiveRegion}
-                vp={vp} showMoreNews={showMoreNews} setShowMoreNewsAction={setShowMoreNews}
-                _sidebarMode={sidebarMode} _leftW={leftW} _centerLeftMargin={centerLeftMargin}
-              />
+              {/* GF: below the research-panel breakpoint, the research panel folds
+                  into a 홈/조사 tab at the top of the center column. */}
+              {vp < BREAKPOINTS.RIGHT_PANEL_MIN && (
+                <div className="flex items-center gap-6 border-b border-border px-4 flex-shrink-0">
+                  {([["home", "홈"], ["research", "조사"]] as const).map(([key, label]) => (
+                    <button key={key} onClick={() => setCenterTab(key)}
+                      className={`relative py-3 text-[14px] transition-colors ${centerTab === key ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`}>
+                      {label}
+                      {centerTab === key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {vp < BREAKPOINTS.RIGHT_PANEL_MIN && centerTab === "research" ? (
+                <ResearchPanel embedded />
+              ) : (
+                <OverviewContent
+                  activeRegion={activeRegion} setActiveRegionAction={setActiveRegion}
+                  vp={vp} showMoreNews={showMoreNews} setShowMoreNewsAction={setShowMoreNews}
+                  _sidebarMode={sidebarMode} _leftW={leftW} _centerLeftMargin={centerLeftMargin}
+                />
+              )}
             </div>
           )}
 
