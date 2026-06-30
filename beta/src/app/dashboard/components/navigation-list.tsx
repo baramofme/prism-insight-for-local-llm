@@ -92,22 +92,22 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
 }) {
   return (
     <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="pt-6 pb-4">
-      <div className="flex items-center w-full">
-        <CollapsibleTrigger className="flex-1 min-w-0">
-          {/* GF group header: 16px/400 title, mb-8 to content. L/R inset comes
-              from the shared groups container, not here. */}
-          <div className="flex items-center justify-between w-full mb-2 cursor-pointer">
-            <span className="text-[16px] font-normal text-foreground truncate">{title}</span>
-            <span aria-label={isOpen ? "닫기" : "열기"}>
-              {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
-            </span>
-          </div>
+      {/* GF group header: title toggles; action buttons then the collapse
+          chevron sit together on the right (chevron last). `group` lets the
+          hover-only action icons reveal. L/R inset is on the groups container. */}
+      <div className="group flex items-center w-full mb-2">
+        <CollapsibleTrigger className="flex-1 min-w-0 text-left cursor-pointer">
+          <span className="text-[16px] font-normal text-foreground truncate">{title}</span>
         </CollapsibleTrigger>
-        {rightButtons.length > 0 && (
-          <div className="flex items-center gap-0.5 shrink-0">
-            {rightButtons}
-          </div>
-        )}
+        <div className="flex items-center gap-0.5 shrink-0">
+          {rightButtons}
+          <CollapsibleTrigger
+            aria-label={isOpen ? "닫기" : "열기"}
+            className="flex items-center cursor-pointer text-muted-foreground"
+          >
+            {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </CollapsibleTrigger>
+        </div>
       </div>
       <CollapsibleContent>
         {/* Rows sit flush in the groups container (which provides the 24px

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, ArrowDownRight, ChevronDown, Plus, Maximize2, Minimize2 } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, ChevronDown, Plus, Info, Pencil, Maximize2, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SectionHeader, SimpleStockNav, ListNavigation } from "../../components/navigation-list";
@@ -222,13 +222,14 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
         isOpen={watchlistOpen} 
         onToggleOpen={() => setWatchlistOpen(!watchlistOpen)}
         rightButtons={[
-          <Button key="info" variant="ghost" size="icon" className="transition duration-200 opacity-0 group-hover:opacity-100" aria-label="info" onMouseEnter={() => setInfoVisible(true)} onMouseLeave={() => setInfoVisible(false)}>
-            <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+          // GF: info (rich tooltip) + edit/옵션 + add, revealed on hover; add stays.
+          <Button key="info" variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="info" title="이 목록에는 다른 Google 서비스에서 팔로우하는 종목 코드가 포함됩니다." onMouseEnter={() => setInfoVisible(true)} onMouseLeave={() => setInfoVisible(false)}>
+            <Info className="w-3.5 h-3.5 text-muted-foreground" />
           </Button>,
-          <Button key="edit" variant="ghost" size="icon" className="transition duration-200 opacity-0 group-hover:opacity-100" aria-label="관심 목록 목록 옵션" onClick={() => setOptionsOpen(!optionsOpen)}>
-            <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+          <Button key="edit" variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="관심 목록 목록 옵션" title="옵션" onClick={() => setOptionsOpen(!optionsOpen)}>
+            <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
           </Button>,
-          <Button key="add" variant="ghost" size="icon" aria-label="관심 목록 목록에 종목 코드 추가">
+          <Button key="add" variant="ghost" size="icon" className="h-6 w-6" aria-label="관심 목록 목록에 종목 코드 추가" title="종목 코드 추가">
             <Plus className="w-3.5 h-3.5 text-muted-foreground" />
           </Button>
         ]}
