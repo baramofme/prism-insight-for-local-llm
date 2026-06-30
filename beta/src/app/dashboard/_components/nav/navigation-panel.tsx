@@ -194,8 +194,8 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
           </Button>
         }
         rightButtons={[
-          <Button key="newList" variant="ghost" size="icon" className="p-2" aria-label="새 목록"><Plus className="w-4 h-4 text-muted-foreground" /></Button>,
-          <Button key="expand" variant="ghost" size="icon" className="p-2" onClick={cycleMode} aria-label={sidebarMode === "expanded" ? "축소" : sidebarMode === "normal" ? "접기" : "펼치기"}>
+          <Button key="newList" variant="ghost" size="icon" className="h-6 w-6" aria-label="새 목록"><Plus className="w-4 h-4 text-muted-foreground" /></Button>,
+          <Button key="expand" variant="ghost" size="icon" className="h-6 w-6" onClick={cycleMode} aria-label={sidebarMode === "expanded" ? "축소" : sidebarMode === "normal" ? "접기" : "펼치기"}>
             {sidebarMode === "expanded" ? <Minimize2 className="w-4 h-4 text-muted-foreground" /> : <Maximize2 className="w-4 h-4 text-muted-foreground" />}
           </Button>
         ]}

@@ -6,23 +6,42 @@ import { Separator } from "@/components/ui/separator";
 import { MiniChart } from "../_components/overview/mini-chart";
 import { formatPrice, getSparklineColor } from "../_lib/format";
 
+// Shared header layout: left (title) / right (action buttons). Used by both the
+// section header (목록) and every group header so the right-hand buttons line up
+// at identical sizes/positions.
+export function NavGroupHeader({ left, right, className = "" }: {
+  left: React.ReactNode;
+  right?: React.ReactNode;
+  className?: string;
+}) {
+  // No w-full: as a block flex container its width is auto, so a margin (used
+  // by SectionHeader) reduces it correctly instead of overflowing.
+  return (
+    <div className={`flex items-center ${className}`}>
+      <div className="flex items-center gap-0.5 flex-1 min-w-0">{left}</div>
+      {right ? <div className="flex items-center gap-0.5 shrink-0">{right}</div> : null}
+    </div>
+  );
+}
+
 export function SectionHeader({ title, titleAfter, rightButtons = [], className = "" }: {
   title: string;
   titleAfter?: React.ReactNode;
   rightButtons?: React.ReactNode[];
   className?: string;
 }) {
+  // Same header style as a group header, just a bigger title + an inline caret.
   return (
-    <div className={`flex items-center justify-between py-2 ${className}`}>
-      {/* GF "목록 ▾": 24px/400 title with the list-selector caret inline. */}
-      <div className="flex items-center gap-0.5 min-w-0">
-        <span className="text-[24px] font-normal text-foreground truncate">{title}</span>
-        {titleAfter}
-      </div>
-      <div className="flex items-center gap-0.5 shrink-0">
-        {rightButtons}
-      </div>
-    </div>
+    <NavGroupHeader
+      className={`py-2 ${className}`}
+      left={
+        <>
+          <span className="text-[24px] font-normal text-foreground truncate">{title}</span>
+          {titleAfter}
+        </>
+      }
+      right={rightButtons.length ? rightButtons : undefined}
+    />
   );
 }
 
@@ -93,21 +112,24 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
   return (
     // No bottom padding — group spacing comes from each group's pt-6.
     <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="pt-6">
-      {/* GF group header: the title is plain text; only the collapse chevron
-          is a trigger. Actions + chevron sit on the right (chevron last).
+      {/* Same header style as SectionHeader: plain title on the left; action
+          buttons then the collapse chevron (the only trigger) on the right.
           `group` reveals the hover-only action icons. */}
-      <div className="group flex items-center w-full mb-2">
-        <span className="flex-1 min-w-0 text-[16px] font-normal text-foreground truncate">{title}</span>
-        <div className="flex items-center gap-0.5 shrink-0">
-          {rightButtons}
-          <CollapsibleTrigger
-            aria-label={isOpen ? "닫기" : "열기"}
-            className="flex items-center cursor-pointer text-muted-foreground"
-          >
-            {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </CollapsibleTrigger>
-        </div>
-      </div>
+      <NavGroupHeader
+        className="group mb-2"
+        left={<span className="text-[16px] font-normal text-foreground truncate">{title}</span>}
+        right={
+          <>
+            {rightButtons}
+            <CollapsibleTrigger
+              aria-label={isOpen ? "닫기" : "열기"}
+              className="flex items-center justify-center h-6 w-6 cursor-pointer text-muted-foreground"
+            >
+              {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </CollapsibleTrigger>
+          </>
+        }
+      />
       <CollapsibleContent>
         {/* Rows sit flush in the groups container (which provides the 24px
             inset); no horizontal padding here. */}
