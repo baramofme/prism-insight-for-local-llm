@@ -49,10 +49,12 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
   // ── normal / hover / minimized — unified fill ────────────────────
   const rail = mode === "minimized" || mode === "hover";
 
-  // Below MOBILE the desktop sidebar is an off-canvas sheet.
+  // Below MOBILE the desktop sidebar is an off-canvas sheet, so it reserves no
+  // layout width — the center column fills the whole viewport (else a leftW-wide
+  // gap is left on the right).
   if (vp < BREAKPOINTS.MOBILE) {
     const leftW = rail ? 80 : 232;
-    return { leftW, centerW: vp - leftW, rightW: 0, centerMaxW: 800, wrapperMargin: 0 };
+    return { leftW, centerW: vp, rightW: 0, centerMaxW: vp, wrapperMargin: 0 };
   }
 
   // Nav width: 80px rail when collapsed, else 321 (>=WIDE) / 252→272 below.
