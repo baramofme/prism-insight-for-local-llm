@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BREAKPOINTS } from "@/lib/breakpoints";
 import { watchlistStocks } from "../../_data/watchlist";
@@ -61,9 +61,12 @@ export function MobilePortfolio({ vp, onViewPortfolio }: { vp: number; onViewPor
           </tbody>
             </table>
           </div>
-      <div className="flex items-center gap-2 pt-3">
-        <Button variant="ghost" className="flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-primary hover:bg-muted rounded-lg transition-colors">모든 목록 보기</Button>
-        <Button variant="ghost" className="flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-primary hover:bg-muted rounded-lg transition-colors">관심 목록</Button>
+      <div className="flex items-center gap-2 pt-3 overflow-x-auto scroll-hide">
+        <Button variant="ghost" className="flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-primary hover:bg-muted rounded-lg transition-colors whitespace-nowrap shrink-0">
+          <List className="w-4 h-4" /> 모든 목록 보기
+        </Button>
+        <Button variant="ghost" className="flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-primary hover:bg-muted rounded-lg transition-colors whitespace-nowrap shrink-0">관심 목록</Button>
+        <Button variant="ghost" className="flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-primary hover:bg-muted rounded-lg transition-colors whitespace-nowrap shrink-0">테스트 목록</Button>
       </div>
     </div>
     </>;

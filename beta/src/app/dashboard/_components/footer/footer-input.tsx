@@ -1,13 +1,26 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { footerTickerSuggestions } from "../../_data/search";
 
+// GF cycles a suggested question inside the collapsed mobile chat bar.
+const ROTATING_QUESTIONS = [
+  "오늘 시장 현황이 어떤가요?",
+  "S&P 500과 다우존스 산업평균지수 비교",
+  "오늘 시장에서 가장 등락폭이 큰 종목은 무엇인가요?",
+  "관심 목록에 대한 최신 통계는 어떤가요?",
+];
+
 export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQuery: string; setSearchQuery: (v: string) => void; onSubmit?: (text: string) => void }) {
   const [inputText, setInputText] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [questionIdx, setQuestionIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setQuestionIdx((i) => (i + 1) % ROTATING_QUESTIONS.length), 4000);
+    return () => clearInterval(t);
+  }, []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeepSearch, setIsDeepSearch] = useState(false);
   const [stockFilter, setStockFilter] = useState<"all" | "stock" | "index">("all");
@@ -118,7 +131,7 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQ
             onFocus={() => setIsFocused(true)}
             onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && hasValue && onSubmit) { e.preventDefault(); onSubmit(inputText); setInputText(''); setIsFocused(false); } }}
-            rows={1} placeholder="이 내용에 관해 질문하거나 검색하세요"
+            rows={1} placeholder={isFocused || inputText ? "이 내용에 관해 질문하거나 검색하세요" : ROTATING_QUESTIONS[questionIdx]}
             className="gf-footer__search-input bg-transparent text-[14px] text-foreground outline-none resize-none max-h-32 leading-relaxed placeholder-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0" />
           <div className="flex items-center gap-1.5 shrink-0">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}
