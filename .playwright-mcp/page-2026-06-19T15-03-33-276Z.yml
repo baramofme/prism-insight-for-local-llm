@@ -1,9 +1,0 @@
-- generic [active] [ref=e1]:
-  - navigation "Skip to content":
-    - link "Skip to main content" [ref=e3]:
-      - generic [ref=e4]: Skip to main content
-  - main [ref=e9]:
-    - generic [ref=e13]:
-      - generic: play_arrow
-      - button "Sign in" [ref=e15]:
-        - generic [ref=e18]: Sign in

@@ -125,3 +125,6 @@ archive.db-wal
 prism-btc/state/
 prism-btc/backtest/results/
 !prism-btc/engine/config.py
+
+# Playwright MCP ephemeral dumps
+.playwright-mcp/
