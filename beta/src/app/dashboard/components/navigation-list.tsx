@@ -58,18 +58,21 @@ export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }
     <Button
       variant="ghost"
       onClick={onStockClick}
-      className="w-full h-auto p-3 hover:bg-muted/50 transition-colors rounded-lg justify-start gap-3 border-border/40"
+      className="w-full h-auto p-3 hover:bg-muted/50 transition-colors rounded-lg justify-start border-border/40"
     >
       <div className="text-left truncate min-w-0 flex-1">
         <div className="text-[14px] font-medium text-foreground truncate">{item.name}</div>
         <div className="text-[12px] text-muted-foreground truncate">{item.fullName || ""}</div>
       </div>
-      <div className="flex-shrink-0">
+      {/* ml gives the left gap; the price column sits flush so the chart can
+          move right (price is right-aligned, so text never touches it). */}
+      <div className="flex-shrink-0 ml-3">
         <MiniChart data={sparkData[index].data} color={color} prevClose={sparkData[index].data[0]} small />
       </div>
-      {/* Fixed-width price column so the center chart lands at the same x on
-          every row (GF aligns its sparkline to a fixed column). */}
-      <div className="text-right flex flex-col items-end w-20 shrink-0">
+      {/* Fixed price column (sized to the longest price) → the center chart
+          lands at the same x on every row and a bit further right, GF-style,
+          without clipping prices. */}
+      <div className="text-right flex flex-col items-end w-[80px] shrink-0 ml-1">
         <div className="text-[14px] tabular-nums font-medium text-foreground truncate max-w-full">{formatPrice(item.price)}</div>
         <div className={`text-[11px] font-medium flex items-center gap-0.5 ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
           <span>{item.change}</span>
