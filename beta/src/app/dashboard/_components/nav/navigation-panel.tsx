@@ -43,30 +43,20 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
 
   useEffect(() => {
     if (mobile) return;
-    const vp = window.innerWidth;
-    setIsWide(vp >= BREAKPOINTS.WIDE);
-    wasTabletRef.current = vp >= BREAKPOINTS.TABLET;
-    if (vp >= BREAKPOINTS.TABLET && sidebarMode === "minimized") {
-      setSidebarMode("normal");
-    }
-    const handleResize = () => {
+    // Match GF: expanded sidebar at >= WIDE, collapsed 80px rail below.
+    const apply = () => {
       const vp = window.innerWidth;
-      const nowWide = vp >= BREAKPOINTS.WIDE;
-      const prevWide = isWideRef.current;
-      setIsWide(nowWide);
-      if (nowWide !== prevWide) {
-        if (nowWide && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) setSidebarMode("normal");
-      }
-      const nowTablet = vp >= BREAKPOINTS.TABLET;
-      const prevTablet = wasTabletRef.current;
-      wasTabletRef.current = nowTablet;
-      if (nowTablet !== prevTablet) {
-        if (nowTablet && (sidebarRef.current === "minimized" || sidebarRef.current === "hover")) setSidebarMode("normal");
-        else if (!nowTablet && sidebarRef.current === "normal") setSidebarMode("minimized");
+      setIsWide(vp >= BREAKPOINTS.WIDE);
+      const m = sidebarRef.current;
+      if (vp >= BREAKPOINTS.WIDE) {
+        if (m === "minimized" || m === "hover") setSidebarMode("normal");
+      } else if (m === "normal") {
+        setSidebarMode("minimized");
       }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    apply();
+    window.addEventListener("resize", apply);
+    return () => window.removeEventListener("resize", apply);
   }, [mobile]);
 
   const isExpandedMode = sidebarMode === "expanded";

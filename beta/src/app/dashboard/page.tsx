@@ -84,9 +84,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const vp = window.innerWidth;
-    if (vp >= BREAKPOINTS.TABLET && sidebarMode === "minimized") {
-      setSidebarMode("normal");
-    }
+    // Match GF: expanded sidebar at >= WIDE, collapsed rail below.
+    if (vp >= BREAKPOINTS.WIDE && sidebarMode === "minimized") setSidebarMode("normal");
+    else if (vp < BREAKPOINTS.WIDE && sidebarMode === "normal") setSidebarMode("minimized");
   }, []);
 
   useEffect(() => {
