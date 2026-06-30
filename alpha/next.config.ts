@@ -14,6 +14,12 @@ const baseConfig: NextConfig = {
     ]
   },
   transpilePackages: ['geist'],
+  // PGlite ships a WASM runtime + virtual-FS data file and resolves them
+  // relative to its own package files. If Turbopack bundles it, those asset
+  // paths become non-file bundler URLs that Node fs rejects
+  // (ERR_INVALID_ARG_TYPE "Received an instance of URL"). Keep it external so
+  // it's required straight from node_modules with intact asset resolution.
+  serverExternalPackages: ['@electric-sql/pglite'],
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
   }
