@@ -44,13 +44,14 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
   // ── Normal mode: Full responsive layout ──────────────────────────
   if (mode === "normal") {
     if (vp >= BREAKPOINTS.WIDE) {
-      // GF fills the whole row (no empty gap): nav 321 + center + research =
-      // min(vp, 1820). Center ~65.5% of the remaining (cap 840), research the
-      // rest — matches GF (760/401 @1480, 840/658 @1920).
+      // GF fills the row (nav 321 + center + research = min(vp,1820)). Center
+      // holds ~760; research grows to take the slack and caps at 659, after
+      // which center grows toward 840. Matches GF: 760/401 @1480, 760/571
+      // @1650, 840/659 @1850.
       const leftW = 321;
       const available = Math.min(vp, 1820) - leftW;
-      const centerW = Math.min(840, Math.round(available * 0.655));
-      const rightW = available - centerW;
+      const rightW = Math.max(344, Math.min(659, available - 760));
+      const centerW = available - rightW;
       const wrapperMargin = Math.max(0, (vp - 1820) / 2);
       return { leftW, centerW, rightW, centerMaxW: centerW, wrapperMargin };
     }
