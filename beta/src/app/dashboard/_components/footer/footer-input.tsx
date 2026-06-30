@@ -13,7 +13,7 @@ const ROTATING_QUESTIONS = [
   "관심 목록에 대한 최신 통계는 어떤가요?",
 ];
 
-export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = false }: { searchQuery: string; setSearchQuery: (v: string) => void; onSubmit?: (text: string) => void; autoOpen?: boolean }) {
+export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = false, embedded = false }: { searchQuery: string; setSearchQuery: (v: string) => void; onSubmit?: (text: string) => void; autoOpen?: boolean; embedded?: boolean }) {
   const [inputText, setInputText] = useState("");
   const [isFocused, setIsFocused] = useState(autoOpen);
   const [questionIdx, setQuestionIdx] = useState(0);
@@ -43,8 +43,15 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
   };
 
   return (
-    <div id="gf-footer-search" className="gf-footer__search block lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent px-4 pt-3 pb-3">
-      <div className="max-w-[560px] mx-auto relative">
+    <div
+      id="gf-footer-search"
+      className={
+        embedded
+          ? "gf-footer__search relative w-full"
+          : "gf-footer__search block lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent px-4 pt-3 pb-3"
+      }
+    >
+      <div className={embedded ? "relative w-full" : "max-w-[560px] mx-auto relative"}>
         {isFocused && (
           <div className="absolute bottom-full left-0 right-0 mb-3 bg-white border border-border rounded-2xl shadow-xl max-h-[70vh] overflow-y-auto p-4 flex flex-col gap-4">
             {!hasValue ? (

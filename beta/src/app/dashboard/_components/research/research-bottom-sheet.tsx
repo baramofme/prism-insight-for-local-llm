@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { PenSquare, ScrollText, X, Maximize2, Search, Globe, Plus } from "lucide-react";
+import { FooterInput } from "../footer/footer-input";
 
 const QUESTIONS = [
   "오늘 시장 현황이 어떤가요?",
@@ -19,11 +20,13 @@ const QUESTIONS = [
  */
 export function ResearchBottomSheet({
   collapsed = false,
-  onOpenSearch,
+  searchQuery = "",
+  setSearchQuery,
   onSubmit,
 }: {
   collapsed?: boolean; // page scrolled down → collapse to the thin input bar
-  onOpenSearch?: () => void; // tap the input trigger → open the search modal
+  searchQuery?: string;
+  setSearchQuery?: (v: string) => void;
   onSubmit?: (text: string) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
@@ -97,17 +100,10 @@ export function ResearchBottomSheet({
         </div>
       )}
 
-      {/* input trigger — tapping opens the search modal (never just expands) */}
+      {/* input — typeable; focusing it raises the search popover above the bar
+          (the embedded FooterInput renders only the input + popover, no fixed bar) */}
       <div className={`px-3 shrink-0 ${expanded ? "border-t border-border pt-2 pb-3" : "pt-1 pb-3"}`}>
-        <button
-          type="button"
-          onClick={onOpenSearch}
-          className="w-full bg-muted/80 border border-border rounded-full px-4 py-2.5 flex items-center gap-3 text-left"
-          aria-label="검색하거나 질문하세요"
-        >
-          <Search className="w-4 h-4 text-primary shrink-0" />
-          <span className="flex-1 min-w-0 text-[14px] text-muted-foreground truncate">검색하거나 질문하세요</span>
-        </button>
+        <FooterInput embedded searchQuery={searchQuery} setSearchQuery={setSearchQuery ?? (() => {})} onSubmit={onSubmit} />
       </div>
     </div>
   );

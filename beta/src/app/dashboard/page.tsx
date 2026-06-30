@@ -37,8 +37,6 @@ export default function DashboardPage() {
   const [centerTab, setCenterTab] = useState<"home" | "research">("home");
   // Mobile (<=766): hide the header + collapse the research sheet on scroll down.
   const [chromeHidden, setChromeHidden] = useState(false);
-  // Mobile (<=766): tapping the sheet's input opens the shared search modal.
-  const [searchOpen, setSearchOpen] = useState(false);
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -220,18 +218,10 @@ export default function DashboardPage() {
             </nav>
           </div>
         </footer>
-                {/* <=766px: GF's draggable 조사 bottom sheet. 767–1023px (tablet): the
-                    compact chat bar. >=1024px: the docked research side panel. */}
-                <ResearchBottomSheet collapsed={chromeHidden} onOpenSearch={() => setSearchOpen(true)} onSubmit={(t) => { handleFooterSubmit(t); setSearchOpen(false); }} />
-                {/* <=766px: tapping the sheet input opens the search modal (the same
-                    popover as the tablet chat bar, anchored to the bottom). */}
-                {searchOpen && (
-                  <div className="md:hidden fixed inset-0 z-[60] bg-black/10" onClick={() => setSearchOpen(false)}>
-                    <div onClick={(e) => e.stopPropagation()}>
-                      <FooterInput autoOpen searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={(t) => { handleFooterSubmit(t); setSearchOpen(false); }} />
-                    </div>
-                  </div>
-                )}
+                {/* <=766px: GF's draggable 조사 bottom sheet (its input is typeable
+                    and raises the search popover). 767–1023px (tablet): the compact
+                    chat bar. >=1024px: the docked research side panel. */}
+                <ResearchBottomSheet collapsed={chromeHidden} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />
                 <div className="hidden md:block lg:hidden">
                   <FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />
                 </div>
