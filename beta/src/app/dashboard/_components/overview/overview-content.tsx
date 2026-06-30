@@ -47,9 +47,12 @@ export function OverviewContent({
           <span className="text-[12px] text-[#5f6368]">준비 완료</span>
         </div>
 
-        <div id="gf-main-index-grid" className="gf-index-grid grid grid-cols-5 gap-2 mb-6">
+        {/* Mobile: GF-style horizontal scroll strip (fixed-width cards). Desktop: 5-col grid. */}
+        <div id="gf-main-index-grid" className={`gf-index-grid mb-6 ${vp < BREAKPOINTS.MOBILE ? "flex gap-2 overflow-x-auto scroll-hide" : "grid grid-cols-5 gap-2"}`}>
           {currentIndices.slice(0, 5).map((item) => (
-            <IndexCard key={item.name} item={item} vp={vp} />
+            <div key={item.name} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[104px]" : ""}>
+              <IndexCard item={item} vp={vp} />
+            </div>
           ))}
         </div>
 
@@ -77,13 +80,14 @@ export function OverviewContent({
           )}
         </div>
 
-        <div id="gf-main-stock-tables" className={`gf-stock-tables mb-6 ${vp < BREAKPOINTS.MOBILE ? "flex flex-col gap-4" : "flex gap-6 overflow-x-auto scroll-hide"}`} style={vp < BREAKPOINTS.MOBILE ? {} : { scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        {/* GF parity: horizontal scroll on every width (mobile included) instead of a vertical stack. */}
+        <div id="gf-main-stock-tables" className="gf-stock-tables mb-6 flex gap-6 overflow-x-auto scroll-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {[
             { title: "최다 거래 종목", stocks: mostActiveStocks, showVolume: true },
             { title: "일 최대 상승 종목", stocks: gainers, showVolume: false },
             { title: "일 최대 하락 종목", stocks: losers, showVolume: false },
           ].map((tbl) => (
-            <div key={tbl.title} className={vp < BREAKPOINTS.MOBILE ? "" : "flex-1 min-w-0"}>
+            <div key={tbl.title} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[300px]" : "flex-1 min-w-0"}>
               <h3 className={`${vp < BREAKPOINTS.MOBILE ? "text-[20px]" : "text-[14px]"} font-medium text-[#1f1f1f] mb-2`}>{tbl.title}</h3>
               <table className="w-full" style={{ borderCollapse: 'separate', borderSpacing: '0 2px' }}>
                 <tbody>
