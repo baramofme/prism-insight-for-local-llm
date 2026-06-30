@@ -6,12 +6,13 @@ import { Separator } from "@/components/ui/separator";
 import { MiniChart } from "../_components/overview/mini-chart";
 import { formatPrice, getSparklineColor } from "../_lib/format";
 
-export function SectionHeader({ title, rightButtons = [] }: { 
-  title: string; 
-  rightButtons?: React.ReactNode[] 
+export function SectionHeader({ title, rightButtons = [], className = "" }: {
+  title: string;
+  rightButtons?: React.ReactNode[];
+  className?: string;
 }) {
   return (
-    <div className="flex items-center justify-between py-2">
+    <div className={`flex items-center justify-between py-2 ${className}`}>
       <span className="text-[16px] font-medium text-foreground">{title}</span>
       <div className="flex items-center gap-0.5 shrink-0">
         {rightButtons}
@@ -20,17 +21,37 @@ export function SectionHeader({ title, rightButtons = [] }: {
   );
 }
 
-export function SimpleStockNav({ item, index, sparkData, onStockClick }: { 
-  item: any; 
-  index: number; 
-  sparkData: any[]; 
-  onStockClick?: () => void 
+export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }: {
+  item: any;
+  index: number;
+  sparkData: any[];
+  onStockClick?: () => void;
+  compact?: boolean;
 }) {
   const color = getSparklineColor(item.positive);
-  
+
+  // Collapsed rail (80px): GF shows ticker + change% only, centered — no name,
+  // no sparkline, no price (those overflow the rail).
+  if (compact) {
+    return (
+      <Button
+        variant="ghost"
+        onClick={onStockClick}
+        title={item.fullName || item.name}
+        className="w-full h-auto py-2 px-1 hover:bg-muted/50 transition-colors rounded-lg flex-col items-center gap-0.5"
+      >
+        <div className="text-[12px] font-semibold text-foreground truncate max-w-full leading-tight">{item.name}</div>
+        <div className={`text-[11px] font-medium flex items-center gap-0.5 leading-tight ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+          <span>{item.change}</span>
+          {item.positive ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
+        </div>
+      </Button>
+    );
+  }
+
   return (
-    <Button 
-      variant="ghost" 
+    <Button
+      variant="ghost"
       onClick={onStockClick}
       className="w-full h-auto p-3 hover:bg-muted/50 transition-colors rounded-lg justify-start gap-3 border-border/40"
     >

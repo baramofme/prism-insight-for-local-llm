@@ -130,7 +130,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
 >
   {!isOpen ? (
     <>
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border">
+      <div className="sticky top-0 z-10 bg-white flex items-center justify-between px-4 py-2.5 border-b border-border">
         <span
           id="gf-leftnav-title"
           className="gf-sidebar__title text-[20px] font-semibold text-foreground cursor-pointer"
@@ -156,6 +156,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
               item={{ ...s, fullName: s.fullName }}
               index={watchlistStocks.indexOf(s)}
               sparkData={watchlistSparkData}
+              compact
               onStockClick={() => onStockClick?.({
                 ticker: s.name, name: s.fullName, price: s.basePrice, qty: 0,
                 dailyProfit: 0, dailyProfitPercent: parseFloat(s.change),
@@ -171,6 +172,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
               item={{ ...s, fullName: s.fullName }}
               index={sectorIndices.indexOf(s)}
               sparkData={sectorSparkData}
+              compact
               onStockClick={() => onStockClick?.({
                 ticker: s.name, name: s.fullName, price: s.basePrice, qty: 0,
                 dailyProfit: 0, dailyProfitPercent: parseFloat(s.change),
@@ -185,6 +187,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
     <>
       <SectionHeader
         title="목록"
+        className="sticky top-0 z-10 bg-white px-1"
         rightButtons={[
           <Button key="dropdown" variant="ghost" size="icon" aria-label="목록 선택">
             <ChevronDown className="w-4 h-4 text-muted-foreground" />
