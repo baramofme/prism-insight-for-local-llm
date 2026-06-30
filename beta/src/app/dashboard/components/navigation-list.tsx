@@ -91,14 +91,13 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
   children: React.ReactNode;
 }) {
   return (
-    <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="pt-6 pb-4">
-      {/* GF group header: title toggles; action buttons then the collapse
-          chevron sit together on the right (chevron last). `group` lets the
-          hover-only action icons reveal. L/R inset is on the groups container. */}
+    // No bottom padding — group spacing comes from each group's pt-6.
+    <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="pt-6">
+      {/* GF group header: the title is plain text; only the collapse chevron
+          is a trigger. Actions + chevron sit on the right (chevron last).
+          `group` reveals the hover-only action icons. */}
       <div className="group flex items-center w-full mb-2">
-        <CollapsibleTrigger className="flex-1 min-w-0 text-left cursor-pointer">
-          <span className="text-[16px] font-normal text-foreground truncate">{title}</span>
-        </CollapsibleTrigger>
+        <span className="flex-1 min-w-0 text-[16px] font-normal text-foreground truncate">{title}</span>
         <div className="flex items-center gap-0.5 shrink-0">
           {rightButtons}
           <CollapsibleTrigger
