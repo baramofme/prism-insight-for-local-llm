@@ -1,0 +1,232 @@
+"use client";
+
+import { useRef, useCallback } from "react";
+import { Menu, Search, Mic, Globe, Brain, TrendingUp, BarChart3, Settings, Info, Edit3, MessageSquare } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { searchStockSuggestions, searchAiPrompts } from "../../_data/search";
+import { type Stock } from "../../_lib/types";
+
+export function FinanceHeader({
+  searchQuery,
+  setSearchQuery,
+  showSearchDropdown,
+  setShowSearchDropdown,
+  showSettingsDropdown,
+  setShowSettingsDropdown,
+  tooltip,
+  setTooltip,
+  tooltipPos,
+  setTooltipPos,
+  handleStockClick,
+}: {
+  searchQuery: string;
+  setSearchQuery: (v: string) => void;
+  showSearchDropdown: boolean;
+  setShowSearchDropdown: (v: boolean) => void;
+  showSettingsDropdown: boolean;
+  setShowSettingsDropdown: (v: boolean) => void;
+  tooltip: string | null;
+  setTooltip: (v: string | null) => void;
+  tooltipPos: { x: number; y: number };
+  setTooltipPos: (v: { x: number; y: number }) => void;
+  handleStockClick: (stock: Stock) => void;
+}) {
+  const searchDropdownRef = useRef<HTMLDivElement>(null);
+  const settingsDropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleSuggestionClick = useCallback(
+    (s: { ticker: string; name: string; price: string; change: string; positive: boolean }) => {
+      handleStockClick({
+        ticker: s.ticker,
+        name: s.name,
+        price: parseInt(s.price.replace(/[₩$,]/g, "")),
+        qty: 0,
+        dailyProfit: 0,
+        dailyProfitPercent: parseFloat(s.change),
+        positive: s.positive,
+        totalAmount: 0,
+        transactions: [],
+      });
+      setSearchQuery("");
+      setShowSearchDropdown(false);
+    },
+    [handleStockClick, setSearchQuery, setShowSearchDropdown],
+  );
+
+  return (
+    <header id="gf-header" className="gf-header sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full">
+      <div className="grid items-center px-4 py-2" style={{ gridTemplateColumns: '324px 1fr auto' }}>
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="md:hidden p-2 hover:bg-[#f8f9fa] rounded-full transition-colors">
+            <Menu className="w-5 h-5 text-[#5f6368]" />
+          </Button>
+          <div id="gf-header-logo" className="gf-header__logo flex items-center gap-1.5">
+            <span className="gf-header__logo-text text-[24px] font-bold text-[#1f1f1f]">Finance</span>
+            <span className="gf-header__beta-badge text-[12px] text-[#5f6368] bg-[#e8eaed] px-1.5 py-0.5 rounded-md font-medium">Beta</span>
+          </div>
+        </div>
+
+        <div id="gf-header-marketnav" className="gf-header__nav hidden min-[1040px]:flex justify-start">
+          <div className="relative w-full max-w-xl" ref={searchDropdownRef}>
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5f6368]" />
+            <input
+              type="text"
+              placeholder="검색 또는 질문하기"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setShowSearchDropdown(true);
+              }}
+              onFocus={() => setShowSearchDropdown(true)}
+              className="w-full pl-11 pr-12 py-2.5 bg-[#f1f3f4] rounded-full text-[14px] text-[#1f1f1f] placeholder-[#5f6368] border-none focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20"
+            />
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+              <Button variant="ghost" size="icon" className="p-1 hover:bg-[#e8eaed] rounded-full transition-colors"><Mic className="w-4 h-4 text-[#1a73e8]" /></Button>
+            </div>
+
+            {showSearchDropdown && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-[#e8eaed] rounded-2xl shadow-xl z-50 overflow-hidden max-h-[70vh] overflow-y-auto">
+                {searchQuery.trim() ? (
+                  <div className="p-3">
+                    <div className="text-[11px] font-semibold text-[#5f6368] px-2 mb-2">종목 이동 및 필터링</div>
+                    <div className="space-y-0.5">
+                      {searchStockSuggestions
+                        .filter(s => s.ticker.toLowerCase().includes(searchQuery.toLowerCase()) || s.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                        .slice(0, 5)
+                        .map(s => (
+                          <div
+                            key={s.ticker}
+                            onClick={() => handleSuggestionClick(s)}
+                            className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-[#f8f9fa] cursor-pointer transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-[#f1f3f4] rounded-full flex items-center justify-center text-[11px] font-bold text-[#5f6368]">
+                                {s.ticker.slice(0, 2)}
+                              </div>
+                              <div>
+                                <div className="text-[14px] font-semibold text-[#1f1f1f]">{s.name}</div>
+                                <div className="text-[12px] text-[#5f6368]">{s.ticker}</div>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-[14px] text-[#1f1f1f] tabular-nums">{s.price}</div>
+                              <div className={`text-[12px] font-medium ${s.positive ? 'text-[#0E9E4B]' : 'text-[#FF4B4B]'}`}>{s.change}</div>
+                            </div>
+                          </div>
+                        ))}
+                      {searchStockSuggestions.filter(s => s.ticker.toLowerCase().includes(searchQuery.toLowerCase()) || s.name.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+                        <div className="px-3 py-4 text-center text-[14px] text-[#5f6368]">검색 결과 없음</div>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-3">
+                    <div className="text-[11px] font-semibold text-[#5f6368] px-2 mb-2">AI에게 물어보기</div>
+                    <div className="space-y-0.5">
+                      {searchAiPrompts.map((prompt, i) => {
+                        const Icon = prompt.icon === "Globe" ? Globe : prompt.icon === "Brain" ? Brain : prompt.icon === "TrendingUp" ? TrendingUp : BarChart3;
+                        return (
+                          <div
+                            key={i}
+                            onClick={() => {
+                              setSearchQuery(prompt.label);
+                              setShowSearchDropdown(false);
+                            }}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#f8f9fa] cursor-pointer transition-colors"
+                          >
+                            <div className="w-8 h-8 bg-[#f1f3f4] rounded-full flex items-center justify-center">
+                              <Icon className="w-4 h-4 text-[#5f6368]" />
+                            </div>
+                            <div>
+                              <div className="text-[14px] font-semibold text-[#1f1f1f]">{prompt.label}</div>
+                              <div className="text-[12px] text-[#5f6368]">{prompt.description}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div id="gf-header-controls" className="gf-header__controls relative flex items-center justify-end gap-0.5" ref={settingsDropdownRef}>
+          <button
+            onMouseEnter={(e) => { setTooltip("검색 또는 질문하기"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
+            onMouseLeave={() => setTooltip(null)}
+            id="gf-header-search-btn"
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            aria-label="검색"
+          >
+            <Search className="w-5 h-5 text-[#5f6368]" />
+          </button>
+
+          {showSettingsDropdown && (
+            <div className="absolute top-full right-0 mt-2 bg-white border border-[#dadce0] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] min-w-[240px] z-50 overflow-hidden">
+              <div className="py-2">
+                <div className="px-4 py-2 text-[12px] font-semibold text-[#5f6368] uppercase tracking-wide">설정</div>
+                <Button variant="ghost" className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left justify-start h-auto">
+                  <Globe className="w-4 h-4 text-[#5f6368]" />
+                  <span>언어: 한국어</span>
+                </Button>
+                <Button variant="ghost" className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left justify-start h-auto">
+                  <Settings className="w-4 h-4 text-[#5f6368]" />
+                  <span>가격 색상 시스템</span>
+                </Button>
+                <div className="border-t border-[#e8eaed] my-1" />
+                <Button variant="ghost" className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left justify-start h-auto">
+                  <Info className="w-4 h-4 text-[#5f6368]" />
+                  <span>도움말 & 피드백</span>
+                </Button>
+                <Button variant="ghost" className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left justify-start h-auto">
+                  <Edit3 className="w-4 h-4 text-[#5f6368]" />
+                  <span>피드백 보내기</span>
+                </Button>
+              </div>
+            </div>
+          )}
+
+          <button
+            onClick={() => setShowSettingsDropdown(!showSettingsDropdown)}
+            onMouseEnter={(e) => { if (!showSettingsDropdown) setTooltip("설정"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
+            onMouseLeave={() => setTooltip(null)}
+            id="gf-header-settings-btn"
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            aria-label="설정"
+          >
+            <Settings className="w-5 h-5 text-[#5f6368]" />
+          </button>
+
+          <button
+            id="gf-header-feedback-btn"
+            onMouseEnter={(e) => { setTooltip("의견 보내기"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
+            onMouseLeave={() => setTooltip(null)}
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            aria-label="피드백"
+          >
+            <MessageSquare className="w-5 h-5 text-[#5f6368]" />
+          </button>
+
+          <div
+            id="gf-header-profile"
+            className="gf-header__profile w-8 h-8 rounded-full bg-[#1a73e8] flex items-center justify-center text-white text-[14px] font-medium cursor-pointer hover:shadow-md transition-shadow ring-2 ring-transparent hover:ring-[#dadce0]"
+            aria-label="사용자 프로필"
+          >
+            U
+          </div>
+
+          {tooltip && (
+            <div
+              className="fixed z-[9999] pointer-events-none px-2 py-1 bg-[#1f1f1f] text-white text-[12px] rounded-md whitespace-nowrap shadow-lg"
+              style={{ left: tooltipPos.x - 40, top: tooltipPos.y + 16 }}
+            >
+              {tooltip}
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
