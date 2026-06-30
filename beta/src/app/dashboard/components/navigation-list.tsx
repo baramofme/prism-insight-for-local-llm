@@ -84,8 +84,8 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
     <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="mb-2">
       <div className="flex items-center w-full">
         <CollapsibleTrigger className="flex-1 min-w-0">
-          {/* GF group header: 16px/400 title, 24px left inset, ~28px tall */}
-          <div className="flex items-center justify-between w-full py-1 pl-6 pr-2 cursor-pointer">
+          {/* GF group header: 16px/400 title, symmetric 24px inset, ~28px tall */}
+          <div className="flex items-center justify-between w-full py-1 px-6 cursor-pointer">
             <span className="text-[16px] font-normal text-foreground truncate">{title}</span>
             <span aria-label={isOpen ? "닫기" : "열기"}>
               {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
@@ -93,14 +93,14 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
           </div>
         </CollapsibleTrigger>
         {rightButtons.length > 0 && (
-          <div className="flex items-center gap-0.5 shrink-0 pr-2">
+          <div className="flex items-center gap-0.5 shrink-0 pr-6">
             {rightButtons}
           </div>
         )}
       </div>
       <CollapsibleContent>
-        {/* GF rows sit at 24px inset: content pl-3 (12) + row p-3 (12). */}
-        <div className="pl-3 space-y-0.5 py-1">
+        {/* GF rows: symmetric 24px inset = content px-3 (12) + row p-3 (12). */}
+        <div className="px-3 space-y-0.5 py-1">
           {children}
         </div>
       </CollapsibleContent>

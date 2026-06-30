@@ -187,7 +187,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
     <>
       <SectionHeader
         title="목록"
-        className="sticky top-0 z-10 bg-white px-1"
+        className="sticky top-0 z-10 bg-white px-6"
         rightButtons={[
           <Button key="dropdown" variant="ghost" size="icon" aria-label="목록 선택">
             <ChevronDown className="w-4 h-4 text-muted-foreground" />
