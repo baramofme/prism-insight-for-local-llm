@@ -43,7 +43,7 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQ
   };
 
   return (
-    <div id="gf-footer-search" className="gf-footer__search block lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent px-4 pt-6 pb-4">
+    <div id="gf-footer-search" className="gf-footer__search block lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white to-transparent px-4 pt-3 pb-3">
       <div className="max-w-[560px] mx-auto relative">
         {isFocused && (
           <div className="absolute bottom-full left-0 right-0 mb-3 bg-white border border-border rounded-2xl shadow-xl max-h-[70vh] overflow-y-auto p-4 flex flex-col gap-4">
@@ -131,8 +131,8 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQ
             onFocus={() => setIsFocused(true)}
             onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && hasValue && onSubmit) { e.preventDefault(); onSubmit(inputText); setInputText(''); setIsFocused(false); } }}
-            rows={1} placeholder={isFocused || inputText ? "이 내용에 관해 질문하거나 검색하세요" : ROTATING_QUESTIONS[questionIdx]}
-            className="gf-footer__search-input bg-transparent text-[14px] text-foreground outline-none resize-none max-h-32 leading-relaxed placeholder-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0" />
+            rows={1} wrap="off" placeholder={isFocused || inputText ? "이 내용에 관해 질문하거나 검색하세요" : ROTATING_QUESTIONS[questionIdx]}
+            className="gf-footer__search-input flex-1 min-w-0 bg-transparent text-[14px] text-foreground outline-none resize-none min-h-0 h-7 max-h-32 py-0 leading-7 placeholder-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 [&::-webkit-scrollbar]:hidden" />
           <div className="flex items-center gap-1.5 shrink-0">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`w-8 h-8 rounded-xl flex items-center justify-center text-[14px] border transition-colors ${isDeepSearch ? 'bg-primary/10 border-primary text-primary' : 'bg-white border-border text-muted-foreground'}`}

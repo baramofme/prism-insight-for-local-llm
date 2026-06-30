@@ -34,7 +34,7 @@ export function OverviewContent({
 
   return (
     <main id="gf-main" className="gf-main flex-1 md:overflow-y-auto scroll-hide md:min-h-0">
-      <div className="px-3 py-4 max-w-4xl pb-4">
+      <div className="px-4 sm:px-6 md:px-3 py-4 max-w-4xl pb-4">
         <div id="gf-main-regiontabs" className="gf-regiontabs flex items-center gap-1.5 mb-4 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [& scrollbar-width:none]">
           {["미국", "유럽", "아시아", "중남미", "통화", "암호화폐", "선물"].map((tab) => (
             <button key={tab} onClick={() => setActiveRegionAction(tab)}
@@ -45,7 +45,7 @@ export function OverviewContent({
         {/* Mobile: GF-style horizontal scroll strip (fixed-width cards). Desktop: 5-col grid. */}
         <div id="gf-main-index-grid" className={`gf-index-grid mb-6 ${vp < BREAKPOINTS.MOBILE ? "flex gap-2 overflow-x-auto scroll-hide" : "grid grid-cols-5 gap-2"}`}>
           {currentIndices.slice(0, 5).map((item) => (
-            <div key={item.name} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[104px]" : ""}>
+            <div key={item.name} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[104px] sm:w-[130px]" : ""}>
               <IndexCard item={item} vp={vp} />
             </div>
           ))}
