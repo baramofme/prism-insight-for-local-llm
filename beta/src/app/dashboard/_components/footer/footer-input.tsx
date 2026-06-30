@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { ArrowUp, ArrowDown } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { footerTickerSuggestions } from "../../_data/search";
@@ -42,6 +43,40 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
     setIsFocused(false);
   };
 
+  // Stock results: full rows on the tablet bar; on the mobile sheet (embedded)
+  // GF simplifies them to a horizontal row of ticker + change% + arrow badge.
+  const renderResults = (list: typeof footerTickerSuggestions) =>
+    embedded ? (
+      <div className="flex items-center gap-4 overflow-x-auto scroll-hide py-1 -mx-1 px-1">
+        {list.map(s => (
+          <button key={s.id} type="button" onClick={() => handleSelectQuestion(s.id)} className="shrink-0 flex items-center gap-1.5">
+            <span className="text-[13px] font-medium text-foreground tabular-nums">{s.id}</span>
+            <span className={`text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>{s.change}</span>
+            <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${s.positive ? 'bg-destructive' : 'bg-primary'}`}>
+              {s.positive ? <ArrowUp className="w-2.5 h-2.5 text-white" /> : <ArrowDown className="w-2.5 h-2.5 text-white" />}
+            </span>
+          </button>
+        ))}
+      </div>
+    ) : (
+      <div className="flex flex-col divide-y divide-border">
+        {list.map(s => (
+          <div key={s.id} className="py-2 flex justify-between items-center cursor-pointer hover:bg-muted px-2 rounded-lg transition-colors">
+            <div className="text-left">
+              <span className="block text-[13px] font-bold text-foreground">{s.id}</span>
+              <span className="block text-[11px] text-muted-foreground">{s.label} · {s.exchange}</span>
+            </div>
+            <div className="text-right">
+              <span className="block text-[13px] font-medium text-foreground">{s.price}</span>
+              <span className={`inline-flex items-center gap-0.5 text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>
+                {s.positive ? '▲' : '▼'} {s.change}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+
   return (
     <div
       id="gf-footer-search"
@@ -80,21 +115,8 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
                       </button>
                     ))}
                   </div>
-                  <div id="gf-footer-recommendations" className="gf-footer__recommendations flex flex-col divide-y divide-border">
-                    {stockList.map(s => (
-                      <div key={s.id} className="py-2 flex justify-between items-center cursor-pointer hover:bg-muted px-2 rounded-lg transition-colors">
-                        <div className="text-left">
-                          <span className="block text-[13px] font-bold text-foreground">{s.id}</span>
-                          <span className="block text-[11px] text-muted-foreground">{s.label} · {s.exchange}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="block text-[13px] font-medium text-foreground">{s.price}</span>
-                          <span className={`inline-flex items-center gap-0.5 text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>
-                            {s.positive ? '▲' : '▼'} {s.change}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                  <div id="gf-footer-recommendations" className="gf-footer__recommendations">
+                    {renderResults(stockList)}
                   </div>
                 </div>
               </>
@@ -108,25 +130,9 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
                     </button>
                   ))}
                 </div>
-                <div className="flex flex-col divide-y divide-border">
-                  {displayResults.length > 0
-                    ? displayResults.map(s => (
-                      <div key={s.id} className="py-2.5 flex justify-between items-center cursor-pointer hover:bg-muted px-2 rounded-lg transition-colors">
-                        <div className="text-left">
-                          <span className="block text-[13px] font-bold text-foreground">{s.id}</span>
-                          <span className="block text-[11px] text-muted-foreground">{s.label} · {s.exchange}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="block text-[13px] font-medium text-foreground">{s.price}</span>
-                          <span className={`inline-flex items-center gap-0.5 text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>
-                            {s.positive ? '▲' : '▼'} {s.change}
-                          </span>
-                        </div>
-                      </div>
-                    )) : (
-                      <div className="py-4 text-center text-[13px] text-muted-foreground">검색 결과가 없습니다</div>
-                    )}
-                </div>
+                {displayResults.length > 0
+                  ? renderResults(displayResults)
+                  : <div className="py-4 text-center text-[13px] text-muted-foreground">검색 결과가 없습니다</div>}
               </div>
             )}
           </div>
