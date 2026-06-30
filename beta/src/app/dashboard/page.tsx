@@ -133,9 +133,10 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
-              {/* GF: below the research-panel breakpoint, the research panel folds
-                  into a 홈/조사 tab at the top of the center column. */}
-              {vp < BREAKPOINTS.RIGHT_PANEL_MIN && (
+              {/* GF: in the tablet range (768–1040) the research panel folds into a
+                  홈/조사 tab at the top of the center column. Below MOBILE the tabs
+                  drop and research is reached via the bottom chat bar instead. */}
+              {vp >= BREAKPOINTS.MOBILE && vp < BREAKPOINTS.RIGHT_PANEL_MIN && (
                 <div className="flex items-center gap-6 border-b border-border px-4 flex-shrink-0">
                   {([["home", "홈"], ["research", "조사"]] as const).map(([key, label]) => (
                     <button key={key} onClick={() => setCenterTab(key)}
@@ -146,7 +147,7 @@ export default function DashboardPage() {
                   ))}
                 </div>
               )}
-              {vp < BREAKPOINTS.RIGHT_PANEL_MIN && centerTab === "research" ? (
+              {vp >= BREAKPOINTS.MOBILE && vp < BREAKPOINTS.RIGHT_PANEL_MIN && centerTab === "research" ? (
                 <ResearchPanel embedded />
               ) : (
                 <OverviewContent
