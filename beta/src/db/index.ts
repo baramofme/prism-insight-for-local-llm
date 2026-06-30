@@ -13,7 +13,9 @@ import * as schema from "./schema";
 
 type AppDb = PostgresJsDatabase<typeof schema>;
 
-const g = globalThis as unknown as { __appDb?: AppDb };
+// Memoize the in-flight PROMISE, not the resolved value, so concurrent
+// startup requests share a single createDb() call.
+const g = globalThis as unknown as { __appDbPromise?: Promise<AppDb> };
 
 // During `next build` we never touch PGlite (WASM): use a lazy postgres-js
 // client (no connection happens at import) so the module graph compiles cleanly.
@@ -37,19 +39,32 @@ async function createDb(): Promise<AppDb> {
   // —— PGlite dev backend (runtime only) ——
   const { PGlite } = await import("@electric-sql/pglite");
   const { drizzle } = await import("drizzle-orm/pglite");
-  const { migrate } = await import("drizzle-orm/pglite/migrator");
 
-  const client = new PGlite("./.pglite"); // persisted across restarts
+  // In-memory dev DB. Fresh on every restart (re-sign-up each time); for
+  // persistence set a real DATABASE_URL.
+  const client = new PGlite();
   const db = drizzle(client, { schema, casing: "snake_case" }) as unknown as AppDb;
-  await migrate(db as never, { migrationsFolder: "./drizzle" }); // idempotent
+
+  // Apply schema by exec'ing the generated migration SQL directly instead of
+  // drizzle migrate({ migrationsFolder }): that migrator resolves the folder
+  // via a URL and hands it to a Node fs call that Node 22+/24 rejects
+  // (ERR_INVALID_ARG_TYPE → "Failed query: CREATE SCHEMA ..."). Reading files
+  // with a plain string path sidesteps it. Safe to re-run every boot because
+  // the in-memory DB starts empty.
+  const { readdirSync, readFileSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  const dir = join(process.cwd(), "drizzle");
+  const files = readdirSync(dir).filter((f) => f.endsWith(".sql")).sort();
+  for (const f of files) {
+    const ddl = readFileSync(join(dir, f), "utf8").replace(/-->\s*statement-breakpoint/g, "");
+    await client.exec(ddl);
+  }
   return db;
 }
 
-if (!g.__appDb) {
-  g.__appDb = await createDb();
-}
+g.__appDbPromise ??= createDb();
 
-export const db: AppDb = g.__appDb;
+export const db: AppDb = await g.__appDbPromise;
 export { schema, sql };
 export * from "./schema";
 export type DB = AppDb;
