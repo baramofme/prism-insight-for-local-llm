@@ -67,8 +67,10 @@ export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }
       <div className="flex-shrink-0">
         <MiniChart data={sparkData[index].data} color={color} prevClose={sparkData[index].data[0]} small />
       </div>
-      <div className="text-right flex flex-col items-end min-w-0 ml-2">
-        <div className="text-[14px] tabular-nums font-medium text-foreground">{formatPrice(item.price)}</div>
+      {/* Fixed-width price column so the center chart lands at the same x on
+          every row (GF aligns its sparkline to a fixed column). */}
+      <div className="text-right flex flex-col items-end w-20 shrink-0">
+        <div className="text-[14px] tabular-nums font-medium text-foreground truncate max-w-full">{formatPrice(item.price)}</div>
         <div className={`text-[11px] font-medium flex items-center gap-0.5 ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
           <span>{item.change}</span>
           {item.positive ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}

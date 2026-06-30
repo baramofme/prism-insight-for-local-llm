@@ -144,7 +144,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       <div className="gf-sidebar__nav flex flex-col items-stretch py-4 px-2 gap-4">
         <div className="text-center cursor-pointer" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground font-medium mb-1">투자중</div>
-          <div className="text-[14px] text-foreground font-bold mb-0.5">$19.6M</div>
+          <div className="text-[14px] text-foreground font-bold mb-0.5">₩19.6M</div>
           <div className={`flex items-center justify-center gap-0.5 text-[14px] font-semibold ${portfolioSummary.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
             {portfolioSummary.positive ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}{portfolioSummary.dailyChangePercent}
           </div>
@@ -204,9 +204,12 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       <ListNavigation title="포트폴리오" isOpen={portfolioOpen} onToggleOpen={() => setPortfolioOpen(!portfolioOpen)}>
         <div id="gf-leftnav-investing" className="gf-sidebar__item p-3 cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground mb-0.5">투자중</div>
-          <div className="text-[16px] font-bold text-foreground mb-0.5">$19,653,380.00</div>
-          <div className="flex items-center gap-0.5 text-[14px] text-[#0E9E4B]">
-            <ArrowUpRight className="w-3.5 h-3.5" />+$453,120.00 (+2.36%)
+          {/* GF: amount + change on one line; KRW drops decimals via formatPrice. */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[14px] font-medium tabular-nums text-foreground">{formatPrice("₩19,653,380.00")}</span>
+            <span className="flex items-center gap-0.5 text-[12px] text-[#0E9E4B] tabular-nums">
+              <ArrowUpRight className="w-3 h-3" />{formatPrice("+₩453,120.00")} (+2.36%)
+            </span>
           </div>
         </div>
       </ListNavigation>
