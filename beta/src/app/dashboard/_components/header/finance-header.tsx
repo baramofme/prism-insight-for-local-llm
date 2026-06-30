@@ -18,6 +18,7 @@ export function FinanceHeader({
   tooltipPos,
   setTooltipPos,
   handleStockClick,
+  collapsed = false,
 }: {
   searchQuery: string;
   setSearchQuery: (v: string) => void;
@@ -30,6 +31,7 @@ export function FinanceHeader({
   tooltipPos: { x: number; y: number };
   setTooltipPos: (v: { x: number; y: number }) => void;
   handleStockClick: (stock: Stock) => void;
+  collapsed?: boolean;
 }) {
   const searchDropdownRef = useRef<HTMLDivElement>(null);
   const settingsDropdownRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ export function FinanceHeader({
   );
 
   return (
-    <header id="gf-header" className="gf-header sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full">
+    <header id="gf-header" className="gf-header sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full transition-transform duration-300 ease-out will-change-transform" style={collapsed ? { transform: "translateY(-100%)" } : undefined}>
       <div className="grid items-center px-4 min-h-[60px] md:min-h-[80px]" style={{ gridTemplateColumns: '324px 1fr auto' }}>
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" className="md:hidden p-2 hover:bg-[#f8f9fa] rounded-full transition-colors">

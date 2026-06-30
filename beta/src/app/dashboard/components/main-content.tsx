@@ -56,4 +56,5 @@ export { StockDetail } from "../_components/stock/stock-detail";
 // ─── Re-export extracted components ──
 export { NavigationPanel } from "../_components/nav/navigation-panel";
 export { ResearchPanel } from "../_components/research/research-panel";
+export { ResearchBottomSheet } from "../_components/research/research-bottom-sheet";
 export { FooterInput } from "../_components/footer/footer-input";

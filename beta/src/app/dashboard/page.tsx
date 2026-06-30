@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Info } from "lucide-react";
-import { NavigationPanel, ResearchPanel, FooterInput, MobilePortfolioDetail, StockDetail } from "./components/main-content";
+import { NavigationPanel, ResearchPanel, ResearchBottomSheet, FooterInput, MobilePortfolioDetail, StockDetail } from "./components/main-content";
 import { DebugOverlay } from "@/components/dev/debug-overlay";
 import { FinanceHeader } from "./_components/header/finance-header";
 import { OverviewContent } from "./_components/overview/overview-content";
@@ -35,6 +35,8 @@ export default function DashboardPage() {
   const [footerQuestionId, setFooterQuestionId] = useState(0);
   // Below the research-panel breakpoint GF shows 홈/조사 tabs in the center.
   const [centerTab, setCenterTab] = useState<"home" | "research">("home");
+  // Mobile (<=766): hide the header + collapse the research sheet on scroll down.
+  const [chromeHidden, setChromeHidden] = useState(false);
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -104,6 +106,22 @@ export default function DashboardPage() {
   const vp = viewportWidth || 1200;
   const { leftW, centerW, rightW, wrapperMargin } = calcPanelWidths(vp, sidebarMode);
 
+  // Mobile only: track document scroll direction to hide/show the header and
+  // collapse/restore the research bottom sheet (GF mobile chrome behaviour).
+  useEffect(() => {
+    if (vp >= BREAKPOINTS.MOBILE) { setChromeHidden(false); return; }
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) < 6) return;
+      if (y > lastY && y > 72) setChromeHidden(true);   // scrolling down
+      else if (y < lastY) setChromeHidden(false);        // scrolling up
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [vp]);
+
   const centerLeftMargin = 0;
 
   return (
@@ -116,9 +134,10 @@ export default function DashboardPage() {
           showSettingsDropdown={showSettingsDropdown} setShowSettingsDropdown={setShowSettingsDropdown}
           tooltip={tooltip} setTooltip={setTooltip} tooltipPos={tooltipPos} setTooltipPos={setTooltipPos}
           handleStockClick={handleStockClick}
+          collapsed={chromeHidden}
         />
 
-        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
+        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-[124px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
           <NavigationPanel id="" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
           {vp >= BREAKPOINTS.MOBILE && <NavigationPanel id="gf-left-nav" centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
@@ -196,7 +215,12 @@ export default function DashboardPage() {
             </nav>
           </div>
         </footer>
-                {<FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />}
+                {/* <=766px: GF's draggable 조사 bottom sheet. 767–1023px (tablet): the
+                    compact chat bar. >=1024px: the docked research side panel. */}
+                <ResearchBottomSheet collapsed={chromeHidden} onSubmit={handleFooterSubmit} />
+                <div className="hidden md:block lg:hidden">
+                  <FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />
+                </div>
       </div>
     </div>
     <DebugOverlay />
