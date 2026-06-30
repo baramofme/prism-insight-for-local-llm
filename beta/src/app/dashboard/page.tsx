@@ -113,20 +113,15 @@ export default function DashboardPage() {
   useEffect(() => {
     if (vp >= BREAKPOINTS.MOBILE) { setChromeHidden(false); return; }
     let lastY = window.scrollY;
-    let ticking = false;
-    // rAF-throttled so scrollY is read on the frame (avoids stale reads on fast
-    // flicks) — scroll down hides the chrome, scroll up restores it.
-    const update = () => {
-      const y = window.scrollY;
-      const dy = y - lastY;
-      if (Math.abs(dy) > 4) {
-        setChromeHidden(dy > 0 && y > 64);
-        lastY = y;
-      }
-      ticking = false;
-    };
+    // Near the top → always show. Any upward move → show immediately. Hiding
+    // needs a deliberate downward move past a small threshold.
     const onScroll = () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      const y = Math.max(0, window.scrollY);
+      const dy = y - lastY;
+      lastY = y;
+      if (y <= 8) setChromeHidden(false);
+      else if (dy < -3) setChromeHidden(false);
+      else if (dy > 6) setChromeHidden(true);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
