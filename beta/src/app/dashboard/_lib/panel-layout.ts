@@ -28,9 +28,14 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 252 + progress * (272 - 252);
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      if (vp >= BREAKPOINTS.RIGHT_PANEL_MIN) {
+        const available = vp - leftW;
+        const rightW = Math.max(344, Math.min(659, available - 760));
+        const centerW = available - rightW;
+        return { leftW, centerW, rightW, centerMaxW: centerW, wrapperMargin: 0 };
+      }
       const centerW = Math.min(792, 644 + progress * (792 - 644));
-      return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
+      return { leftW, centerW, rightW: 0, centerMaxW: centerW, wrapperMargin: 0 };
     }
     // TABLET (760–935px): Left sidebar only
     if (vp >= BREAKPOINTS.MOBILE) {
@@ -59,9 +64,14 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 252 + progress * (272 - 252);
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      if (vp >= BREAKPOINTS.RIGHT_PANEL_MIN) {
+        const available = vp - leftW;
+        const rightW = Math.max(344, Math.min(659, available - 760));
+        const centerW = available - rightW;
+        return { leftW, centerW, rightW, centerMaxW: centerW, wrapperMargin: 0 };
+      }
       const centerW = Math.min(792, 644 + progress * (792 - 644));
-      return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
+      return { leftW, centerW, rightW: 0, centerMaxW: centerW, wrapperMargin: 0 };
     }
     // TABLET (760–935px): Left sidebar only
     if (vp >= BREAKPOINTS.MOBILE) {
