@@ -6,14 +6,19 @@ import { Separator } from "@/components/ui/separator";
 import { MiniChart } from "../_components/overview/mini-chart";
 import { formatPrice, getSparklineColor } from "../_lib/format";
 
-export function SectionHeader({ title, rightButtons = [], className = "" }: {
+export function SectionHeader({ title, titleAfter, rightButtons = [], className = "" }: {
   title: string;
+  titleAfter?: React.ReactNode;
   rightButtons?: React.ReactNode[];
   className?: string;
 }) {
   return (
     <div className={`flex items-center justify-between py-2 ${className}`}>
-      <span className="text-[16px] font-medium text-foreground">{title}</span>
+      {/* GF "목록 ▾": 24px/400 title with the list-selector caret inline. */}
+      <div className="flex items-center gap-0.5 min-w-0">
+        <span className="text-[24px] font-normal text-foreground truncate">{title}</span>
+        {titleAfter}
+      </div>
       <div className="flex items-center gap-0.5 shrink-0">
         {rightButtons}
       </div>

@@ -133,7 +133,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       <div className="sticky top-0 z-10 bg-white flex items-center justify-between px-4 py-2.5 border-b border-border">
         <span
           id="gf-leftnav-title"
-          className="gf-sidebar__title text-[20px] font-semibold text-foreground cursor-pointer"
+          className="gf-sidebar__title text-[24px] font-normal text-foreground cursor-pointer"
           onClick={cycleMode}
           role="heading"
           aria-level={1}
@@ -188,10 +188,12 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       <SectionHeader
         title="목록"
         className="sticky top-0 z-10 bg-white px-6"
-        rightButtons={[
-          <Button key="dropdown" variant="ghost" size="icon" aria-label="목록 선택">
+        titleAfter={
+          <Button variant="ghost" size="icon" aria-label="목록 선택" className="h-6 w-6">
             <ChevronDown className="w-4 h-4 text-muted-foreground" />
-          </Button>,
+          </Button>
+        }
+        rightButtons={[
           <Button key="newList" variant="ghost" size="icon" className="p-2" aria-label="새 목록"><Plus className="w-4 h-4 text-muted-foreground" /></Button>,
           <Button key="expand" variant="ghost" size="icon" className="p-2" onClick={cycleMode} aria-label={sidebarMode === "expanded" ? "축소" : sidebarMode === "normal" ? "접기" : "펼치기"}>
             {sidebarMode === "expanded" ? <Minimize2 className="w-4 h-4 text-muted-foreground" /> : <Maximize2 className="w-4 h-4 text-muted-foreground" />}
