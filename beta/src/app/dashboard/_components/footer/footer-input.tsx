@@ -13,9 +13,9 @@ const ROTATING_QUESTIONS = [
   "관심 목록에 대한 최신 통계는 어떤가요?",
 ];
 
-export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQuery: string; setSearchQuery: (v: string) => void; onSubmit?: (text: string) => void }) {
+export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = false }: { searchQuery: string; setSearchQuery: (v: string) => void; onSubmit?: (text: string) => void; autoOpen?: boolean }) {
   const [inputText, setInputText] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(autoOpen);
   const [questionIdx, setQuestionIdx] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setQuestionIdx((i) => (i + 1) % ROTATING_QUESTIONS.length), 4000);
@@ -131,6 +131,7 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit }: { searchQ
             onFocus={() => setIsFocused(true)}
             onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && hasValue && onSubmit) { e.preventDefault(); onSubmit(inputText); setInputText(''); setIsFocused(false); } }}
+            autoFocus={autoOpen}
             rows={1} wrap="off" placeholder={isFocused || inputText ? "이 내용에 관해 질문하거나 검색하세요" : ROTATING_QUESTIONS[questionIdx]}
             className="gf-footer__search-input flex-1 min-w-0 bg-transparent text-[14px] text-foreground outline-none resize-none min-h-0 h-7 max-h-32 py-0 leading-7 placeholder-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 [&::-webkit-scrollbar]:hidden" />
           <div className="flex items-center gap-1.5 shrink-0">

@@ -237,10 +237,16 @@ html {
   }
   body {
     @apply bg-background text-foreground;
-    overflow: hidden;
   }
   html {
     @apply font-sans;
-    overflow: hidden;
+  }
+  /* Desktop/tablet (>=768) use a fixed app-shell with inner scroll; mobile
+     scrolls the document, so only lock page overflow at >=768. */
+  @media (min-width: 768px) {
+    html,
+    body {
+      overflow: hidden;
+    }
   }
 }

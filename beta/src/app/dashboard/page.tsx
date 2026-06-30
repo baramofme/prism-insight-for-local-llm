@@ -37,6 +37,8 @@ export default function DashboardPage() {
   const [centerTab, setCenterTab] = useState<"home" | "research">("home");
   // Mobile (<=766): hide the header + collapse the research sheet on scroll down.
   const [chromeHidden, setChromeHidden] = useState(false);
+  // Mobile (<=766): tapping the sheet's input opens the shared search modal.
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -137,7 +139,7 @@ export default function DashboardPage() {
           collapsed={chromeHidden}
         />
 
-        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-[124px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
+        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
           <NavigationPanel id="" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
           {vp >= BREAKPOINTS.MOBILE && <NavigationPanel id="gf-left-nav" centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
@@ -194,7 +196,7 @@ export default function DashboardPage() {
           )}
         </div>
 
-        <footer id="gf-footer" className="gf-footer border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 pb-[80px] max-w-[1820px] mx-auto w-full">
+        <footer id="gf-footer" className="gf-footer border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 md:pb-[80px] pb-[134px] max-w-[1820px] mx-auto w-full">
           {/* GF footer: single 32px line — disclaimer left, links right, no wrap. */}
           <div className="flex items-center justify-between gap-x-4 text-xs text-muted-foreground whitespace-nowrap">
             <div id="gf-footer-disclaimer" className="gf-footer__disclaimer flex items-center gap-1 min-w-0">
@@ -217,7 +219,16 @@ export default function DashboardPage() {
         </footer>
                 {/* <=766px: GF's draggable 조사 bottom sheet. 767–1023px (tablet): the
                     compact chat bar. >=1024px: the docked research side panel. */}
-                <ResearchBottomSheet collapsed={chromeHidden} onSubmit={handleFooterSubmit} />
+                <ResearchBottomSheet collapsed={chromeHidden} onOpenSearch={() => setSearchOpen(true)} onSubmit={(t) => { handleFooterSubmit(t); setSearchOpen(false); }} />
+                {/* <=766px: tapping the sheet input opens the search modal (the same
+                    popover as the tablet chat bar, anchored to the bottom). */}
+                {searchOpen && (
+                  <div className="md:hidden fixed inset-0 z-[60] bg-black/10" onClick={() => setSearchOpen(false)}>
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <FooterInput autoOpen searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={(t) => { handleFooterSubmit(t); setSearchOpen(false); }} />
+                    </div>
+                  </div>
+                )}
                 <div className="hidden md:block lg:hidden">
                   <FooterInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleFooterSubmit} />
                 </div>

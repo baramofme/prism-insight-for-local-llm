@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { PenSquare, ScrollText, X, Maximize2, Search, Globe, Plus, ArrowUp } from "lucide-react";
+import { PenSquare, ScrollText, X, Maximize2, Search, Globe, Plus } from "lucide-react";
 
 const QUESTIONS = [
   "오늘 시장 현황이 어떤가요?",
@@ -11,20 +11,22 @@ const QUESTIONS = [
 
 /**
  * GF mobile (<=766px) research surface: a draggable bottom sheet.
- *  - peek      : drag handle + 조사 header + input
- *  - thin      : drag handle + input only (when the page is scrolled down)
- *  - expanded  : full panel (greeting / suggested questions / actions) + input
- * Drag the handle up/down (or tap) to expand/collapse.
+ *  - peek      : drag handle + 조사 header + input trigger
+ *  - thin      : drag handle + input trigger only (when the page is scrolled down)
+ *  - expanded  : full panel (greeting / suggested questions / actions) + input trigger
+ * Drag the handle up/down (or tap) to expand/collapse. Tapping the input trigger
+ * (in any state) opens the shared search modal rather than expanding the sheet.
  */
 export function ResearchBottomSheet({
   collapsed = false,
+  onOpenSearch,
   onSubmit,
 }: {
   collapsed?: boolean; // page scrolled down → collapse to the thin input bar
+  onOpenSearch?: () => void; // tap the input trigger → open the search modal
   onSubmit?: (text: string) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [text, setText] = useState("");
   const startY = useRef(0);
 
   // Scrolled-down collapses to the thin bar unless the user expanded it.
@@ -39,14 +41,6 @@ export function ResearchBottomSheet({
     if (dy < -30) setExpanded(true);
     else if (dy > 30) setExpanded(false);
     else setExpanded((v) => !v);
-  };
-
-  const send = (q?: string) => {
-    const v = (q ?? text).trim();
-    if (!v) return;
-    onSubmit?.(v);
-    setText("");
-    setExpanded(false);
   };
 
   return (
@@ -86,7 +80,7 @@ export function ResearchBottomSheet({
           <div className="text-[15px] text-foreground mb-5 leading-relaxed"><span className="font-medium">JIHOON</span>님, 안녕하세요. 금융 관련 질문을 해 보세요.</div>
           <div className="space-y-2 mb-6">
             {QUESTIONS.map((q, i) => (
-              <button key={i} onClick={() => send(q)} className="w-full flex items-center justify-between pl-5 pr-4 py-3 rounded-xl border border-border hover:bg-muted cursor-pointer transition-colors text-left">
+              <button key={i} onClick={() => onSubmit?.(q)} className="w-full flex items-center justify-between pl-5 pr-4 py-3 rounded-xl border border-border hover:bg-muted cursor-pointer transition-colors text-left">
                 <span className="text-[14px] text-foreground">{q}</span>
                 <Search className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </button>
@@ -103,21 +97,17 @@ export function ResearchBottomSheet({
         </div>
       )}
 
-      {/* input — always visible */}
+      {/* input trigger — tapping opens the search modal (never just expands) */}
       <div className={`px-3 shrink-0 ${expanded ? "border-t border-border pt-2 pb-3" : "pt-1 pb-3"}`}>
-        <div className="w-full bg-muted/80 border border-border rounded-full px-4 py-2 flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onOpenSearch}
+          className="w-full bg-muted/80 border border-border rounded-full px-4 py-2.5 flex items-center gap-3 text-left"
+          aria-label="검색하거나 질문하세요"
+        >
           <Search className="w-4 h-4 text-primary shrink-0" />
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onFocus={() => setExpanded(true)}
-            onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); send(); } }}
-            placeholder="검색하거나 질문하세요"
-            className="flex-1 min-w-0 bg-transparent text-[14px] text-foreground outline-none placeholder-muted-foreground"
-            aria-label="검색하거나 질문하세요"
-          />
-          <button onClick={() => send()} disabled={!text.trim()} className={`w-8 h-8 rounded-full flex items-center justify-center text-white transition-colors ${text.trim() ? "bg-primary" : "bg-muted-foreground/30"}`} aria-label="AI에 질문하기"><ArrowUp className="w-4 h-4" /></button>
-        </div>
+          <span className="flex-1 min-w-0 text-[14px] text-muted-foreground truncate">검색하거나 질문하세요</span>
+        </button>
       </div>
     </div>
   );
