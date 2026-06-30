@@ -367,21 +367,21 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
     <aside id="gf-right-panel" ref={panelRef} className={`gf-rightpanel ${isExpanded ? "fixed top-[64px] bottom-0 z-[100] shadow-2xl" : "hidden min-[1040px]:flex flex-shrink-0 self-stretch h-full"} flex-col border-l border-border bg-white transition-all duration-300`}
         style={isExpanded ? { width: rightW ?? 235, right: wrapperMargin ?? 0 } : { width: collapsedWidth ?? 344 }}>
       <div className="flex flex-col flex-1 min-h-0">
-        <div className="flex items-center justify-between pl-6 pr-5 py-3 border-b border-border flex-shrink-0">
-          <h2 id="gf-right-section-title" className="gf-rightpanel__section-title text-[20px] font-semibold text-foreground" role="heading" aria-label="조사">조사</h2>
-          <div className="flex items-center gap-0.5">
-            <button onClick={() => { setMessages([]); setExpandedMsgs(new Set()); setShowHistory(false); }} className="p-1.5 hover:bg-muted rounded-full transition-colors" aria-label="새 대화목록"><PenSquare className="w-4 h-4 text-muted-foreground" /></button>
-            <button onClick={() => setShowHistory(!showHistory)} className="p-1.5 hover:bg-muted rounded-full transition-colors" aria-label="대화목록 기록"><ScrollText className="w-4 h-4 text-muted-foreground" /></button>
-            {isExpanded ? (
-              <button onClick={() => setIsExpanded(false)} className="p-1.5 hover:bg-muted rounded-full transition-colors" aria-label="접기"><X className="w-4 h-4 text-muted-foreground" /></button>
-            ) : (
-              <>
-                <button onClick={() => onClose?.()} className="p-1.5 hover:bg-muted rounded-full transition-colors" aria-label="닫기"><X className="w-4 h-4 text-muted-foreground" /></button>
-                <button onClick={() => setIsExpanded(true)} className="p-1.5 hover:bg-muted rounded-full transition-colors" aria-label="펼치기"><Maximize2 className="w-4 h-4 text-muted-foreground" /></button>
-              </>
-            )}
-          </div>
-        </div>
+        {/* Same shared header as the left-nav (목록): title + right buttons. */}
+        <SectionHeader
+          title="조사"
+          className="flex-shrink-0 border-b border-border bg-white mx-6"
+          rightButtons={[
+            <Button key="new" variant="ghost" size="icon" className="h-6 w-6" onClick={() => { setMessages([]); setExpandedMsgs(new Set()); setShowHistory(false); }} aria-label="새 대화목록"><PenSquare className="w-4 h-4 text-muted-foreground" /></Button>,
+            <Button key="history" variant="ghost" size="icon" className="h-6 w-6" onClick={() => setShowHistory(!showHistory)} aria-label="대화목록 기록"><ScrollText className="w-4 h-4 text-muted-foreground" /></Button>,
+            ...(isExpanded
+              ? [<Button key="collapse" variant="ghost" size="icon" className="h-6 w-6" onClick={() => setIsExpanded(false)} aria-label="접기"><X className="w-4 h-4 text-muted-foreground" /></Button>]
+              : [
+                  <Button key="close" variant="ghost" size="icon" className="h-6 w-6" onClick={() => onClose?.()} aria-label="닫기"><X className="w-4 h-4 text-muted-foreground" /></Button>,
+                  <Button key="expand" variant="ghost" size="icon" className="h-6 w-6" onClick={() => setIsExpanded(true)} aria-label="펼치기"><Maximize2 className="w-4 h-4 text-muted-foreground" /></Button>,
+                ]),
+          ]}
+        />
 
        {showHistory ? (
            <div className="flex-1 overflow-y-auto scroll-hide pl-6 pr-4 py-4">
