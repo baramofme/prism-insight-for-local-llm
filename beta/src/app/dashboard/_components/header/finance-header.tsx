@@ -55,7 +55,7 @@ export function FinanceHeader({
 
   return (
     <header id="gf-header" className="gf-header sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full">
-      <div className="grid items-center px-4 py-2" style={{ gridTemplateColumns: '324px 1fr auto' }}>
+      <div className="grid items-center px-4 min-h-[80px]" style={{ gridTemplateColumns: '324px 1fr auto' }}>
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" className="md:hidden p-2 hover:bg-[#f8f9fa] rounded-full transition-colors">
             <Menu className="w-5 h-5 text-[#5f6368]" />

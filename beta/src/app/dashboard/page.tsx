@@ -116,7 +116,7 @@ export default function DashboardPage() {
           handleStockClick={handleStockClick}
         />
 
-        <div className={`flex flex-1 overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(Math.max(1661, vp + wrapperMargin * 2), 1820), marginInline: 'auto' } : undefined}>
+        <div className={`flex flex-1 overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
           <NavigationPanel id="" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
           {vp >= BREAKPOINTS.MOBILE && <NavigationPanel id="gf-left-nav" centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
@@ -156,14 +156,14 @@ export default function DashboardPage() {
         </div>
 
         <footer id="gf-footer" className="gf-footer border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 pb-[80px] max-w-[1820px] mx-auto w-full">
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-muted-foreground">
-            <Alert id="gf-footer-disclaimer" variant="default" className="gf-footer__disclaimer bg-muted/40 border-none px-3 py-1.5 rounded-md h-auto">
-              <Info className="h-3 w-3 mr-1.5 text-primary" />
-              <AlertDescription className="text-xs">AI 콘텐츠에는 오류가 있을 수 있습니다.</AlertDescription>
-              <a href="#" className="gf-footer__disclaimer-link ml-1 text-primary underline-offset-4 hover:underline">자세히</a>
-            </Alert>
-            <Separator orientation="vertical" className="h-4 mx-1" />
-            <nav id="gf-footer-links" className="gf-footer__links flex flex-wrap items-center gap-x-2 [&>span:last-child]:hidden">
+          {/* GF footer: single 32px line — disclaimer left, links right, no wrap. */}
+          <div className="flex items-center justify-between gap-x-4 text-xs text-muted-foreground whitespace-nowrap">
+            <div id="gf-footer-disclaimer" className="gf-footer__disclaimer flex items-center gap-1 min-w-0">
+              <Info className="h-3 w-3 text-primary shrink-0" />
+              <span className="truncate">AI 콘텐츠에는 오류가 있을 수 있습니다.</span>
+              <a href="#" className="gf-footer__disclaimer-link text-primary underline-offset-4 hover:underline shrink-0">자세히 알아보기</a>
+            </div>
+            <nav id="gf-footer-links" className="gf-footer__links flex items-center gap-x-2 shrink-0 [&>span:last-child]:hidden">
               <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">도움말</Button>
               <span className="gf-footer__link-separator text-muted-foreground/50">·</span>
               <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">의견 보내기</Button>
