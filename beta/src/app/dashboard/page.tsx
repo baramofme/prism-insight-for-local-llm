@@ -132,7 +132,7 @@ export default function DashboardPage() {
               <StockDetail stock={selectedStock} onBack={() => { setMobileView("portfolio"); setSelectedStock(null); }} vp={vp} />
             </div>
           ) : (
-            <div className="flex flex-col flex-1 md:min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+            <div className="flex flex-col flex-1 md:min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
               {/* GF: in the tablet range (768–1040) the research panel folds into a
                   홈/조사 tab at the top of the center column. Below MOBILE the tabs
                   drop and research is reached via the bottom chat bar instead. */}
