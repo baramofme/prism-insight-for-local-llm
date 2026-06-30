@@ -18,8 +18,8 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
   // ── Expanded mode (overlay sidebar): Always show full layout ─────
   if (mode === "expanded") {
     if (vp >= BREAKPOINTS.WIDE) {
-      const leftW = 272;
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const leftW = 300;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE ? 658 : 344;
       const centerW = 792;
       const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
       return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -28,7 +28,7 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 252 + progress * (272 - 252);
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
       const centerW = Math.min(792, 644 + progress * (792 - 644));
       return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
     }
@@ -44,8 +44,8 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
   // ── Normal mode: Full responsive layout ──────────────────────────
   if (mode === "normal") {
     if (vp >= BREAKPOINTS.WIDE) {
-      const leftW = 272;
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const leftW = 300;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE ? 658 : 344;
       const centerW = 792;
       const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
       return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -54,7 +54,7 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 252 + progress * (272 - 252);
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
       const centerW = Math.min(792, 644 + progress * (792 - 644));
       return { leftW, centerW, rightW, centerMaxW: Math.min(792, 644 + progress * (792 - 644)), wrapperMargin: 0 };
     }
@@ -71,7 +71,7 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
   if (mode === "hover") {
     if (vp >= BREAKPOINTS.WIDE) {
       const leftW = 80;
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_B ? 658 : vp >= BREAKPOINTS.DESKTOP_SIDEBAR ? 344 : vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE ? 658 : 344;
       const centerW = 792;
       const wrapperMargin = (vp - Math.min(1800, vp - 48)) / 2;
       return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin };
@@ -80,7 +80,7 @@ export function calcPanelWidths(vp: number, mode: PanelMode): CalcPanelResult {
     if (vp >= BREAKPOINTS.TABLET) {
       const progress = Math.min(1, Math.max(0, (vp - BREAKPOINTS.TABLET) / (BREAKPOINTS.WIDE - BREAKPOINTS.TABLET)));
       const leftW = 80;
-      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_WIDE_A ? 658 : vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
+      const rightW = vp >= BREAKPOINTS.RIGHT_PANEL_MIN ? 344 : 0;
       const centerW = Math.min(792, 644 + progress * (792 - 644));
       return { leftW, centerW, rightW, centerMaxW: 792, wrapperMargin: 0 };
     }
