@@ -58,7 +58,7 @@ export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }
     <Button
       variant="ghost"
       onClick={onStockClick}
-      className="w-full h-auto p-3 hover:bg-muted/50 transition-colors rounded-lg justify-start border-border/40"
+      className="w-full h-auto px-0 py-3 hover:bg-muted/50 transition-colors rounded-lg justify-start border-border/40"
     >
       <div className="text-left truncate min-w-0 flex-1">
         <div className="text-[14px] font-medium text-foreground truncate">{item.name}</div>
@@ -94,8 +94,9 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
     <Collapsible open={isOpen} onOpenChange={onToggleOpen} className="pt-6 pb-4">
       <div className="flex items-center w-full">
         <CollapsibleTrigger className="flex-1 min-w-0">
-          {/* GF group header: 16px/400 title, symmetric 24px inset, mb-8 to content. */}
-          <div className="flex items-center justify-between w-full px-6 mb-2 cursor-pointer">
+          {/* GF group header: 16px/400 title, mb-8 to content. L/R inset comes
+              from the shared groups container, not here. */}
+          <div className="flex items-center justify-between w-full mb-2 cursor-pointer">
             <span className="text-[16px] font-normal text-foreground truncate">{title}</span>
             <span aria-label={isOpen ? "닫기" : "열기"}>
               {isOpen ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
@@ -103,14 +104,15 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
           </div>
         </CollapsibleTrigger>
         {rightButtons.length > 0 && (
-          <div className="flex items-center gap-0.5 shrink-0 pr-6">
+          <div className="flex items-center gap-0.5 shrink-0">
             {rightButtons}
           </div>
         )}
       </div>
       <CollapsibleContent>
-        {/* GF rows: symmetric 24px inset = content px-3 (12) + row p-3 (12). */}
-        <div className="px-3 space-y-0.5">
+        {/* Rows sit flush in the groups container (which provides the 24px
+            inset); no horizontal padding here. */}
+        <div className="space-y-0.5">
           {children}
         </div>
       </CollapsibleContent>

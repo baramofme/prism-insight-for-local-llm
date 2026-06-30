@@ -187,7 +187,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
     <>
       <SectionHeader
         title="목록"
-        className="sticky top-0 z-10 bg-white px-6 border-b border-border"
+        className="sticky top-0 z-10 bg-white mx-6 border-b border-border"
         titleAfter={
           <Button variant="ghost" size="icon" aria-label="목록 선택" className="h-6 w-6">
             <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -201,8 +201,11 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
         ]}
       />
 
+      {/* One container holds all groups; the 24px L/R inset lives here, not on
+          each ListNavigation, so everything aligns at once (GF .UHCxXe). */}
+      <div className="px-6">
       <ListNavigation title="포트폴리오" isOpen={portfolioOpen} onToggleOpen={() => setPortfolioOpen(!portfolioOpen)}>
-        <div id="gf-leftnav-investing" className="gf-sidebar__item p-3 cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
+        <div id="gf-leftnav-investing" className="gf-sidebar__item py-3 cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground mb-0.5">투자중</div>
           {/* GF: amount + change on one line; KRW drops decimals via formatPrice. */}
           <div className="flex items-center gap-1.5 flex-wrap">
@@ -358,6 +361,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
           )
         )}
       </ListNavigation>
+      </div>
     </>
   )}
 </aside>
