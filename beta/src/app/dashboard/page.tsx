@@ -109,7 +109,7 @@ export default function DashboardPage() {
   return (
     <><div id="gf-root" className="gf-root min-h-screen bg-white text-[#1f1f1f]" style={{ colorScheme: "light" }}>
       <style>{`.scroll-hide::-webkit-scrollbar { display: none; } .scroll-hide { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col min-h-screen md:h-screen">
         <FinanceHeader
           searchQuery={searchQuery} setSearchQuery={setSearchQuery}
           showSearchDropdown={showSearchDropdown} setShowSearchDropdown={setShowSearchDropdown}
@@ -118,7 +118,7 @@ export default function DashboardPage() {
           handleStockClick={handleStockClick}
         />
 
-        <div className={`flex flex-1 overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
+        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 pb-[80px] ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
           <NavigationPanel id="" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
           {vp >= BREAKPOINTS.MOBILE && <NavigationPanel id="gf-left-nav" centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
@@ -132,7 +132,7 @@ export default function DashboardPage() {
               <StockDetail stock={selectedStock} onBack={() => { setMobileView("portfolio"); setSelectedStock(null); }} vp={vp} />
             </div>
           ) : (
-            <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+            <div className="flex flex-col flex-1 md:min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
               {/* GF: in the tablet range (768–1040) the research panel folds into a
                   홈/조사 tab at the top of the center column. Below MOBILE the tabs
                   drop and research is reached via the bottom chat bar instead. */}

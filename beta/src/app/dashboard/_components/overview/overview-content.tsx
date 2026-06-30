@@ -33,18 +33,13 @@ export function OverviewContent({
   const displayNews = showMoreNews ? newsItems : newsItems.slice(0, 4);
 
   return (
-    <main id="gf-main" className="gf-main flex-1 overflow-y-auto scroll-hide min-h-0">
+    <main id="gf-main" className="gf-main flex-1 md:overflow-y-auto scroll-hide md:min-h-0">
       <div className="px-3 py-4 max-w-4xl pb-4">
         <div id="gf-main-regiontabs" className="gf-regiontabs flex items-center gap-1.5 mb-4 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [& scrollbar-width:none]">
           {["미국", "유럽", "아시아", "중남미", "통화", "암호화폐", "선물"].map((tab) => (
             <button key={tab} onClick={() => setActiveRegionAction(tab)}
               className={`gf-regiontabs__tab px-3 py-1.5 rounded-full text-[14px] whitespace-nowrap transition-colors ${activeRegion === tab ? "bg-muted text-foreground font-medium" : "text-muted-foreground hover:bg-muted/60"}`}>{tab}</button>
           ))}
-        </div>
-
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[12px] text-[#5f6368]">최신 업데이트: {lastUpdateTime}</span>
-          <span className="text-[12px] text-[#5f6368]">준비 완료</span>
         </div>
 
         {/* Mobile: GF-style horizontal scroll strip (fixed-width cards). Desktop: 5-col grid. */}
