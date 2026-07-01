@@ -205,18 +205,18 @@ export default function DashboardPage() {
             <div id="gf-footer-disclaimer" className="gf-footer__disclaimer flex items-center gap-1 min-w-0">
               <Info className="h-3 w-3 text-primary shrink-0" />
               <span className="truncate">AI 콘텐츠에는 오류가 있을 수 있습니다.</span>
-              <a href="#" className="gf-footer__disclaimer-link text-primary underline-offset-4 hover:underline shrink-0">자세히 알아보기</a>
+              <a href="https://support.google.com/websearch?p=googlefinancebeta" target="_blank" rel="noopener noreferrer" className="gf-footer__disclaimer-link text-primary underline-offset-4 hover:underline shrink-0">자세히 알아보기</a>
             </div>
             <nav id="gf-footer-links" className="gf-footer__links flex items-center gap-x-2 shrink-0 [&>span:last-child]:hidden">
-              <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">도움말</Button>
+              <a href="https://support.google.com/websearch?p=googlefinancebeta" target="_blank" rel="noopener noreferrer" className="gf-footer__link text-xs text-muted-foreground hover:text-foreground hover:underline">도움말</a>
               <span className="gf-footer__link-separator text-muted-foreground/50">·</span>
-              <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">의견 보내기</Button>
+              <button type="button" className="gf-footer__link text-xs text-muted-foreground hover:text-foreground hover:underline">의견 보내기</button>
               <span className="gf-footer__link-separator text-muted-foreground/50">·</span>
-              <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">개인 정보 보호</Button>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="gf-footer__link text-xs text-muted-foreground hover:text-foreground hover:underline">개인 정보 보호</a>
               <span className="gf-footer__link-separator text-muted-foreground/50">·</span>
-              <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">약관</Button>
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="gf-footer__link text-xs text-muted-foreground hover:text-foreground hover:underline">약관</a>
               <span className="gf-footer__link-separator text-muted-foreground/50">·</span>
-              <Button variant="link" className="gf-footer__link h-auto p-0 text-xs text-muted-foreground hover:text-foreground">면책 조항</Button>
+              <a href="https://www.google.com/googlefinance/disclaimer/" target="_blank" rel="noopener noreferrer" className="gf-footer__link text-xs text-muted-foreground hover:text-foreground hover:underline">면책 조항</a>
             </nav>
           </div>
         </footer>
