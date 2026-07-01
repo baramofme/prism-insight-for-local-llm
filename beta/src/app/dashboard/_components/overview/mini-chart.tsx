@@ -17,8 +17,8 @@ export function MiniChart({ data, color, prevClose, fillWidth, small }: { data: 
   const areaPath = `${linePath} L${pts[pts.length - 1].x},${h - pad} L${pts[0].x},${h - pad} Z`;
   const gradient = (
     <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor={color} stopOpacity="0.85" />
-      <stop offset="100%" stopColor={color} stopOpacity="0.45" />
+      <stop offset="0%" stopColor={color} stopOpacity="0.35" />
+      <stop offset="100%" stopColor={color} stopOpacity="0" />
     </linearGradient>
   );
   return (

@@ -21,7 +21,7 @@ export function IndexCard({
   const absStr = absChange.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const color = item.isPositive ? "var(--gf-up)" : "var(--gf-down)";
   return (
-    <Card id="gf-index-card" onClick={onClick} role={onClick ? "button" : undefined} aria-label={onClick ? `${item.name} 상세` : undefined} className="gf-index-card px-3 py-3 cursor-pointer hover:bg-muted/50 transition-colors overflow-hidden border-border/40">
+    <Card id="gf-index-card" onClick={onClick} role={onClick ? "button" : undefined} aria-label={onClick ? `${item.name} 상세` : undefined} className="gf-index-card px-3 py-3 bg-muted/50 dark:bg-card cursor-pointer hover:bg-muted/80 dark:hover:bg-muted/40 transition-colors overflow-hidden border-transparent">
       <CardContent className="p-0">
         <div className="gf-index-card__name text-[14px] font-semibold text-foreground truncate mb-1">{item.name}</div>
         <div className="gf-index-card__value text-[12px] text-muted-foreground tabular-nums">{item.value}</div>
