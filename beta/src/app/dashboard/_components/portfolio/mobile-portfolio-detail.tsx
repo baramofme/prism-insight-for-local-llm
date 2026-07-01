@@ -113,7 +113,7 @@ function PortfolioChart({
   }, [compareAssets, allAssetData, interval, isZeroAnchor]);
 
   const commonOptions = useMemo(() => ({
-    layout: { background: { type: ColorType.Solid, color: 'transparent' } as any, textColor: 'hsl(var(--muted-foreground))' },
+    layout: { background: { type: ColorType.Solid, color: 'transparent' } as any, textColor: '#6b7280' },
     height: 192,
     timeScale: { visible: false } as any,
     rightPriceScale: { visible: true, scaleMargins: { top: 0.1, bottom: 0.05 }, mode: 2 as any, borderColor: 'var(--border)' },
@@ -306,7 +306,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
   }, [chartReady, initLineTools]);
 
   const portfolioData = useDeterministicSparkline(19653380);
-  const portfolioColor = "hsl(var(--primary))";
+  const portfolioColor = "#1a73e8";
 
   const holdings = useMemo(() => [
     { ticker: "329180", name: "HD현대중공업", price: "₩667,000", change: "-2.49%", positive: false, qty: 10, total: "₩6,670,000" },
@@ -349,8 +349,8 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
   ];
 
   const assetColorMap: Record<string, string> = {
-    "005930": "var(--gf-up)", "SPY": "hsl(var(--primary))", "000660": "#FF9500", "NVDA": "var(--gf-down)",
-    "329180": "hsl(var(--primary))", "006800": "bg-purple-800", "009150": "bg-red-700",
+    "005930": "#FF4B4B", "SPY": "#1a73e8", "000660": "#FF9500", "NVDA": "#1a73e8",
+    "329180": "#1a73e8", "006800": "#6b21a8", "009150": "#b91c1c",
   };
 
   const filteredSuggestions = searchQuery.trim()
@@ -359,7 +359,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
 
   const allCompareData = useMemo(() => {
     const items = [
-      { id: 'portfolio', ticker: '투자중', name: '내 자산 포트폴리오', price: '$19,653,380', changeValue: '+453,120', changePercent: '+2.36%', positive: true, color: '#FF9500' },
+      { id: 'portfolio', ticker: '투자중', name: '내 자산 포트폴리오', price: '₩19,653,380', changeValue: '+453,120', changePercent: '+2.36%', positive: true, color: '#FF9500' },
       ...compareAssets.map(a => {
         const s = tickerSuggestions.find(t => t.id === a.id);
         return { id: a.id, ticker: a.id, name: s?.label || a.id, price: s?.price || '—', changeValue: s?.change || '—', changePercent: s?.change || '—', positive: s?.positive ?? true, color: a.color };
@@ -388,12 +388,12 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           <div className="px-4 pt-4 pb-2">
             <div className="text-[16px] font-semibold text-foreground mb-1">투자중</div>
             <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-[28px] font-bold text-foreground tabular-nums whitespace-nowrap">$19,653,380.00</span>
+              <span className="text-[28px] font-bold text-foreground tabular-nums whitespace-nowrap">₩19,653,380.00</span>
               <div className="flex items-center gap-1 text-[14px] text-[var(--gf-up)] font-medium whitespace-nowrap">
                 <ArrowUpRight className="w-3.5 h-3.5" />
                 <span>+2.36%</span>
               </div>
-              <span className="text-[14px] text-muted-foreground whitespace-nowrap">(+$453,120.00) {period}</span>
+              <span className="text-[14px] text-muted-foreground whitespace-nowrap">(+₩453,120.00) {period}</span>
             </div>
             <div className="text-[12px] text-muted-foreground mt-1">6월 20일, 오전 9시 0분 0초 UTC · KRW</div>
           </div>
@@ -479,8 +479,10 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
             </div>
           </div>
 
-          {/* Drawing toolbar — accordion sections */}
-          <div className="flex items-center justify-center gap-0 px-3 py-1.5 overflow-x-auto scroll-hide border-t border-border">
+          {/* Drawing toolbar — hidden to match GF's clean chart (GF shows only the
+              영역/비교 controls, not a drawing toolbar). Kept mounted so the chart's
+              draw-tool refs stay valid. */}
+          <div className="hidden px-3 py-1.5 overflow-x-auto scroll-hide border-t border-border">
             {/* Section: Lines */}
             <div className="flex items-center gap-0.5 mr-1">
               <button onClick={() => setOpenSection(openSection === 'lines' ? null : 'lines')}
