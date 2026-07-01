@@ -8,10 +8,11 @@ import { MiniChart } from "./mini-chart";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function IndexCard({
-  item, vp,
+  item, vp, onClick,
 }: {
   item: { name: string; value: string; change: string; isPositive: boolean; basePrice: number };
   vp: number;
+  onClick?: () => void;
 }) {
   const sp = useDeterministicSparkline(item.basePrice);
   const numVal = parseFloat(item.value.replace(/,/g, ''));
@@ -20,7 +21,7 @@ export function IndexCard({
   const absStr = absChange.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const color = item.isPositive ? "#0E9E4B" : "#FF4B4B";
   return (
-    <Card id="gf-index-card" className="gf-index-card px-3 py-3 cursor-pointer hover:bg-muted/50 transition-colors overflow-hidden border-border/40">
+    <Card id="gf-index-card" onClick={onClick} role={onClick ? "button" : undefined} aria-label={onClick ? `${item.name} 상세` : undefined} className="gf-index-card px-3 py-3 cursor-pointer hover:bg-muted/50 transition-colors overflow-hidden border-border/40">
       <CardContent className="p-0">
         <div className="gf-index-card__name text-[14px] font-semibold text-foreground truncate mb-1">{item.name}</div>
         <div className="gf-index-card__value text-[12px] text-muted-foreground tabular-nums">{item.value}</div>

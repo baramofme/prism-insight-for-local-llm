@@ -7,7 +7,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function NewsItem({ item }: { item: { id: number; title: string; source: string; time: string; icon: string } }) {
   const Icon = item.icon === "Newspaper" ? Newspaper : Globe;
+  // Mock news has no source URL; open a search for the headline like GF opens
+  // the article. Kept as a real link so it's keyboard-accessible.
+  const href = `https://news.google.com/search?q=${encodeURIComponent(item.title)}`;
   return (
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={item.title} className="block">
     <Card className="gf-news__item hover:bg-muted/50 transition-colors cursor-pointer border-border/60 overflow-hidden">
       <CardContent className="p-3">
         <div className="flex gap-3">
@@ -28,5 +32,6 @@ export function NewsItem({ item }: { item: { id: number; title: string; source: 
         </div>
       </CardContent>
     </Card>
+    </a>
   );
 }

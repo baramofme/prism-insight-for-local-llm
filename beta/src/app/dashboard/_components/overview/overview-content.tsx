@@ -9,7 +9,7 @@ import { mostActiveStocks, gainers, losers } from "../../_data/stocks";
 import { BREAKPOINTS } from "@/lib/breakpoints";
 
 export function OverviewContent({
-  activeRegion, setActiveRegionAction, vp, showMoreNews, setShowMoreNewsAction, _sidebarMode, _leftW, _centerLeftMargin,
+  activeRegion, setActiveRegionAction, vp, showMoreNews, setShowMoreNewsAction, _sidebarMode, _leftW, _centerLeftMargin, onStockClick,
 }: {
   activeRegion: string;
   setActiveRegionAction: React.Dispatch<React.SetStateAction<string>>;
@@ -19,6 +19,7 @@ export function OverviewContent({
   _sidebarMode: "minimized" | "hover" | "normal" | "expanded";
   _leftW: number;
   _centerLeftMargin: number;
+  onStockClick?: (stock: import("../../_lib/types").Stock) => void;
 }) {
   const lastUpdateTime = useMemo(() => {
     const d = new Date();
@@ -46,7 +47,13 @@ export function OverviewContent({
         <div id="gf-main-index-grid" className={`gf-index-grid mb-6 ${vp < BREAKPOINTS.MOBILE ? "flex gap-2 overflow-x-auto scroll-hide" : "grid grid-cols-5 gap-2"}`}>
           {currentIndices.slice(0, 5).map((item) => (
             <div key={item.name} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[104px] sm:w-[130px]" : ""}>
-              <IndexCard item={item} vp={vp} />
+              <IndexCard item={item} vp={vp} onClick={onStockClick ? () => onStockClick({
+                ticker: item.name, name: item.name,
+                price: parseFloat(item.value.replace(/,/g, "")),
+                qty: 0, dailyProfit: 0,
+                dailyProfitPercent: parseFloat(item.change.replace("%", "")),
+                positive: item.isPositive, totalAmount: 0, transactions: [],
+              }) : undefined} />
             </div>
           ))}
         </div>

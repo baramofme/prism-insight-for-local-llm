@@ -177,6 +177,7 @@ export default function DashboardPage() {
                   activeRegion={activeRegion} setActiveRegionAction={setActiveRegion}
                   vp={vp} showMoreNews={showMoreNews} setShowMoreNewsAction={setShowMoreNews}
                   _sidebarMode={sidebarMode} _leftW={leftW} _centerLeftMargin={centerLeftMargin}
+                  onStockClick={handleStockClick}
                 />
               )}
             </div>
