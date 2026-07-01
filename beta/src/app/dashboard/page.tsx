@@ -40,6 +40,20 @@ export default function DashboardPage() {
   // Price color system (settings menu): 현지 시장 = 상승 red/하락 blue (default),
   // 국제 = 상승 green/하락 red. Drives --gf-up/--gf-down via a class on #gf-root.
   const [priceColor, setPriceColor] = useState<"local" | "intl">("local");
+  // Theme: system (follow OS) / dark / light. Toggles the `dark` class on <html>
+  // so the .dark token overrides (globals.css) apply across the app.
+  const [theme, setTheme] = useState<"system" | "dark" | "light">("system");
+  const [isDark, setIsDark] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const apply = () => {
+      const dark = theme === "dark" || (theme === "system" && mq.matches);
+      document.documentElement.classList.toggle("dark", dark);
+      setIsDark(dark);
+    };
+    apply();
+    if (theme === "system") { mq.addEventListener("change", apply); return () => mq.removeEventListener("change", apply); }
+  }, [theme]);
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -131,7 +145,7 @@ export default function DashboardPage() {
   const centerLeftMargin = 0;
 
   return (
-    <><div id="gf-root" className="gf-root min-h-screen bg-white text-[#1f1f1f]" style={{ colorScheme: "light", ["--gf-up" as string]: priceColor === "intl" ? "#0E9E4B" : "#FF4B4B", ["--gf-down" as string]: priceColor === "intl" ? "#FF4B4B" : "#1a73e8" } as React.CSSProperties}>
+    <><div id="gf-root" className="gf-root min-h-screen bg-background text-foreground" style={{ colorScheme: isDark ? "dark" : "light", ["--gf-up" as string]: priceColor === "intl" ? "#0E9E4B" : "#FF4B4B", ["--gf-down" as string]: priceColor === "intl" ? "#FF4B4B" : "#1a73e8" } as React.CSSProperties}>
       <style>{`.scroll-hide::-webkit-scrollbar { display: none; } .scroll-hide { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div className="flex flex-col min-h-screen md:h-screen">
         <FinanceHeader
@@ -144,6 +158,8 @@ export default function DashboardPage() {
           onMenuClick={() => setSidebarOpen(true)}
           priceColor={priceColor}
           setPriceColor={setPriceColor}
+          theme={theme}
+          setTheme={setTheme}
         />
 
         <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
@@ -190,10 +206,10 @@ export default function DashboardPage() {
 
           {vp >= BREAKPOINTS.RIGHT_PANEL_MIN && researchPanelVisible && <ResearchPanel centerBounds={centerBounds} collapsedWidth={rightW} expanded={researchPanelExpanded} setExpanded={handleResearchPanelToggle} wrapperMargin={wrapperMargin} rightW={rightW} onClose={() => setResearchPanelVisible(false)} />}
           {rightW > 0 && !researchPanelVisible && (
-            <div className="flex-shrink-0 self-stretch flex flex-col border-l border-[#e8eaed] bg-white">
+            <div className="flex-shrink-0 self-stretch flex flex-col border-l border-[var(--border)] bg-card">
               <button
                 onClick={() => setResearchPanelVisible(true)}
-                className="flex items-center gap-1.5 px-3 py-2 text-[13px] text-[#5f6368] hover:bg-[#f8f9fa] transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 text-[13px] text-[var(--muted-foreground)] hover:bg-[var(--muted)] transition-colors"
                 aria-label="조사 패널 열기"
                 title="조사 패널 열기"
               >
@@ -204,7 +220,7 @@ export default function DashboardPage() {
           )}
         </div>
 
-        <footer id="gf-footer" className="gf-footer border-t border-border bg-white py-2.5 px-4 lg:pb-2.5 md:pb-[80px] pb-[134px] max-w-[1820px] mx-auto w-full">
+        <footer id="gf-footer" className="gf-footer border-t border-border bg-card py-2.5 px-4 lg:pb-2.5 md:pb-[80px] pb-[134px] max-w-[1820px] mx-auto w-full">
           {/* GF footer: single 32px line — disclaimer left, links right, no wrap. */}
           <div className="flex items-center justify-between gap-x-4 text-xs text-muted-foreground whitespace-nowrap">
             <div id="gf-footer-disclaimer" className="gf-footer__disclaimer flex items-center gap-1 min-w-0">

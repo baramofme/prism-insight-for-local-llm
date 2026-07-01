@@ -144,7 +144,7 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
   const portfolioEData = useDeterministicSparkline(19653380);
 
   return isEmbedded ? (
-    <div id="gf-right-panel" ref={panelRef} className="gf-rightpanel flex flex-col flex-1 min-h-0 bg-white">
+    <div id="gf-right-panel" ref={panelRef} className="gf-rightpanel flex flex-col flex-1 min-h-0 bg-card">
       {isExpanded ? (
         <>
           <div className="flex items-center justify-between px-5 py-3 border-b border-border flex-shrink-0">
@@ -321,7 +321,7 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
             </>
           ) : (
             <>
-              <style>{`.chat-scrollbar::-webkit-scrollbar { width: 15px; } .chat-scrollbar::-webkit-scrollbar-track { background: transparent; } .chat-scrollbar::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 8px; border: 3px solid transparent; background-clip: content-box; } .chat-scrollbar::-webkit-scrollbar-thumb:hover { background: #bdc1c6; background-clip: content-box; }`}</style>
+              <style>{`.chat-scrollbar::-webkit-scrollbar { width: 15px; } .chat-scrollbar::-webkit-scrollbar-track { background: transparent; } .chat-scrollbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; border: 3px solid transparent; background-clip: content-box; } .chat-scrollbar::-webkit-scrollbar-thumb:hover { background: #bdc1c6; background-clip: content-box; }`}</style>
               <div className="space-y-5">
                 {messages.map((msg, i) => (
                   msg.role === "user" ? (
@@ -365,13 +365,13 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
       )}
     </div>
   ) : (
-    <aside id="gf-right-panel" ref={panelRef} className={`gf-rightpanel ${isExpanded ? "fixed top-[64px] bottom-0 z-[100] shadow-2xl" : "hidden min-[1040px]:flex flex-shrink-0 self-stretch h-full"} flex-col border-l border-border bg-white transition-all duration-300`}
+    <aside id="gf-right-panel" ref={panelRef} className={`gf-rightpanel ${isExpanded ? "fixed top-[64px] bottom-0 z-[100] shadow-2xl" : "hidden min-[1040px]:flex flex-shrink-0 self-stretch h-full"} flex-col border-l border-border bg-card transition-all duration-300`}
         style={isExpanded ? { width: rightW ?? 235, right: wrapperMargin ?? 0 } : { width: collapsedWidth ?? 344 }}>
       <div className="flex flex-col flex-1 min-h-0">
         {/* Same shared header as the left-nav (목록): title + right buttons. */}
         <SectionHeader
           title="조사"
-          className="flex-shrink-0 border-b border-border bg-white mx-6"
+          className="flex-shrink-0 border-b border-border bg-card mx-6"
           rightButtons={[
             <Button key="new" variant="ghost" size="icon" className="h-6 w-6" onClick={() => { setMessages([]); setExpandedMsgs(new Set()); setShowHistory(false); }} aria-label="새 대화목록"><PenSquare className="w-4 h-4 text-muted-foreground" /></Button>,
             <Button key="history" variant="ghost" size="icon" className="h-6 w-6" onClick={() => setShowHistory(!showHistory)} aria-label="대화목록 기록"><ScrollText className="w-4 h-4 text-muted-foreground" /></Button>,
@@ -422,7 +422,7 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
           </div>
         ) : (
           <div className="flex flex-col flex-1 min-h-0">
-            <style>{`.chat-scrollbar::-webkit-scrollbar { width: 15px; } .chat-scrollbar::-webkit-scrollbar-track { background: transparent; } .chat-scrollbar::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 8px; border: 3px solid transparent; background-clip: content-box; } .chat-scrollbar::-webkit-scrollbar-thumb:hover { background: #bdc1c6; background-clip: content-box; }`}</style>
+            <style>{`.chat-scrollbar::-webkit-scrollbar { width: 15px; } .chat-scrollbar::-webkit-scrollbar-track { background: transparent; } .chat-scrollbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; border: 3px solid transparent; background-clip: content-box; } .chat-scrollbar::-webkit-scrollbar-thumb:hover { background: #bdc1c6; background-clip: content-box; }`}</style>
             <div ref={chatContainerRef} className="flex-1 pl-6 pr-4 py-4 overflow-y-auto chat-scrollbar" style={{ scrollbarWidth: 'auto' }}>
              <div className="space-y-5">
                {messages.map((msg, i) => (
@@ -461,7 +461,7 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
                <div className="relative">
                  <Button variant="ghost" size="icon" aria-label="도구 추가" onClick={() => setToolsOpen(!toolsOpen)}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
                  {toolsOpen && (
-                   <div className="absolute bottom-full left-0 mb-2 w-52 bg-white border border-border rounded-xl shadow-lg z-50 p-1">
+                   <div className="absolute bottom-full left-0 mb-2 w-52 bg-card border border-border rounded-xl shadow-lg z-50 p-1">
                      {[["파일 업로드", "upload_file"], ["포트폴리오 만들기", "bar_chart"], ["Deep Search", "travel_explore"]].map(([label]) => (
                        <button key={label} onClick={() => { setToolsOpen(false); if (label !== "파일 업로드") handleSend(label as string); }} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted rounded-lg transition-colors">{label}</button>
                      ))}

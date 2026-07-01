@@ -48,7 +48,7 @@ export function ResearchBottomSheet({
 
   return (
     <div
-      className={`gf-research-sheet block md:hidden fixed inset-x-0 bottom-0 z-50 bg-white border-t border-border rounded-t-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.10)] flex flex-col transition-[height] duration-300 ease-out ${expanded ? "h-[88vh]" : "h-auto"}`}
+      className={`gf-research-sheet block md:hidden fixed inset-x-0 bottom-0 z-50 bg-card border-t border-border rounded-t-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.10)] flex flex-col transition-[height] duration-300 ease-out ${expanded ? "h-[88vh]" : "h-auto"}`}
     >
       {/* drag handle */}
       <div

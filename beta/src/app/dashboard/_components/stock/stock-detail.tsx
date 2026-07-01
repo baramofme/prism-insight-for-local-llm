@@ -253,7 +253,7 @@ export function StockDetail({
 
       {/* Top Tabs — visible at MOBILE/TABLET (vp < DESKTOP), hidden at DESKTOP+ */}
       {vp < BREAKPOINTS.DESKTOP && (
-        <div id="gf-main-toptabs" className="gf-toptabs flex items-center border-b border-border flex-shrink-0 bg-white">
+        <div id="gf-main-toptabs" className="gf-toptabs flex items-center border-b border-border flex-shrink-0 bg-card">
           <button
             onClick={() => setActiveContentTab("개요")}
             id="gf-toptabs-stock"
@@ -332,7 +332,7 @@ export function StockDetail({
                  )}
                </button>
                {chartType !== "area" && (
-                 <div className="hidden group-hover:block absolute top-full left-0 mt-1 bg-white border border-border rounded-xl shadow-lg z-30 py-1 min-w-[100px]">
+                 <div className="hidden group-hover:block absolute top-full left-0 mt-1 bg-card border border-border rounded-xl shadow-lg z-30 py-1 min-w-[100px]">
                    {[
                      { key: "area" as const, label: "영역" },
                      { key: "line" as const, label: "선형" },
@@ -486,7 +486,7 @@ export function StockDetail({
                       { label: "유통 주식수", value: "12억" },
                       { label: "직원 수", value: "1만 8천명" },
                     ].map(m => (
-                      <div key={m.label} className="gf-metrics__cell bg-white p-3">
+                      <div key={m.label} className="gf-metrics__cell bg-card p-3">
                         <div className="gf-metrics__label text-[11px] text-muted-foreground mb-0.5">{m.label}</div>
                         <div className="gf-metrics__value text-[14px] font-semibold text-foreground tabular-nums">{m.value}</div>
                       </div>
@@ -499,7 +499,7 @@ export function StockDetail({
                   <h3 className="gf-related__title text-[15px] font-bold text-foreground mb-3">관련 주식</h3>
                   <div id="gf-related-grid" className="gf-related__grid grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {relatedStocks.map(rs => (
-                      <div key={rs.ticker} className="gf-related__card bg-white rounded-lg p-3 border border-border hover:bg-muted transition-all cursor-pointer">
+                      <div key={rs.ticker} className="gf-related__card bg-card rounded-lg p-3 border border-border hover:bg-muted transition-all cursor-pointer">
                         <div className="flex items-center justify-between mb-1.5">
                           <div className="min-w-0 flex-1">
                             <div className="gf-related__name text-[14px] font-medium text-foreground truncate">{rs.name}</div>
@@ -524,7 +524,7 @@ export function StockDetail({
                   <ItemGroup id="gf-news-list" className="gf-news__list divide-y divide-border">
                     {newsItems.map((item, idx) => (
                       <Item key={idx} className="gf-news__item cursor-pointer rounded-none px-3 hover:bg-muted">
-                        <ItemMedia variant="icon" className="gf-news__icon border border-border bg-white">
+                        <ItemMedia variant="icon" className="gf-news__icon border border-border bg-card">
                           <Newspaper className="w-4 h-4 text-muted-foreground" />
                         </ItemMedia>
                         <ItemContent className="gf-news__content gap-1">
@@ -611,7 +611,7 @@ export function StockDetail({
       {/* Trade Modal — accessible via "매매 기록" button in header */}
       {tradeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setTradeModal(false)}>
-          <div className="bg-white rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-[15px] font-bold text-foreground">
                 {tradeType === "buy" ? "매수" : "매도"} 기록

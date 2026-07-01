@@ -22,6 +22,8 @@ export function FinanceHeader({
   onMenuClick,
   priceColor,
   setPriceColor,
+  theme,
+  setTheme,
 }: {
   searchQuery: string;
   setSearchQuery: (v: string) => void;
@@ -38,12 +40,12 @@ export function FinanceHeader({
   onMenuClick?: () => void;
   priceColor: "local" | "intl";
   setPriceColor: (v: "local" | "intl") => void;
+  theme: "system" | "dark" | "light";
+  setTheme: (v: "system" | "dark" | "light") => void;
 }) {
   const searchDropdownRef = useRef<HTMLDivElement>(null);
   const settingsDropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  // GF settings menu selections (visual state; theme/color effects are app-wide TODO).
-  const [theme, setTheme] = useState<"system" | "dark" | "light">("system");
   const [showProfile, setShowProfile] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
 
@@ -67,21 +69,21 @@ export function FinanceHeader({
   );
 
   return (
-    <header id="gf-header" className="gf-header sticky top-0 z-30 bg-white border-b border-[#e8eaed] max-w-[1820px] mx-auto w-full transition-transform duration-300 ease-out will-change-transform" style={collapsed ? { transform: "translateY(-100%)" } : undefined}>
+    <header id="gf-header" className="gf-header sticky top-0 z-30 bg-card border-b border-[var(--border)] max-w-[1820px] mx-auto w-full transition-transform duration-300 ease-out will-change-transform" style={collapsed ? { transform: "translateY(-100%)" } : undefined}>
       <div className="grid items-center px-4 min-h-[60px] md:min-h-[80px]" style={{ gridTemplateColumns: '324px 1fr auto' }}>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={onMenuClick} aria-label="메뉴 열기" className="md:hidden p-2 hover:bg-[#f8f9fa] rounded-full transition-colors">
-            <Menu className="w-5 h-5 text-[#5f6368]" />
+          <Button variant="ghost" size="icon" onClick={onMenuClick} aria-label="메뉴 열기" className="md:hidden p-2 hover:bg-[var(--muted)] rounded-full transition-colors">
+            <Menu className="w-5 h-5 text-[var(--muted-foreground)]" />
           </Button>
-          <a id="gf-header-logo" href="/dashboard" aria-label="Finance 홈" className="gf-header__logo flex items-center gap-1.5 rounded-md hover:bg-[#f8f9fa] px-1 -mx-1 py-0.5 transition-colors">
-            <span className="gf-header__logo-text text-[24px] font-bold text-[#1f1f1f]">Finance</span>
-            <span className="gf-header__beta-badge text-[12px] text-[#5f6368] bg-[#e8eaed] px-1.5 py-0.5 rounded-md font-medium">Beta</span>
+          <a id="gf-header-logo" href="/dashboard" aria-label="Finance 홈" className="gf-header__logo flex items-center gap-1.5 rounded-md hover:bg-[var(--muted)] px-1 -mx-1 py-0.5 transition-colors">
+            <span className="gf-header__logo-text text-[24px] font-bold text-[var(--foreground)]">Finance</span>
+            <span className="gf-header__beta-badge text-[12px] text-[var(--muted-foreground)] bg-[var(--border)] px-1.5 py-0.5 rounded-md font-medium">Beta</span>
           </a>
         </div>
 
         <div id="gf-header-marketnav" className="gf-header__nav hidden min-[1040px]:flex justify-start">
           <div className="relative w-full max-w-xl" ref={searchDropdownRef}>
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5f6368]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted-foreground)]" />
             <input
               ref={searchInputRef}
               type="text"
@@ -93,14 +95,14 @@ export function FinanceHeader({
                 setShowSearchDropdown(true);
               }}
               onFocus={() => setShowSearchDropdown(true)}
-              className="w-full pl-11 pr-4 py-2.5 bg-[#f1f3f4] rounded-full text-[14px] text-[#1f1f1f] placeholder-[#5f6368] border-none focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20"
+              className="w-full pl-11 pr-4 py-2.5 bg-[var(--muted)] rounded-full text-[14px] text-[var(--foreground)] placeholder-[var(--muted-foreground)] border-none focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20"
             />
 
             {showSearchDropdown && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-[#e8eaed] rounded-2xl shadow-xl z-50 overflow-hidden max-h-[70vh] overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-[var(--border)] rounded-2xl shadow-xl z-50 overflow-hidden max-h-[70vh] overflow-y-auto">
                 {searchQuery.trim() ? (
                   <div className="p-3">
-                    <div className="text-[11px] font-semibold text-[#5f6368] px-2 mb-2">종목 이동 및 필터링</div>
+                    <div className="text-[11px] font-semibold text-[var(--muted-foreground)] px-2 mb-2">종목 이동 및 필터링</div>
                     <div className="space-y-0.5">
                       {searchStockSuggestions
                         .filter(s => s.ticker.toLowerCase().includes(searchQuery.toLowerCase()) || s.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -109,31 +111,31 @@ export function FinanceHeader({
                           <div
                             key={s.ticker}
                             onClick={() => handleSuggestionClick(s)}
-                            className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-[#f8f9fa] cursor-pointer transition-colors"
+                            className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-[var(--muted)] cursor-pointer transition-colors"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 bg-[#f1f3f4] rounded-full flex items-center justify-center text-[11px] font-bold text-[#5f6368]">
+                              <div className="w-8 h-8 bg-[var(--muted)] rounded-full flex items-center justify-center text-[11px] font-bold text-[var(--muted-foreground)]">
                                 {s.ticker.slice(0, 2)}
                               </div>
                               <div>
-                                <div className="text-[14px] font-semibold text-[#1f1f1f]">{s.name}</div>
-                                <div className="text-[12px] text-[#5f6368]">{s.ticker}</div>
+                                <div className="text-[14px] font-semibold text-[var(--foreground)]">{s.name}</div>
+                                <div className="text-[12px] text-[var(--muted-foreground)]">{s.ticker}</div>
                               </div>
                             </div>
                             <div className="text-right">
-                              <div className="text-[14px] text-[#1f1f1f] tabular-nums">{s.price}</div>
+                              <div className="text-[14px] text-[var(--foreground)] tabular-nums">{s.price}</div>
                               <div className={`text-[12px] font-medium ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</div>
                             </div>
                           </div>
                         ))}
                       {searchStockSuggestions.filter(s => s.ticker.toLowerCase().includes(searchQuery.toLowerCase()) || s.name.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
-                        <div className="px-3 py-4 text-center text-[14px] text-[#5f6368]">검색 결과 없음</div>
+                        <div className="px-3 py-4 text-center text-[14px] text-[var(--muted-foreground)]">검색 결과 없음</div>
                       )}
                     </div>
                   </div>
                 ) : (
                   <div className="p-3">
-                    <div className="text-[11px] font-semibold text-[#5f6368] px-2 mb-2">AI에게 물어보기</div>
+                    <div className="text-[11px] font-semibold text-[var(--muted-foreground)] px-2 mb-2">AI에게 물어보기</div>
                     <div className="space-y-0.5">
                       {searchAiPrompts.map((prompt, i) => {
                         const Icon = prompt.icon === "Globe" ? Globe : prompt.icon === "Brain" ? Brain : prompt.icon === "TrendingUp" ? TrendingUp : BarChart3;
@@ -144,14 +146,14 @@ export function FinanceHeader({
                               setSearchQuery(prompt.label);
                               setShowSearchDropdown(false);
                             }}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#f8f9fa] cursor-pointer transition-colors"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[var(--muted)] cursor-pointer transition-colors"
                           >
-                            <div className="w-8 h-8 bg-[#f1f3f4] rounded-full flex items-center justify-center">
-                              <Icon className="w-4 h-4 text-[#5f6368]" />
+                            <div className="w-8 h-8 bg-[var(--muted)] rounded-full flex items-center justify-center">
+                              <Icon className="w-4 h-4 text-[var(--muted-foreground)]" />
                             </div>
                             <div>
-                              <div className="text-[14px] font-semibold text-[#1f1f1f]">{prompt.label}</div>
-                              <div className="text-[12px] text-[#5f6368]">{prompt.description}</div>
+                              <div className="text-[14px] font-semibold text-[var(--foreground)]">{prompt.label}</div>
+                              <div className="text-[12px] text-[var(--muted-foreground)]">{prompt.description}</div>
                             </div>
                           </div>
                         );
@@ -170,27 +172,27 @@ export function FinanceHeader({
             onMouseEnter={(e) => { setTooltip("검색 또는 질문하기"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
             onMouseLeave={() => setTooltip(null)}
             id="gf-header-search-btn"
-            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--muted)] active:bg-[var(--border)] transition-colors focus:outline-none"
             aria-label="검색 또는 질문하기"
           >
-            <Search className="w-5 h-5 text-[#5f6368]" />
+            <Search className="w-5 h-5 text-[var(--muted-foreground)]" />
           </button>
 
           {/* Settings menu — matches GF: 테마 + 가격 색상 시스템 (radio selections). */}
           {showSettingsDropdown && (
-            <div className="absolute top-full right-0 mt-2 bg-white border border-[#dadce0] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] min-w-[248px] z-50 overflow-hidden py-2">
-              <div className="px-4 pt-1 pb-1.5 text-[12px] font-semibold text-[#5f6368]">테마</div>
+            <div className="absolute top-full right-0 mt-2 bg-card border border-[var(--border)] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] min-w-[248px] z-50 overflow-hidden py-2">
+              <div className="px-4 pt-1 pb-1.5 text-[12px] font-semibold text-[var(--muted-foreground)]">테마</div>
               {([["system", "기기 기본값", Monitor], ["dark", "어두운 테마", Moon], ["light", "밝은 테마", Sun]] as const).map(([key, label, Icon]) => (
-                <button key={key} onClick={() => setTheme(key)} className="w-full flex items-center gap-3 px-4 py-2 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left">
-                  <Icon className="w-4 h-4 text-[#5f6368]" />
+                <button key={key} onClick={() => setTheme(key)} className="w-full flex items-center gap-3 px-4 py-2 text-[14px] text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors text-left">
+                  <Icon className="w-4 h-4 text-[var(--muted-foreground)]" />
                   <span className="flex-1">{label}</span>
                   {theme === key && <Check className="w-4 h-4 text-[#1a73e8]" />}
                 </button>
               ))}
-              <div className="border-t border-[#e8eaed] my-1" />
-              <div className="px-4 pt-1 pb-1.5 text-[12px] font-semibold text-[#5f6368]">가격 색상 시스템</div>
+              <div className="border-t border-[var(--border)] my-1" />
+              <div className="px-4 pt-1 pb-1.5 text-[12px] font-semibold text-[var(--muted-foreground)]">가격 색상 시스템</div>
               {([["local", "현지 시장"], ["intl", "국제"]] as const).map(([key, label]) => (
-                <button key={key} onClick={() => setPriceColor(key)} className="w-full flex items-center gap-3 px-4 py-2 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left">
+                <button key={key} onClick={() => setPriceColor(key)} className="w-full flex items-center gap-3 px-4 py-2 text-[14px] text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors text-left">
                   <span className="flex-1">{label}</span>
                   {priceColor === key && <Check className="w-4 h-4 text-[#1a73e8]" />}
                 </button>
@@ -203,10 +205,10 @@ export function FinanceHeader({
             onMouseEnter={(e) => { if (!showSettingsDropdown) setTooltip("설정"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
             onMouseLeave={() => setTooltip(null)}
             id="gf-header-settings-btn"
-            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--muted)] active:bg-[var(--border)] transition-colors focus:outline-none"
             aria-label="설정"
           >
-            <Settings className="w-5 h-5 text-[#5f6368]" />
+            <Settings className="w-5 h-5 text-[var(--muted-foreground)]" />
           </button>
 
           {/* Feedback — GF opens an external tool; a lightweight mock here. */}
@@ -215,15 +217,15 @@ export function FinanceHeader({
             id="gf-header-feedback-btn"
             onMouseEnter={(e) => { if (!showFeedback) setTooltip("의견 보내기"); setTooltipPos({ x: e.clientX, y: e.clientY }); }}
             onMouseLeave={() => setTooltip(null)}
-            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f8f9fa] active:bg-[#e8eaed] transition-colors focus:outline-none"
+            className="gf-header__icon-btn relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--muted)] active:bg-[var(--border)] transition-colors focus:outline-none"
             aria-label="의견 보내기"
           >
-            <MessageSquare className="w-5 h-5 text-[#5f6368]" />
+            <MessageSquare className="w-5 h-5 text-[var(--muted-foreground)]" />
           </button>
           {showFeedback && (
-            <div className="absolute top-full right-0 mt-2 w-72 bg-white border border-[#dadce0] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] z-50 p-4">
-              <div className="text-[14px] font-medium text-[#1f1f1f] mb-2">의견 보내기</div>
-              <textarea rows={3} placeholder="의견이나 문제를 알려주세요" className="w-full text-[13px] border border-[#dadce0] rounded-lg p-2 outline-none focus:border-[#1a73e8] resize-none" />
+            <div className="absolute top-full right-0 mt-2 w-72 bg-card border border-[var(--border)] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] z-50 p-4">
+              <div className="text-[14px] font-medium text-[var(--foreground)] mb-2">의견 보내기</div>
+              <textarea rows={3} placeholder="의견이나 문제를 알려주세요" className="w-full text-[13px] border border-[var(--border)] rounded-lg p-2 outline-none focus:border-[#1a73e8] resize-none" />
               <div className="flex justify-end gap-2 mt-2">
                 <Button variant="ghost" className="h-8 px-3 text-[13px]" onClick={() => setShowFeedback(false)}>취소</Button>
                 <Button className="h-8 px-3 text-[13px] bg-[#1a73e8] text-white" onClick={() => setShowFeedback(false)}>보내기</Button>
@@ -235,27 +237,27 @@ export function FinanceHeader({
           <button
             onClick={() => { setShowProfile(!showProfile); setShowSettingsDropdown(false); setShowFeedback(false); }}
             id="gf-header-profile"
-            className="gf-header__profile w-8 h-8 rounded-full bg-[#1a73e8] flex items-center justify-center text-white text-[14px] font-medium cursor-pointer hover:shadow-md transition-shadow ring-2 ring-transparent hover:ring-[#dadce0]"
+            className="gf-header__profile w-8 h-8 rounded-full bg-[#1a73e8] flex items-center justify-center text-white text-[14px] font-medium cursor-pointer hover:shadow-md transition-shadow ring-2 ring-transparent hover:ring-[var(--border)]"
             aria-label="Google 계정"
           >
             U
           </button>
           {showProfile && (
-            <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-[#dadce0] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] z-50 overflow-hidden">
-              <div className="p-4 text-center border-b border-[#e8eaed]">
+            <div className="absolute top-full right-0 mt-2 w-64 bg-card border border-[var(--border)] rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.15)] z-50 overflow-hidden">
+              <div className="p-4 text-center border-b border-[var(--border)]">
                 <div className="w-12 h-12 rounded-full bg-[#1a73e8] text-white flex items-center justify-center text-[18px] font-medium mx-auto mb-2">U</div>
-                <div className="text-[14px] font-medium text-[#1f1f1f]">사용자</div>
-                <div className="text-[12px] text-[#5f6368]">user@example.com</div>
+                <div className="text-[14px] font-medium text-[var(--foreground)]">사용자</div>
+                <div className="text-[12px] text-[var(--muted-foreground)]">user@example.com</div>
               </div>
-              <button onClick={() => setShowProfile(false)} className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#1f1f1f] hover:bg-[#f8f9fa] transition-colors text-left">
-                <LogOut className="w-4 h-4 text-[#5f6368]" /> 로그아웃
+              <button onClick={() => setShowProfile(false)} className="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors text-left">
+                <LogOut className="w-4 h-4 text-[var(--muted-foreground)]" /> 로그아웃
               </button>
             </div>
           )}
 
           {tooltip && (
             <div
-              className="fixed z-[9999] pointer-events-none px-2 py-1 bg-[#1f1f1f] text-white text-[12px] rounded-md whitespace-nowrap shadow-lg"
+              className="fixed z-[9999] pointer-events-none px-2 py-1 bg-foreground text-background text-[12px] rounded-md whitespace-nowrap shadow-lg"
               style={{ left: tooltipPos.x - 40, top: tooltipPos.y + 16 }}
             >
               {tooltip}

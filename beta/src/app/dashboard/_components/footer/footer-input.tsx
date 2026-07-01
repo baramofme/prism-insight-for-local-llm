@@ -88,7 +88,7 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
     >
       <div className={embedded ? "relative w-full" : "max-w-[560px] mx-auto relative"}>
         {isFocused && (
-          <div className="absolute bottom-full left-0 right-0 mb-3 bg-white border border-border rounded-2xl shadow-xl max-h-[70vh] overflow-y-auto p-4 flex flex-col gap-4">
+          <div className="absolute bottom-full left-0 right-0 mb-3 bg-card border border-border rounded-2xl shadow-xl max-h-[70vh] overflow-y-auto p-4 flex flex-col gap-4">
             {!hasValue ? (
               <>
                 <div id="gf-footer-popular-questions" className="gf-footer__popular-questions flex flex-col gap-1.5">
@@ -149,10 +149,10 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
             className="gf-footer__search-input flex-1 min-w-0 bg-transparent text-[14px] text-foreground outline-none resize-none min-h-0 h-7 max-h-32 py-0 leading-7 placeholder-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 [&::-webkit-scrollbar]:hidden" />
           <div className="flex items-center gap-1.5 shrink-0">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`w-8 h-8 rounded-xl flex items-center justify-center text-[14px] border transition-colors ${isDeepSearch ? 'bg-primary/10 border-primary text-primary' : 'bg-white border-border text-muted-foreground'}`}
+              className={`w-8 h-8 rounded-xl flex items-center justify-center text-[14px] border transition-colors ${isDeepSearch ? 'bg-primary/10 border-primary text-primary' : 'bg-card border-border text-muted-foreground'}`}
               title="도구 추가">{isDeepSearch ? '🔍' : '+'}</button>
             {isMenuOpen && (
-              <div className="absolute bottom-full right-0 mb-10 w-48 bg-white border border-border rounded-xl shadow-xl p-1 z-50">
+              <div className="absolute bottom-full right-0 mb-10 w-48 bg-card border border-border rounded-xl shadow-xl p-1 z-50">
                 <button onClick={() => { setIsDeepSearch(!isDeepSearch); setIsMenuOpen(false); }}
                   className="w-full text-left px-3 py-2 text-[13px] rounded-lg hover:bg-muted flex flex-col gap-0.5">
                   <span className="font-semibold text-foreground">🌐 Deep Search 모드</span>

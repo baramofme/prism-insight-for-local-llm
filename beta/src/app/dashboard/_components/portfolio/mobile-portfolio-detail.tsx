@@ -428,7 +428,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           {/* Chart type modal */}
           {styleOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setStyleOpen(false)}>
-              <div className="bg-white rounded-2xl shadow-xl p-3 w-44" onClick={e => e.stopPropagation()}>
+              <div className="bg-card rounded-2xl shadow-xl p-3 w-44" onClick={e => e.stopPropagation()}>
                 <button onClick={() => { setChartType('linear'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'linear' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>선형</button>
                 <button onClick={() => { setChartType('area'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'area' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>영역</button>
               </div>
@@ -438,7 +438,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           {/* Comparison search modal */}
           {showSearch && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setShowSearch(false)}>
-              <div className="bg-white rounded-2xl shadow-xl w-[90vw] max-w-md p-5" onClick={e => e.stopPropagation()}>
+              <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-md p-5" onClick={e => e.stopPropagation()}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="relative flex-1">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -632,7 +632,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                       <span>{sortOption === 'name' ? '이름순' : sortOption === 'price' ? '가격순' : sortOption === 'profit' ? '수익순' : '수량순'}</span>
                     </button>
                     {sortMenuOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-border rounded-xl shadow-xl z-30 p-1.5">
+                      <div className="absolute top-full left-0 mt-1 w-40 bg-card border border-border rounded-xl shadow-xl z-30 p-1.5">
                         <div className="text-[10px] text-muted-foreground/75 font-semibold px-2 pb-1.5 border-b border-border mb-1">정렬 기준</div>
                         {[
                           { key: 'name', label: '이름' },
@@ -858,7 +858,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                     <div className="text-[10px] text-muted-foreground mb-1">숨긴 매체 ({filteredSources.length})</div>
                     <div className="flex flex-wrap gap-1">
                       {filteredSources.map(source => (
-                        <span key={source} className="inline-flex items-center gap-1 px-2 py-0.5 bg-white border border-border rounded-full text-[10px] text-muted-foreground">
+                        <span key={source} className="inline-flex items-center gap-1 px-2 py-0.5 bg-card border border-border rounded-full text-[10px] text-muted-foreground">
                           {source}
                           <button onClick={() => setFilteredSources(prev => prev.filter(s => s !== source))} className="hover:text-destructive">×</button>
                         </span>
@@ -891,7 +891,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                                                         <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
                                                       </svg>
                                                     </Button>
-                          <div className="hidden group-hover:block absolute right-0 top-full mt-1 bg-white border border-border rounded-xl shadow-lg z-10 py-1 min-w-[140px]">
+                          <div className="hidden group-hover:block absolute right-0 top-full mt-1 bg-card border border-border rounded-xl shadow-lg z-10 py-1 min-w-[140px]">
                             <button onClick={(e) => { e.stopPropagation(); setFilteredSources(prev => [...prev, news.source]); }} className="w-full text-left px-3 py-2 text-[12px] text-foreground hover:bg-muted transition-colors">
                               {news.source} 보이지 않기
                             </button>
@@ -916,7 +916,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
     {/* Trade modal */}
     {tradeModal && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setTradeModal(false)}>
-        <div className="bg-white rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={e => e.stopPropagation()}>
+        <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={e => e.stopPropagation()}>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-[15px] font-bold text-foreground">{tradeType === 'buy' ? '매수' : '매도'} 기록</h3>
 <Button variant="ghost" size="icon" onClick={() => setTradeModal(false)} className="p-1 hover:bg-muted rounded-full transition-colors"><X className="w-4 h-4 text-muted-foreground" /></Button>
@@ -970,7 +970,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
     {/* Sell modal */}
     {sellModal && sellTarget && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => { setSellModal(false); setSellTarget(null); }}>
-        <div className="bg-white rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={e => e.stopPropagation()}>
+        <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={e => e.stopPropagation()}>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-[15px] font-bold text-foreground">매도 기록</h3>
             <Button variant="ghost" size="icon" onClick={() => { setSellModal(false); setSellTarget(null); }} className="p-1 hover:bg-muted rounded-full transition-colors"><X className="w-4 h-4 text-muted-foreground" /></Button>
@@ -1089,7 +1089,7 @@ function VizTreemap({ data }: { data: Array<{ ticker: string; name: string; pric
       {/* Floating tooltip */}
       {hovered && (
         <div style={{ position: 'fixed', left: pos.x, top: pos.y, zIndex: 9999 }}
-          className="w-56 bg-white border border-border rounded-xl shadow-2xl p-3.5 pointer-events-none">
+          className="w-56 bg-card border border-border rounded-xl shadow-2xl p-3.5 pointer-events-none">
           <div className="flex items-center gap-2 pb-2 border-b border-border mb-2.5">
             <span className="text-[13px] font-bold text-foreground">{hovered.ticker}</span>
             <span className="text-[11px] text-muted-foreground">{hovered.name}</span>

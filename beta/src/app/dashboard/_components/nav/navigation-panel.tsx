@@ -117,14 +117,14 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   };
 
   return (<>{mobile && open && <div className="fixed inset-0 bg-black/30 z-40 md:hidden" onClick={onClose} />}
-<aside {...(id ? { id } : {})} className={`${mobile ? "fixed md:hidden" : ""} ${mobile ? "inset-y-0 left-0 z-50 transition-all duration-200" : ""} ${mobile ? (open ? "translate-x-0" : "-translate-x-full") : ""} ${sidebarClasses} flex-col border-r border-border bg-white overflow-y-auto scroll-hide flex-shrink-0 self-stretch min-h-0 lg:pb-0 pb-[80px]`}
+<aside {...(id ? { id } : {})} className={`${mobile ? "fixed md:hidden" : ""} ${mobile ? "inset-y-0 left-0 z-50 transition-all duration-200" : ""} ${mobile ? (open ? "translate-x-0" : "-translate-x-full") : ""} ${sidebarClasses} flex-col border-r border-border bg-card overflow-y-auto scroll-hide flex-shrink-0 self-stretch min-h-0 lg:pb-0 pb-[80px]`}
   onMouseEnter={mobile ? undefined : handleMouseEnter}
   onMouseLeave={mobile ? undefined : handleMouseLeave}
   style={mobile ? { transform: open ? "translateX(0)" : "translateX(-100%)" } : sidebarStyle}
 >
   {!isOpen ? (
     <>
-      <div className="sticky top-0 z-10 bg-white flex items-center justify-between px-4 py-2.5 border-b border-border">
+      <div className="sticky top-0 z-10 bg-card flex items-center justify-between px-4 py-2.5 border-b border-border">
         <span
           id="gf-leftnav-title"
           className="gf-sidebar__title text-[24px] font-normal text-foreground cursor-pointer"
@@ -181,14 +181,14 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
     <>
       <SectionHeader
         title="목록"
-        className="sticky top-0 z-10 bg-white mx-6 border-b border-border"
+        className="sticky top-0 z-10 bg-card mx-6 border-b border-border"
         titleAfter={
           <div className="relative">
             <Button variant="ghost" size="icon" aria-label="목록 선택" className="h-6 w-6" onClick={() => { setListSelectOpen(!listSelectOpen); setNewListOpen(false); }}>
               <ChevronDown className="w-4 h-4 text-muted-foreground" />
             </Button>
             {listSelectOpen && (
-              <div className="absolute top-full left-0 mt-1 w-44 bg-white border border-border rounded-xl shadow-lg z-50 py-1">
+              <div className="absolute top-full left-0 mt-1 w-44 bg-card border border-border rounded-xl shadow-lg z-50 py-1">
                 {["관심 목록", "테스트 목록", "주식 업종"].map(n => (
                   <button key={n} onClick={() => setListSelectOpen(false)} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted transition-colors">{n}</button>
                 ))}
@@ -200,7 +200,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
           <div key="newList" className="relative">
             <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="새 목록" onClick={() => { setNewListOpen(!newListOpen); setListSelectOpen(false); }}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
             {newListOpen && (
-              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+              <div className="absolute top-full right-0 mt-1 w-56 bg-card border border-border rounded-xl shadow-lg z-50 p-3">
                 <div className="text-[12px] font-medium text-foreground mb-1.5">새 목록 만들기</div>
                 <input autoFocus placeholder="목록 이름" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setNewListOpen(false); }} />
                 <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setNewListOpen(false)}>만들기</Button></div>
@@ -221,7 +221,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
           <div key="createPf" className="relative">
             <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="포트폴리오 만들기" title="포트폴리오 만들기" onClick={() => setNewPortfolioOpen(!newPortfolioOpen)}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
             {newPortfolioOpen && (
-              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+              <div className="absolute top-full right-0 mt-1 w-56 bg-card border border-border rounded-xl shadow-lg z-50 p-3">
                 <div className="text-[12px] font-medium text-foreground mb-1.5">포트폴리오 만들기</div>
                 <input autoFocus placeholder="포트폴리오 이름" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setNewPortfolioOpen(false); }} />
                 <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setNewPortfolioOpen(false)}>만들기</Button></div>
@@ -252,7 +252,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
               <Info className="w-3.5 h-3.5 text-muted-foreground" />
             </Button>
             {infoVisible && (
-              <div className="absolute top-full right-0 mt-1 w-56 bg-[#1f1f1f] text-white text-[12px] leading-relaxed rounded-lg px-3 py-2 z-50 shadow-lg">
+              <div className="absolute top-full right-0 mt-1 w-56 bg-[var(--foreground)] text-white text-[12px] leading-relaxed rounded-lg px-3 py-2 z-50 shadow-lg">
                 이 목록에는 다른 Google 서비스에서 팔로우하는 종목 코드가 포함됩니다.
               </div>
             )}
@@ -262,7 +262,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
               <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
             </Button>
             {optionsOpen && (
-              <div className="absolute top-full right-0 mt-1 w-40 bg-white border border-border rounded-xl shadow-lg z-50 py-1">
+              <div className="absolute top-full right-0 mt-1 w-40 bg-card border border-border rounded-xl shadow-lg z-50 py-1">
                 {["목록 이름 바꾸기", "목록 복제", "목록 삭제"].map(o => (
                   <button key={o} onClick={() => setOptionsOpen(false)} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted transition-colors">{o}</button>
                 ))}
@@ -274,7 +274,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
               <Plus className="w-3.5 h-3.5 text-muted-foreground" />
             </Button>
             {addStockOpen && (
-              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+              <div className="absolute top-full right-0 mt-1 w-56 bg-card border border-border rounded-xl shadow-lg z-50 p-3">
                 <div className="text-[12px] font-medium text-foreground mb-1.5">종목 코드 추가</div>
                 <input autoFocus placeholder="예: 005930 삼성전자" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setAddStockOpen(false); }} />
                 <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setAddStockOpen(false)}>추가</Button></div>

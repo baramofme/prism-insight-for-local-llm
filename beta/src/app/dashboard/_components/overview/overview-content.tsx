@@ -62,7 +62,7 @@ export function OverviewContent({
 
         {["아시아", "미국", "유럽", "중남미"].includes(activeRegion) && (
           <div id="gf-main-market-summary" className="gf-market-summary">
-            <h2 className="gf-market-summary__title text-[20px] font-medium text-[#1f1f1f] mb-3">{activeRegion} 시장 요약</h2>
+            <h2 className="gf-market-summary__title text-[20px] font-medium text-[var(--foreground)] mb-3">{activeRegion} 시장 요약</h2>
             <div className="space-y-1">
               {marketSummaries.slice(0, 4).map((summary) => (
                 <MarketSummaryCard key={summary.id} summary={summary} />
@@ -72,13 +72,13 @@ export function OverviewContent({
         )}
 
         <div id="gf-main-news" className="gf-news">
-          <h2 className="gf-news__title text-[20px] font-medium text-[#1f1f1f] mb-1">뉴스 기사 더보기</h2>
-          <p className="gf-news__source text-[12px] text-[#5f6368] mb-3">웹 소스 기반</p>
+          <h2 className="gf-news__title text-[20px] font-medium text-[var(--foreground)] mb-1">뉴스 기사 더보기</h2>
+          <p className="gf-news__source text-[12px] text-[var(--muted-foreground)] mb-3">웹 소스 기반</p>
           <div id="gf-news-list" className={`gf-news__grid grid gap-2 ${vp < BREAKPOINTS.MOBILE ? "grid-cols-1" : "grid-cols-2"}`}>
             {(vp < BREAKPOINTS.MOBILE ? displayNews.slice(0, 4) : displayNews).map((item) => (<NewsItem key={item.id} item={item} />))}
           </div>
           {vp >= BREAKPOINTS.MOBILE && newsItems.length > 4 && !showMoreNews && (
-            <button id="gf-news-more" onClick={() => setShowMoreNewsAction(true)} className="gf-news__more-btn mt-3 w-full py-2 text-[14px] text-[#1a73e8] hover:bg-[#f8f9fa] rounded-lg transition-colors">더보기</button>
+            <button id="gf-news-more" onClick={() => setShowMoreNewsAction(true)} className="gf-news__more-btn mt-3 w-full py-2 text-[14px] text-[#1a73e8] hover:bg-[var(--muted)] rounded-lg transition-colors">더보기</button>
           )}
         </div>
 
@@ -90,7 +90,7 @@ export function OverviewContent({
             { title: "일 최대 하락 종목", stocks: losers, showVolume: false },
           ].map((tbl) => (
             <div key={tbl.title} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[300px]" : "flex-1 min-w-0"}>
-              <h3 className={`${vp < BREAKPOINTS.MOBILE ? "text-[20px]" : "text-[14px]"} font-medium text-[#1f1f1f] mb-2`}>{tbl.title}</h3>
+              <h3 className={`${vp < BREAKPOINTS.MOBILE ? "text-[20px]" : "text-[14px]"} font-medium text-[var(--foreground)] mb-2`}>{tbl.title}</h3>
               <table className="w-full" style={{ borderCollapse: 'separate', borderSpacing: '0 2px' }}>
                 <tbody>
                   {tbl.stocks.map((stock) => (
