@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback, Fragment } from "react";
-import { ArrowLeft, Plus, X, ChevronDown, ArrowUpRight, Search } from "lucide-react";
+import { ArrowLeft, Plus, X, ChevronDown, ArrowUpRight, Search, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -150,7 +150,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
   const [searchQuery, setSearchQuery] = useState('');
   const [openSection, setOpenSection] = useState<'lines' | 'shapes' | 'drawing' | 'analysis' | null>('lines');
   const [currentTool, setCurrentTool] = useState<string | null>(null);
-  const [bottomTab, setBottomTab] = useState("구성");
+  const [bottomTab, setBottomTab] = useState("투자");
   const [expandedTickers, setExpandedTickers] = useState<Record<string, boolean>>({});
   const [sortOption, setSortOption] = useState("name");
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
@@ -386,7 +386,12 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           </div>
 
           <div className="px-4 pt-4 pb-2">
-            <div className="text-[16px] font-semibold text-foreground mb-1">투자중</div>
+            <div className="flex items-center justify-between mb-1">
+              <div className="text-[16px] font-semibold text-foreground">투자중</div>
+              <button className="flex items-center gap-1.5 px-3 py-1 text-[13px] font-medium text-primary border border-border rounded-full hover:bg-muted transition-colors shrink-0" aria-label="포트폴리오 수정">
+                <Pencil className="w-3.5 h-3.5" /> 수정
+              </button>
+            </div>
             <div className="flex items-baseline gap-2 flex-wrap">
               <span className="text-[28px] font-bold text-foreground tabular-nums whitespace-nowrap">₩19,653,380.00</span>
               <div className="flex items-center gap-1 text-[14px] text-[var(--gf-up)] font-medium whitespace-nowrap">
@@ -590,7 +595,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                 <thead>
                   <tr className="border-b border-border text-muted-foreground">
                     <th className="w-8 py-2 pr-1" />
-                    <th className="text-left py-2 pr-2 font-medium whitespace-nowrap">종목</th>
+                    <th className="text-left py-2 pr-2 font-medium whitespace-nowrap">종목 코드</th>
                     <th className="text-right py-2 px-2 font-medium whitespace-nowrap">가격</th>
                     <th className="text-right py-2 px-2 font-medium whitespace-nowrap">변동</th>
                     <th className="text-right py-2 pl-2 font-medium whitespace-nowrap">변동률(%)</th>
@@ -622,11 +627,11 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           <div className="px-4 pt-3 pb-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-1">
-                {["구성", "활동", "뉴스 및 이벤트"].map(btn => (
+                {["투자", "활동", "뉴스 및 이벤트"].map(btn => (
                   <button key={btn} onClick={() => setBottomTab(btn)}
                     className={`px-2.5 py-1 text-[12px] font-medium rounded-full transition-colors ${bottomTab === btn ? 'bg-foreground text-white' : 'text-muted-foreground hover:bg-muted'}`}>{btn}</button>
                 ))}
-                {bottomTab === "구성" && (
+                {bottomTab === "투자" && (
                   <div className="relative ml-1">
                     <button onClick={() => setSortMenuOpen(!sortMenuOpen)}
                       className="flex items-center gap-1 px-2 py-1 text-[11px] font-medium text-muted-foreground hover:bg-muted rounded-full transition-colors">
@@ -664,11 +669,11 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                 <Button size="sm" onClick={() => { setTradeType('buy'); setTradeTicker(portfolioAssets[0]?.ticker || ''); setTradeQty(0); setTradePrice(0); setTradeTickerLocked(false); setTradeModal(true); }} className="flex items-center gap-1 px-3 py-1 text-[11px] font-bold rounded-full h-auto">+ 투자</Button>
               </div>
             </div>
-            {bottomTab === "구성" && !showViz && (
+            {bottomTab === "투자" && !showViz && (
                 <table className="w-full text-[12px]">
                   <thead>
                     <tr className="border-b border-border text-muted-foreground">
-                      <th className="text-left py-2 pr-2 font-medium whitespace-nowrap">종목</th>
+                      <th className="text-left py-2 pr-2 font-medium whitespace-nowrap">종목 코드</th>
                       <th className="text-right py-2 px-2 font-medium whitespace-nowrap">가격</th>
                       <th className="text-right py-2 px-2 font-medium whitespace-nowrap">수량</th>
                       <th className="text-right py-2 px-2 font-medium whitespace-nowrap">변동</th>
@@ -772,7 +777,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                   </tbody>
                 </table>
             )}
-            {bottomTab === "구성" && showViz && (
+            {bottomTab === "투자" && showViz && (
               <div className="w-full">
                 {/* Treemap header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
