@@ -45,6 +45,7 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
   const [queryText, setQueryText] = useState("");
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string; time: string }[]>([]);
   const [expandedMsgs, setExpandedMsgs] = useState<Set<number>>(new Set());
+  const [toolsOpen, setToolsOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const isExpanded = expanded ?? false;
@@ -413,8 +414,9 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
             <div>
               <div className="text-[12px] font-medium text-muted-foreground mb-2">가능한 작업 알아보기</div>
               <div className="space-y-1">
-                <Button variant="ghost" className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Globe className="w-4 h-4 text-muted-foreground" /> Deep Search</Button>
-                <Button variant="ghost" className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Search className="w-4 h-4 text-muted-foreground" /> 내 관심 목록 분석</Button>
+                <Button variant="ghost" onClick={() => handleSend("포트폴리오 만들기")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground justify-start"><Plus className="w-4 h-4 text-muted-foreground" /> 포트폴리오 만들기</Button>
+                <Button variant="ghost" onClick={() => handleSend("Deep Search로 자세히 알아봐줘")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground justify-start"><Globe className="w-4 h-4 text-muted-foreground" /> Deep Search</Button>
+                <Button variant="ghost" onClick={() => handleSend("내 관심 목록을 분석해줘")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground justify-start"><Search className="w-4 h-4 text-muted-foreground" /> 내 관심 목록 분석</Button>
               </div>
             </div>
           </div>
@@ -456,7 +458,16 @@ export function ResearchPanel({ centerBounds, expanded, setExpanded, collapsedWi
            <div className="bg-muted rounded-3xl pl-5 pr-4 pt-4 pb-2 focus-within:ring-1 focus-within:ring-ring/50 transition-shadow">
              <Textarea placeholder="질문하기" aria-label="질문하기" value={queryText} onChange={(e) => setQueryText(e.target.value)} onKeyDown={handleKeyDown} className="min-h-0 border-0 bg-transparent p-0 shadow-none focus-visible:ring-0 placeholder:text-muted-foreground text-[14px]" style={{ fieldSizing: "fixed", overflow: "hidden", resize: "none" }} rows={4} />
              <div className="flex items-center justify-between mt-3">
-               <Button variant="ghost" size="icon" aria-label="도구 추가"><Plus className="w-4 h-4 text-muted-foreground" /></Button>
+               <div className="relative">
+                 <Button variant="ghost" size="icon" aria-label="도구 추가" onClick={() => setToolsOpen(!toolsOpen)}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
+                 {toolsOpen && (
+                   <div className="absolute bottom-full left-0 mb-2 w-52 bg-white border border-border rounded-xl shadow-lg z-50 p-1">
+                     {[["파일 업로드", "upload_file"], ["포트폴리오 만들기", "bar_chart"], ["Deep Search", "travel_explore"]].map(([label]) => (
+                       <button key={label} onClick={() => { setToolsOpen(false); if (label !== "파일 업로드") handleSend(label as string); }} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted rounded-lg transition-colors">{label}</button>
+                     ))}
+                   </div>
+                 )}
+               </div>
                <Button size="icon" aria-label="AI에 질문하기" disabled={!queryText.trim()} onClick={() => { handleSend(); }} className={queryText.trim() ? "bg-foreground text-white hover:bg-foreground/80 hover:text-white" : ""}><span className="text-lg leading-none">↑</span></Button>
              </div>
            </div>

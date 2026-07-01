@@ -92,9 +92,9 @@ export function ResearchBottomSheet({
           <div>
             <div className="text-[12px] font-medium text-muted-foreground mb-2">가능한 작업 알아보기</div>
             <div className="space-y-1">
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Plus className="w-4 h-4 text-muted-foreground" /> 포트폴리오 만들기</button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Globe className="w-4 h-4 text-muted-foreground" /> Deep Search</button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Search className="w-4 h-4 text-muted-foreground" /> 내 관심 목록 분석</button>
+              <button onClick={() => onSubmit?.("포트폴리오 만들기")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Plus className="w-4 h-4 text-muted-foreground" /> 포트폴리오 만들기</button>
+              <button onClick={() => onSubmit?.("Deep Search로 자세히 알아봐줘")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Globe className="w-4 h-4 text-muted-foreground" /> Deep Search</button>
+              <button onClick={() => onSubmit?.("내 관심 목록을 분석해줘")} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors text-[14px] text-foreground"><Search className="w-4 h-4 text-muted-foreground" /> 내 관심 목록 분석</button>
             </div>
           </div>
         </div>
