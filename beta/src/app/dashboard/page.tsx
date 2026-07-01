@@ -138,6 +138,7 @@ export default function DashboardPage() {
           tooltip={tooltip} setTooltip={setTooltip} tooltipPos={tooltipPos} setTooltipPos={setTooltipPos}
           handleStockClick={handleStockClick}
           collapsed={chromeHidden}
+          onMenuClick={() => setSidebarOpen(true)}
         />
 
         <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
