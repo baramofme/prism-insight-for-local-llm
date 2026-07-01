@@ -156,7 +156,7 @@ function PortfolioChart({
 }
 
 
-export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, footerQuestionId, onFooterQuestionConsumed }: { onBack: () => void; vp: number; rightW: number; footerQuestion?: string; footerQuestionId?: number; onFooterQuestionConsumed?: () => void }) {
+export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footerQuestion, footerQuestionId, onFooterQuestionConsumed }: { onBack: () => void; onStockClick?: (stock: import("../../_lib/types").Stock, origin?: "home" | "portfolio") => void; vp: number; rightW: number; footerQuestion?: string; footerQuestionId?: number; onFooterQuestionConsumed?: () => void }) {
   const [activeTab, setActiveTab] = useState<"portfolio" | "research">("portfolio");
   const [period, setPeriod] = useState<PeriodFilter>('1D');
   const [compareAssets, setCompareAssets] = useState<ComparisonAsset[]>([]);
@@ -720,10 +720,11 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                             <tr className="border-b border-border hover:bg-muted cursor-pointer transition-colors"
                               onClick={() => setExpandedTickers(prev => ({ ...prev, [asset.ticker]: !prev[asset.ticker] }))}>
                               <td className="py-2 pr-2">
-                                <div>
+                                <button type="button" onClick={(e) => { e.stopPropagation(); onStockClick?.(asset, "portfolio"); }}
+                                  className="text-left hover:underline underline-offset-2 rounded" aria-label={`${asset.name} 상세`}>
                                   <div className="text-[14px] font-semibold text-foreground">{asset.ticker}</div>
                                   <div className="text-[12px] text-muted-foreground">{asset.name}</div>
-                                </div>
+                                </button>
                               </td>
                               <td className="text-right py-2 px-2 tabular-nums text-foreground whitespace-nowrap">₩{asset.price.toLocaleString()}</td>
                               <td className="text-right py-2 px-2 tabular-nums text-foreground whitespace-nowrap">{asset.qty}</td>

@@ -13,6 +13,7 @@ import { generateSparklineData } from "../../_lib/format";
 export function StockDetail({
   stock,
   onBack,
+  backLabel = "홈",
   vp,
 }: {
   stock: {
@@ -37,6 +38,7 @@ export function StockDetail({
     }>;
   };
   onBack: () => void;
+  backLabel?: string;
   vp: number;
 }) {
   const [chartType, setChartType] = useState<"area" | "line" | "candle" | "bar">("area");
@@ -234,7 +236,7 @@ export function StockDetail({
         <div className="flex items-center gap-2 min-w-0">
           <Button variant="link" onClick={onBack} className="gf-breadcrumb__link flex items-center gap-1 text-[14px] p-0 h-auto flex-shrink-0 text-primary hover:text-primary/80 underline-offset-2">
              <ArrowLeft className="w-4 h-4" />
-             포트폴리오
+             {backLabel}
            </Button>
            <span id="gf-breadcrumb-separator" className="gf-breadcrumb__separator text-muted-foreground flex-shrink-0">|</span>
           <span id="gf-breadcrumb-current" className="gf-breadcrumb__current text-[12px] text-muted-foreground font-medium flex-shrink-0">{localStock.ticker}:KRX</span>

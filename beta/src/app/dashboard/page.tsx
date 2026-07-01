@@ -31,6 +31,9 @@ export default function DashboardPage() {
   const [viewportWidth, setViewportWidth] = useState(1200);
   const [mobileView, setMobileView] = useState<"default" | "portfolio" | "stockDetail">("default");
   const [selectedStock, setSelectedStock] = useState<Stock | null>(null);
+  // Where the stock detail was opened from, so the breadcrumb/back reflects the
+  // previous page: watchlist/home → "홈", a portfolio holding → "포트폴리오".
+  const [stockOrigin, setStockOrigin] = useState<"home" | "portfolio">("home");
   const [footerQuestion, setFooterQuestion] = useState("");
   const [footerQuestionId, setFooterQuestionId] = useState(0);
   // Below the research-panel breakpoint GF shows 홈/조사 tabs in the center.
@@ -61,8 +64,9 @@ export default function DashboardPage() {
     setMobileView("portfolio");
   }, []);
 
-  const handleStockClick = useCallback((stock: Stock) => {
+  const handleStockClick = useCallback((stock: Stock, origin: "home" | "portfolio" = "home") => {
     setSelectedStock(stock);
+    setStockOrigin(origin);
     setMobileView("stockDetail");
     setSidebarOpen(false);
   }, []);
@@ -168,12 +172,12 @@ export default function DashboardPage() {
           {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
 
           {mobileView === "portfolio" ? (
-            <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
-              <MobilePortfolioDetail onBack={() => setMobileView("default")} vp={vp} rightW={rightW} footerQuestion={footerQuestion} footerQuestionId={footerQuestionId} onFooterQuestionConsumed={() => setFooterQuestion("")} />
+            <div className="flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+              <MobilePortfolioDetail onBack={() => setMobileView("default")} onStockClick={handleStockClick} vp={vp} rightW={rightW} footerQuestion={footerQuestion} footerQuestionId={footerQuestionId} onFooterQuestionConsumed={() => setFooterQuestion("")} />
             </div>
           ) : mobileView === "stockDetail" && selectedStock ? (
-            <div className="flex flex-col flex-1 min-h-0" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
-              <StockDetail stock={selectedStock} onBack={() => { setMobileView("portfolio"); setSelectedStock(null); }} vp={vp} />
+            <div className="flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+              <StockDetail stock={selectedStock} backLabel={stockOrigin === "portfolio" ? "포트폴리오" : "홈"} onBack={() => { setMobileView(stockOrigin === "portfolio" ? "portfolio" : "default"); setSelectedStock(null); }} vp={vp} />
             </div>
           ) : (
             <div className="flex flex-col flex-1 md:min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
