@@ -370,10 +370,13 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
 
   return (<>
     <div id="gf-mobile-portfolio-detail" className="gf-mobile-portfolio-detail flex flex-col flex-1 min-h-0">
-      {vp >= BREAKPOINTS.MOBILE && (
+      {/* Tab bar only when the 조사 tab is actually needed (narrow / no separate
+          research panel). At desktop the research panel is docked, so a lone
+          "포트폴리오" tab is redundant — GF shows none here. */}
+      {vp >= BREAKPOINTS.MOBILE && rightW <= 0 && (
       <div className="flex border-b border-border">
         <button onClick={() => setActiveTab("portfolio")} className={`flex-1 py-3 text-[14px] font-medium text-center border-b-2 transition-colors ${activeTab === "portfolio" ? "border-primary text-foreground" : "border-transparent text-muted-foreground"}`}>포트폴리오</button>
-        {rightW <= 0 && <button onClick={() => setActiveTab("research")} className={`flex-1 py-3 text-[14px] font-medium text-center border-b-2 transition-colors ${activeTab === "research" ? "border-primary text-foreground" : "border-transparent text-muted-foreground"}`}>조사</button>}
+        <button onClick={() => setActiveTab("research")} className={`flex-1 py-3 text-[14px] font-medium text-center border-b-2 transition-colors ${activeTab === "research" ? "border-primary text-foreground" : "border-transparent text-muted-foreground"}`}>조사</button>
       </div>
       )}
 
