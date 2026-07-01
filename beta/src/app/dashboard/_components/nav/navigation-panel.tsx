@@ -25,6 +25,9 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   const [watchlistOpen, setWatchlistOpen] = useState(true);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
+  const [listSelectOpen, setListSelectOpen] = useState(false);
+  const [newListOpen, setNewListOpen] = useState(false);
+  const [addStockOpen, setAddStockOpen] = useState(false);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const optionsRef = useRef<HTMLDivElement>(null);
   const sectorSparkData = sectorIndices.map(s => ({
@@ -179,12 +182,30 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
         title="목록"
         className="sticky top-0 z-10 bg-white mx-6 border-b border-border"
         titleAfter={
-          <Button variant="ghost" size="icon" aria-label="목록 선택" className="h-6 w-6">
-            <ChevronDown className="w-4 h-4 text-muted-foreground" />
-          </Button>
+          <div className="relative">
+            <Button variant="ghost" size="icon" aria-label="목록 선택" className="h-6 w-6" onClick={() => { setListSelectOpen(!listSelectOpen); setNewListOpen(false); }}>
+              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+            </Button>
+            {listSelectOpen && (
+              <div className="absolute top-full left-0 mt-1 w-44 bg-white border border-border rounded-xl shadow-lg z-50 py-1">
+                {["관심 목록", "테스트 목록", "주식 업종"].map(n => (
+                  <button key={n} onClick={() => setListSelectOpen(false)} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted transition-colors">{n}</button>
+                ))}
+              </div>
+            )}
+          </div>
         }
         rightButtons={[
-          <Button key="newList" variant="ghost" size="icon" className="h-6 w-6" aria-label="새 목록"><Plus className="w-4 h-4 text-muted-foreground" /></Button>,
+          <div key="newList" className="relative">
+            <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="새 목록" onClick={() => { setNewListOpen(!newListOpen); setListSelectOpen(false); }}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
+            {newListOpen && (
+              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+                <div className="text-[12px] font-medium text-foreground mb-1.5">새 목록 만들기</div>
+                <input autoFocus placeholder="목록 이름" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setNewListOpen(false); }} />
+                <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setNewListOpen(false)}>만들기</Button></div>
+              </div>
+            )}
+          </div>,
           <Button key="expand" variant="ghost" size="icon" className="h-6 w-6" onClick={cycleMode} aria-label={sidebarMode === "expanded" ? "축소" : sidebarMode === "normal" ? "접기" : "펼치기"}>
             {sidebarMode === "expanded" ? <Minimize2 className="w-4 h-4 text-muted-foreground" /> : <Maximize2 className="w-4 h-4 text-muted-foreground" />}
           </Button>
@@ -212,16 +233,41 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
         isOpen={watchlistOpen} 
         onToggleOpen={() => setWatchlistOpen(!watchlistOpen)}
         rightButtons={[
-          // GF: info (rich tooltip) + edit/옵션 + add, revealed on hover; add stays.
-          <Button key="info" variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="info" title="이 목록에는 다른 Google 서비스에서 팔로우하는 종목 코드가 포함됩니다." onMouseEnter={() => setInfoVisible(true)} onMouseLeave={() => setInfoVisible(false)}>
-            <Info className="w-3.5 h-3.5 text-muted-foreground" />
-          </Button>,
-          <Button key="edit" variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="관심 목록 목록 옵션" title="옵션" onClick={() => setOptionsOpen(!optionsOpen)}>
-            <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
-          </Button>,
-          <Button key="add" variant="ghost" size="icon" className="h-6 w-6" aria-label="관심 목록 목록에 종목 코드 추가" title="종목 코드 추가">
-            <Plus className="w-3.5 h-3.5 text-muted-foreground" />
-          </Button>
+          // GF: info (rich tooltip) + edit/옵션 (options menu) + add (stock-code input).
+          <div key="info" className="relative">
+            <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="info" onMouseEnter={() => setInfoVisible(true)} onMouseLeave={() => setInfoVisible(false)}>
+              <Info className="w-3.5 h-3.5 text-muted-foreground" />
+            </Button>
+            {infoVisible && (
+              <div className="absolute top-full right-0 mt-1 w-56 bg-[#1f1f1f] text-white text-[12px] leading-relaxed rounded-lg px-3 py-2 z-50 shadow-lg">
+                이 목록에는 다른 Google 서비스에서 팔로우하는 종목 코드가 포함됩니다.
+              </div>
+            )}
+          </div>,
+          <div key="edit" className="relative">
+            <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition" aria-label="관심 목록 목록 옵션" title="옵션" onClick={() => { setOptionsOpen(!optionsOpen); setAddStockOpen(false); }}>
+              <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
+            </Button>
+            {optionsOpen && (
+              <div className="absolute top-full right-0 mt-1 w-40 bg-white border border-border rounded-xl shadow-lg z-50 py-1">
+                {["목록 이름 바꾸기", "목록 복제", "목록 삭제"].map(o => (
+                  <button key={o} onClick={() => setOptionsOpen(false)} className="w-full text-left px-3 py-2 text-[13px] text-foreground hover:bg-muted transition-colors">{o}</button>
+                ))}
+              </div>
+            )}
+          </div>,
+          <div key="add" className="relative">
+            <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="관심 목록 목록에 종목 코드 추가" title="종목 코드 추가" onClick={() => { setAddStockOpen(!addStockOpen); setOptionsOpen(false); }}>
+              <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+            </Button>
+            {addStockOpen && (
+              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+                <div className="text-[12px] font-medium text-foreground mb-1.5">종목 코드 추가</div>
+                <input autoFocus placeholder="예: 005930 삼성전자" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setAddStockOpen(false); }} />
+                <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setAddStockOpen(false)}>추가</Button></div>
+              </div>
+            )}
+          </div>
         ]}
       >
         {isExpandedMode ? (
