@@ -452,17 +452,57 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
             <div className="text-[12px] text-muted-foreground mt-1">6월 20일, 오전 9시 0분 0초 UTC · KRW</div>
           </div>
 
-          {/* Controls row: comparison add + chart type toggle */}
+          {/* Controls row: comparison add + chart type toggle — relative containers for dropdowns */}
           <div className="flex items-center gap-2 px-4 py-1.5">
-            <Button variant="ghost" onClick={() => setShowSearch(!showSearch)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
-              <Plus className="w-3 h-3" /> 비교
-            </Button>
-            <Button variant="ghost" onClick={() => setStyleOpen(!styleOpen)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
-              {chartType === 'linear' ? '선형' : '영역'} <ChevronDown className="w-3 h-3" />
-            </Button>
+            {/* Comparison button with dropdown */}
+            <div className="relative">
+              <Button variant="ghost" onClick={() => setShowSearch(!showSearch)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
+                <Plus className="w-3 h-3" /> 비교
+              </Button>
+              {showSearch && (
+                <div className="absolute left-0 top-full mt-1 w-[90vw] max-w-md bg-card border border-border rounded-xl shadow-xl z-50 p-5" onClick={e => e.stopPropagation()}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="relative flex-1">
+                      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                      <Input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="종목 이름이나 티커를 입력하세요" className="h-12 pl-12 pr-4 bg-muted rounded-full text-[16px] placeholder-muted-foreground border-none focus-visible:ring-2 focus-visible:ring-primary/20" />
+                    </div>
+                    <Button variant="ghost" size="icon" onClick={() => { setShowSearch(false); setSearchQuery(''); }} className="p-2 hover:bg-muted rounded-full transition-colors"><X className="w-5 h-5 text-muted-foreground" /></Button>
+                  </div>
+                  <div className="border border-border rounded-xl overflow-hidden divide-y divide-border max-h-64 overflow-y-auto">
+                    {filteredSuggestions.map(s => (
+                      <div key={s.id} onClick={() => { if (!compareAssets.some(a => a.id === s.id)) { setCompareAssets(prev => [...prev, { id: s.id, label: s.label, color: assetColorMap[s.id] || '#FF9500', markerType: 'circle' }]); } setShowSearch(false); setSearchQuery(''); }} className="flex items-center justify-between px-4 py-4 cursor-pointer hover:bg-muted transition-colors">
+                        <div>
+                          <div className="text-[16px] font-semibold text-foreground">{s.id}</div>
+                          <div className="text-[13px] text-muted-foreground">{s.label}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-[15px] text-foreground tabular-nums">{s.price}</div>
+                          <div className={`text-[14px] font-medium ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</div>
+                        </div>
+                      </div>
+                    ))}
+                    {filteredSuggestions.length === 0 && <div className="px-4 py-4 text-[14px] text-muted-foreground">검색 결과 없음</div>}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Chart type button with dropdown */}
+            <div className="relative">
+              <Button variant="ghost" onClick={() => setStyleOpen(!styleOpen)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
+                {chartType === 'linear' ? '선형' : '영역'} <ChevronDown className="w-3 h-3" />
+              </Button>
+              {styleOpen && (
+                <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-xl shadow-xl z-50 p-2 w-44" onClick={e => e.stopPropagation()}>
+                  <button onClick={() => { setChartType('linear'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'linear' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>선형</button>
+                  <button onClick={() => { setChartType('area'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'area' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>영역</button>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Asset tokens row */}
+          {/* Asset tokens row — show only when comparing assets */}
+          {compareAssets.length > 0 && (
           <div className="flex items-center gap-2 px-4 py-1.5 overflow-x-auto scroll-hide">
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded-full flex-shrink-0">
               <AssetSymbol shape="circle" color="#FF9500" size={12} />
@@ -478,49 +518,11 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
               </div>
             ))}
           </div>
-
-          {/* Chart type modal */}
-          {styleOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setStyleOpen(false)}>
-              <div className="bg-card rounded-2xl shadow-xl p-3 w-44" onClick={e => e.stopPropagation()}>
-                <button onClick={() => { setChartType('linear'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'linear' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>선형</button>
-                <button onClick={() => { setChartType('area'); setStyleOpen(false); }} className={`w-full text-left px-4 py-3 text-[16px] rounded-xl ${chartType === 'area' ? 'bg-muted font-semibold' : 'hover:bg-muted'}`}>영역</button>
-              </div>
-            </div>
           )}
 
-          {/* Comparison search modal */}
-          {showSearch && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setShowSearch(false)}>
-              <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-md p-5" onClick={e => e.stopPropagation()}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="relative flex-1">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="종목 이름이나 티커를 입력하세요" className="h-12 pl-12 pr-4 bg-muted rounded-full text-[16px] placeholder-muted-foreground border-none focus-visible:ring-2 focus-visible:ring-primary/20" />
-                  </div>
-                  <Button variant="ghost" size="icon" onClick={() => setShowSearch(false)} className="p-2 hover:bg-muted rounded-full transition-colors"><X className="w-5 h-5 text-muted-foreground" /></Button>
-                </div>
-                <div className="border border-border rounded-xl overflow-hidden divide-y divide-border max-h-64 overflow-y-auto">
-                  {filteredSuggestions.map(s => (
-                    <div key={s.id} onClick={() => { if (!compareAssets.some(a => a.id === s.id)) { setCompareAssets(prev => [...prev, { id: s.id, label: s.label, color: assetColorMap[s.id] || '#FF9500', markerType: 'circle' }]); } setShowSearch(false); setSearchQuery(''); }} className="flex items-center justify-between px-4 py-4 cursor-pointer hover:bg-muted transition-colors">
-                      <div>
-                        <div className="text-[16px] font-semibold text-foreground">{s.id}</div>
-                        <div className="text-[13px] text-muted-foreground">{s.label}</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-[15px] text-foreground tabular-nums">{s.price}</div>
-                        <div className={`text-[14px] font-medium ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</div>
-                      </div>
-                    </div>
-                  ))}
-                  {filteredSuggestions.length === 0 && <div className="px-4 py-4 text-[14px] text-muted-foreground">검색 결과 없음</div>}
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="flex gap-0 px-2">
-            <div className="flex-1 min-w-0">
+          {/* Chart area with background */}
+          <div className="px-2 mt-2 mb-1">
+            <div className="bg-muted/30 rounded-lg overflow-hidden border border-border">
               <PortfolioChart
                 mainAsset={mainAsset}
                 compareAssets={compareAssets}
