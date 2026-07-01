@@ -19,7 +19,7 @@ export function IndexCard({
   const pct = parseFloat(item.change.replace('%', ''));
   const absChange = numVal * Math.abs(pct) / 100;
   const absStr = absChange.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const color = item.isPositive ? "#0E9E4B" : "#FF4B4B";
+  const color = item.isPositive ? "var(--gf-up)" : "var(--gf-down)";
   return (
     <Card id="gf-index-card" onClick={onClick} role={onClick ? "button" : undefined} aria-label={onClick ? `${item.name} 상세` : undefined} className="gf-index-card px-3 py-3 cursor-pointer hover:bg-muted/50 transition-colors overflow-hidden border-border/40">
       <CardContent className="p-0">
@@ -27,8 +27,8 @@ export function IndexCard({
         <div className="gf-index-card__value text-[12px] text-muted-foreground tabular-nums">{item.value}</div>
         {vp >= BREAKPOINTS.MOBILE && <div className="text-[12px] text-muted-foreground">({item.isPositive ? "+" : "-"}${absStr})</div>}
         <div className="flex items-center gap-0.5 mt-1.5">
-          <span className={`gf-index-card__change text-[14px] font-medium ${item.isPositive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{item.change}</span>
-          {item.isPositive ? <ArrowUpRight className="w-3.5 h-3.5 text-[#0E9E4B]" /> : <ArrowDownRight className="w-3.5 h-3.5 text-[#FF4B4B]" />}
+          <span className={`gf-index-card__change text-[14px] font-medium ${item.isPositive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{item.change}</span>
+          {item.isPositive ? <ArrowUpRight className="w-3.5 h-3.5 text-[var(--gf-up)]" /> : <ArrowDownRight className="w-3.5 h-3.5 text-[var(--gf-down)]" />}
         </div>
         <div className={cn("gf-index-card__sparkline -mx-3 -mb-3", vp < BREAKPOINTS.MOBILE ? "mt-0.5" : "mt-2")}>
           <MiniChart data={sp} color={color} prevClose={sp[0]} fillWidth />

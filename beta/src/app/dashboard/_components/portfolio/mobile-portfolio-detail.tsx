@@ -349,7 +349,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
   ];
 
   const assetColorMap: Record<string, string> = {
-    "005930": "#0E9E4B", "SPY": "hsl(var(--primary))", "000660": "#FF9500", "NVDA": "#FF4B4B",
+    "005930": "var(--gf-up)", "SPY": "hsl(var(--primary))", "000660": "#FF9500", "NVDA": "var(--gf-down)",
     "329180": "hsl(var(--primary))", "006800": "bg-purple-800", "009150": "bg-red-700",
   };
 
@@ -389,7 +389,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
             <div className="text-[16px] font-semibold text-foreground mb-1">투자중</div>
             <div className="flex items-baseline gap-2 flex-wrap">
               <span className="text-[28px] font-bold text-foreground tabular-nums whitespace-nowrap">$19,653,380.00</span>
-              <div className="flex items-center gap-1 text-[14px] text-[#0E9E4B] font-medium whitespace-nowrap">
+              <div className="flex items-center gap-1 text-[14px] text-[var(--gf-up)] font-medium whitespace-nowrap">
                 <ArrowUpRight className="w-3.5 h-3.5" />
                 <span>+2.36%</span>
               </div>
@@ -455,7 +455,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                       </div>
                       <div className="text-right">
                         <div className="text-[15px] text-foreground tabular-nums">{s.price}</div>
-                        <div className={`text-[14px] font-medium ${s.positive ? 'text-[#0E9E4B]' : 'text-[#FF4B4B]'}`}>{s.change}</div>
+                        <div className={`text-[14px] font-medium ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</div>
                       </div>
                     </div>
                   ))}
@@ -607,8 +607,8 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                         </div>
                       </td>
                       <td className="text-right py-3 px-2 tabular-nums text-foreground whitespace-nowrap">{item.price}</td>
-                      <td className={`text-right py-3 px-2 tabular-nums whitespace-nowrap ${item.positive ? 'text-[#0E9E4B]' : 'text-[#FF4B4B]'}`}>{item.changeValue}</td>
-                      <td className={`text-right py-3 pl-2 tabular-nums whitespace-nowrap ${item.positive ? 'text-[#0E9E4B]' : 'text-[#FF4B4B]'}`}>{item.changePercent}</td>
+                      <td className={`text-right py-3 px-2 tabular-nums whitespace-nowrap ${item.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{item.changeValue}</td>
+                      <td className={`text-right py-3 pl-2 tabular-nums whitespace-nowrap ${item.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{item.changePercent}</td>
                     </tr>
                   ))}
               </tbody>
@@ -698,7 +698,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                               </td>
                               <td className="text-right py-2 px-2 tabular-nums text-foreground whitespace-nowrap">₩{asset.price.toLocaleString()}</td>
                               <td className="text-right py-2 px-2 tabular-nums text-foreground whitespace-nowrap">{asset.qty}</td>
-                              <td className={`text-right py-2 px-2 tabular-nums whitespace-nowrap font-medium ${asset.positive ? 'text-destructive' : 'text-primary'}`}>
+                              <td className={`text-right py-2 px-2 tabular-nums whitespace-nowrap font-medium ${asset.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>
                                 {asset.positive ? '+' : ''}₩{asset.dailyProfit.toLocaleString()}
                               </td>
                               <td className="text-right py-2 px-2 tabular-nums whitespace-nowrap text-muted-foreground">{asset.dailyProfitPercent}%</td>
@@ -744,7 +744,7 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                                             </div>
                                             <div className="col-span-2 tabular-nums">₩{tx.buyPrice.toLocaleString()}</div>
                                             <div className="col-span-1 text-muted-foreground">{tx.qty}</div>
-                                            <div className={`col-span-2 tabular-nums font-semibold ${tx.positive ? 'text-destructive' : 'text-primary'}`}>
+                                            <div className={`col-span-2 tabular-nums font-semibold ${tx.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>
                                               {tx.positive ? '+' : ''}₩{tx.profit.toLocaleString()} ({tx.profitPercent}%)
                                             </div>
                                             <div className="col-span-2 tabular-nums font-medium">₩{tx.total.toLocaleString()}</div>
@@ -1100,7 +1100,7 @@ function VizTreemap({ data }: { data: Array<{ ticker: string; name: string; pric
             <div className="flex justify-between"><span className="text-muted-foreground/75">평가 금액</span><span className="font-bold text-foreground">₩{hovered.totalAmount.toLocaleString()}</span></div>
             <div className="flex justify-between pt-1.5 border-t border-dashed border-border mt-1">
               <span className="text-muted-foreground/75">일일 수익률</span>
-              <span className={`font-bold ${hovered.positive ? 'text-destructive' : 'text-primary'}`}>
+              <span className={`font-bold ${hovered.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>
                 {hovered.positive ? '▲' : '▼'} {Math.abs(hovered.dailyProfitPercent)}%
               </span>
             </div>

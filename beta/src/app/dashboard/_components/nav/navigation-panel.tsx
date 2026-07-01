@@ -33,11 +33,11 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   const optionsRef = useRef<HTMLDivElement>(null);
   const sectorSparkData = sectorIndices.map(s => ({
     name: s.name, data: useDeterministicSparkline(s.basePrice),
-    color: s.positive ? "#0E9E4B" : "#FF4B4B",
+    color: s.positive ? "var(--gf-up)" : "var(--gf-down)",
   }));
   const watchlistSparkData = watchlistStocks.map(s => ({
     name: s.name, data: useDeterministicSparkline(s.basePrice),
-    color: s.positive ? "#0E9E4B" : "#FF4B4B",
+    color: s.positive ? "var(--gf-up)" : "var(--gf-down)",
   }));
   const portfolioSummary = { invested: "$19,653,380", dailyChangePercent: "+2.36%", positive: true };
   const portfolioSparkData = useDeterministicSparkline(19653380);
@@ -139,7 +139,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
         <div className="text-center cursor-pointer" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground font-medium mb-1">투자중</div>
           <div className="text-[14px] text-foreground font-bold mb-0.5">₩19.6M</div>
-          <div className={`flex items-center justify-center gap-0.5 text-[14px] font-semibold ${portfolioSummary.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+          <div className={`flex items-center justify-center gap-0.5 text-[14px] font-semibold ${portfolioSummary.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>
             {portfolioSummary.positive ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}{portfolioSummary.dailyChangePercent}
           </div>
         </div>
@@ -234,7 +234,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
           {/* GF: amount + change on one line; KRW drops decimals via formatPrice. */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[14px] font-medium tabular-nums text-foreground">{formatPrice("₩19,653,380.00")}</span>
-            <span className="flex items-center gap-0.5 text-[12px] text-[#0E9E4B] tabular-nums">
+            <span className="flex items-center gap-0.5 text-[12px] text-[var(--gf-up)] tabular-nums">
               <ArrowUpRight className="w-3 h-3" />{formatPrice("+₩453,120.00")} (+2.36%)
             </span>
           </div>
@@ -313,7 +313,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
                       <td className="py-1.5 pl-4 pr-1"><div className="text-[14px] font-semibold text-foreground">{s.name}</div><div className="text-[9px] text-muted-foreground leading-tight truncate">{s.fullName}</div></td>
                       <td className="py-1.5 px-1 align-middle"><MiniChart data={watchlistSparkData[idx].data} color={watchlistSparkData[idx].color} prevClose={watchlistSparkData[idx].data[0]} /></td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-foreground text-[14px] whitespace-nowrap">{formatPrice(s.price)}</td>
-                      <td className={`text-right py-1.5 px-1 tabular-nums whitespace-nowrap ${s.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{s.positive ? "+" : ""}{s.change}</td>
+                      <td className={`text-right py-1.5 px-1 tabular-nums whitespace-nowrap ${s.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{s.positive ? "+" : ""}{s.change}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground whitespace-nowrap">{s.change}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground text-[12px] whitespace-nowrap">{s.prevClose || "—"}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground text-[12px] whitespace-nowrap">{s.open || "—"}</td>
@@ -378,7 +378,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
                       <td className="py-1.5 pl-4 pr-1"><div className="text-[14px] font-semibold text-foreground">{s.name}</div><div className="text-[9px] text-muted-foreground leading-tight">{s.fullName}</div></td>
                       <td className="py-1.5 px-1 align-middle"><MiniChart data={sectorSparkData[idx].data} color={sectorSparkData[idx].color} prevClose={sectorSparkData[idx].data[0]} /></td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-foreground text-[14px] whitespace-nowrap">{formatPrice(s.price)}</td>
-                      <td className={`text-right py-1.5 px-1 tabular-nums whitespace-nowrap ${s.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{s.changeVal}</td>
+                      <td className={`text-right py-1.5 px-1 tabular-nums whitespace-nowrap ${s.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{s.changeVal}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground whitespace-nowrap">{s.change}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground text-[12px] whitespace-nowrap">{s.prevClose || "—"}</td>
                       <td className="text-right py-1.5 px-1 tabular-nums text-muted-foreground text-[12px] whitespace-nowrap">{s.open || "—"}</td>

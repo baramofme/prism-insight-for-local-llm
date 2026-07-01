@@ -65,7 +65,7 @@ export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }
         className="w-full h-auto py-2 px-1 hover:bg-muted/50 transition-colors rounded-lg flex-col items-center gap-0.5"
       >
         <div className="text-[12px] font-semibold text-foreground truncate max-w-full leading-tight">{item.name}</div>
-        <div className={`text-[11px] font-medium flex items-center gap-0.5 leading-tight ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+        <div className={`text-[11px] font-medium flex items-center gap-0.5 leading-tight ${item.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>
           <span>{item.change}</span>
           {item.positive ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
         </div>
@@ -93,7 +93,7 @@ export function SimpleStockNav({ item, index, sparkData, onStockClick, compact }
           without clipping prices. */}
       <div className="text-right flex flex-col items-end w-[80px] shrink-0 ml-1">
         <div className="text-[14px] tabular-nums font-medium text-foreground truncate max-w-full">{formatPrice(item.price)}</div>
-        <div className={`text-[11px] font-medium flex items-center gap-0.5 ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+        <div className={`text-[11px] font-medium flex items-center gap-0.5 ${item.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>
           <span>{item.change}</span>
           {item.positive ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
         </div>

@@ -100,6 +100,15 @@
   --gf-chart-negative: oklch(0.63 0.25 25);     /* 차트 음수 컬러 */
   --gf-tab-active-underline: oklch(0.205 0 0);  /* 활성 탭 언더라인 */
   --gf-surface-elevated: oklch(1 0 0);           /* elevated 표면 */
+  /* Price color system — default 현지 시장 (Korean): 상승 red / 하락 blue. */
+  --gf-up: #FF4B4B;
+  --gf-down: #1a73e8;
+}
+
+/* 국제 (international): 상승 green / 하락 red. Class toggled on #gf-root. */
+.price-intl {
+  --gf-up: #0E9E4B;
+  --gf-down: #FF4B4B;
 }
 
 .dark {

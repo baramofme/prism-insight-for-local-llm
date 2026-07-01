@@ -51,8 +51,8 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
         {list.map(s => (
           <button key={s.id} type="button" onClick={() => handleSelectQuestion(s.id)} className="shrink-0 flex items-center gap-1.5">
             <span className="text-[13px] font-medium text-foreground tabular-nums">{s.id}</span>
-            <span className={`text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>{s.change}</span>
-            <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${s.positive ? 'bg-destructive' : 'bg-primary'}`}>
+            <span className={`text-[12px] font-semibold ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</span>
+            <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${s.positive ? 'bg-[var(--gf-up)]' : 'bg-[var(--gf-down)]'}`}>
               {s.positive ? <ArrowUp className="w-2.5 h-2.5 text-white" /> : <ArrowDown className="w-2.5 h-2.5 text-white" />}
             </span>
           </button>
@@ -68,7 +68,7 @@ export function FooterInput({ searchQuery, setSearchQuery, onSubmit, autoOpen = 
             </div>
             <div className="text-right">
               <span className="block text-[13px] font-medium text-foreground">{s.price}</span>
-              <span className={`inline-flex items-center gap-0.5 text-[12px] font-semibold ${s.positive ? 'text-destructive' : 'text-primary'}`}>
+              <span className={`inline-flex items-center gap-0.5 text-[12px] font-semibold ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>
                 {s.positive ? '▲' : '▼'} {s.change}
               </span>
             </div>

@@ -113,7 +113,7 @@ export function StockDetail({
     () => Math.round((localStock.price / (1 + localStock.dailyProfitPercent / 100)) / 100) * 100,
     [localStock.price, localStock.dailyProfitPercent],
   );
-  const chartColor = isPositive ? "#0E9E4B" : "#FF4B4B";
+  const chartColor = isPositive ? "var(--gf-up)" : "var(--gf-down)";
 
   // SVG chart placeholder with gradient
   const renderChart = () => {
@@ -175,7 +175,7 @@ export function StockDetail({
             const bodyTop = pad + (1 - (v - min) / range) * (h - pad * 2);
             const bodyBot = bodyTop + Math.max(4, (h - pad * 2) * 0.05);
             const isUp = i === 0 || v >= (data[i - 1] ?? v);
-            const bodyColor = isUp ? "#0E9E4B" : "#FF4B4B";
+            const bodyColor = isUp ? "var(--gf-up)" : "var(--gf-down)";
             return (
               <g key={i}>
                 <line x1={cx} y1={pad} x2={cx} y2={h - pad} stroke={bodyColor} strokeWidth="1" opacity="0.3" />
@@ -197,7 +197,7 @@ export function StockDetail({
             const barTop = pad + (1 - (v - min) / range) * (h - pad * 2);
             const barBot = h - pad;
             const isUp = i === 0 || v >= (data[i - 1] ?? v);
-            const barColor = isUp ? "#0E9E4B" : "#FF4B4B";
+            const barColor = isUp ? "var(--gf-up)" : "var(--gf-down)";
             return (
               <rect key={i} x={cx - barW / 2} y={barTop} width={barW} height={barBot - barTop} fill={barColor} rx="0.5" opacity="0.7" />
             );
@@ -288,11 +288,11 @@ export function StockDetail({
               <span id="gf-stockheader-price-value" className="gf-stockheader__price text-[32px] font-bold text-foreground tabular-nums">{formatPrice(localStock.price)}</span>
               <div id="gf-stockheader-change-icon" className="gf-stockheader__change-icon flex items-center gap-1.5">
                 {isPositive ? (
-                  <ArrowUpRight className="w-4 h-4 text-[#0E9E4B]" />
+                  <ArrowUpRight className="w-4 h-4 text-[var(--gf-up)]" />
                 ) : (
-                  <ArrowDownRight className="w-4 h-4 text-[#FF4B4B]" />
+                  <ArrowDownRight className="w-4 h-4 text-[var(--gf-down)]" />
                 )}
-                <span id="gf-stockheader-change-rate" className={`gf-stockheader__change-rate text-[14px] font-medium tabular-nums ${isPositive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+                <span id="gf-stockheader-change-rate" className={`gf-stockheader__change-rate text-[14px] font-medium tabular-nums ${isPositive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>
                   {changeStr} ({changePctStr})
                 </span>
               </div>
@@ -400,8 +400,8 @@ export function StockDetail({
                     </div>
                   </td>
                   <td className="text-right py-2.5 px-2 tabular-nums text-foreground whitespace-nowrap font-medium">{formatPrice(localStock.price)}</td>
-                  <td className={`text-right py-2.5 px-2 tabular-nums whitespace-nowrap font-medium ${isPositive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{changeStr}</td>
-                  <td className={`text-right py-2.5 pl-2 tabular-nums whitespace-nowrap font-medium ${isPositive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{changePctStr}</td>
+                  <td className={`text-right py-2.5 px-2 tabular-nums whitespace-nowrap font-medium ${isPositive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{changeStr}</td>
+                  <td className={`text-right py-2.5 pl-2 tabular-nums whitespace-nowrap font-medium ${isPositive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{changePctStr}</td>
                 </tr>
                 {relatedStocks.map(rs => (
                   <tr key={rs.ticker} className="border-t border-border hover:bg-muted transition-colors">
@@ -412,8 +412,8 @@ export function StockDetail({
                       </div>
                     </td>
                     <td className="text-right py-2.5 px-2 tabular-nums text-foreground whitespace-nowrap">{formatPrice(rs.price)}</td>
-                    <td className={`text-right py-2.5 px-2 tabular-nums whitespace-nowrap font-medium ${rs.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{rs.positive ? "+" : ""}{rs.change}%</td>
-                    <td className={`text-right py-2.5 pl-2 tabular-nums whitespace-nowrap font-medium ${rs.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{rs.positive ? "+" : ""}{rs.change}%</td>
+                    <td className={`text-right py-2.5 px-2 tabular-nums whitespace-nowrap font-medium ${rs.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{rs.positive ? "+" : ""}{rs.change}%</td>
+                    <td className={`text-right py-2.5 pl-2 tabular-nums whitespace-nowrap font-medium ${rs.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{rs.positive ? "+" : ""}{rs.change}%</td>
                   </tr>
                 ))}
               </tbody>
@@ -438,14 +438,14 @@ export function StockDetail({
                 {/* AI Insights Card */}
                 <div id="gf-contentpanel-ai" className="gf-ai bg-muted/50 rounded-xl p-4 border border-border">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-[#0E9E4B] flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-[var(--gf-up)] flex items-center justify-center">
                       <span className="text-[10px] text-white font-bold">AI</span>
                     </div>
                     <span className="text-[13px] font-semibold text-foreground">AI 전망</span>
                   </div>
                   <div className="space-y-2">
                     <div className="gf-ai__card gf-ai__card--positive flex items-start gap-2">
-                      <ArrowUpRight className="w-4 h-4 text-[#0E9E4B] mt-0.5 flex-shrink-0" />
+                      <ArrowUpRight className="w-4 h-4 text-[var(--gf-up)] mt-0.5 flex-shrink-0" />
                       <div>
                         <span className="text-[13px] font-medium text-foreground">상승세 전망</span>
                         <p className="text-[12px] text-muted-foreground mt-0.5">
@@ -454,7 +454,7 @@ export function StockDetail({
                       </div>
                     </div>
                     <div className="gf-ai__card gf-ai__card--negative flex items-start gap-2">
-                      <ArrowDownRight className="w-4 h-4 text-[#FF4B4B] mt-0.5 flex-shrink-0" />
+                      <ArrowDownRight className="w-4 h-4 text-[var(--gf-down)] mt-0.5 flex-shrink-0" />
                       <div>
                         <span className="text-[13px] font-medium text-foreground">하락세 전망</span>
                         <p className="text-[12px] text-muted-foreground mt-0.5">
@@ -505,11 +505,11 @@ export function StockDetail({
                             <div className="gf-related__name text-[14px] font-medium text-foreground truncate">{rs.name}</div>
                             <div className="gf-related__ticker text-[11px] text-muted-foreground mt-0.5">{rs.ticker}</div>
                           </div>
-                          <MiniChart data={generateSparklineData(rs.price, 20, 0.02, rs.price)} color={rs.positive ? "#0E9E4B" : "#FF4B4B"} small />
+                          <MiniChart data={generateSparklineData(rs.price, 20, 0.02, rs.price)} color={rs.positive ? "var(--gf-up)" : "var(--gf-down)"} small />
                         </div>
                          <div className="flex items-end justify-between mt-2 pt-2 border-t border-border/50">
                            <span className="gf-related__price text-[14px] font-medium text-foreground tabular-nums">{formatPrice(rs.price)}</span>
-                           <span className={`gf-related__change text-[12px] font-medium tabular-nums ${rs.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>
+                           <span className={`gf-related__change text-[12px] font-medium tabular-nums ${rs.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>
                              {rs.positive ? "+" : ""}{rs.change}%
                            </span>
                         </div>
@@ -572,7 +572,7 @@ export function StockDetail({
                     <div key={q.period} className="bg-muted/50 rounded-lg p-3 text-left">
                       <div className="text-[12px] font-semibold text-foreground mb-1">{q.period}</div>
                       <div className="text-[11px] text-muted-foreground">매출 <span className="text-foreground font-medium">{q.revenue}</span></div>
-                      <div className="text-[11px] text-muted-foreground">이익 <span className="text-[#0E9E4B] font-medium">{q.profit}</span></div>
+                      <div className="text-[11px] text-muted-foreground">이익 <span className="text-[var(--gf-up)] font-medium">{q.profit}</span></div>
                     </div>
                   ))}
                 </div>
@@ -597,7 +597,7 @@ export function StockDetail({
                   ].map(item => (
                     <div key={item.label} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                       <span className="text-[13px] text-muted-foreground">{item.label}</span>
-                      <span className={`text-[13px] font-semibold tabular-nums ${item.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{item.value}</span>
+                      <span className={`text-[13px] font-semibold tabular-nums ${item.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{item.value}</span>
                     </div>
                   ))}
                 </div>

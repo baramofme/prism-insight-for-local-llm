@@ -20,6 +20,8 @@ export function FinanceHeader({
   handleStockClick,
   collapsed = false,
   onMenuClick,
+  priceColor,
+  setPriceColor,
 }: {
   searchQuery: string;
   setSearchQuery: (v: string) => void;
@@ -34,13 +36,14 @@ export function FinanceHeader({
   handleStockClick: (stock: Stock) => void;
   collapsed?: boolean;
   onMenuClick?: () => void;
+  priceColor: "local" | "intl";
+  setPriceColor: (v: "local" | "intl") => void;
 }) {
   const searchDropdownRef = useRef<HTMLDivElement>(null);
   const settingsDropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   // GF settings menu selections (visual state; theme/color effects are app-wide TODO).
   const [theme, setTheme] = useState<"system" | "dark" | "light">("system");
-  const [priceColor, setPriceColor] = useState<"local" | "intl">("local");
   const [showProfile, setShowProfile] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
 
@@ -119,7 +122,7 @@ export function FinanceHeader({
                             </div>
                             <div className="text-right">
                               <div className="text-[14px] text-[#1f1f1f] tabular-nums">{s.price}</div>
-                              <div className={`text-[12px] font-medium ${s.positive ? 'text-[#0E9E4B]' : 'text-[#FF4B4B]'}`}>{s.change}</div>
+                              <div className={`text-[12px] font-medium ${s.positive ? 'text-[var(--gf-up)]' : 'text-[var(--gf-down)]'}`}>{s.change}</div>
                             </div>
                           </div>
                         ))}

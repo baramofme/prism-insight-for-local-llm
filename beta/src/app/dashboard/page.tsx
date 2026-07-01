@@ -37,6 +37,9 @@ export default function DashboardPage() {
   const [centerTab, setCenterTab] = useState<"home" | "research">("home");
   // Mobile (<=766): hide the header + collapse the research sheet on scroll down.
   const [chromeHidden, setChromeHidden] = useState(false);
+  // Price color system (settings menu): 현지 시장 = 상승 red/하락 blue (default),
+  // 국제 = 상승 green/하락 red. Drives --gf-up/--gf-down via a class on #gf-root.
+  const [priceColor, setPriceColor] = useState<"local" | "intl">("local");
 
   const handleFooterSubmit = useCallback((text: string) => {
     setFooterQuestion(text);
@@ -128,7 +131,7 @@ export default function DashboardPage() {
   const centerLeftMargin = 0;
 
   return (
-    <><div id="gf-root" className="gf-root min-h-screen bg-white text-[#1f1f1f]" style={{ colorScheme: "light" }}>
+    <><div id="gf-root" className="gf-root min-h-screen bg-white text-[#1f1f1f]" style={{ colorScheme: "light", ["--gf-up" as string]: priceColor === "intl" ? "#0E9E4B" : "#FF4B4B", ["--gf-down" as string]: priceColor === "intl" ? "#FF4B4B" : "#1a73e8" } as React.CSSProperties}>
       <style>{`.scroll-hide::-webkit-scrollbar { display: none; } .scroll-hide { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
       <div className="flex flex-col min-h-screen md:h-screen">
         <FinanceHeader
@@ -139,6 +142,8 @@ export default function DashboardPage() {
           handleStockClick={handleStockClick}
           collapsed={chromeHidden}
           onMenuClick={() => setSidebarOpen(true)}
+          priceColor={priceColor}
+          setPriceColor={setPriceColor}
         />
 
         <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>

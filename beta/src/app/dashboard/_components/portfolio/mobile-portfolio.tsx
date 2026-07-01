@@ -22,7 +22,7 @@ export function MobilePortfolio({ vp, onViewPortfolio }: { vp: number; onViewPor
           <div className="text-[14px] text-foreground font-medium">투자중</div>
         </div>
         <div className="w-[100px] text-right text-[14px] text-foreground tabular-nums">$19,653,380.00</div>
-        <div className="w-[90px] text-right flex items-center justify-end gap-0.5 text-[14px] text-[#0E9E4B] font-medium">
+        <div className="w-[90px] text-right flex items-center justify-end gap-0.5 text-[14px] text-[var(--gf-up)] font-medium">
           <span>+2.36%</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
         </div>
@@ -54,7 +54,7 @@ export function MobilePortfolio({ vp, onViewPortfolio }: { vp: number; onViewPor
                   <div className="text-[12px] text-muted-foreground">{s.fullName}</div>
                 </td>
                 <td className="text-right py-2 px-2 tabular-nums text-foreground text-[14px] whitespace-nowrap">{formatPrice(s.price)}</td>
-                <td className={`text-right py-2 px-2 tabular-nums whitespace-nowrap ${s.positive ? "text-[#0E9E4B]" : "text-[#FF4B4B]"}`}>{s.positive ? "+" : ""}{s.change}</td>
+                <td className={`text-right py-2 px-2 tabular-nums whitespace-nowrap ${s.positive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]"}`}>{s.positive ? "+" : ""}{s.change}</td>
                 <td className="text-right py-2 px-2 tabular-nums text-muted-foreground whitespace-nowrap">{s.change}</td>
               </tr>
             ))}

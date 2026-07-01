@@ -12,7 +12,7 @@ export function formatPrice(price: string): string {
 }
 
 export function getSparklineColor(isPositive: boolean): string {
-  return isPositive ? "#0E9E4B" : "#FF4B4B";
+  return isPositive ? "var(--gf-up)" : "var(--gf-down)";
 }
 
 export function generateSparklineData(

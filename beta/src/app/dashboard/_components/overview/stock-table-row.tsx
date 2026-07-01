@@ -35,9 +35,9 @@ export function StockTableRow({
         {stock.price}
       </TableCell>
       <TableCell className="gf-stock-table__cell text-right py-1.5 px-2 whitespace-nowrap">
-        <div className={cn("flex items-center gap-0.5 justify-end", stock.isPositive ? "text-[#0E9E4B]" : "text-[#FF4B4B]")}>
+        <div className={cn("flex items-center gap-0.5 justify-end", stock.isPositive ? "text-[var(--gf-up)]" : "text-[var(--gf-down)]")}>
           <span className="text-[11px] font-medium">{stock.change}</span>
-          {stock.isPositive ? <ArrowUpRight className="w-3 h-3 text-[#0E9E4B]" /> : <ArrowDownRight className="w-3 h-3 text-[#FF4B4B]" />}
+          {stock.isPositive ? <ArrowUpRight className="w-3 h-3 text-[var(--gf-up)]" /> : <ArrowDownRight className="w-3 h-3 text-[var(--gf-down)]" />}
         </div>
       </TableCell>
       {showVolume && (
