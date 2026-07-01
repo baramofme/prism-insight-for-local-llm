@@ -113,6 +113,28 @@
 
 ---
 
+## 5-5. 종목 상세 브레드크럼(진입 경로별) + 가운데 페이지 스크롤
+
+파일: `page.tsx`, `_components/stock/stock-detail.tsx`, `_components/portfolio/mobile-portfolio-detail.tsx`
+
+### 브레드크럼 = 직전 페이지 (GF 실측)
+- GF: 관심목록 종목 진입 → `← 홈 | 329180:KRX`, 포트폴리오 홀딩 진입 → `← 포트폴리오 | 329180:KRX`.
+- beta 버그: 라벨이 `포트폴리오` 하드코딩 + 뒤로가기 항상 포트폴리오행 → 관심목록 진입도 `포트폴리오` 로 표시.
+- 수정:
+  - `page.tsx` 에 `stockOrigin: "home" | "portfolio"` state. `handleStockClick(stock, origin = "home")`.
+  - 좌측 nav 관심목록·업종·홈 콘텐츠·헤더 검색 클릭 = origin `home` (기본) → `홈`.
+  - 포트폴리오 상세 홀딩 **이름 클릭** = origin `portfolio` → `포트폴리오` (`onStockClick(asset, "portfolio")`, `stopPropagation` 으로 행 확장 토글과 분리).
+  - `StockDetail` 에 `backLabel?: string` prop (기본 `홈`). 브레드크럼·`onBack` 이 origin 따라 분기(`포트폴리오`→포트폴리오 뷰, 그 외→홈).
+
+### 가운데 페이지 스크롤 (근본 원인)
+- 증상: 종목 상세/포트폴리오 상세 진입 시 가운데가 스크롤 안 됨. `#gf-main` 높이가 뷰포트를 초과(1966px)해도 클립/스크롤 안 됨.
+- 원인: 상단 flex row(`page.tsx`)가 WIDE 에서 `items-start`(= `align-items: flex-start`) → 자식 컬럼이 **stretch 안 되고 콘텐츠 높이**를 가짐. 그래서 자식 내부 `overflow-y-auto` 가 클립할 대상이 없음.
+- **홈 브랜치엔 `md:self-stretch` 가 있었지만 portfolio/stockDetail 브랜치엔 없었음** → 홈만 스크롤됐던 이유.
+- 수정: portfolio(`mobileView==="portfolio"`)·stockDetail 래퍼 div 에 `md:self-stretch` 추가 → 컬럼이 뷰포트 높이로 clamp, 내부 스크롤 정상.
+- 검증: `#gf-main` 1966→1232px, 스크롤러 `clientH(1179) < scrollH(1913)` → `canScroll=true`.
+
+---
+
 ## 6. 로컬 서브에이전트(토큰 절감) MCP
 
 - `~/.claude/local-llm-mcp/server.py` — FastMCP stdio 서버. OpenAI 호환 `/v1/chat/completions` 로 로컬 모델 오프로드.
