@@ -162,6 +162,11 @@ function PortfolioChart({
 
 export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footerQuestion, footerQuestionId, onFooterQuestionConsumed }: { onBack: () => void; onStockClick?: (stock: import("../../_lib/types").Stock, origin?: "home" | "portfolio") => void; vp: number; rightW: number; footerQuestion?: string; footerQuestionId?: number; onFooterQuestionConsumed?: () => void }) {
   const [activeTab, setActiveTab] = useState<"portfolio" | "research">("portfolio");
+  // Portfolio-level edit menu (GF 수정: 이름 바꾸기 / 투자 수정 / 삭제)
+  const [portfolioName, setPortfolioName] = useState("투자중");
+  const [editMenuOpen, setEditMenuOpen] = useState(false);
+  const [renameOpen, setRenameOpen] = useState(false);
+  const [renameValue, setRenameValue] = useState("투자중");
   const [period, setPeriod] = useState<PeriodFilter>('1D');
   const [compareAssets, setCompareAssets] = useState<ComparisonAsset[]>([]);
   const [showSearch, setShowSearch] = useState(false);
@@ -402,17 +407,39 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
       {activeTab === "portfolio" ? (
         <div className="flex-1 min-h-0 overflow-y-auto">
           <div className="flex items-center gap-1 px-4 py-3 border-b border-border">
-            <Button variant="link" onClick={onBack} className="flex items-center gap-1 text-[14px] text-primary hover:underline p-0 h-auto"><ArrowLeft className="w-4 h-4" />홈</Button>
+            <Button variant="link" onClick={onBack} className="flex items-center gap-1 text-[14px] text-primary hover:underline p-0 h-auto"><ArrowLeft className="w-4 h-4" />포트폴리오</Button>
             <span className="text-muted-foreground">|</span>
-            <span className="text-[14px] text-foreground font-medium">투자중</span>
+            <span className="text-[14px] text-foreground font-medium">{portfolioName}</span>
           </div>
 
           <div className="px-4 pt-4 pb-2">
             <div className="flex items-center justify-between mb-1">
-              <div className="text-[16px] font-semibold text-foreground">투자중</div>
-              <button className="flex items-center gap-1.5 px-3 py-1 text-[13px] font-medium text-primary border border-border rounded-full hover:bg-muted transition-colors shrink-0" aria-label="포트폴리오 수정">
-                <Pencil className="w-3.5 h-3.5" /> 수정
-              </button>
+              <div className="text-[16px] font-semibold text-foreground">{portfolioName}</div>
+              <div className="relative shrink-0">
+                <button onClick={() => setEditMenuOpen(o => !o)}
+                  className="flex items-center gap-1.5 px-3 py-1 text-[13px] font-medium text-primary border border-border rounded-full hover:bg-muted transition-colors" aria-label="포트폴리오 수정">
+                  <Pencil className="w-3.5 h-3.5" /> 수정
+                </button>
+                {editMenuOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setEditMenuOpen(false)} />
+                    <div className="absolute right-0 top-full mt-1 w-52 bg-card border border-border rounded-xl shadow-xl z-50 py-1.5">
+                      <button onClick={() => { setEditMenuOpen(false); setRenameValue(portfolioName); setRenameOpen(true); }}
+                        className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[14px] text-foreground hover:bg-muted transition-colors">
+                        <Pencil className="w-4 h-4 text-muted-foreground" /> 포트폴리오 이름 바꾸기
+                      </button>
+                      <button onClick={() => { setEditMenuOpen(false); setTradeType('buy'); setTradeTicker(portfolioAssets[0]?.ticker || ''); setTradeQty(0); setTradePrice(0); setTradeTickerLocked(false); setTradeModal(true); }}
+                        className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[14px] text-foreground hover:bg-muted transition-colors">
+                        <ArrowUpRight className="w-4 h-4 text-muted-foreground" /> 투자 수정
+                      </button>
+                      <button onClick={() => { setEditMenuOpen(false); if (window.confirm(`[${portfolioName}] 포트폴리오를 삭제하시겠습니까?`)) onBack(); }}
+                        className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[14px] text-destructive hover:bg-destructive/10 transition-colors">
+                        <Trash2 className="w-4 h-4" /> 포트폴리오 삭제
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
             <div className="flex items-baseline gap-2 flex-wrap">
               <span className="text-[28px] font-bold text-foreground tabular-nums whitespace-nowrap">₩19,653,380.00</span>
@@ -427,10 +454,10 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
 
           {/* Controls row: comparison add + chart type toggle */}
           <div className="flex items-center gap-2 px-4 py-1.5">
-            <Button variant="outline" onClick={() => setShowSearch(!showSearch)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-muted-foreground border border-border rounded-full hover:bg-muted transition-colors h-auto">
+            <Button variant="ghost" onClick={() => setShowSearch(!showSearch)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
               <Plus className="w-3 h-3" /> 비교
             </Button>
-            <Button variant="outline" onClick={() => setStyleOpen(!styleOpen)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-muted-foreground border border-border rounded-full hover:bg-muted transition-colors h-auto">
+            <Button variant="ghost" onClick={() => setStyleOpen(!styleOpen)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
               {chartType === 'linear' ? '선형' : '영역'} <ChevronDown className="w-3 h-3" />
             </Button>
           </div>
@@ -968,6 +995,25 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
         </div>
       )}
     </div>
+
+    {/* Rename portfolio modal (GF 수정 → 포트폴리오 이름 바꾸기) */}
+    {renameOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30" onClick={() => setRenameOpen(false)}>
+        <div className="bg-card rounded-2xl shadow-xl w-[90vw] max-w-sm p-5" onClick={e => e.stopPropagation()}>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-[16px] font-bold text-foreground">포트폴리오 이름 바꾸기</h3>
+            <Button variant="ghost" size="icon" onClick={() => setRenameOpen(false)} className="p-1 hover:bg-muted rounded-full h-auto w-auto"><X className="w-5 h-5 text-muted-foreground" /></Button>
+          </div>
+          <Input value={renameValue} onChange={e => setRenameValue(e.target.value)} autoFocus
+            onKeyDown={e => { if (e.key === 'Enter' && renameValue.trim()) { setPortfolioName(renameValue.trim()); setRenameOpen(false); } }}
+            placeholder="포트폴리오 이름" className="h-11 px-4 bg-muted rounded-xl text-[15px] border-none focus-visible:ring-2 focus-visible:ring-primary/20" />
+          <div className="flex justify-end gap-2 mt-4">
+            <Button variant="ghost" onClick={() => setRenameOpen(false)} className="px-4 py-2 text-[14px] rounded-full h-auto">취소</Button>
+            <Button onClick={() => { if (renameValue.trim()) { setPortfolioName(renameValue.trim()); setRenameOpen(false); } }} disabled={!renameValue.trim()} className="px-4 py-2 text-[14px] font-bold rounded-full h-auto">저장</Button>
+          </div>
+        </div>
+      </div>
+    )}
 
     {/* Trade modal */}
     {tradeModal && (

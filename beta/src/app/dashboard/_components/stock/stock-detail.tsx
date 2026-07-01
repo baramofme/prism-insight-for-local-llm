@@ -326,7 +326,7 @@ export function StockDetail({
              <div id="gf-chart-type-btn" className="gf-chart__ctrl-btn relative group">
                 <button
                   onClick={() => setChartType(chartType === "area" ? "line" : "area")}
-                  className={`gf-chart__ctrl-btn flex items-center gap-1 px-3 py-1.5 text-[12px] border rounded-full transition-all ${chartType === "area" || chartType === "candle" || chartType === "bar" ? "" : ""}`}
+                  className="gf-chart__ctrl-btn flex items-center gap-1 px-3 py-1.5 text-[12px] bg-muted border-transparent rounded-full transition-colors hover:bg-muted/70"
                >
                  {chartType === "area" ? (
                    <>
@@ -366,11 +366,11 @@ export function StockDetail({
                  </div>
                )}
              </div>
-              <Button variant="outline" size="sm" className="gf-chart__ctrl-btn flex items-center gap-1.5 px-3 py-1.5 text-[12px] font-medium text-muted-foreground border-border rounded-full h-auto hover:bg-muted">
+              <Button variant="ghost" size="sm" className="gf-chart__ctrl-btn flex items-center gap-1.5 px-3 py-1.5 text-[12px] font-medium text-foreground bg-muted border-transparent rounded-full h-auto hover:bg-muted/70">
                  <Plus className="w-4 h-4" />
                  금융 기관과 비교
                </Button>
-               <Button variant="outline" size="sm" className="gf-chart__ctrl-btn flex items-center gap-1.5 px-3 py-1.5 text-[12px] font-medium text-muted-foreground border-border rounded-full h-auto hover:bg-muted">
+               <Button variant="ghost" size="sm" className="gf-chart__ctrl-btn flex items-center gap-1.5 px-3 py-1.5 text-[12px] font-medium text-foreground bg-muted border-transparent rounded-full h-auto hover:bg-muted/70">
                  기술 지표 선택
                  <ChevronDown className="w-3 h-3" />
                </Button>

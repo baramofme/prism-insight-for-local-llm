@@ -4,33 +4,19 @@
  * Tests for state management and actions.
  */
 
-// Mock @paralleldrive/cuid2 first (if anything imports it)
-jest.mock("@paralleldrive/cuid2", () => ({
-  init: jest.fn(() => jest.fn(() => "mockcuid1234567890")),
-}));
-
 // Create a simple in-memory storage for testing
 const storeState = new Map<string, any>();
 
-// Mock localStorage
-const mockStorage = {
-  getItem: (name: string) => storeState.get(name) || null,
-  setItem: (name: string, value: any) => storeState.set(name, value),
-  removeItem: (name: string) => storeState.delete(name),
-  clear: () => storeState.clear(),
-};
-
+// Mock localStorage before fetch mock
 Object.defineProperty(global, 'localStorage', {
-  value: mockStorage,
+  value: {
+    getItem: (name: string) => storeState.get(name) || null,
+    setItem: (name: string, value: any) => storeState.set(name, value),
+    removeItem: (name: string) => storeState.delete(name),
+    clear: () => storeState.clear(),
+  },
   writable: true,
   configurable: true,
-});
-
-// Mock fetch globally before any imports
-const mockFetchData = jest.fn();
-global.fetch = jest.fn((url: string) => {
-  const data = mockFetchData(url);
-  return Promise.resolve(data);
 });
 
 describe("Portfolio Store", () => {
@@ -38,7 +24,6 @@ describe("Portfolio Store", () => {
   let store: any;
 
   beforeEach(async () => {
-    // Clear all state
     jest.clearAllMocks();
     storeState.clear();
     
@@ -48,20 +33,6 @@ describe("Portfolio Store", () => {
     // Import after mocking
     usePortfolioStore = require("@/stores/portfolio-store").usePortfolioStore;
     store = usePortfolioStore.getState();
-  });
-
-  afterEach(() => {
-    // Clean up store state
-    if (store) {
-      store.setState({
-        portfolios: [],
-        selectedPortfolio: null,
-        holdings: [],
-        trades: [],
-        isLoading: false,
-        error: null,
-      });
-    }
   });
 
   // ─── Initial State tests ──────────────────────────────────────────────
@@ -114,7 +85,8 @@ describe("Portfolio Store", () => {
 
   describe("fetchPortfolios", () => {
     beforeEach(() => {
-      mockFetchData.mockImplementation((url: string) => ({
+      // Mock fetch for this test suite
+      jest.spyOn(global, 'fetch').mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: true,
           data: [
@@ -128,7 +100,7 @@ describe("Portfolio Store", () => {
             },
           ],
         }),
-      }));
+      } as any);
     });
 
     test("should update portfolios on successful API response", async () => {
@@ -140,12 +112,12 @@ describe("Portfolio Store", () => {
     });
 
     test("should set error on failed API response", async () => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: false,
           error: "API Error",
         }),
-      }));
+      });
 
       await store.fetchPortfolios();
 
@@ -154,8 +126,7 @@ describe("Portfolio Store", () => {
     });
 
     test("should handle network errors", async () => {
-      // Reset fetch to throw
-      (global.fetch as jest.Mock).mockRejectedValueOnce(new Error("Network fail"));
+      (global.fetch as any).mockRejectedValueOnce(new Error("Network fail"));
 
       await store.fetchPortfolios();
 
@@ -168,7 +139,7 @@ describe("Portfolio Store", () => {
 
   describe("createPortfolio", () => {
     test("should return new portfolio on success", async () => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: true,
           data: {
@@ -180,7 +151,7 @@ describe("Portfolio Store", () => {
             updatedAt: "2024-01-01T00:00:00Z",
           },
         }),
-      }));
+      });
 
       const result = await store.createPortfolio({ name: "New Portfolio" });
 
@@ -190,12 +161,12 @@ describe("Portfolio Store", () => {
     });
 
     test("should return null and set error on failure", async () => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: false,
           error: "Creation failed",
         }),
-      }));
+      });
 
       const result = await store.createPortfolio({ name: "Failed Portfolio" });
 
@@ -208,18 +179,16 @@ describe("Portfolio Store", () => {
 
   describe("deletePortfolio", () => {
     beforeEach(() => {
-      // Set up initial portfolios using setState directly
-      store.setState({
-        portfolios: [
-          { id: "pfo_keep", userId: "u1", name: "Keep", totalInvestment: "0", createdAt: new Date(), updatedAt: new Date() },
-          { id: "pfo_delete", userId: "u1", name: "Delete Me", totalInvestment: "0", createdAt: new Date(), updatedAt: new Date() },
-        ],
-        selectedPortfolio: { id: "pfo_delete", userId: "u1", name: "Delete Me", totalInvestment: "0", createdAt: new Date(), updatedAt: new Date() },
-      });
+      // Set up initial state by direct property assignment
+      store.portfolios = [
+        { id: "pfo_keep", userId: "u1", name: "Keep", totalInvestment: "0", createdAt: new Date(), updatedAt: new Date() },
+        { id: "pfo_delete", userId: "u1", name: "Delete Me", totalInvestment: "0", createdAt: new Date(), updatedAt: new Date() },
+      ];
+      store.selectedPortfolio = store.portfolios[1];
       
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({ success: true, data: null }),
-      }));
+      });
     });
 
     test("should remove portfolio from list on successful deletion", async () => {
@@ -232,9 +201,9 @@ describe("Portfolio Store", () => {
     });
 
     test("should return false and set error on failure", async () => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({ success: false, error: "Delete failed" }),
-      }));
+      });
 
       const result = await store.deletePortfolio("pfo_delete");
 
@@ -247,7 +216,7 @@ describe("Portfolio Store", () => {
 
   describe("fetchHoldings", () => {
     beforeEach(() => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: true,
           data: [
@@ -264,7 +233,7 @@ describe("Portfolio Store", () => {
             },
           ],
         }),
-      }));
+      });
     });
 
     test("should update holdings on successful API response", async () => {
@@ -281,12 +250,10 @@ describe("Portfolio Store", () => {
 
   describe("addHolding", () => {
     beforeEach(() => {
-      mockFetchData.mockReset();
+      store.selectedPortfolio = null;
     });
 
     test("should return null when no portfolio is selected", async () => {
-      store.setState({ selectedPortfolio: null });
-      
       const result = await store.addHolding({
         stockCode: "005930",
         stockName: "Samsung Electronics",
@@ -300,10 +267,9 @@ describe("Portfolio Store", () => {
     });
 
     test("should call API with correct data when portfolio is selected", async () => {
-      store.setState({ 
-        selectedPortfolio: { id: "pfo_1" } 
-      });
-      mockFetchData.mockImplementation((url: string) => ({
+      store.selectedPortfolio = { id: "pfo_1" } as any;
+      
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: true,
           data: {
@@ -318,7 +284,7 @@ describe("Portfolio Store", () => {
             updatedAt: new Date(),
           },
         }),
-      }));
+      });
 
       const result = await store.addHolding({
         stockCode: "005930",
@@ -345,7 +311,7 @@ describe("Portfolio Store", () => {
 
   describe("fetchTrades", () => {
     beforeEach(() => {
-      mockFetchData.mockImplementation((url: string) => ({
+      (global.fetch as any).mockResolvedValueOnce({
         json: () => Promise.resolve({
           success: true,
           data: [
@@ -360,7 +326,7 @@ describe("Portfolio Store", () => {
             },
           ],
         }),
-      }));
+      });
     });
 
     test("should fetch trades with holdingId filter", async () => {
@@ -371,6 +337,13 @@ describe("Portfolio Store", () => {
     });
 
     test("should call API with correct query params", async () => {
+      (global.fetch as any).mockResolvedValueOnce({
+        json: () => Promise.resolve({
+          success: true,
+          data: [],
+        }),
+      });
+
       await store.fetchTrades({ holdingId: "hld_123" });
 
       expect(global.fetch).toHaveBeenCalledWith(
@@ -384,25 +357,23 @@ describe("Portfolio Store", () => {
 
   describe("updateCurrentPrice", () => {
     beforeEach(() => {
-      mockFetchData.mockImplementation((url: string) => ({
-        json: () => Promise.resolve({ success: true, data: null }),
-      }));
+      // Set up initial holdings by direct property assignment
+      store.holdings = [
+        {
+          id: "hld_1",
+          portfolioId: "pfo_1",
+          stockCode: "005930",
+          stockName: "Samsung Electronics",
+          quantity: 10,
+          avgPrice: "70000",
+          currentPrice: "71000",
+          addedAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ];
       
-      // Set up initial holdings using setState
-      store.setState({
-        holdings: [
-          {
-            id: "hld_1",
-            portfolioId: "pfo_1",
-            stockCode: "005930",
-            stockName: "Samsung Electronics",
-            quantity: 10,
-            avgPrice: "70000",
-            currentPrice: "71000",
-            addedAt: new Date(),
-            updatedAt: new Date(),
-          },
-        ],
+      (global.fetch as any).mockResolvedValueOnce({
+        json: () => Promise.resolve({ success: true, data: null }),
       });
     });
 
