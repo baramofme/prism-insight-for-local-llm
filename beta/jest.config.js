@@ -14,7 +14,11 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.module\\.css$': 'identity-obj-proxy',
     '\\.css$': 'identity-obj-proxy',
+    '@paralleldrive/cuid2': '<rootDir>/node_modules/@paralleldrive/cuid2/index.js',
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(nanoid)/)',
+  ],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };

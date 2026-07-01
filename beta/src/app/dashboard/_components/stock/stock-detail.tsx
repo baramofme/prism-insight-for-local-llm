@@ -117,46 +117,63 @@ export function StockDetail({
   );
   const chartColor = isPositive ? "var(--gf-up)" : "var(--gf-down)";
 
-  // SVG chart placeholder with gradient
-  const renderChart = () => {
+  // Shared chart geometry so the plot, gridlines, reference line and the
+  // HTML axis-label overlays all align. Grid + prevClose line make it read
+  // closer to finance.google.com. Range includes prevClose so its dashed
+  // reference line is always on-canvas.
+  const chartGeo = useMemo(() => {
     const w = 800, h = 200, pad = 20;
-    const data = chartPeriod === "1D" ? sparklineData.slice(-24) : chartPeriod === "5D" ? sparklineData.slice(-40) : chartPeriod === "1M" ? sparklineData.slice(-30) : sparklineData.slice(-90);
-    if (data.length < 2) return null;
-    const min = Math.min(...data), max = Math.max(...data), range = max - min || 1;
-    const pts = data.map((v, i) => ({
-      x: pad + (i / (data.length - 1)) * (w - pad * 2),
-      y: pad + (1 - (v - min) / range) * (h - pad * 2),
-    }));
+    const raw = chartPeriod === "1D" ? sparklineData.slice(-24) : chartPeriod === "5D" ? sparklineData.slice(-40) : chartPeriod === "1M" ? sparklineData.slice(-30) : sparklineData.slice(-90);
+    if (raw.length < 2) return null;
+    const min = Math.min(...raw, prevClose);
+    const max = Math.max(...raw, prevClose);
+    const range = max - min || 1;
+    const X = (i: number) => pad + (i / (raw.length - 1)) * (w - pad * 2);
+    const Y = (v: number) => pad + (1 - (v - min) / range) * (h - pad * 2);
+    const pts = raw.map((v, i) => ({ x: X(i), y: Y(v) }));
     const linePath = `M${pts.map(p => `${p.x},${p.y}`).join(" L")}`;
     const areaPath = `${linePath} L${pts[pts.length - 1].x},${h - pad} L${pts[0].x},${h - pad} Z`;
+    const prevY = Y(prevClose);
+    const gridN = 4;
+    const grid = Array.from({ length: gridN + 1 }, (_, i) => {
+      const yy = pad + (i / gridN) * (h - pad * 2);
+      return { yPct: (yy / h) * 100, value: max - (i / gridN) * range };
+    });
+    const timeLabels = chartPeriod === "1D" ? ["오전 10:00", "오후 12:00", "오후 2:00"]
+      : chartPeriod === "5D" ? ["6/25", "6/27", "6/30"]
+      : chartPeriod === "1M" ? ["6/1", "6/15", "6/30"]
+      : chartPeriod === "6M" ? ["2월", "4월", "6월"]
+      : ["1월", "4월", "7월"];
+    return { w, h, pad, data: raw, min, max, range, pts, linePath, areaPath, prevY, prevYPct: (prevY / h) * 100, grid, timeLabels };
+  }, [sparklineData, chartPeriod, prevClose]);
+
+  // SVG chart placeholder with gradient
+  const renderChart = () => {
+    if (!chartGeo) return null;
+    const { w, h, pad, data, min, max, range, pts, linePath, areaPath, prevY } = chartGeo;
     const gradientId = `chart-grad-${stock.ticker}-${chartPeriod}`;
+    // Faint horizontal grid + dashed prevClose reference (GF look). Horizontal
+    // lines are unaffected by preserveAspectRatio="none", so they stay crisp.
+    const gridEls = chartGeo.grid.map((g, i) => {
+      const y = (g.yPct / 100) * h;
+      return <line key={`grid-${i}`} x1={pad} y1={y} x2={w - pad} y2={y} stroke="rgba(128,128,128,0.12)" strokeWidth="1" />;
+    });
+    const refLine = <line x1={pad} y1={prevY} x2={w - pad} y2={prevY} stroke="rgba(128,128,128,0.55)" strokeWidth="1" strokeDasharray="5 3" vectorEffect="non-scaling-stroke" />;
 
-    if (chartType === "line") {
+    if (chartType === "line" || chartType === "area") {
+      const topOp = chartType === "area" ? 0.18 : 0.12;
       return (
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-auto" preserveAspectRatio="none">
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={chartColor} stopOpacity="0.3" />
-              <stop offset="100%" stopColor={chartColor} stopOpacity="0.02" />
+              <stop offset="0%" stopColor={chartColor} stopOpacity={topOp} />
+              <stop offset="100%" stopColor={chartColor} stopOpacity="0.01" />
             </linearGradient>
           </defs>
+          {gridEls}
           <path d={areaPath} fill={`url(#${gradientId})`} />
-          <path d={linePath} fill="none" stroke={chartColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    }
-
-    if (chartType === "area") {
-      return (
-        <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-auto" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={chartColor} stopOpacity="0.35" />
-              <stop offset="100%" stopColor={chartColor} stopOpacity="0.02" />
-            </linearGradient>
-          </defs>
-          <path d={areaPath} fill={`url(#${gradientId})`} />
-          <path d={linePath} fill="none" stroke={chartColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          {refLine}
+          <path d={linePath} fill="none" stroke={chartColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
         </svg>
       );
     }
@@ -359,16 +376,30 @@ export function StockDetail({
                </Button>
            </div>
 
-          {/* Chart Area */}
-          <div id="gf-chart-svg" className="gf-chart__svg py-1">
+          {/* Chart Area — SVG plot + HTML axis overlays (crisp labels; the SVG
+              itself is stretched with preserveAspectRatio="none" which would
+              distort text). Left gutter holds the price axis, prevClose label
+              sits on its dashed reference line, time labels run along the base. */}
+          <div id="gf-chart-svg" className="gf-chart__svg relative pl-14 pr-2">
             {renderChart()}
+            {chartGeo && (chartType === "line" || chartType === "area") && (
+              <>
+                {chartGeo.grid.map((g, i) => (
+                  <span key={`py-${i}`} className="absolute left-0 w-12 text-right pr-1 -translate-y-1/2 text-[10px] text-muted-foreground/80 tabular-nums pointer-events-none" style={{ top: `${g.yPct}%` }}>
+                    ₩{Math.round(g.value).toLocaleString()}
+                  </span>
+                ))}
+                <span className="absolute right-2 -translate-y-1/2 text-[10px] text-muted-foreground bg-background/70 px-1 rounded pointer-events-none" style={{ top: `${chartGeo.prevYPct}%` }}>
+                  전일 종가 ₩{prevClose.toLocaleString()}
+                </span>
+              </>
+            )}
           </div>
-
-          <div id="gf-chart-prevclose" className="gf-chart__prevclose flex items-center justify-end py-0.5 pr-1">
-            <span className="text-[12px] text-muted-foreground">
-              전일 종가 ₩{prevClose.toLocaleString()}.00
-            </span>
-          </div>
+          {chartGeo && (
+            <div className="flex justify-between pl-14 pr-2 pt-1 text-[10px] text-muted-foreground/80">
+              {chartGeo.timeLabels.map((t, i) => (<span key={i}>{t}</span>))}
+            </div>
+          )}
 
           {/* Period Tabs */}
            <ToggleGroup

@@ -128,12 +128,16 @@ function PortfolioChart({
     });
   }, [compareAssets, allAssetData, interval, isZeroAnchor]);
 
+  // GF-style: left value axis, bottom time axis, faint horizontal grid only,
+  // very light area fill. Colors are concrete (theme-neutral greys) — never CSS
+  // vars, which lightweight-charts (canvas) cannot parse.
   const commonOptions = useMemo(() => ({
-    layout: { background: { type: ColorType.Solid, color: 'transparent' } as any, textColor: '#6b7280' },
+    layout: { background: { type: ColorType.Solid, color: 'transparent' } as any, textColor: '#9aa0a6', fontSize: 11 },
     height: 192,
-    timeScale: { visible: false } as any,
-    rightPriceScale: { visible: true, scaleMargins: { top: 0.1, bottom: 0.05 }, mode: 2 as any, borderColor: 'var(--border)' },
-    grid: { vertLines: { visible: false }, horzLines: { visible: false } },
+    timeScale: { visible: true, borderVisible: false, timeVisible: true, secondsVisible: false, fixLeftEdge: true, fixRightEdge: true } as any,
+    leftPriceScale: { visible: true, scaleMargins: { top: 0.18, bottom: 0.12 }, mode: 2 as any, borderVisible: false } as any,
+    rightPriceScale: { visible: false } as any,
+    grid: { vertLines: { visible: false }, horzLines: { visible: true, color: 'rgba(128,128,128,0.12)' } },
     crosshair: { mode: 0 },
     handleScroll: false,
     handleScale: false,
@@ -143,12 +147,12 @@ function PortfolioChart({
     <div ref={containerRef} style={{ width: '100%' }}>
     <Chart options={commonOptions} containerProps={{ style: { width: '100%' } }} onInit={handleInit}>
       {chartType === 'area' ? (
-        <AreaSeries ref={seriesRef as any} data={chartData} options={{ topColor: `${mainAsset.color}61`, bottomColor: `${mainAsset.color}00`, lineColor: mainAsset.color, lineWidth: 2 }} />
+        <AreaSeries ref={seriesRef as any} data={chartData} options={{ priceScaleId: 'left', topColor: `${mainAsset.color}26`, bottomColor: `${mainAsset.color}00`, lineColor: mainAsset.color, lineWidth: 2, priceLineVisible: false, lastValueVisible: false }} />
       ) : (
-        <LineSeries ref={seriesRef as any} data={chartData} options={{ color: mainAsset.color, lineWidth: 2 }} />
+        <LineSeries ref={seriesRef as any} data={chartData} options={{ priceScaleId: 'left', color: mainAsset.color, lineWidth: 2, priceLineVisible: false, lastValueVisible: false }} />
       )}
       {compareSeries.map(asset => (
-        <LineSeries key={asset.id} data={asset.seriesData} options={{ color: asset.color, lineWidth: 2, lineStyle: 2 as any, crosshairMarkerRadius: 4, crosshairMarkerBackgroundColor: asset.color }} />
+        <LineSeries key={asset.id} data={asset.seriesData} options={{ priceScaleId: 'left', color: asset.color, lineWidth: 2, lineStyle: 2 as any, priceLineVisible: false, lastValueVisible: false, crosshairMarkerRadius: 4, crosshairMarkerBackgroundColor: asset.color }} />
       ))}
     </Chart>
     </div>
@@ -173,7 +177,6 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
   const [sortAsc, setSortAsc] = useState(true);
   const [txSortAsc, setTxSortAsc] = useState<Record<string, boolean>>({});
-  const [showViz, setShowViz] = useState(false);
   const [tradeModal, setTradeModal] = useState(false);
   const [tradeType, setTradeType] = useState<'buy' | 'sell'>('buy');
   const [tradeTicker, setTradeTicker] = useState("");
@@ -687,11 +690,10 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
                 )}
               </div>
               <div className="flex items-center gap-1">
-                <Button variant={showViz ? "default" : "ghost"} size="sm" className={`flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium rounded-full h-auto ${!showViz && 'hover:bg-muted text-muted-foreground'}`}>{showViz ? '𝌝 목록' : '📊 시각화'}</Button>
                 <Button size="sm" onClick={() => { setTradeType('buy'); setTradeTicker(portfolioAssets[0]?.ticker || ''); setTradeQty(0); setTradePrice(0); setTradeTickerLocked(false); setTradeModal(true); }} className="flex items-center gap-1 px-3 py-1 text-[11px] font-bold rounded-full h-auto">+ 투자</Button>
               </div>
             </div>
-            {bottomTab === "투자" && !showViz && (
+            {bottomTab === "투자" && (
                 <table className="w-full text-[12px]">
                   <thead>
                     <tr className="border-b border-border text-muted-foreground">
@@ -812,13 +814,13 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
                   </tbody>
                 </table>
             )}
-            {bottomTab === "투자" && showViz && (
-              <div className="w-full">
+            {bottomTab === "투자" && (
+              <div className="w-full mt-8 pt-6 border-t border-border">
                 {/* Treemap header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                   <div>
-                    <h3 className="text-[15px] font-bold text-foreground">투자 시각화</h3>
-                    <p className="text-[11px] text-muted-foreground">각 상자의 크기는 포트폴리오에서 투자의 총 가치를 나타냅니다. 색상은 오늘 수익을 나타냅니다.</p>
+                    <h3 className="text-[18px] font-medium text-foreground">자산 현황 시각화</h3>
+                    <p className="text-[11px] text-muted-foreground">상자 크기는 포트폴리오 내 자산의 비중을 나타냅니다. 색상은 오늘의 실적을 나타냅니다.</p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <span className="text-[10px] font-semibold text-muted-foreground">일일 변동률(%)</span>
@@ -834,6 +836,39 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
                 </div>
                 {/* Treemap grid */}
                 <VizTreemap data={portfolioAssets} />
+                {/* 오늘의 성과 온도 — GF 자산 현황 시각화 인사이트. 포트폴리오 실데이터에서 파생. */}
+                {(() => {
+                  if (!portfolioAssets.length) return null;
+                  const totalDaily = portfolioAssets.reduce((s, a) => s + a.dailyProfit, 0);
+                  const up = totalDaily >= 0;
+                  const byWeight = [...portfolioAssets].sort((a, b) => b.totalAmount - a.totalAmount);
+                  const top = byWeight[0];
+                  const topWeight = ((top.totalAmount / portfolioAssets.reduce((s, a) => s + a.totalAmount, 0)) * 100).toFixed(1);
+                  const best = [...portfolioAssets].sort((a, b) => b.dailyProfitPercent - a.dailyProfitPercent)[0];
+                  const worst = [...portfolioAssets].sort((a, b) => a.dailyProfitPercent - b.dailyProfitPercent)[0];
+                  const chips = [
+                    worst.dailyProfitPercent < 0 ? `오늘 ${worst.name}이(가) 하락한 주요 원인은 무엇인가요?` : `${worst.name}의 오늘 흐름을 자세히 알려줘`,
+                    best.dailyProfitPercent > 0 ? `${best.name}의 상승과 관련된 뉴스가 있나요?` : `${best.name}의 최근 뉴스를 알려줘`,
+                  ];
+                  return (
+                    <div className="mt-4">
+                      <p className="text-[13px] text-foreground leading-relaxed">
+                        <span className="font-semibold">오늘의 성과 온도: </span>
+                        현재 귀하의 포트폴리오는 전반적으로 {up ? "상승세" : "하락세"}를 보이며 {up ? "뜨거운" : "차가운"} 시장 온도를 기록하고 있습니다.
+                        {" "}가장 큰 비중({topWeight}%)을 차지하는 {top.name}이(가) {top.dailyProfitPercent >= 0 ? "+" : ""}{top.dailyProfitPercent}%를 기록했고,
+                        {" "}{best.name}이(가) {best.dailyProfitPercent >= 0 ? "+" : ""}{best.dailyProfitPercent}%로 가장 강세, {worst.name}이(가) {worst.dailyProfitPercent}%로 가장 약세를 보였습니다.
+                      </p>
+                      <div className="mt-3 flex flex-col gap-1.5">
+                        {chips.map(q => (
+                          <button key={q} onClick={() => { if (rightW <= 0) setActiveTab("research"); }}
+                            className="flex items-start gap-1.5 text-left text-[12px] text-primary hover:underline">
+                            <Search className="w-3.5 h-3.5 mt-0.5 shrink-0" /><span>{q}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             )}
             {bottomTab === "통계" && (() => {
