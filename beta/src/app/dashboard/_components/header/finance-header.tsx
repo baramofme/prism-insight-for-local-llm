@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback, useState } from "react";
-import { Menu, Search, Mic, Globe, Brain, TrendingUp, BarChart3, Settings, Monitor, Moon, Sun, Check, MessageSquare, LogOut } from "lucide-react";
+import { Menu, Search, Globe, Brain, TrendingUp, BarChart3, Settings, Monitor, Moon, Sun, Check, MessageSquare, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { searchStockSuggestions, searchAiPrompts } from "../../_data/search";
 import { type Stock } from "../../_lib/types";
@@ -90,11 +90,8 @@ export function FinanceHeader({
                 setShowSearchDropdown(true);
               }}
               onFocus={() => setShowSearchDropdown(true)}
-              className="w-full pl-11 pr-12 py-2.5 bg-[#f1f3f4] rounded-full text-[14px] text-[#1f1f1f] placeholder-[#5f6368] border-none focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20"
+              className="w-full pl-11 pr-4 py-2.5 bg-[#f1f3f4] rounded-full text-[14px] text-[#1f1f1f] placeholder-[#5f6368] border-none focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20"
             />
-            <div className="absolute right-2 top-1/2 -translate-y-1/2">
-              <Button variant="ghost" size="icon" className="p-1 hover:bg-[#e8eaed] rounded-full transition-colors"><Mic className="w-4 h-4 text-[#1a73e8]" /></Button>
-            </div>
 
             {showSearchDropdown && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-[#e8eaed] rounded-2xl shadow-xl z-50 overflow-hidden max-h-[70vh] overflow-y-auto">

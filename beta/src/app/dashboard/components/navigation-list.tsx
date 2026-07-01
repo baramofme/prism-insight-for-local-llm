@@ -122,7 +122,7 @@ export function ListNavigation({ title, isOpen, onToggleOpen, rightButtons = [],
           <>
             {rightButtons}
             <CollapsibleTrigger
-              aria-label={isOpen ? "닫기" : "열기"}
+              aria-label={isOpen ? `${title} 접기` : `${title} 펼치기`}
               className="flex items-center justify-center h-6 w-6 cursor-pointer text-muted-foreground"
             >
               {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

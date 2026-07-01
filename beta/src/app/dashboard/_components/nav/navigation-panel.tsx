@@ -28,6 +28,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   const [listSelectOpen, setListSelectOpen] = useState(false);
   const [newListOpen, setNewListOpen] = useState(false);
   const [addStockOpen, setAddStockOpen] = useState(false);
+  const [newPortfolioOpen, setNewPortfolioOpen] = useState(false);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const optionsRef = useRef<HTMLDivElement>(null);
   const sectorSparkData = sectorIndices.map(s => ({
@@ -215,7 +216,19 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
       {/* One container holds all groups; the 24px L/R inset lives here, not on
           each ListNavigation, so everything aligns at once (GF .UHCxXe). */}
       <div className="px-6">
-      <ListNavigation title="포트폴리오" isOpen={portfolioOpen} onToggleOpen={() => setPortfolioOpen(!portfolioOpen)}>
+      <ListNavigation title="포트폴리오" isOpen={portfolioOpen} onToggleOpen={() => setPortfolioOpen(!portfolioOpen)}
+        rightButtons={[
+          <div key="createPf" className="relative">
+            <Button variant="ghost" size="icon" className="h-6 w-6" aria-label="포트폴리오 만들기" title="포트폴리오 만들기" onClick={() => setNewPortfolioOpen(!newPortfolioOpen)}><Plus className="w-4 h-4 text-muted-foreground" /></Button>
+            {newPortfolioOpen && (
+              <div className="absolute top-full right-0 mt-1 w-56 bg-white border border-border rounded-xl shadow-lg z-50 p-3">
+                <div className="text-[12px] font-medium text-foreground mb-1.5">포트폴리오 만들기</div>
+                <input autoFocus placeholder="포트폴리오 이름" className="w-full text-[13px] border border-border rounded-lg px-2 py-1.5 outline-none focus:border-primary" onKeyDown={e => { if (e.key === "Enter") setNewPortfolioOpen(false); }} />
+                <div className="flex justify-end mt-2"><Button className="h-7 px-3 text-[12px] bg-primary text-white" onClick={() => setNewPortfolioOpen(false)}>만들기</Button></div>
+              </div>
+            )}
+          </div>
+        ]}>
         <div id="gf-leftnav-investing" className="gf-sidebar__item py-3 cursor-pointer hover:bg-muted transition-colors rounded" aria-label="투자중" onClick={onPortfolioClick}>
           <div className="text-[12px] text-muted-foreground mb-0.5">투자중</div>
           {/* GF: amount + change on one line; KRW drops decimals via formatPrice. */}
