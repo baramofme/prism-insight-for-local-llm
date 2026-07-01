@@ -91,7 +91,7 @@ export function OverviewContent({
           ].map((tbl) => (
             <div key={tbl.title} className={vp < BREAKPOINTS.MOBILE ? "shrink-0 w-[300px]" : "flex-1 min-w-0"}>
               <h3 className={`${vp < BREAKPOINTS.MOBILE ? "text-[20px]" : "text-[14px]"} font-medium text-[var(--foreground)] mb-2`}>{tbl.title}</h3>
-              <table className="w-full" style={{ borderCollapse: 'separate', borderSpacing: '0 2px' }}>
+              <table className="w-full table-fixed" style={{ borderCollapse: 'separate', borderSpacing: '0 2px' }}>
                 <tbody>
                   {tbl.stocks.map((stock) => (
                     <StockTableRow key={stock.rank} stock={stock} showVolume={tbl.showVolume} />
