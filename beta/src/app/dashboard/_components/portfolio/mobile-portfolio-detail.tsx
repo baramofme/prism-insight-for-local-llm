@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, useCallback, Fragment } from "react";
-import { ArrowLeft, Plus, X, ChevronDown, ArrowUpRight, Search, Pencil } from "lucide-react";
+import { ArrowLeft, Plus, X, ChevronDown, ArrowUpRight, Search, Pencil, MoreVertical, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -12,6 +12,22 @@ import { ResearchPanel } from "../../components/research-panel";
 import { Chart, AreaSeries, LineSeries } from 'lightweight-charts-react-components';
 import { ColorType } from 'lightweight-charts';
 
+
+// ─── 통계 탭: 섹터 분류 (GF 자산 배분/집중 위험 대응) ─────────────────────────
+
+// GF는 보유 종목을 섹터로 묶어 도넛(자산 배분)을 그린다. 알려진 종목만 매핑하고
+// 나머지는 '기타'. 색은 GF 팔레트(초록 IT/반도체, 파랑 건설, 갈색 자동차, 빨강 금융).
+const SECTOR_MAP: Record<string, string> = {
+  "005930": "IT/반도체", "000660": "IT/반도체", "009150": "IT/반도체",
+  "006800": "금융", "329180": "건설", "005380": "자동차",
+};
+const SECTOR_COLOR: Record<string, string> = {
+  "IT/반도체": "#34a853",
+  "건설": "#4285f4",
+  "자동차": "#b0511f",
+  "금융": "#ea4335",
+  "기타": "#9aa0a6",
+};
 
 // ─── Types & Spec Map ────────────────────────────────────────────────────────
 
@@ -151,12 +167,12 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
   const [openSection, setOpenSection] = useState<'lines' | 'shapes' | 'drawing' | 'analysis' | null>('lines');
   const [currentTool, setCurrentTool] = useState<string | null>(null);
   const [bottomTab, setBottomTab] = useState("투자");
+  const [rowMenu, setRowMenu] = useState<string | null>(null);
   const [expandedTickers, setExpandedTickers] = useState<Record<string, boolean>>({});
   const [sortOption, setSortOption] = useState("name");
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
   const [sortAsc, setSortAsc] = useState(true);
   const [txSortAsc, setTxSortAsc] = useState<Record<string, boolean>>({});
-  const [filteredSources, setFilteredSources] = useState<string[]>([]);
   const [showViz, setShowViz] = useState(false);
   const [tradeModal, setTradeModal] = useState(false);
   const [tradeType, setTradeType] = useState<'buy' | 'sell'>('buy');
@@ -630,9 +646,12 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
           <div className="px-4 pt-3 pb-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-1">
-                {["투자", "활동", "뉴스 및 이벤트"].map(btn => (
+                {["투자", "통계"].map(btn => (
                   <button key={btn} onClick={() => setBottomTab(btn)}
-                    className={`px-2.5 py-1 text-[12px] font-medium rounded-full transition-colors ${bottomTab === btn ? 'bg-foreground text-white' : 'text-muted-foreground hover:bg-muted'}`}>{btn}</button>
+                    className={`flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium rounded-full transition-colors ${bottomTab === btn ? 'bg-foreground text-white' : 'text-muted-foreground hover:bg-muted'}`}>
+                    {btn}
+                    {btn === "통계" && <span className={`text-[9px] font-semibold px-1 py-px rounded ${bottomTab === btn ? 'bg-white/20 text-white' : 'bg-primary/10 text-primary'}`}>신규</span>}
+                  </button>
                 ))}
                 {bottomTab === "투자" && (
                   <div className="relative ml-1">
@@ -714,8 +733,20 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                               <td className="text-right py-2 px-2 tabular-nums whitespace-nowrap text-muted-foreground">{asset.dailyProfitPercent}%</td>
                               <td className="text-right py-2 pl-2 tabular-nums text-foreground whitespace-nowrap">₩{asset.totalAmount.toLocaleString()}</td>
                               <td className="text-center py-2 pl-2">
-                                <button onClick={(e) => { e.stopPropagation(); handleDeleteAsset(asset.ticker, asset.name); }}
-                                  className="p-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors text-[11px]" title="삭제">🗑</button>
+                                <div className="relative inline-block">
+                                  <button onClick={(e) => { e.stopPropagation(); setRowMenu(rowMenu === asset.ticker ? null : asset.ticker); }}
+                                    className="p-1 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors" title="옵션" aria-label={`${asset.name} 옵션`}>
+                                    <MoreVertical className="w-4 h-4" />
+                                  </button>
+                                  {rowMenu === asset.ticker && (
+                                    <div className="absolute right-0 top-full mt-1 w-32 bg-card border border-border rounded-xl shadow-xl z-30 py-1" onClick={(e) => e.stopPropagation()}>
+                                      <button onClick={(e) => { e.stopPropagation(); setRowMenu(null); handleDeleteAsset(asset.ticker, asset.name); }}
+                                        className="w-full flex items-center gap-2 text-left px-3 py-1.5 text-[12px] text-destructive hover:bg-destructive/10 transition-colors">
+                                        <Trash2 className="w-3.5 h-3.5" /> 삭제
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
                               </td>
                             </tr>
                             {/* Transaction detail sub-rows */}
@@ -804,116 +835,95 @@ export function MobilePortfolioDetail({ onBack, vp, rightW, footerQuestion, foot
                 <VizTreemap data={portfolioAssets} />
               </div>
             )}
-            {bottomTab === "활동" && (
-              <div className="px-4 py-3">
-                <div className="text-[15px] font-bold text-foreground mb-3">활동 내역</div>
-                <div className="flex flex-col gap-3">
-                  {[...portfolioAssets.flatMap(a => 
-                    a.transactions.map(tx => ({
-                      ...tx,
-                      ticker: a.ticker,
-                      name: a.name,
-                      currentPrice: a.price,
-                    }))
-                  )].sort((a, b) => {
-                    const parseDate = (d: string) => {
-                      const parts = d.replace(/\.$/g, '').split('. ');
-                      return new Date(2000 + parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-                    };
-                    return parseDate(b.date).getTime() - parseDate(a.date).getTime();
-                  }).map((item, idx) => {
-                    const isSell = item.type === '매도';
-                    const profitAmount = isSell ? (item.currentPrice - item.buyPrice) * item.qty : 0;
-                    const profitPercent = isSell && item.buyPrice > 0 ? ((item.currentPrice - item.buyPrice) / item.buyPrice * 100) : 0;
-                    return (
-                      <div key={`${item.ticker}-${item.id}-${idx}`} className="flex items-start gap-3 p-3 bg-muted/50 rounded-xl">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold text-white ${isSell ? 'bg-primary' : 'bg-destructive'}`}>
-                          {isSell ? '매도' : '매수'}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <span className="text-[14px] font-bold text-foreground">{item.ticker}</span>
-                              <span className={`text-[11px] font-semibold ${isSell ? 'text-primary' : 'text-destructive'}`}>{item.type}</span>
-                            </div>
-                            <span className="text-[14px] font-bold text-foreground">₩{item.total.toLocaleString()}</span>
-                          </div>
-                          <div className="text-[12px] text-muted-foreground mt-1">
-                            {item.date} · ₩{item.buyPrice.toLocaleString()}에 {item.qty}주
-                          </div>
-                          {isSell && (
-                            <div className="flex items-center gap-2 mt-1.5">
-                              <span className="text-[11px] text-muted-foreground">수익률</span>
-                              <span className={`text-[12px] font-bold ${profitPercent >= 0 ? 'text-destructive' : 'text-primary'}`}>
-                                {profitPercent >= 0 ? '+' : ''}{profitPercent.toFixed(2)}%
-                              </span>
-                              <span className={`text-[12px] font-semibold ${profitAmount >= 0 ? 'text-destructive' : 'text-primary'}`}>
-                                {profitAmount >= 0 ? '+' : ''}₩{profitAmount.toLocaleString()}
-                              </span>
-                            </div>
-                          )}
-                        </div>
+            {bottomTab === "통계" && (() => {
+              // 보유 종목 → 섹터 집계(자산 배분) + 종목별 비중(집중 위험)
+              const total = portfolioAssets.reduce((s, a) => s + a.totalAmount, 0) || 1;
+              const holdings = [...portfolioAssets]
+                .map(a => ({ ticker: a.ticker, name: a.name, weight: a.totalAmount / total }))
+                .sort((x, y) => y.weight - x.weight);
+              const sectorAgg: Record<string, number> = {};
+              for (const a of portfolioAssets) {
+                const sec = SECTOR_MAP[a.ticker] || "기타";
+                sectorAgg[sec] = (sectorAgg[sec] || 0) + a.totalAmount / total;
+              }
+              const sectors = Object.entries(sectorAgg)
+                .map(([name, weight]) => ({ name, weight, color: SECTOR_COLOR[name] || SECTOR_COLOR["기타"] }))
+                .sort((x, y) => y.weight - x.weight);
+              const pct = (w: number) => (w * 100).toFixed(1);
+              const R = 58, C = 2 * Math.PI * R;
+              let off = 0;
+              const topSec = sectors[0];
+              const top1 = holdings[0];
+              const top2 = holdings[1];
+              const top2Sum = ((top1?.weight || 0) + (top2?.weight || 0)) * 100;
+              return (
+              <div className="py-3 flex flex-col gap-8">
+                {/* 자산 배분 */}
+                <section>
+                  <h3 className="text-[18px] font-medium text-foreground mb-3">자산 배분</h3>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-4">
+                    {sectors.map(s => (
+                      <span key={s.name} className="inline-flex items-center gap-1.5 text-[12px] text-muted-foreground">
+                        <span className="w-2.5 h-2.5 rounded-sm" style={{ background: s.color }} />
+                        {s.name} {pct(s.weight)}%
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    <svg viewBox="0 0 150 150" className="w-[150px] h-[150px] shrink-0">
+                      {sectors.map(s => {
+                        const seg = s.weight * C;
+                        const el = (
+                          <circle key={s.name} cx="75" cy="75" r={R} fill="none" stroke={s.color} strokeWidth="24"
+                            strokeDasharray={`${seg} ${C - seg}`} strokeDashoffset={-off} transform="rotate(-90 75 75)" />
+                        );
+                        off += seg;
+                        return el;
+                      })}
+                    </svg>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[13px] text-foreground leading-relaxed">
+                        <span className="font-semibold">포트폴리오 구성:</span> 귀하의 포트폴리오는 현재 100% 국내 주식(Equities)으로 구성되어 있습니다.
+                        {topSec && <> 특히 <span className="font-semibold">{topSec.name}</span> 섹터가 전체의 {pct(topSec.weight)}%를 차지해, 해당 업황이 전체 자산에 큰 영향을 주는 집중형 구조입니다.</>}
+                        {" "}채권·현금 등 다른 자산군을 추가하면 더 정확한 배분 분석을 받아보실 수 있습니다.
+                      </p>
+                      <div className="mt-3 flex flex-col gap-1.5">
+                        {["분산 투자를 위해 어떤 안전 자산을 추가하는 것이 좋을까요?", "현재 포트폴리오의 배분 방식은 시장 평균과 비교해 어떤가요?"].map(q => (
+                          <button key={q} className="flex items-start gap-1.5 text-left text-[12px] text-primary hover:underline">
+                            <span className="shrink-0">↳</span><span>{q}</span>
+                          </button>
+                        ))}
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-            {bottomTab === "뉴스 및 이벤트" && (
-              <div className="px-4 py-3">
-                <div className="text-[15px] font-bold text-foreground mb-3">뉴스 및 이벤트</div>
-                <div className="text-[12px] text-muted-foreground mb-3">내 포트폴리오 관련 뉴스</div>
-                {filteredSources.length > 0 && (
-                  <div className="mb-3 p-2 bg-muted/50 rounded-lg">
-                    <div className="text-[10px] text-muted-foreground mb-1">숨긴 매체 ({filteredSources.length})</div>
-                    <div className="flex flex-wrap gap-1">
-                      {filteredSources.map(source => (
-                        <span key={source} className="inline-flex items-center gap-1 px-2 py-0.5 bg-card border border-border rounded-full text-[10px] text-muted-foreground">
-                          {source}
-                          <button onClick={() => setFilteredSources(prev => prev.filter(s => s !== source))} className="hover:text-destructive">×</button>
-                        </span>
-                      ))}
                     </div>
                   </div>
-                )}
-                <div className="flex flex-col gap-3">
-                  {[
-                    { source: '헤럴드경제', time: '1일 전', title: "'주식으로 1억' 날린 미자, 또?…\"SK하닉 재입성\" 소식에 \"큰일 났다\" 반응", index: null },
-                    { source: '뉴데일리', time: '2시간 전', title: "반도체 쏠림 심화 … ETF도 독식하며 수익률 상위 휩쓸었다", index: null },
-                    { source: '매일경제', time: '1일 전', title: "[단독] 현대車, 보스턴다이내믹스 100% 품다…美증시 상장 속도낼듯", index: null },
-                    { source: '한국경제', time: '2일 전', title: "\"삼성·SK하이닉스에 '이것' 더해라\"…수익률 78% 낸 1위의 승부수", index: null },
-                    { source: '매일경제', time: '3일 전', title: "'삼전닉스' 수익률 별 거 아니다...700% 급등한 이 종목", index: { name: 'KOSPI', change: '0.13%' } },
-                    { source: '매일경제', time: '2일 전', title: "[단독] 현대차그룹, 보스턴다이내믹스 지분 더 산다…100% 소유 자회사로", index: null },
-                    { source: 'Daum', time: '1일 전', title: "'반도체 포모'에 삼전닉스 계좌 트는 개미들…주식활동계좌도 올들어 1000만개 늘었다", index: { name: 'KOSPI', change: '0.13%' } },
-                    { source: '지디넷코리아', time: '1일 전', title: "현대차 \"농업용 로봇 투자·협업 계획 중\"", index: null },
-                  ].filter(news => !filteredSources.includes(news.source)).map((news, idx) => (
-                    <div key={idx} className="group p-3 bg-muted/50 rounded-xl cursor-pointer hover:bg-border transition-colors relative">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[11px] font-semibold text-muted-foreground">{news.source}</span>
-                        <span className="text-[10px] text-muted-foreground/75">·</span>
-                        <span className="text-[10px] text-muted-foreground/75">{news.time}</span>
-                        {news.index && (
-                          <span className="text-[10px] font-semibold text-primary">{news.index.name} {news.index.change}</span>
-                        )}
-                        <div className="ml-auto relative">
-                          <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-border rounded-full" title="더보기">
-                                                      <svg className="w-4 h-4 text-muted-foreground" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                                                      </svg>
-                                                    </Button>
-                          <div className="hidden group-hover:block absolute right-0 top-full mt-1 bg-card border border-border rounded-xl shadow-lg z-10 py-1 min-w-[140px]">
-                            <button onClick={(e) => { e.stopPropagation(); setFilteredSources(prev => [...prev, news.source]); }} className="w-full text-left px-3 py-2 text-[12px] text-foreground hover:bg-muted transition-colors">
-                              {news.source} 보이지 않기
-                            </button>
+                </section>
+
+                {/* 집중 위험 */}
+                <section>
+                  <h3 className="text-[18px] font-medium text-foreground mb-3">집중 위험</h3>
+                  <div className="flex flex-col sm:flex-row gap-6">
+                    <div className="sm:w-[240px] shrink-0 flex flex-col gap-2">
+                      {holdings.map(h => (
+                        <div key={h.ticker} className="flex items-center gap-2">
+                          <span className="w-16 text-[12px] text-foreground truncate">{h.name}</span>
+                          <div className="flex-1 h-4 bg-muted rounded-sm overflow-hidden">
+                            <div className="h-full rounded-sm flex items-center justify-end pr-1" style={{ width: `${Math.max(h.weight * 100, 8)}%`, background: "#4285f4" }}>
+                              <span className="text-[10px] font-semibold text-white">{pct(h.weight)}%</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="text-[13px] font-semibold text-foreground leading-tight">{news.title}</div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                    <p className="flex-1 text-[13px] text-foreground leading-relaxed">
+                      <span className="font-semibold">특정 종목 집중 경고:</span> 상위 {holdings.length}개 종목이 포트폴리오의 100%를 차지하고 있으며,
+                      {top1 && top2 && <> 특히 {top1.name}({pct(top1.weight)}%)와 {top2.name}({pct(top2.weight)}%) 두 종목의 비중이 {top2Sum.toFixed(0)}%에 이릅니다.</>}
+                      {" "}이는 특정 업황 변화에 취약한 구조로, 종목 수를 늘리거나 섹터를 분산하면 변동성을 낮출 수 있습니다.
+                    </p>
+                  </div>
+                </section>
               </div>
-            )}
+              );
+            })()}
           </div>
         </div>
       ) : (

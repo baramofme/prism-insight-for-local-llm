@@ -39,6 +39,8 @@ export interface TradeRecord {
   tradedAt: Date;
   memo?: string;
   createdAt: Date;
+  stockCode?: string;
+  stockName?: string;
 }
 
 interface PortfolioState {

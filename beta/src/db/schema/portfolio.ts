@@ -119,39 +119,6 @@ export const watchlist = pgTable(
 export type Watchlist = typeof watchlist.$inferSelect;
 export type NewWatchlist = typeof watchlist.$inferInsert;
 
-// ─── Relations ───────────────────────────────────────────────────────────
-export const portfolioRelations = relations(portfolio, ({ one, many }) => ({
-  holdings: many(holding),
-  tradeRecords: many(tradeRecord),
-  watchlists: many(watchlist),
-}));
-
-export const holdingRelations = relations(holding, {
-  one: {
-    portfolio: one(portfolio, {
-      fields: [holding.portfolioId],
-      references: [portfolio.id],
-    }),
-  },
-  many: {
-    tradeRecords: many(tradeRecord),
-  },
-});
-
-export const tradeRecordRelations = relations(tradeRecord, {
-  one: {
-    holding: one(holding, {
-      fields: [tradeRecord.holdingId],
-      references: [holding.id],
-    }),
-  },
-});
-
-export const watchlistRelations = relations(watchlist, {
-  one: {
-    portfolio: one(portfolio, {
-      fields: [watchlist.portfolioId],
-      references: [portfolio.id],
-    }),
-  },
-});
+// ─── Relations (주석: Drizzle ORM 버전 호환성为一로 relations 제거) ──────────────────────────────────────────
+// relations 사용 시 one/many 콜백 패턴이 버전에서 다를 수 있음
+// 필요시 API 라우트에서 직접 innerJoin으로 조인하여 데이터 조회
