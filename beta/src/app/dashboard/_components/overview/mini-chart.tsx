@@ -30,7 +30,7 @@ export function MiniChart({ data, color, prevClose, fillWidth, small }: { data: 
       // [&_svg:not([class*='size-'])]:size-4, which otherwise squashes this
       // chart to 16px when it sits inside a Button (e.g. SimpleStockNav).
       style={fillWidth ? undefined : { width: w, height: h, minWidth: w, flexShrink: 0 }}
-      className={`${fillWidth ? "overflow-visible block" : "block overflow-visible"}`}
+      className={`gf-mini-chart ${fillWidth ? "overflow-visible block" : "block overflow-visible"}`}
     >
       <defs>
         {gradient}

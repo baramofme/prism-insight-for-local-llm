@@ -117,7 +117,7 @@ export function NavigationPanel({ mobile, open, onClose, centerBounds, sidebarMo
   };
 
   return (<>{mobile && open && <div className="fixed inset-0 bg-black/30 z-40 md:hidden" onClick={onClose} />}
-<aside {...(id ? { id } : {})} className={`${mobile ? "fixed md:hidden" : ""} ${mobile ? "inset-y-0 left-0 z-50 transition-all duration-200" : ""} ${mobile ? (open ? "translate-x-0" : "-translate-x-full") : ""} ${sidebarClasses} flex-col border-r border-border bg-card overflow-y-auto scroll-hide flex-shrink-0 self-stretch min-h-0 lg:pb-0 pb-[80px]`}
+<aside {...(id ? { id } : {})} className={`gf-sidebar ${mobile ? "gf-sidebar--mobile fixed md:hidden" : ""} ${mobile ? "inset-y-0 left-0 z-50 transition-all duration-200" : ""} ${mobile ? (open ? "translate-x-0" : "-translate-x-full") : ""} ${sidebarClasses} flex-col border-r border-border bg-card overflow-y-auto scroll-hide flex-shrink-0 self-stretch min-h-0 lg:pb-0 pb-[80px]`}
   onMouseEnter={mobile ? undefined : handleMouseEnter}
   onMouseLeave={mobile ? undefined : handleMouseLeave}
   style={mobile ? { transform: open ? "translateX(0)" : "translateX(-100%)" } : sidebarStyle}

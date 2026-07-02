@@ -2,21 +2,22 @@
  * Portfolio Zustand Store — 단위 테스트
  * 
  * Tests for state management and actions.
+ * 
+ * Note: We mock zustand/middleware to bypass persist so tests can run deterministically.
  */
 
-// Create a simple in-memory storage for testing
-const storeState = new Map<string, any>();
+// Mock zustand/middleware BEFORE any other imports
+jest.mock("zustand/middleware", () => ({
+  persist: (fn: Function) => fn,
+}));
 
-// Mock localStorage before fetch mock
-Object.defineProperty(global, 'localStorage', {
-  value: {
-    getItem: (name: string) => storeState.get(name) || null,
-    setItem: (name: string, value: any) => storeState.set(name, value),
-    removeItem: (name: string) => storeState.delete(name),
-    clear: () => storeState.clear(),
-  },
-  writable: true,
-  configurable: true,
+// Mock fetch globally before store import
+const mockFetchData = new Map<string, any>();
+global.fetch = jest.fn((url: string) => {
+  const data = mockFetchData.get(url) || {};
+  return Promise.resolve({
+    json: () => Promise.resolve(data),
+  } as any);
 });
 
 describe("Portfolio Store", () => {
@@ -25,7 +26,7 @@ describe("Portfolio Store", () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    storeState.clear();
+    mockFetchData.clear();
     
     // Reset modules to get fresh store instance
     jest.resetModules();
@@ -85,22 +86,19 @@ describe("Portfolio Store", () => {
 
   describe("fetchPortfolios", () => {
     beforeEach(() => {
-      // Mock fetch for this test suite
-      jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: [
-            {
-              id: "pfo_1",
-              userId: "user123",
-              name: "Portfolio 1",
-              totalInvestment: "1000000",
-              createdAt: "2024-01-01T00:00:00Z",
-              updatedAt: "2024-01-01T00:00:00Z",
-            },
-          ],
-        }),
-      } as any);
+      mockFetchData.set("/api/v1/portfolio", {
+        success: true,
+        data: [
+          {
+            id: "pfo_1",
+            userId: "user123",
+            name: "Portfolio 1",
+            totalInvestment: "1000000",
+            createdAt: "2024-01-01T00:00:00Z",
+            updatedAt: "2024-01-01T00:00:00Z",
+          },
+        ],
+      });
     });
 
     test("should update portfolios on successful API response", async () => {
@@ -112,11 +110,9 @@ describe("Portfolio Store", () => {
     });
 
     test("should set error on failed API response", async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: false,
-          error: "API Error",
-        }),
+      mockFetchData.set("/api/v1/portfolio", {
+        success: false,
+        error: "API Error",
       });
 
       await store.fetchPortfolios();
@@ -139,18 +135,16 @@ describe("Portfolio Store", () => {
 
   describe("createPortfolio", () => {
     test("should return new portfolio on success", async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: {
-            id: "pfo_new",
-            userId: "user123",
-            name: "New Portfolio",
-            totalInvestment: "0",
-            createdAt: "2024-01-01T00:00:00Z",
-            updatedAt: "2024-01-01T00:00:00Z",
-          },
-        }),
+      mockFetchData.set("/api/v1/portfolio", {
+        success: true,
+        data: {
+          id: "pfo_new",
+          userId: "user123",
+          name: "New Portfolio",
+          totalInvestment: "0",
+          createdAt: "2024-01-01T00:00:00Z",
+          updatedAt: "2024-01-01T00:00:00Z",
+        },
       });
 
       const result = await store.createPortfolio({ name: "New Portfolio" });
@@ -161,11 +155,9 @@ describe("Portfolio Store", () => {
     });
 
     test("should return null and set error on failure", async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: false,
-          error: "Creation failed",
-        }),
+      mockFetchData.set("/api/v1/portfolio", {
+        success: false,
+        error: "Creation failed",
       });
 
       const result = await store.createPortfolio({ name: "Failed Portfolio" });
@@ -186,9 +178,7 @@ describe("Portfolio Store", () => {
       ];
       store.selectedPortfolio = store.portfolios[1];
       
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({ success: true, data: null }),
-      });
+      mockFetchData.set("/api/v1/portfolio/pfo_delete", { success: true, data: null });
     });
 
     test("should remove portfolio from list on successful deletion", async () => {
@@ -201,9 +191,7 @@ describe("Portfolio Store", () => {
     });
 
     test("should return false and set error on failure", async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({ success: false, error: "Delete failed" }),
-      });
+      mockFetchData.set("/api/v1/portfolio/pfo_delete", { success: false, error: "Delete failed" });
 
       const result = await store.deletePortfolio("pfo_delete");
 
@@ -216,23 +204,21 @@ describe("Portfolio Store", () => {
 
   describe("fetchHoldings", () => {
     beforeEach(() => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: [
-            {
-              id: "hld_1",
-              portfolioId: "pfo_1",
-              stockCode: "005930",
-              stockName: "Samsung Electronics",
-              quantity: 10,
-              avgPrice: "70000",
-              currentPrice: "72000",
-              addedAt: "2024-01-01T00:00:00Z",
-              updatedAt: "2024-01-01T00:00:00Z",
-            },
-          ],
-        }),
+      mockFetchData.set("/api/v1/portfolio/pfo_1/holding", {
+        success: true,
+        data: [
+          {
+            id: "hld_1",
+            portfolioId: "pfo_1",
+            stockCode: "005930",
+            stockName: "Samsung Electronics",
+            quantity: 10,
+            avgPrice: "70000",
+            currentPrice: "72000",
+            addedAt: "2024-01-01T00:00:00Z",
+            updatedAt: "2024-01-01T00:00:00Z",
+          },
+        ],
       });
     });
 
@@ -269,21 +255,19 @@ describe("Portfolio Store", () => {
     test("should call API with correct data when portfolio is selected", async () => {
       store.selectedPortfolio = { id: "pfo_1" } as any;
       
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: {
-            id: "hld_new",
-            portfolioId: "pfo_1",
-            stockCode: "005930",
-            stockName: "Samsung Electronics",
-            quantity: 10,
-            avgPrice: "70000",
-            currentPrice: "71000",
-            addedAt: new Date(),
-            updatedAt: new Date(),
-          },
-        }),
+      mockFetchData.set("/api/v1/portfolio/pfo_1/holding", {
+        success: true,
+        data: {
+          id: "hld_new",
+          portfolioId: "pfo_1",
+          stockCode: "005930",
+          stockName: "Samsung Electronics",
+          quantity: 10,
+          avgPrice: "70000",
+          currentPrice: "71000",
+          addedAt: new Date(),
+          updatedAt: new Date(),
+        },
       });
 
       const result = await store.addHolding({
@@ -311,21 +295,19 @@ describe("Portfolio Store", () => {
 
   describe("fetchTrades", () => {
     beforeEach(() => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: [
-            {
-              id: "trd_1",
-              holdingId: "hld_1",
-              type: "buy" as const,
-              quantity: "10",
-              price: "70000",
-              totalAmount: "700000",
-              tradedAt: "2024-01-01T00:00:00Z",
-            },
-          ],
-        }),
+      mockFetchData.set("/api/v1/trade?holdingId=hld_1", {
+        success: true,
+        data: [
+          {
+            id: "trd_1",
+            holdingId: "hld_1",
+            type: "buy" as const,
+            quantity: "10",
+            price: "70000",
+            totalAmount: "700000",
+            tradedAt: "2024-01-01T00:00:00Z",
+          },
+        ],
       });
     });
 
@@ -337,11 +319,9 @@ describe("Portfolio Store", () => {
     });
 
     test("should call API with correct query params", async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({
-          success: true,
-          data: [],
-        }),
+      mockFetchData.set("/api/v1/trade?holdingId=hld_123", {
+        success: true,
+        data: [],
       });
 
       await store.fetchTrades({ holdingId: "hld_123" });
@@ -372,9 +352,7 @@ describe("Portfolio Store", () => {
         },
       ];
       
-      (global.fetch as any).mockResolvedValueOnce({
-        json: () => Promise.resolve({ success: true, data: null }),
-      });
+      mockFetchData.set("/api/v1/portfolio/holding/hld_1", { success: true, data: null });
     });
 
     test("should update current price in holdings list", async () => {

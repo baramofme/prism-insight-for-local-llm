@@ -405,14 +405,14 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
       )}
 
       {activeTab === "portfolio" ? (
-        <div className="flex-1 min-h-0 overflow-y-auto">
-          <div className="flex items-center gap-1 px-4 py-3 border-b border-border">
+        <div className="gf-pd__scroll flex-1 min-h-0 overflow-y-auto">
+          <div className="gf-pd__breadcrumb flex items-center gap-1 px-4 py-3 border-b border-border">
             <Button variant="link" onClick={onBack} className="flex items-center gap-1 text-[14px] text-primary hover:underline p-0 h-auto"><ArrowLeft className="w-4 h-4" />포트폴리오</Button>
             <span className="text-muted-foreground">|</span>
             <span className="text-[14px] text-foreground font-medium">{portfolioName}</span>
           </div>
 
-          <div className="px-4 pt-4 pb-2">
+          <div className="gf-pd__header px-4 pt-4 pb-2">
             <div className="flex items-center justify-between mb-1">
               <div className="text-[16px] font-semibold text-foreground">{portfolioName}</div>
               <div className="relative shrink-0">
@@ -453,7 +453,7 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
           </div>
 
           {/* Controls row: comparison add + chart type toggle — relative containers for dropdowns */}
-          <div className="flex items-center gap-2 px-4 py-1.5">
+          <div className="gf-pd__chart-controls flex items-center gap-2 px-4 py-1.5">
             {/* Comparison button with dropdown */}
             <div className="relative">
               <Button variant="ghost" onClick={() => setShowSearch(!showSearch)} className="flex items-center gap-1 px-3 py-1.5 text-[12px] text-foreground bg-muted border-transparent rounded-full hover:bg-muted/70 transition-colors h-auto">
@@ -521,7 +521,7 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
           )}
 
           {/* Chart area with background */}
-          <div className="px-2 mt-2 mb-1">
+          <div className="gf-pd__chart px-2 mt-2 mb-1">
             <div className="bg-muted/30 rounded-lg overflow-hidden border border-border">
               <PortfolioChart
                 mainAsset={mainAsset}
@@ -675,9 +675,9 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
           )}
 
           {/* Bottom sections: button groups + sort */}
-          <div className="px-4 pt-3 pb-4">
+          <div className="gf-pd__bottom px-4 pt-3 pb-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-1">
+              <div className="gf-pd__subtabs flex items-center gap-1">
                 {["투자", "통계"].map(btn => (
                   <button key={btn} onClick={() => setBottomTab(btn)}
                     className={`flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium rounded-full transition-colors ${bottomTab === btn ? 'bg-foreground text-white' : 'text-muted-foreground hover:bg-muted'}`}>
@@ -723,7 +723,7 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
               </div>
             </div>
             {bottomTab === "투자" && (
-                <table className="w-full text-[12px]">
+                <table className="gf-pd__holdings w-full text-[12px]">
                   <thead>
                     <tr className="border-b border-border text-muted-foreground">
                       <th className="text-left py-2 pr-2 font-medium whitespace-nowrap">종목 코드</th>
@@ -844,7 +844,7 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
                 </table>
             )}
             {bottomTab === "투자" && (
-              <div className="w-full mt-8 pt-6 border-t border-border">
+              <div className="gf-pd__viz w-full mt-8 pt-6 border-t border-border">
                 {/* Treemap header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                   <div>
@@ -922,7 +922,7 @@ export function MobilePortfolioDetail({ onBack, onStockClick, vp, rightW, footer
               const top2 = holdings[1];
               const top2Sum = ((top1?.weight || 0) + (top2?.weight || 0)) * 100;
               return (
-              <div className="py-3 flex flex-col gap-8">
+              <div className="gf-pd__stats py-3 flex flex-col gap-8">
                 {/* 자산 배분 */}
                 <section>
                   <h3 className="text-[18px] font-medium text-foreground mb-3">자산 배분</h3>

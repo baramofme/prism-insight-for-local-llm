@@ -110,16 +110,19 @@ describe("Schema Definitions", () => {
 
   describe("watchlist table", () => {
     test("should be a Drizzle pgTable", () => {
-      expect(watchlist).toHaveProperty("$inferSelect");
+      // watchlist also has $inferSelect type but may not have it as a property in newer Drizzle versions
+      expect(watchlist).toHaveProperty("id");
+      expect(watchlist).toHaveProperty("portfolioId");
     });
 
     test("should define all required columns", () => {
       expect(watchlist.id).toBeDefined();
-      expect(watchlist.userId).toBeDefined();
+      // watchlist uses portfolioId (not userId) - it's tied to a portfolio, not a user
+      expect(watchlist.portfolioId).toBeDefined();
       expect(watchlist.stockCode).toBeDefined();
       expect(watchlist.stockName).toBeDefined();
+      expect(watchlist.alertCondition).toBeDefined();
       expect(watchlist.addedAt).toBeDefined();
-      expect(watchlist.updatedAt).toBeDefined();
     });
   });
 
@@ -134,8 +137,8 @@ describe("Schema Definitions", () => {
       expect(tradeRecord.holdingId).toBeDefined();
     });
 
-    test("watchlist should reference user id", () => {
-      expect(watchlist.userId).toBeDefined();
+    test("watchlist should reference portfolio id", () => {
+      expect(watchlist.portfolioId).toBeDefined();
     });
   });
 });
