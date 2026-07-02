@@ -151,7 +151,7 @@ export default function DashboardPage() {
   return (
     <><div id="gf-root" className="gf-root min-h-screen bg-background text-foreground" style={{ colorScheme: isDark ? "dark" : "light", ["--gf-up" as string]: priceColor === "intl" ? "#0E9E4B" : "#FF4B4B", ["--gf-down" as string]: priceColor === "intl" ? "#FF4B4B" : "#1a73e8" } as React.CSSProperties}>
       <style>{`.scroll-hide::-webkit-scrollbar { display: none; } .scroll-hide { scrollbar-width: none; -ms-overflow-style: none; }`}</style>
-      <div className="flex flex-col min-h-screen md:h-screen">
+      <div id="gf-shell" className="gf-shell flex flex-col min-h-screen md:h-screen">
         <FinanceHeader
           searchQuery={searchQuery} setSearchQuery={setSearchQuery}
           showSearchDropdown={showSearchDropdown} setShowSearchDropdown={setShowSearchDropdown}
@@ -166,17 +166,17 @@ export default function DashboardPage() {
           setTheme={setTheme}
         />
 
-        <div className={`flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
-          <NavigationPanel id="" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
+        <div id="gf-body" className={`gf-body flex flex-1 md:overflow-hidden lg:pb-0 md:pb-[80px] pb-0 ${vp >= BREAKPOINTS.WIDE ? "items-start" : ""} max-w-[1820px] mx-auto w-full`} style={vp >= BREAKPOINTS.WIDE ? { width: Math.min(vp, 1820), marginInline: 'auto' } : undefined}>
+          <NavigationPanel id="gf-left-nav-mobile" mobile open={sidebarOpen} onClose={() => setSidebarOpen(false)} centerBounds={centerBounds} onPortfolioClick={() => { setSidebarOpen(false); setMobileView("portfolio"); }} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />
           {vp >= BREAKPOINTS.MOBILE && <NavigationPanel id="gf-left-nav" centerBounds={centerBounds} sidebarMode={sidebarMode} setSidebarMode={handleSidebarModeChange} sidebarWidth={sidebarMode === "expanded" ? 0 : leftW} onPortfolioClick={() => setMobileView("portfolio")} onStockClick={handleStockClick} wrapperMargin={wrapperMargin} />}
-          {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="flex-shrink-0" style={{ width: 80 }} />}
+          {(sidebarMode === "minimized" || sidebarMode === "hover") && vp >= BREAKPOINTS.MOBILE && <div className="gf-left-spacer flex-shrink-0" style={{ width: 80 }} />}
 
           {mobileView === "portfolio" ? (
-            <div className="flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+            <div id="gf-center-col" className="gf-center-col flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
               <MobilePortfolioDetail onBack={() => setMobileView("default")} onStockClick={handleStockClick} vp={vp} rightW={rightW} footerQuestion={footerQuestion} footerQuestionId={footerQuestionId} onFooterQuestionConsumed={() => setFooterQuestion("")} />
             </div>
           ) : mobileView === "stockDetail" && selectedStock ? (
-            <div className="flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+            <div id="gf-center-col" className="gf-center-col flex flex-col flex-1 min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
               <StockDetail stock={selectedStock} backLabel={stockOrigin === "portfolio" ? "포트폴리오" : "홈"} onBack={() => { setMobileView(stockOrigin === "portfolio" ? "portfolio" : "default"); setSelectedStock(null); }} vp={vp} />
             </div>
           ) : (
