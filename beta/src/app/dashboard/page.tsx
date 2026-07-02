@@ -180,17 +180,17 @@ export default function DashboardPage() {
               <StockDetail stock={selectedStock} backLabel={stockOrigin === "portfolio" ? "포트폴리오" : "홈"} onBack={() => { setMobileView(stockOrigin === "portfolio" ? "portfolio" : "default"); setSelectedStock(null); }} vp={vp} />
             </div>
           ) : (
-            <div className="flex flex-col flex-1 md:min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
+            <div id="gf-center-col" className="gf-center-col flex flex-col flex-1 md:min-h-0 md:self-stretch" style={{ maxWidth: centerW, marginLeft: sidebarMode === "expanded" ? leftW + centerLeftMargin : centerLeftMargin }}>
               {/* GF: in the tablet range (768–1040) the research panel folds into a
                   홈/조사 tab at the top of the center column. Below MOBILE the tabs
                   drop and research is reached via the bottom chat bar instead. */}
               {vp >= BREAKPOINTS.MOBILE && vp < BREAKPOINTS.RIGHT_PANEL_MIN && (
-                <div className="flex items-center gap-6 border-b border-border px-4 flex-shrink-0">
+                <div id="gf-center-tabs" className="gf-center-tabs flex items-center gap-6 border-b border-border px-4 flex-shrink-0">
                   {([["home", "홈"], ["research", "조사"]] as const).map(([key, label]) => (
-                    <button key={key} onClick={() => setCenterTab(key)}
-                      className={`relative py-3 text-[14px] transition-colors ${centerTab === key ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`}>
+                    <button key={key} id={`gf-center-tab-${key}`} data-active={centerTab === key} onClick={() => setCenterTab(key)}
+                      className={`gf-center-tabs__tab relative py-3 text-[14px] transition-colors ${centerTab === key ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`}>
                       {label}
-                      {centerTab === key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />}
+                      {centerTab === key && <span className="gf-center-tabs__indicator absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />}
                     </button>
                   ))}
                 </div>
